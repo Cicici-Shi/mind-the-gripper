@@ -20,3 +20,6 @@ out/
 figs/
 !gripper_calib.npz
 protocols/
+
+# project page assets
+!docs/static/*.png
