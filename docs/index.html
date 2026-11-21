@@ -53,6 +53,11 @@
   .links a:hover { background: var(--ink); color: var(--bg); }
   figure { margin: 40px 0 0; }
   figure .imglink { display: block; background: #fff; padding: 6px; border-radius: 2px; }
+  .rollouts { margin-top: 18px; }
+  .rollouts .labels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; font-family: "Source Sans 3", Arial, sans-serif; font-size: 15px; text-align: center; color: var(--ink); margin-bottom: 4px; }
+  .rollouts .labels span small { color: var(--muted); display: block; font-size: 13px; }
+  .rollouts video { width: 100%; height: auto; display: block; background: #fff; margin-bottom: 10px; }
+  @media (max-width: 600px) { .rollouts .labels { font-size: 13px; } .rollouts .labels span small { font-size: 12px; } }
   figure img { width: 100%; height: auto; display: block; background: #fff; }
   figcaption { font-size: 15px; color: var(--muted); margin-top: 10px; line-height: 1.5; }
   h2 { font-size: 24px; font-weight: 600; margin: 52px 0 12px; padding-top: 14px; border-top: 1px solid var(--rule); }
@@ -95,6 +100,19 @@
 
   <h2>Abstract</h2>
   <p>Hierarchical robot systems now let a general-purpose model such as GPT-6 Astra supervise a fast low-level vision-language-action (VLA) policy. On a new robot, the model adapts through its prompt, but the policy, trained for one body, is normally retrained. We ask when it can instead be reused frozen, changing one robot component at a time across six public VLA policies in simulation. Under the same end-effector interface, replacing the arm costs little unless the new arm collides with the scene. Replacing the gripper can cost far more, and which gripper works better depends on the policy. Erasing a policy's own gripper from the image lowers success in all 16 policy-task combinations, yet several policies still close it in nearly every episode, centimeters from the object. Drawing the original gripper over a new one that can hold the object raises four policies from between 53.5% and 82.0% success to about 90% on LIBERO-Spatial. Before collecting new data, a team moving a hierarchical system to a new robot can swap the arm by keeping the end-effector interface, choose a gripper that suits the policy, and draw the original gripper over it in the image. The supervising model should watch the object, not the closure command. These steps move part of cross-embodiment transfer from training to deployment.</p>
+
+  <h2>Rollouts</h2>
+  <figure class="rollouts">
+    <div class="labels">
+      <span>Native Panda<small>success</small></span>
+      <span>Robotiq gripper<small>failure</small></span>
+      <span>Robotiq, Panda repainted<small>success</small></span>
+    </div>
+      <video src="static/videos/pair_45_2.mp4" poster="static/videos/pair_45_2.jpg" autoplay muted loop playsinline preload="metadata"></video>
+      <video src="static/videos/pair_45_8.mp4" poster="static/videos/pair_45_8.jpg" autoplay muted loop playsinline preload="metadata"></video>
+      <video src="static/videos/pair_40_22.mp4" poster="static/videos/pair_40_22.jpg" autoplay muted loop playsinline preload="metadata"></video>
+    <figcaption>OpenVLA-OFT on LIBERO-Spatial, third-person camera, same initial state in each row. The right column shows the image the policy receives: the Robotiq is physically mounted, and the Panda gripper is drawn over it. These are selected episodes in which the Robotiq run failed and the repainted run succeeded, chosen to illustrate the effect; aggregate rates are in the paper.</figcaption>
+  </figure>
 
   <h2>Which body changes a frozen policy absorbs</h2>
   <figure>

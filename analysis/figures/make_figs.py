@@ -177,7 +177,7 @@ if P:  # Figure 1 and the image-edit strip need the screenshots (see module docs
                     T(x, ty[2], "or"); x += tw("or") + 0.05
             # 连接箭头
             arrow(xa + wa + 0.04, cy, xc - 0.04, cy)
-            T((xa + wa + xc) / 2, cy + 0.04, "reviews", ha="center")
+            T((xa + wa + xc) / 2, cy + 0.04, "supervises", ha="center")
             arrow(xc + wc + 0.04, cy + 0.05, xe - 0.04, cy + 0.05)
             arrow(xe - 0.04, cy - 0.05, xc + wc + 0.04, cy - 0.05)
             T((xc + wc + xe) / 2, cy + 0.09, "actions", ha="center")
