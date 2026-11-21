@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change the Arm, Mind the Gripper</title>
+<meta name="description" content="Reusing frozen VLA policies on a new robot body: which body changes a frozen low-level policy tolerates, and what the image must show.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1d1d1f;
+    --muted: #5f6368;
+    --rule: #d9d9d9;
+    --bg: #ffffff;
+    --panel: #f6f6f4;
+    --link: #1a4f8b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #e8e8e6; --muted: #a4a7ab; --rule: #3a3a3a; --bg: #161616; --panel: #202020; --link: #8fb7e8;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #e8e8e6; --muted: #a4a7ab; --rule: #3a3a3a; --bg: #161616; --panel: #202020; --link: #8fb7e8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Source Serif 4", Georgia, serif; font-size: 18px; line-height: 1.6;
+  }
+  main { max-width: 880px; margin: 0 auto; padding: 56px 16px 72px; }
+  header { text-align: center; }
+  h1 { font-size: clamp(28px, 4.4vw, 40px); line-height: 1.2; font-weight: 600; margin: 0 0 6px; }
+  .subtitle { font-size: clamp(18px, 2.6vw, 22px); color: var(--muted); margin: 0 0 22px; }
+  .author { font-family: "Source Sans 3", Arial, sans-serif; font-size: 18px; margin: 0; }
+  .affil { font-family: "Source Sans 3", Arial, sans-serif; color: var(--muted); font-size: 16px; margin: 2px 0 22px; }
+  .links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; font-family: "Source Sans 3", Arial, sans-serif; }
+  .links a {
+    color: var(--ink); text-decoration: none; border: 1px solid var(--ink); border-radius: 4px;
+    padding: 6px 18px; font-size: 16px;
+  }
+  .links a:hover { background: var(--ink); color: var(--bg); }
+  figure { margin: 40px 0 0; }
+  figure .imglink { display: block; background: #fff; padding: 6px; border-radius: 2px; }
+  figure img { width: 100%; height: auto; display: block; background: #fff; }
+  figcaption { font-size: 15px; color: var(--muted); margin-top: 10px; line-height: 1.5; }
+  h2 { font-size: 24px; font-weight: 600; margin: 52px 0 12px; padding-top: 14px; border-top: 1px solid var(--rule); }
+  p { margin: 0 0 14px; }
+  a { color: var(--link); }
+  ol.findings { padding-left: 22px; margin: 0; }
+  ol.findings li { margin-bottom: 10px; }
+  pre {
+    background: var(--panel); padding: 14px 16px; overflow-x: auto; font-size: 13.5px; line-height: 1.5;
+    border-radius: 4px; font-family: ui-monospace, Menlo, Consolas, monospace;
+  }
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    main { padding-top: 36px; padding-bottom: 48px; }
+    figcaption { font-size: 15.5px; }
+    h2 { font-size: 22px; margin-top: 40px; }
+    pre { font-size: 12.5px; }
+  }
+  footer { margin-top: 56px; font-size: 14px; color: var(--muted); text-align: center; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Change the Arm, Mind the Gripper</h1>
+    <p class="subtitle">Reusing Frozen VLA Policies on a New Robot Body</p>
+    <p class="author">Yanchun Shi</p>
+    <p class="affil">National University of Singapore</p>
+    <nav class="links">
+      <a href="paper.pdf">Paper (PDF)</a>
+      <a href="https://github.com/Cicici-Shi/frozen-vla-body-swap">Code and readouts</a>
+    </nav>
+  </header>
+
+  <figure>
+    <a class="imglink" href="static/teaser.png" title="Open full-size image"><img src="static/teaser.png" alt="Overview: a general-purpose model reviews a frozen VLA policy; four panels show the effect of replacing the arm, replacing the gripper, erasing the gripper from the image, and repainting the original gripper."></a>
+    <figcaption>A general-purpose model moves to a new robot body by changing its prompt and reviews a fast, frozen VLA policy. We evaluate the policy alone, in simulation, and change one part of the body at a time. The purple arm is a silhouette, not a rendered arm.</figcaption>
+  </figure>
+
+  <h2>Abstract</h2>
+  <p>Hierarchical robot systems now let a general-purpose model such as GPT-6 Astra supervise a fast low-level vision-language-action (VLA) policy. On a new robot, the model adapts through its prompt, but the policy, trained for one body, is normally retrained. We ask when it can instead be reused frozen, changing one robot component at a time across six public VLA policies in simulation. Under the same end-effector interface, replacing the arm costs little unless the new arm collides with the scene. Replacing the gripper can cost far more, and which gripper works better depends on the policy. Erasing a policy's own gripper from the image lowers success in all 16 policy-task combinations, yet several policies still close it in nearly every episode, centimeters from the object. Drawing the original gripper over a new one that can hold the object raises four policies from between 53.5% and 82.0% success to about 90% on LIBERO-Spatial. Before collecting new data, a team moving a hierarchical system to a new robot can swap the arm by keeping the end-effector interface, choose a gripper that suits the policy, and draw the original gripper over it in the image. The supervising model should watch the object, not the closure command. These steps move part of cross-embodiment transfer from training to deployment.</p>
+
+  <h2>Which body changes a frozen policy absorbs</h2>
+  <figure>
+    <a class="imglink" href="static/body_swap.png" title="Open full-size image"><img src="static/body_swap.png" alt="Change in success rate under arm and gripper replacement on LIBERO-Spatial, with 95% confidence intervals."></a>
+    <figcaption>Change in success rate (percentage points, 95% CI) under arm and gripper replacement on LIBERO-Spatial. The two panels use different horizontal scales; open markers give the recovery after repainting the Panda gripper. In the stiff-finger Robotiq setting (*) the fingers interpenetrate when closed.</figcaption>
+  </figure>
+
+  <h2>What the policy needs to see</h2>
+  <figure>
+    <a class="imglink" href="static/image_edits.png" title="Open full-size image"><img src="static/image_edits.png" alt="Image edits on the native body: unedited, solid fill, erased, contour, lagged contour, and a contour and shifted contour on WidowX."></a>
+    <figcaption>Image edits on the native body. Erasing the gripper lowers success in all 16 policy-task combinations; a solid fill of its shape brings most of them back within 5 points of the unedited image.</figcaption>
+  </figure>
+  <figure>
+    <a class="imglink" href="static/contour_shift.png" title="Open full-size image"><img src="static/contour_shift.png" alt="Success rate against contour shift, and hand displacement at closure opposite to the shift, for open-pi-zero on two WidowX tasks."></a>
+    <figcaption>Where the gripper is drawn matters. For open-pi-zero on two WidowX tasks, shifting the drawn contour lowers success, and the physical hand lands on the opposite side, about 3 cm under a 24-pixel shift.</figcaption>
+  </figure>
+
+  <h2>Takeaways for deployment</h2>
+  <ol class="findings">
+    <li>Reuse the policy across arms that keep the end-effector interface, and check that the new arm does not hit the scene.</li>
+    <li>Choose the gripper together with the policy that will run on it.</li>
+    <li>If the gripper must change, repaint the original one into the image.</li>
+    <li>Keep a filled gripper visible at its true position, at least until the first closure.</li>
+    <li>Do not treat a closure command as evidence of a grasp; check whether the object is held.</li>
+  </ol>
+
+  <h2>Citation</h2>
+<pre>@techreport{shi2026mindthegripper,
+  title  = {Change the Arm, Mind the Gripper: Reusing Frozen VLA Policies on a New Robot Body},
+  author = {Shi, Yanchun},
+  institution = {National University of Singapore},
+  note   = {CS5478 course project report},
+  year   = {2026}
+}</pre>
+
+  <footer>All experiments run in simulation (LIBERO and SimplerEnv). On a phone, tap a figure to open it full-size.</footer>
+</main>
+</body>
+</html>

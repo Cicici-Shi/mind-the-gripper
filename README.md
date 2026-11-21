@@ -1,4 +1,4 @@
-# Change the Arm, Repaint the Gripper: Reusing Frozen VLA Policies on a New Robot Body
+# Change the Arm, Mind the Gripper: Reusing Frozen VLA Policies on a New Robot Body
 
 Code and raw readouts for the CS5478 course project of the same name. We change the robot body in LIBERO
 (robosuite / MuJoCo) one component at a time (the arm: KUKA IIWA, Kinova Gen3, UR5e, Panda with one joint locked;
@@ -7,7 +7,7 @@ gripper into the camera image with a synchronized twin render, and we edit only 
 solid fill, contour, lagged contour, shifted contour, edits only before or only after the first gripper closure). The
 frozen policies are OpenVLA-OFT, π0.5 and π0 on LIBERO, and open-pi-zero and CogACT on SimplerEnv.
 
-Paper: `<link to the report PDF>`
+Paper: https://cicici-shi.github.io/frozen-vla-body-swap/paper.pdf · Project page: https://cicici-shi.github.io/frozen-vla-body-swap/
 
 All experiments ran on a SLURM GPU cluster. The scripts are the versions that produced the numbers in the paper. They
 were not rewritten to run elsewhere, so cluster paths, conda environment names and GPU types in the `sbatch` files
