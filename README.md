@@ -1,6 +1,6 @@
 # Change the Arm, Mind the Gripper: Reusing Frozen VLA Policies on a New Robot Body
 
-[Project page](https://cicici-shi.github.io/frozen-vla-body-swap/) | [Paper](https://cicici-shi.github.io/frozen-vla-body-swap/paper.pdf) | [License: MIT](LICENSE)
+[Project page](https://cicici-shi.github.io/mind-the-gripper/) | [Paper](https://cicici-shi.github.io/mind-the-gripper/paper.pdf) | [License: MIT](LICENSE)
 
 ![Overview](docs/static/teaser.png)
 
