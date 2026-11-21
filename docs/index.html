@@ -72,13 +72,13 @@
     <p class="author">Yanchun Shi</p>
     <p class="affil">National University of Singapore</p>
     <nav class="links">
-      <a href="paper.pdf">Paper (PDF)</a>
-      <a href="https://github.com/Cicici-Shi/frozen-vla-body-swap">Code and readouts</a>
+      <a href="paper.pdf" target="_blank" rel="noopener">Paper (PDF)</a>
+      <a href="https://github.com/Cicici-Shi/frozen-vla-body-swap" target="_blank" rel="noopener">Code and readouts</a>
     </nav>
   </header>
 
   <figure>
-    <a class="imglink" href="static/teaser.png" title="Open full-size image"><img src="static/teaser.png" alt="Overview: a general-purpose model reviews a frozen VLA policy; four panels show the effect of replacing the arm, replacing the gripper, erasing the gripper from the image, and repainting the original gripper."></a>
+    <a class="imglink" href="static/teaser.png" target="_blank" rel="noopener" title="Open full-size image"><img src="static/teaser.png" alt="Overview: a general-purpose model reviews a frozen VLA policy; four panels show the effect of replacing the arm, replacing the gripper, erasing the gripper from the image, and repainting the original gripper."></a>
     <figcaption>A general-purpose model moves to a new robot body by changing its prompt and reviews a fast, frozen VLA policy. We evaluate the policy alone, in simulation, and change one part of the body at a time. The purple arm is a silhouette, not a rendered arm.</figcaption>
   </figure>
 
@@ -87,17 +87,17 @@
 
   <h2>Which body changes a frozen policy absorbs</h2>
   <figure>
-    <a class="imglink" href="static/body_swap.png" title="Open full-size image"><img src="static/body_swap.png" alt="Change in success rate under arm and gripper replacement on LIBERO-Spatial, with 95% confidence intervals."></a>
+    <a class="imglink" href="static/body_swap.png" target="_blank" rel="noopener" title="Open full-size image"><img src="static/body_swap.png" alt="Change in success rate under arm and gripper replacement on LIBERO-Spatial, with 95% confidence intervals."></a>
     <figcaption>Change in success rate (percentage points, 95% CI) under arm and gripper replacement on LIBERO-Spatial. The two panels use different horizontal scales; open markers give the recovery after repainting the Panda gripper. In the stiff-finger Robotiq setting (*) the fingers interpenetrate when closed.</figcaption>
   </figure>
 
   <h2>What the policy needs to see</h2>
   <figure>
-    <a class="imglink" href="static/image_edits.png" title="Open full-size image"><img src="static/image_edits.png" alt="Image edits on the native body: unedited, solid fill, erased, contour, lagged contour, and a contour and shifted contour on WidowX."></a>
+    <a class="imglink" href="static/image_edits.png" target="_blank" rel="noopener" title="Open full-size image"><img src="static/image_edits.png" alt="Image edits on the native body: unedited, solid fill, erased, contour, lagged contour, and a contour and shifted contour on WidowX."></a>
     <figcaption>Image edits on the native body. Erasing the gripper lowers success in all 16 policy-task combinations; a solid fill of its shape brings most of them back within 5 points of the unedited image.</figcaption>
   </figure>
   <figure>
-    <a class="imglink" href="static/contour_shift.png" title="Open full-size image"><img src="static/contour_shift.png" alt="Success rate against contour shift, and hand displacement at closure opposite to the shift, for open-pi-zero on two WidowX tasks."></a>
+    <a class="imglink" href="static/contour_shift.png" target="_blank" rel="noopener" title="Open full-size image"><img src="static/contour_shift.png" alt="Success rate against contour shift, and hand displacement at closure opposite to the shift, for open-pi-zero on two WidowX tasks."></a>
     <figcaption>Where the gripper is drawn matters. For open-pi-zero on two WidowX tasks, shifting the drawn contour lowers success, and the physical hand lands on the opposite side, about 3 cm under a 24-pixel shift.</figcaption>
   </figure>
 
