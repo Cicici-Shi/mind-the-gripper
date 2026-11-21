@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Change the Arm, Mind the Gripper</title>
 <meta name="description" content="Reusing frozen VLA policies on a new robot body: which body changes a frozen low-level policy tolerates, and what the image must show.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Change the Arm, Mind the Gripper: Reusing Frozen VLA Policies on a New Robot Body">
+<meta property="og:description" content="Which body changes a frozen VLA policy tolerates, and what the image must show: arm and gripper swaps and image edits across six public policies in simulation.">
+<meta property="og:url" content="https://cicici-shi.github.io/frozen-vla-body-swap/">
+<meta property="og:image" content="https://cicici-shi.github.io/frozen-vla-body-swap/static/teaser.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231d1d1f'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' text-anchor='middle' fill='%23ffffff'%3EG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -34,6 +41,9 @@
   h1 { font-size: clamp(28px, 4.4vw, 40px); line-height: 1.2; font-weight: 600; margin: 0 0 6px; }
   .subtitle { font-size: clamp(18px, 2.6vw, 22px); color: var(--muted); margin: 0 0 22px; }
   .author { font-family: "Source Sans 3", Arial, sans-serif; font-size: 18px; margin: 0; }
+  .author a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .author a:hover { border-bottom-color: var(--ink); }
+  .affil a { color: var(--muted); }
   .affil { font-family: "Source Sans 3", Arial, sans-serif; color: var(--muted); font-size: 16px; margin: 2px 0 22px; }
   .links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; font-family: "Source Sans 3", Arial, sans-serif; }
   .links a {
@@ -69,17 +79,18 @@
   <header>
     <h1>Change the Arm, Mind the Gripper</h1>
     <p class="subtitle">Reusing Frozen VLA Policies on a New Robot Body</p>
-    <p class="author">Yanchun Shi</p>
-    <p class="affil">National University of Singapore</p>
+    <p class="author"><a href="https://github.com/Cicici-Shi" target="_blank" rel="noopener">Yanchun Shi</a></p>
+    <p class="affil">National University of Singapore<br><a href="mailto:shi.yanchun@u.nus.edu">shi.yanchun@u.nus.edu</a></p>
     <nav class="links">
       <a href="paper.pdf" target="_blank" rel="noopener">Paper (PDF)</a>
       <a href="https://github.com/Cicici-Shi/frozen-vla-body-swap" target="_blank" rel="noopener">Code and readouts</a>
+      <a href="https://github.com/Cicici-Shi/frozen-vla-body-swap/tree/main/results" target="_blank" rel="noopener">Raw readouts</a>
     </nav>
   </header>
 
   <figure>
-    <a class="imglink" href="static/teaser.png" target="_blank" rel="noopener" title="Open full-size image"><img src="static/teaser.png" alt="Overview: a general-purpose model reviews a frozen VLA policy; four panels show the effect of replacing the arm, replacing the gripper, erasing the gripper from the image, and repainting the original gripper."></a>
-    <figcaption>A general-purpose model moves to a new robot body by changing its prompt and reviews a fast, frozen VLA policy. We evaluate the policy alone, in simulation, and change one part of the body at a time. The purple arm is a silhouette, not a rendered arm.</figcaption>
+    <a class="imglink" href="static/teaser.png" target="_blank" rel="noopener" title="Open full-size image"><img src="static/teaser.png" alt="Overview: a general-purpose model supervises a frozen VLA policy; four panels show the effect of replacing the arm, replacing the gripper, erasing the gripper from the image, and repainting the original gripper."></a>
+    <figcaption>A general-purpose model moves to a new robot body by changing its prompt and supervises a fast, frozen VLA policy. We evaluate the policy alone, in simulation, and change one part of the body at a time. The purple arm is a silhouette, not a rendered arm.</figcaption>
   </figure>
 
   <h2>Abstract</h2>
@@ -119,7 +130,7 @@
   year   = {2026}
 }</pre>
 
-  <footer>All experiments run in simulation (LIBERO and SimplerEnv). On a phone, tap a figure to open it full-size.</footer>
+  <footer>All experiments run in simulation (LIBERO and SimplerEnv).</footer>
 </main>
 </body>
 </html>

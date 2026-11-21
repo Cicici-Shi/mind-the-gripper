@@ -1,17 +1,40 @@
 # Change the Arm, Mind the Gripper: Reusing Frozen VLA Policies on a New Robot Body
 
-Code and raw readouts for the CS5478 course project of the same name. We change the robot body in LIBERO
-(robosuite / MuJoCo) one component at a time (the arm: KUKA IIWA, Kinova Gen3, UR5e, Panda with one joint locked;
-the gripper: Rethink, Robotiq 2F-85 with a soft-finger and a stiff-finger actuator setting). We repaint the Panda
-gripper into the camera image with a synchronized twin render, and we edit only the image on the native body (erasure,
-solid fill, contour, lagged contour, shifted contour, edits only before or only after the first gripper closure). The
-frozen policies are OpenVLA-OFT, π0.5 and π0 on LIBERO, and open-pi-zero and CogACT on SimplerEnv.
+[Project page](https://cicici-shi.github.io/frozen-vla-body-swap/) | [Paper](https://cicici-shi.github.io/frozen-vla-body-swap/paper.pdf) | [License: MIT](LICENSE)
 
-Paper: https://cicici-shi.github.io/frozen-vla-body-swap/paper.pdf · Project page: https://cicici-shi.github.io/frozen-vla-body-swap/
+![Overview](docs/static/teaser.png)
+
+*A general-purpose model moves to a new robot body by changing its prompt and supervises a fast, frozen VLA policy; we evaluate the policy alone, in simulation, and change one part of the body at a time.*
+
+Code and raw readouts for the CS5478 course project of the same name. We test six frozen public VLA policies:
+OpenVLA-OFT with its joint LIBERO checkpoint (OFT) and with its suite-specific checkpoints (OFTi), π0.5 and π0 on
+LIBERO, and open-pi-zero and CogACT on SimplerEnv. We change the robot body in LIBERO (robosuite / MuJoCo) one
+component at a time (the arm: KUKA IIWA, Kinova Gen3, UR5e, Panda with one joint locked; the gripper: Rethink, Robotiq
+2F-85 with a soft-finger and a stiff-finger actuator setting). We repaint the Panda gripper into the camera image with
+a synchronized twin render, and we edit only the image on the native body (erasure, solid fill, contour, lagged
+contour, shifted contour, edits only before or only after the first gripper closure).
 
 All experiments ran on a SLURM GPU cluster. The scripts are the versions that produced the numbers in the paper. They
 were not rewritten to run elsewhere, so cluster paths, conda environment names and GPU types in the `sbatch` files
 must be adapted (see [Running on another machine](#running-on-another-machine)).
+
+System requirements: one GPU per job. The `sbatch` files request `a100-40`, `a100-80`, `h100-47` (a MIG slice),
+`h100-96`, `h200-141` and `gpu:nv` (noted in the contour-shift jobs as a 24 GB Titan RTX).
+
+## Main results
+
+Changes are in percentage points of success rate, 200 paired episodes per cell, on LIBERO-Spatial unless noted.
+
+| Change | Result | Paper | Raw readout (`results/`) |
+|---|---|---|---|
+| Arm swap: Kinova Gen3, KUKA IIWA, Panda with one joint locked | at most 5.0 points for both OFT and π0.5 | Section 4.1 | `4.1_body_swap/results_block3_final.txt` |
+| Arm swap: UR5e | OFT -13.0, π0.5 -15.0, mostly from a forearm collision with a cabinet; -4.0 and -6.0 with forearm collision disabled | Section 4.1 | `4.1_body_swap/results_block3_final.txt` |
+| Gripper swap: Rethink / stiff-finger Robotiq 2F-85* | Rethink: OFT -4.5, π0.5 -32.5; stiff Robotiq: OFT -45.0, π0.5 -17.0 | Section 4.1 | `4.1_body_swap/results_block3_final.txt` |
+| Erase the gripper from the image (native body) | success drops in all 16 policy-task combinations, by 27.0 to 99.0 points | Section 4.2, Table 2 | `4.2_image_edits/` |
+| Repaint the Panda gripper over the stiff Robotiq* | four policies rise from 53.5% to 82.0% success to 89.5% to 90.5%, against 96.5% to 99.0% on the native body | Section 4.1 | `4.1_body_swap/results_block3_final.txt` (OFT, π0.5), `results_models1.txt` (OFTi, π0) |
+
+\* In the stiff-finger Robotiq setting the fingers interpenetrate when closed, so these rows hold only for that
+configuration.
 
 ## Repository layout
 
@@ -150,3 +173,15 @@ directories (see each script's header for its arguments).
 
 MIT, see `LICENSE`. Third-party code (OpenVLA-OFT, openpi, open-pi-zero, CogACT, SimplerEnv, LIBERO, robosuite) is
 not included and keeps its own license.
+
+## Citation
+
+```bibtex
+@techreport{shi2026mindthegripper,
+  title  = {Change the Arm, Mind the Gripper: Reusing Frozen VLA Policies on a New Robot Body},
+  author = {Shi, Yanchun},
+  institution = {National University of Singapore},
+  note   = {CS5478 course project report},
+  year   = {2026}
+}
+```
