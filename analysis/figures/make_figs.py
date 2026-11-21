@@ -12,7 +12,7 @@ from PIL import Image
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 P = os.environ.get("FIG1_SRC", "")
 OUT = os.environ.get("FIG_OUT", "figs"); os.makedirs(OUT, exist_ok=True)
-plt.rcParams.update({"font.size": 7, "font.family": "DejaVu Sans", "axes.spines.top": False, "axes.spines.right": False})
+plt.rcParams.update({"pdf.fonttype": 42, "ps.fonttype": 42, "font.size": 7, "font.family": "DejaVu Sans", "axes.spines.top": False, "axes.spines.right": False})
 
 # ---------- 图 1 ----------
 if P:  # Figure 1 needs the screenshots (see module docstring)
@@ -76,14 +76,16 @@ for b in ("B1", "B2"):
     ys = [sr["S-b"], sr["S-a"], sr["S-h"], sr["C4"], sr["S+h"], sr["S+a"], sr["S+b"]]
     a1.plot(xs, ys, "-o", ms=3, lw=1, color=col[b], label=names[b])
     a1.axhline(sr["C3"], color=col[b], lw=0.6, ls=":")
+    a1.axhline(sr["C0"], color=col[b], lw=0.6, ls="--")
     d = ["h", "a", "b"]
     y = [-oh[k][0] for k in d]
     lo = [(-oh[k][0]) - (-oh[k][2]) for k in d]; hi = [(-oh[k][1]) - (-oh[k][0]) for k in d]
     a2.errorbar([px[k] for k in d], y, yerr=[lo, hi], fmt="-o", ms=3, lw=1, capsize=2, color=col[b], label=names[b])
 a1.set_xlabel("Horizontal shift of the drawn contour (input pixels)"); a1.set_ylabel("Success rate (%)")
-a1.set_xticks([-24, -12, -6, 0, 6, 12, 24]); a1.set_ylim(0, 45)
-a1.text(0.02, 0.03, "dotted: gripper erased, no contour", transform=a1.transAxes, fontsize=5.5, color="0.35")
-a1.legend(frameon=False, fontsize=6, loc="upper right")
+a1.set_xticks([-24, -12, -6, 0, 6, 12, 24]); a1.set_ylim(0, 92)
+a1.text(0.02, 0.62, "dashed: unedited image", transform=a1.transAxes, fontsize=5.5, color="0.35")
+a1.text(0.02, 0.10, "dotted: gripper erased, no contour", transform=a1.transAxes, fontsize=5.5, color="0.35")
+a1.legend(frameon=False, fontsize=6, loc="center right")
 a2.set_xlabel("Shift magnitude (input pixels)"); a2.set_ylabel("Hand displacement at closure,\nopposite to the shift (cm)")
 a2.set_xticks([6, 12, 24]); a2.set_ylim(0, 4.2); a2.legend(frameon=False, fontsize=6, loc="upper left")
 fig.tight_layout(pad=0.4, w_pad=1.2)
@@ -94,6 +96,7 @@ print("done")
 # 数值取自报告原表 2，该表已于 2026-11-21 由独立 agent 逐格对照
 # results_block2_cg / results_block3_final / results_models1 / results_rescue_pilot / results_physfix 核过。
 R = [  # (标签, 组, {模型: (点, 下, 上)})
+ ("Arm replaced, Panda gripper kept", "hdr", {}),
  ("Kinova Gen3 (Spatial)", "arm", {"OFT": (-2.0, -5.0, 0.5), "π0.5": (0.0, -2.0, 2.0)}),
  ("Kinova Gen3 (Object)", "arm", {"OFT": (-3.0, -6.5, 0.5), "π0.5": (-1.0, -5.0, 3.0)}),
  ("KUKA IIWA", "arm", {"OFT": (-5.0, -9.0, -1.5), "π0.5": (-1.5, -4.0, 1.0)}),
@@ -102,10 +105,11 @@ R = [  # (标签, 组, {模型: (点, 下, 上)})
  ("UR5e, forearm collision off", "arm", {"OFT": (-4.0, -7.0, -1.0), "π0.5": (-6.0, -9.5, -3.0)}),
  ("UR5e (Object)", "arm", {"OFT": (0.0, -3.0, 3.0), "π0.5": (0.0, -3.5, 3.5)}),
  ("Arm appearance only", "arm", {"OFT": (-1.0, -3.5, 1.5), "π0.5": (2.5, -1.0, 6.0)}),
+ ("Gripper replaced, Panda arm kept", "hdr", {}),
  ("Rethink, extended travel", "grip", {"OFT": (-4.5, -8.5, -1.0), "π0.5": (-32.5, -39.0, -26.0)}),
  ("Robotiq, soft fingers", "grip", {"OFT": (-87.0, -91.5, -82.0), "OFTi": (-83.0, -88.0, -77.5)}),
  ("→ then repaint Panda gripper", "rep", {"OFT": (6.0, -0.5, 13.0), "OFTi": (-5.0, -12.0, 1.5)}),
- ("Robotiq, soft, rerun (Object)", "grip", {"OFT": (-7.0, -11.5, -3.0), "OFTi": (-0.5, -4.5, 3.5)}),
+ ("Robotiq, soft fingers (Object)", "grip", {"OFT": (-7.0, -11.5, -3.0), "OFTi": (-0.5, -4.5, 3.5)}),
  ("→ then repaint Panda gripper", "rep", {"OFT": (5.5, 1.0, 10.5), "OFTi": (-1.5, -5.5, 2.5)}),
  ("Robotiq, stiff fingers*", "grip", {"OFT": (-45.0, -52.0, -38.0), "π0.5": (-17.0, -22.5, -12.0), "OFTi": (-30.0, -36.5, -23.5), "π0": (-29.5, -36.5, -23.0)}),
  ("→ then repaint Panda gripper*", "rep", {"OFT": (36.0, 28.0, 44.0), "π0.5": (11.5, 6.0, 17.5), "OFTi": (22.5, 15.5, 30.0), "π0": (24.5, 16.5, 33.0)}),
@@ -118,23 +122,26 @@ pol = ["OFT", "π0.5", "OFTi", "π0"]
 pc = {"OFT": "#0072B2", "π0.5": "#D55E00", "OFTi": "#009E73", "π0": "#CC79A7"}
 off = {"OFT": -0.24, "π0.5": -0.08, "OFTi": 0.08, "π0": 0.24}
 n = len(R)
-fig, ax = plt.subplots(figsize=(5.5, 3.0))
+fig, ax = plt.subplots(figsize=(5.5, 3.15))
 ys = list(range(n))[::-1]
 for y, (lab, g, d) in zip(ys, R):
     if g == "rep":
         ax.axhspan(y - 0.5, y + 0.5, color="0.94", lw=0, zorder=0)
     for p, (v, lo, hi) in d.items():
-        ax.errorbar(v, y + off[p], xerr=[[v - lo], [hi - v]], fmt="o", ms=2.6, lw=0.8, capsize=1.2, color=pc[p], zorder=3)
+        ax.errorbar(v, y + off[p], xerr=[[v - lo], [hi - v]], fmt="o", ms=2.6, lw=0.8, capsize=1.2, color=pc[p], zorder=3,
+                    mfc=("white" if g == "rep" else pc[p]), mec=pc[p])
 ax.axvline(0, color="0.3", lw=0.6, zorder=1)
-ax.axhline(ys[7] - 0.5, color="0.6", lw=0.5, ls="--")
+ax.axhline(ys[9] + 0.5, color="0.6", lw=0.5, ls="--")
 ax.set_yticks(ys); ax.set_yticklabels([r[0] for r in R], fontsize=6)
+for t, r in zip(ax.get_yticklabels(), R):
+    if r[1] == "hdr": t.set_fontweight("bold")
 ax.set_xlabel("Change in success rate (percentage points, 95% CI)")
 ax.set_xlim(-95, 50); ax.set_ylim(-0.7, n - 0.3)
-ax.text(-93, ys[0] + 0.05, "Arm replaced, Panda gripper kept", fontsize=6, weight="bold", va="center")
-ax.text(48, ys[8] + 0.05, "Gripper replaced, Panda arm kept", fontsize=6, weight="bold", va="center", ha="right")
+lab = {"OFT": "OFT", "π0.5": r"$\pi_{0.5}$", "OFTi": "OFTi", "π0": r"$\pi_0$"}
 for p in pol:
-    ax.plot([], [], "o", ms=3, color=pc[p], label=p)
-ax.legend(frameon=False, fontsize=6, loc="upper right", ncol=2, handletextpad=0.2, columnspacing=0.8)
+    ax.plot([], [], "o", ms=3, color=pc[p], label=lab[p])
+ax.plot([], [], "o", ms=3, mfc="white", mec="0.3", color="0.3", label="recovery")
+ax.legend(frameon=False, fontsize=6, loc="upper right", bbox_to_anchor=(1.0, 1.02), ncol=5, handletextpad=0.2, columnspacing=0.8)
 ax.tick_params(axis="y", length=0)
 fig.tight_layout(pad=0.3)
 fig.savefig(f"{OUT}/fig2_body.pdf"); fig.savefig(f"{OUT}/fig2_body.png", dpi=200); plt.close(fig)
