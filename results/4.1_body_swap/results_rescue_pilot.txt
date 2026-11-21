@@ -1,0 +1,24 @@
+rescue pilot readout, protocol_rescue_pilot.md 78c1e1d3a20166ca, B=10000 seed=0, runs=$PROJ_ROOT/vla_zoo/runs
+readout script sha256 dd49f2b51bc176a2aa671341e0d1b42c6b2c2cc870451ff80484a79b915a4da7
+
+==== 合训 OFT（rs_oftc_sp，libero_spatial，200 键）
+  SR(S pf_sham_cg) = +97.00 [+94.50, +99.00] (n=200)   gpu=['NVIDIA A100-PCIE-40GB'] qacc_total=0
+  SR(G2 pf_grpkp20) = +10.00 [+6.00, +14.00] (n=200)   gpu=['NVIDIA A100-PCIE-40GB'] qacc_total=0
+  SR(GTfc2 pf_g_tfc_kp20) = +16.00 [+11.00, +21.50] (n=200)   gpu=['NVIDIA A100-PCIE-40GB'] qacc_total=0
+  drop_nat = SR(G″) − SR(S)       = -87.00 [-91.50, -82.00] (n=200)
+  recovery = SR(GTfc″) − SR(G″)   = +6.00 [-0.50, +13.00] (n=200)
+  （描述，不判）SR(GTfc″) − SR(S) = -81.00 [-86.50, -75.00] (n=200)
+  判定：值得做；进入 rescue 正式格
+
+==== OFTi（rs_ofti_sp，libero_spatial，200 键）
+  SR(S pf_sham_cg) = +98.50 [+96.50, +100.00] (n=200)   gpu=['NVIDIA A100-PCIE-40GB'] qacc_total=0
+  SR(G2 pf_grpkp20) = +15.50 [+10.50, +20.50] (n=200)   gpu=['NVIDIA A100-PCIE-40GB'] qacc_total=0
+  SR(GTfc2 pf_g_tfc_kp20) = +10.50 [+6.50, +15.00] (n=200)   gpu=['NVIDIA A100-PCIE-40GB'] qacc_total=0
+  drop_nat = SR(G″) − SR(S)       = -83.00 [-88.00, -77.50] (n=200)
+  recovery = SR(GTfc″) − SR(G″)   = -5.00 [-12.00, +1.50] (n=200)
+  （描述，不判）SR(GTfc″) − SR(S) = -88.00 [-92.50, -83.50] (n=200)
+  判定：值得做；进入 rescue 正式格
+
+==== 总判定
+  进入 rescue 正式格的 checkpoint：合训 OFT（值得做）、OFTi（值得做）
+  kp100 旧数只作背景，不与本批合并。

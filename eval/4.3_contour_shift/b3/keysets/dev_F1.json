@@ -1,0 +1,12 @@
+[
+ {
+  "key": "F1__pick_horizontal_coke_can_s900000__t0",
+  "block": "F1",
+  "task": "google_robot_pick_horizontal_coke_can",
+  "cfg_id": "pick_horizontal_coke_can_s900000",
+  "trial": 0,
+  "env_seed": 900000,
+  "reset": {},
+  "cluster": "pick_horizontal_coke_can_s900000"
+ }
+]

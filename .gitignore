@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+._*
+# run outputs and large artifacts
+*.log
+*.out
+*.npz
+*.pkl
+*.pt
+*.pth
+*.safetensors
+*.png
+*.jpg
+*.mp4
+logs/
+runs/
+out/
+figs/
+!gripper_calib.npz
+protocols/

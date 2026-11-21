@@ -1,0 +1,12 @@
+{
+ "ckpt_path": "$PROJ_ROOT/bench2_simpler/ckpt/bridge_beta_step19296_2024-12-26_22-30_42.pt",
+ "ckpt_bytes": 11773024888,
+ "ckpt_sha256": "3bb2287f6a7592eae70fd219ad12befb6edd06c14dd20ae3e9bdac00b9bbd581",
+ "open_pi_zero_commit": "c3df7fb062175c16f69d7ca4ce042958ea238fb7",
+ "open_pi_zero_worktree": "clean（git status 只有未跟踪的 out/）",
+ "open_pi_zero_cfg_bridge_yaml_sha256": "44afa957121807a7afbb23fd3aa4df2227e4bba9cf20d354f9400cad678dc558",
+ "open_pi_zero_env_adapter_simpler_py_sha256": "1a65f51f497a7b9ec115eb2914a0324414d70d9887740aaef494fae2fb5ae8cb",
+ "measured": "2026-11-14 集群登录节点 sha256sum / git rev-parse HEAD",
+ "ckpt_mtime_ns": 1794474591522515938,
+ "runtime_check": "cue_closed.py 启动时（非校准键）核：文件大小、mtime_ns、open-pi-zero 的 git HEAD、bridge.yaml 与 simpler.py 的 sha256；不在每个进程重算 11 GB 权重的 sha256（见 cue_closed.check_model）"
+}

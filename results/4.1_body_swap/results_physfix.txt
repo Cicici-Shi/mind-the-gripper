@@ -1,0 +1,468 @@
+prereg_physfix.py：physfix 预注册分析（protocol_physfix.md 修订三 §4、§5.2、§5.5、§5.7、§6、§7、§8）
+==== 文件 sha256
+  protocol_physfix.md                c8bd3fd8e8ba254a1a08aabece6dc77a01a48e7969086a6ad845dedbdef76df7  [$PROJ_ROOT/vla_zoo/analysis/protocol_physfix.md]
+  prereg_physfix.py（本脚本）             534477a68a2b69c6e6c7f7257f4bd5011fd65d506ca663f9c8202f8da77167fe  [$PROJ_ROOT/vla_zoo/analysis/prereg_physfix.py]
+  prereg_models1.py（冻结，被 import）     29faca6ae9d63233b21378b62b61f40655a052cab924bd0c20e451f1e1c346e5  [$PROJ_ROOT/vla_zoo/analysis/prereg_models1.py]
+  cells_next.sh                      e38bce0ab4b057be0a9b1cf1434f8f1f99a962ff7fb522516e2fe65ef407ed58  [$PROJ_ROOT/vla_zoo/next/cells_next.sh]
+  embody_next body_env.py（含 kp20 表与指垫位置表） 38a1b81a3661312f6d7ca46c78dc96c67756a1a06c3baf38bef8645a77034747  [$PROJ_ROOT/embody_next/embody/body_env.py]
+  embody_next robots.py              28e6722e57531ba5aa55b96db6c0a36829166b8fe761dde5d635628afd3f59b9  [$PROJ_ROOT/embody_next/embody/robots.py]
+  Robotiq XML 1                      c6149c3322a1eef4ed4eef1002500f7949887a2c6f0b569156766d0b6cdbdf18  [$HOME/miniforge3/envs/oft/lib/python3.10/site-packages/robosuite/models/assets/grippers/robotiq_gripper_85.xml]
+  映射表 kp20                           38a1b81a3661312f6d7ca46c78dc96c67756a1a06c3baf38bef8645a77034747  [$PROJ_ROOT/embody_next/embody/body_env.py]
+  --gate-json                        104ce3fdeeeea7c8cef56f8826ab9c70e5fc63167d000b8a6ebbee823fb4f1a1  [$PROJ_ROOT/vla_zoo/out/pf/t0check_<job>/gate_physfix_t0.json]
+  gate jsonl t0_spatial.jsonl        9577c9b8d5f64e368b0cdebdbb7ffa0ead9946f3bdce5fe2b6c6644845ff4da0  [$PROJ_ROOT/vla_zoo/out/pf/t0check_<job>/t0_spatial.jsonl]
+  gate jsonl t0_object.jsonl         61d72474198df4204b0bc9c16c5acc597a8bb82a1c3597dd8df82aa9ca3fcb76  [$PROJ_ROOT/vla_zoo/out/pf/t0check_<job>/t0_object.jsonl]
+  --gate0-json                       e3c129cff84393a4f5fc9623033657753ea825ac1f3ba8b91dee9e126c43c416  [$PROJ_ROOT/vla_zoo/out/pf/gate0/gate0_physfix_<job>.json]
+  --breakdown-json                   63e62a4134dc1f8ec0ea867ec5b886e17fdb952a582dfde859be5fe83b8f49e3  [$PROJ_ROOT/vla_zoo/out/physics_breakdown_physfix.json]
+  --padlr-json                       24120472ae3b9364d1c4dcd238c9f523468437ad29bf201dd517203b8eb17c63  [$PROJ_ROOT/vla_zoo/out/pf/kp20_padlr/kp20_pad_lr.json]
+  --grasp-json                       818d89db7a3555b2f87f5a84a3bd8401e199d1799a7af582ab73a7c6b8bd6499  [$PROJ_ROOT/vla_zoo/out/pf/grasp_<job>/grasp_physfix.json]
+  §7.0 夹持检查 summary.json             f54f95cacf2fe56499b79dc2af67b0f0b33a381057b61a25ce99b9e422e27ff6  [$PROJ_ROOT/vla_zoo/out/pf/geo_<job>/summary.json]
+  t0check_bg_diag_2026-11-07.md      16dd9734657fbe1bc8bf0b8adb83a77b1af2ed011d0497ae4c3ee42a0ae8d02d  [$PROJ_ROOT/vla_zoo/analysis/t0check_bg_diag_2026-11-07.md]
+  K_old m1                           fe810632231a9548245007e20b8bb66ab8eb58348f63a7b7c862564400914ad3  [$PROJ_ROOT/vla_zoo/out/physics_breakdown_m1.json]
+  K_old published                    15b7c5aad7052ed789b6d77ce17772ef960185fc0cb7005eb5f39de467130cd3  [$PROJ_ROOT/vla_zoo/out/physics_breakdown_published.json]
+B=10000 seed=0 pf-runs=$PROJ_ROOT/vla_zoo/runs zoo-runs=$PROJ_ROOT/vla_zoo/runs pub-runs=$PROJ_ROOT/runs
+§6 措辞约束（修订三 6a / 6b / 6c / 10 与 §6.1）：唯一主句型「该 kp20 物理及既定开度映射下的完整重绘管线收益（现象保持 / 未保持 / 掉分不可测）」，同处报告左右指垫对齐误差（合拢端净间距 12.6 mm 被映成近全合）；「完整指垫对齐重绘管线」只作管线名，首次出现加注「中点对齐；左右分别对齐误差见限制节」；不宣称隔离纯外观因素、不称双指垫几何对齐；不写 object 相对 spatial 的边界、不写臂姿因素与其他视觉适配策略、不写重绘收益依赖夹爪配置；kp20 夹不住碗壁只写「该配置无法执行所测的捏碗沿动作」；w 是沿开合轴的投影间距，非指垫接触不写「假抓取」；替身输入是整帧替身渲染，包含轮廓混合像素及适用场景中的机器人反射（Astra bgdiff 裁定），不写「背景像素完全一致」「纯局部外观替换」；两 checkpoint 不一致用 checkpoint 条件性措辞；无真机 / 新夹爪 / goal / 10，不写「通用」；旧失效键在 kp20 配置下的结局只作描述
+决策 C（spatial 保持检查）、K（配置依赖）、L（局部重绘）与桥接本批不判：修订三下 spatial 没有 G″ / GTfc″，只有一种夹爪配置，没有局部重绘格与桥接格（Astra grasp Q1、Q2、Q4）
+  gate json：有效（gl_renderer NVIDIA H200 NVL/PCIe/SSE2）
+
+######## 第 0 片事后门槛（pf_gate0.py：每片每键 fixcheck、copy_grip_cmd、首帧对齐、IK、相机、陈旧帧、D、QACC、pf_blind；只印）
+  OFT/object    S       e0-4:PASS  e5-9:PASS  e10-14:PASS  e15-19:PASS
+  OFT/object    T0      e0-4:PASS  e5-9:PASS  e10-14:PASS  e15-19:PASS
+  OFT/object    G''     e0-4:PASS  e5-9:PASS  e10-14:PASS  e15-19:PASS
+  OFT/object    GTfc''  e0-4:PASS  e5-9:PASS  e10-14:PASS  e15-19:PASS
+  OFT/object    T0 对 S 第 0 片一致率 0.98（50 键）PASS
+  OFTi/object   S       e0-4:PASS  e5-9:PASS  e10-14:PASS  e15-19:PASS
+  OFTi/object   T0      e0-4:PASS  e5-9:PASS  e10-14:PASS  e15-19:PASS
+  OFTi/object   G''     e0-4:PASS  e5-9:PASS  e10-14:PASS  e15-19:PASS
+  OFTi/object   GTfc''  e0-4:PASS  e5-9:PASS  e10-14:PASS  e15-19:PASS
+  OFTi/object   T0 对 S 第 0 片一致率 0.98（50 键）PASS
+  OFT/spatial   S       e0-4:PASS  e5-9:PASS  e10-14:PASS  e15-19:PASS
+  OFT/spatial   T0      e0-4:PASS  e5-9:PASS  e10-14:PASS  e15-19:PASS
+  OFT/spatial   T0 对 S 第 0 片一致率 1.0（50 键）PASS
+  OFTi/spatial  S       e0-4:PASS  e5-9:PASS  e10-14:PASS  e15-19:PASS
+  OFTi/spatial  T0      e0-4:PASS  e5-9:PASS  e10-14:PASS  e15-19:PASS
+  OFTi/spatial  T0 对 S 第 0 片一致率 0.94（50 键）PASS
+  总判：全部片无 FAIL
+
+######## 旧配置（只读；Δ_old 参照：旧 kp100 配置对 kp20 配置，配置不同），从旧数据重算
+
+  -- 合训 OFT 旧配置 object：每格键数 S 200, T0 200, G 200, GT 200；旧 GT = G_T（替身相机随替身手，相机后移约 6.4 mm，SYNC 关），与新 GTfc′ 相机钉法不同
+     drop_nat   -16.00 [-22.00, -10.00]  n=200
+     d5         -0.50 [-2.50, +1.50]  n=200
+     rec_fc     -6.00 [-13.00, +1.00]  n=200
+     recovery   -5.50 [-13.00, +2.00]  n=200
+
+  -- 独立 OFTi 旧配置 object：每格键数 S 200, T0 200, G 200, GT 200；旧 GT = GTfc（固定相机，SYNC 开）
+     drop_nat   -12.00 [-17.50, -6.50]  n=200
+     d5         +1.00 [-1.00, +3.00]  n=200
+     rec_fc     -8.00 [-14.50, -1.50]  n=200
+     recovery   -9.00 [-16.00, -2.00]  n=200
+
+==== 门槛（合训 OFT，spatial）
+  S     (pf_sham_cg): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0093 mm / 0.0195°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      在线接触                 PASS  缺在线接触记录 0 集
+      armature             PASS  pf_r85_armature == 0，pf_grip_armature 为空；r85 值 {0.0: 200}，不符 0，缺 0；grip 值 {(): 200}，不符 0，缺 0
+      盲法 pf_blind          PASS  != 1：0，缺 0
+      GPU 单一型号             PASS  {'NVIDIA A100-PCIE-40GB': 200}（期望 A100-PCIE-40GB，整批换 H100 只 WARN）
+      回归（§7.1）             PASS  regression PASS；
+      检测器 D + QACC         PASS  失效键 0
+  T0    (pf_sham_twin): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0093 mm / 0.0195°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/2666 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    T0 相机随替身手（TWIN_CAM=twin），差 = IK 残差，只印：查询帧均值 0.006 mm，最大 0.085 mm，200 集
+      在线接触                 PASS  缺在线接触记录 0 集
+      armature             PASS  pf_r85_armature == 0，pf_grip_armature 为空；r85 值 {0.0: 200}，不符 0，缺 0；grip 值 {(): 200}，不符 0，缺 0
+      盲法 pf_blind          PASS  != 1：0，缺 0
+      GPU 单一型号             PASS  {'NVIDIA A100-PCIE-40GB': 200}（期望 A100-PCIE-40GB，整批换 H100 只 WARN）
+      回归（§7.1）             PASS  regression PASS；
+      第 0 步一致性             PASS  cell PASS（按修订三重算 PASS）；t0_vs_s_agent=PASS(0.0082)，t0_vs_s_wrist=PASS(0.0484)，keys=NA(50)
+      检测器 D + QACC         PASS  失效键 0
+      T0 对 S 同键一致率         PASS  97.5%（200 键，门槛 >= 90%，低于只 WARN）
+  手指描述量（§7.1，只印；kp20 自由空间合拢预期 0.50，受阻时更小）：
+      S        无 gripper0_finger_joint
+      T0       无 gripper0_finger_joint
+  d5 门槛（§7.3）：d5 = +1.50 [-0.50, +4.00]，95% 下界 >= −7 -> 不触发（spatial：只作门槛与替身 sham 代价描述；同体重绘含机器人轮廓及炉面反射变化，其行为差异反映完整重绘管线的代价）
+
+==== 门槛（合训 OFT，object）
+  S     (pf_obj_sham_cg): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0098 mm / 0.0367°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      在线接触                 PASS  缺在线接触记录 0 集
+      armature             PASS  pf_r85_armature == 0，pf_grip_armature 为空；r85 值 {0.0: 200}，不符 0，缺 0；grip 值 {(): 200}，不符 0，缺 0
+      盲法 pf_blind          PASS  != 1：0，缺 0
+      GPU 单一型号             PASS  {'NVIDIA A100-PCIE-40GB': 200}（期望 A100-PCIE-40GB，整批换 H100 只 WARN）
+      回归（§7.1）             PASS  regression PASS；
+      检测器 D + QACC         PASS  失效键 0
+  T0    (pf_obj_sham_twin): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0098 mm / 0.0367°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/3548 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    T0 相机随替身手（TWIN_CAM=twin），差 = IK 残差，只印：查询帧均值 0.005 mm，最大 0.116 mm，200 集
+      在线接触                 PASS  缺在线接触记录 0 集
+      armature             PASS  pf_r85_armature == 0，pf_grip_armature 为空；r85 值 {0.0: 200}，不符 0，缺 0；grip 值 {(): 200}，不符 0，缺 0
+      盲法 pf_blind          PASS  != 1：0，缺 0
+      GPU 单一型号             PASS  {'NVIDIA A100-PCIE-40GB': 200}（期望 A100-PCIE-40GB，整批换 H100 只 WARN）
+      回归（§7.1）             PASS  regression PASS；
+      第 0 步一致性             PASS  cell PASS（按修订三重算 PASS）；t0_vs_s_agent=PASS(0.0135)，t0_vs_s_wrist=PASS(0.0585)，keys=NA(50)
+      检测器 D + QACC         PASS  失效键 0
+      T0 对 S 同键一致率         PASS  98.0%（200 键，门槛 >= 90%，低于只 WARN）
+  G''   (pf_obj_grpkp20): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0044 mm / 0.0432°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      在线接触                 PASS  缺在线接触记录 0 集
+      armature             PASS  pf_r85_armature == 0，pf_grip_armature 6 个全为 0；r85 值 {0.0: 200}，不符 0，缺 0；grip 值 {(0.0, 0.0, 0.0, 0.0, 0.0, 0.0): 200}，不符 0，缺 0
+      盲法 pf_blind          PASS  != 1：0，缺 0
+      GPU 单一型号             PASS  {'NVIDIA A100-PCIE-40GB': 200}（期望 A100-PCIE-40GB，整批换 H100 只 WARN）
+      回归（§7.1）             PASS  regression PASS；
+      检测器 D + QACC         PASS  失效键 0
+  GTfc'' (pf_obj_g_tfc_kp20): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0044 mm / 0.0432°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/3500 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                PASS  查询帧最大 0.0000 mm / 0.0000°，超 0.01 mm/0.01° 的查询帧 0/3500
+      在线接触                 PASS  缺在线接触记录 0 集
+      armature             PASS  pf_r85_armature == 0，pf_grip_armature 6 个全为 0；r85 值 {0.0: 200}，不符 0，缺 0；grip 值 {(0.0, 0.0, 0.0, 0.0, 0.0, 0.0): 200}，不符 0，缺 0
+      盲法 pf_blind          PASS  != 1：0，缺 0
+      GPU 单一型号             PASS  {'NVIDIA A100-PCIE-40GB': 200}（期望 A100-PCIE-40GB，整批换 H100 只 WARN）
+      回归（§7.1）             PASS  regression PASS；
+      第 0 步一致性             PASS  cell PASS（按修订三重算 PASS）；keys=NA(50)，cam_err_mm0_max=PASS(5.551115123125783e-14)，twin_phys_joint_diff=PASS(0.0)，wrist_both_hidden_mean=PASS(0.0)，agent_both_hidden_mean=NA(1.4636)，M_套件（有限 IK 搜索最小值，不是理论下界）=NA(1.4580614217122394)，第三人称平均差 − M=PASS(0.0055)，每键最大超出=NA(0.014)，background_identical=NA(81)
+      检测器 D + QACC         PASS  失效键 0
+  手指描述量（§7.1，只印；kp20 自由空间合拢预期 0.50，受阻时更小）：
+      S        无 gripper0_finger_joint
+      T0       无 gripper0_finger_joint
+      G''      每键最大 p50 0.427 / max 0.512，每键最小 p50 -0.028 / min -0.166（200 键）；合拢平台中位 0.426（每键与最大值差 <= 0.02 rad 的步）
+      GTfc''   每键最大 p50 0.428 / max 0.504，每键最小 p50 -0.028 / min -0.131（200 键）；合拢平台中位 0.428（每键与最大值差 <= 0.02 rad 的步）
+
+==== §4 估计量 · kp20 主配置（kp20 原资产 + 既定旧 kp20 开度映射）（合训 OFT，object）：点估计、95% / 90% bootstrap CI、键数、共同整片数
+  drop_nat(G'')                -7.00 pp  95% [ -11.50,   -3.00]  90% [ -10.50,   -3.50]  n=200 片=4
+  d5                           -1.00 pp  95% [  -3.00,   +1.00]  90% [  -2.50,   +0.50]  n=200 片=4
+  rec_fc(GTfc''−G'')           +4.50 pp  95% [  +0.00,   +9.00]  90% [  +1.00,   +8.00]  n=200 片=4
+  recovery(G'';GTfc'')         +5.50 pp  95% [  +1.00,  +10.50]  90% [  +1.50,   +9.50]  n=200 片=4
+  frac：|drop_nat| 点 7.00 < 7，不印
+  d5 门槛（§7.3）：d5 = -1.00 [-3.00, +1.00]，95% 下界 >= −7 -> 不触发
+
+==== 门槛（独立 OFTi，spatial）
+  S     (pf_sham_cg): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0093 mm / 0.0195°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      在线接触                 PASS  缺在线接触记录 0 集
+      armature             PASS  pf_r85_armature == 0，pf_grip_armature 为空；r85 值 {0.0: 200}，不符 0，缺 0；grip 值 {(): 200}，不符 0，缺 0
+      盲法 pf_blind          PASS  != 1：0，缺 0
+      GPU 单一型号             PASS  {'NVIDIA A100-PCIE-40GB': 200}（期望 A100-PCIE-40GB，整批换 H100 只 WARN）
+      回归（§7.1）             PASS  regression PASS；
+      检测器 D + QACC         PASS  失效键 0
+  T0    (pf_sham_twin): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0093 mm / 0.0195°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/2671 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    T0 相机随替身手（TWIN_CAM=twin），差 = IK 残差，只印：查询帧均值 0.006 mm，最大 0.092 mm，200 集
+      在线接触                 PASS  缺在线接触记录 0 集
+      armature             PASS  pf_r85_armature == 0，pf_grip_armature 为空；r85 值 {0.0: 200}，不符 0，缺 0；grip 值 {(): 200}，不符 0，缺 0
+      盲法 pf_blind          PASS  != 1：0，缺 0
+      GPU 单一型号             PASS  {'NVIDIA A100-PCIE-40GB': 200}（期望 A100-PCIE-40GB，整批换 H100 只 WARN）
+      回归（§7.1）             PASS  regression PASS；
+      第 0 步一致性             PASS  cell PASS（按修订三重算 PASS）；t0_vs_s_agent=PASS(0.0082)，t0_vs_s_wrist=PASS(0.0484)，keys=NA(50)
+      检测器 D + QACC         PASS  失效键 0
+      T0 对 S 同键一致率         PASS  97.0%（200 键，门槛 >= 90%，低于只 WARN）
+  手指描述量（§7.1，只印；kp20 自由空间合拢预期 0.50，受阻时更小）：
+      S        无 gripper0_finger_joint
+      T0       无 gripper0_finger_joint
+  d5 门槛（§7.3）：d5 = -1.00 [-3.50, +1.50]，95% 下界 >= −7 -> 不触发（spatial：只作门槛与替身 sham 代价描述；同体重绘含机器人轮廓及炉面反射变化，其行为差异反映完整重绘管线的代价）
+
+==== 门槛（独立 OFTi，object）
+  S     (pf_obj_sham_cg): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0098 mm / 0.0367°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      在线接触                 PASS  缺在线接触记录 0 集
+      armature             PASS  pf_r85_armature == 0，pf_grip_armature 为空；r85 值 {0.0: 200}，不符 0，缺 0；grip 值 {(): 200}，不符 0，缺 0
+      盲法 pf_blind          PASS  != 1：0，缺 0
+      GPU 单一型号             PASS  {'NVIDIA A100-PCIE-40GB': 200}（期望 A100-PCIE-40GB，整批换 H100 只 WARN）
+      回归（§7.1）             PASS  regression PASS；
+      检测器 D + QACC         PASS  失效键 0
+  T0    (pf_obj_sham_twin): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0098 mm / 0.0367°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/3585 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    T0 相机随替身手（TWIN_CAM=twin），差 = IK 残差，只印：查询帧均值 0.005 mm，最大 0.099 mm，200 集
+      在线接触                 PASS  缺在线接触记录 0 集
+      armature             PASS  pf_r85_armature == 0，pf_grip_armature 为空；r85 值 {0.0: 200}，不符 0，缺 0；grip 值 {(): 200}，不符 0，缺 0
+      盲法 pf_blind          PASS  != 1：0，缺 0
+      GPU 单一型号             PASS  {'NVIDIA A100-PCIE-40GB': 200}（期望 A100-PCIE-40GB，整批换 H100 只 WARN）
+      回归（§7.1）             PASS  regression PASS；
+      第 0 步一致性             PASS  cell PASS（按修订三重算 PASS）；t0_vs_s_agent=PASS(0.0135)，t0_vs_s_wrist=PASS(0.0585)，keys=NA(50)
+      检测器 D + QACC         PASS  失效键 0
+      T0 对 S 同键一致率         PASS  98.0%（200 键，门槛 >= 90%，低于只 WARN）
+  G''   (pf_obj_grpkp20): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0044 mm / 0.0432°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      在线接触                 PASS  缺在线接触记录 0 集
+      armature             PASS  pf_r85_armature == 0，pf_grip_armature 6 个全为 0；r85 值 {0.0: 200}，不符 0，缺 0；grip 值 {(0.0, 0.0, 0.0, 0.0, 0.0, 0.0): 200}，不符 0，缺 0
+      盲法 pf_blind          PASS  != 1：0，缺 0
+      GPU 单一型号             PASS  {'NVIDIA A100-PCIE-40GB': 200}（期望 A100-PCIE-40GB，整批换 H100 只 WARN）
+      回归（§7.1）             PASS  regression PASS；
+      检测器 D + QACC         PASS  失效键 0
+  GTfc'' (pf_obj_g_tfc_kp20): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0044 mm / 0.0432°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/3676 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                PASS  查询帧最大 0.0000 mm / 0.0000°，超 0.01 mm/0.01° 的查询帧 0/3676
+      在线接触                 PASS  缺在线接触记录 0 集
+      armature             PASS  pf_r85_armature == 0，pf_grip_armature 6 个全为 0；r85 值 {0.0: 200}，不符 0，缺 0；grip 值 {(0.0, 0.0, 0.0, 0.0, 0.0, 0.0): 200}，不符 0，缺 0
+      盲法 pf_blind          PASS  != 1：0，缺 0
+      GPU 单一型号             PASS  {'NVIDIA A100-PCIE-40GB': 200}（期望 A100-PCIE-40GB，整批换 H100 只 WARN）
+      回归（§7.1）             PASS  regression PASS；
+      第 0 步一致性             PASS  cell PASS（按修订三重算 PASS）；keys=NA(50)，cam_err_mm0_max=PASS(5.551115123125783e-14)，twin_phys_joint_diff=PASS(0.0)，wrist_both_hidden_mean=PASS(0.0)，agent_both_hidden_mean=NA(1.4636)，M_套件（有限 IK 搜索最小值，不是理论下界）=NA(1.4580614217122394)，第三人称平均差 − M=PASS(0.0055)，每键最大超出=NA(0.014)，background_identical=NA(81)
+      检测器 D + QACC         PASS  失效键 0
+  手指描述量（§7.1，只印；kp20 自由空间合拢预期 0.50，受阻时更小）：
+      S        无 gripper0_finger_joint
+      T0       无 gripper0_finger_joint
+      G''      每键最大 p50 0.427 / max 0.502，每键最小 p50 -0.028 / min -0.151（200 键）；合拢平台中位 0.426（每键与最大值差 <= 0.02 rad 的步）
+      GTfc''   每键最大 p50 0.428 / max 0.505，每键最小 p50 -0.028 / min -0.163（200 键）；合拢平台中位 0.427（每键与最大值差 <= 0.02 rad 的步）
+
+==== §4 估计量 · kp20 主配置（kp20 原资产 + 既定旧 kp20 开度映射）（独立 OFTi，object）：点估计、95% / 90% bootstrap CI、键数、共同整片数
+  drop_nat(G'')                -0.50 pp  95% [  -4.50,   +3.50]  90% [  -3.50,   +2.50]  n=200 片=4
+  d5                           +1.00 pp  95% [  -1.00,   +3.00]  90% [  -0.50,   +2.50]  n=200 片=4
+  rec_fc(GTfc''−G'')           -0.50 pp  95% [  -4.50,   +3.50]  90% [  -3.50,   +2.50]  n=200 片=4
+  recovery(G'';GTfc'')         -1.50 pp  95% [  -5.50,   +2.50]  90% [  -5.00,   +2.00]  n=200 片=4
+  frac：|drop_nat| 点 0.50 < 7，不印
+  d5 门槛（§7.3）：d5 = +1.00 [-1.00, +3.00]，95% 下界 >= −7 -> 不触发
+
+  整片计数（§8 修订三：12 格 48 片）：48/48
+
+######## §5.2 决策 O：object，kp20 主配置（G″ / GTfc″），现象是否保持（每 checkpoint；判定线原样，§5.7）
+  预测（写死；数字写于 XML 分支，修订三沿用原文、不为 kp20 另写）：两 checkpoint object drop_nat 在 −18 到 −6；recovery 在 −12 到 +6，95% 上界 < 掉分一半；即现象保持。
+  合训 OFT：drop_nat -7.00 [-11.50, -3.00]（掉分存在 = 点 <= −7 且上界 < 0：是），recovery +5.50 [+1.00, +10.50]（保持 = 上界 < 3.50；未保持 = 下界 > 0 且点 >= 3.50）-> 现象未保持
+  独立 OFTi：drop_nat -0.50 [-4.50, +3.50]（掉分存在 = 点 <= −7 且上界 < 0：否），recovery -1.50 [-5.50, +2.50]（保持 = 上界 < 0.25；未保持 = 下界 > 0 且点 >= 0.25）-> 掉分不可测
+      描述：rec_fc″ -0.50 [-4.50, +3.50]
+  族结论：两 checkpoint 不一致：checkpoint 条件性，各写各的，不取其一：OFT 现象未保持，OFTi 掉分不可测
+    解读（现象未保持）：该 kp20 物理及既定开度映射下的完整重绘管线收益：现象未保持（1/2 checkpoint）。新配置（kp20）下原有现象未保持。旧数据含仿真失效，但新旧差异有多少由失效导致、多少由动力学 / 映射 / 相机处理 / 替身路径变化导致，本批未识别；撤回旧的「object 上重绘不恢复」作为对现象的断言，旧 kp100 结果只保留为所测 kp100 仿真配置中带失效污染的条件性结果；不写「该现象依赖配置」（本批只有一种配置，配置效应与失效修复不可分），不写「原结论被仿真失效污染所致」。论文正文用 kp20 配置数字，旧数字进附录。左右指垫对齐误差见限制节。
+    解读（掉分不可测）：该 kp20 物理及既定开度映射下的完整重绘管线收益：掉分不可测（1/2 checkpoint）——G″ 掉分不再可测，恢复判定失去对象；不归因；只描述 rec_fc″
+    左右指垫对齐误差（§6 第 6a 条：与主句同处报告；中点对齐由 IK 保证并进门槛，左右分别对齐已知不成立，不许称「双指垫几何对齐」）：free_closed_end：物理净间距 w 12.3/12.6/12.6 mm，映射后替身净间距 -0.7/-0.6/-0.6 mm，差 13.0/13.2/13.2 mm，右指垫残差 6.5/6.6/6.7 mm，左指垫残差 6.6/6.7/6.7 mm（p50/p90/max）；free：物理净间距 w 12.5/99.4/99.6 mm，映射后替身净间距 -0.6/77.0/77.0 mm，差 13.1/22.4/24.7 mm，右指垫残差 6.6/11.2/13.1 mm，左指垫残差 6.6/11.2/13.1 mm（p50/p90/max）；blocked_object：物理净间距 w 44.2/61.6/98.0 mm，映射后替身净间距 11.5/28.3/75.1 mm，差 30.9/33.9/36.5 mm，右指垫残差 16.9/19.0/21.0 mm，左指垫残差 16.9/19.2/20.4 mm（p50/p90/max）
+    object 与 spatial 的差异本批不比较（spatial 无 G″ / GTfc″）
+
+######## §5.5 检测器 D 处置汇总（每族每 checkpoint；档位 = 族所涉格最大失效键数，>= 3 按配置拒绝）
+  OFT/object/kp20          0     -> 主读数即最终读数
+  OFTi/object/kp20         0     -> 主读数即最终读数
+
+######## §7.1 (d) / §7.2 第二层：kp20 表对 kp20 物理的左右指垫误差（只印，不设线；进报告限制节）
+  free             {"n": 1040, "w_R": {"p50": 12.457122330373235, "p90": 99.44986569522872, "max": 99.58746159964082, "min": 8.773896329679582}, "w_P": {"p50": -0.631058303575786, "p90": 77.0178008579274, "max": 77.0178008579274, "min": -0.99119555758744}, "dw": {"p50": 13.083737604466496, "p90": 22.436598689643233, "max": 24.699438745807086, "min": 9.765091887267022}, "res_p": {"p50": 6.595440461791645, "p90": 11.219357928760086, "max": 13.094245288181899, "min": 4.876393744190909}, "res_m": {"p50": 6.639070310566276, "p90": 11.222980995607898, "max": 13.10827827147236, "min": 4.900758788402138}}
+  free_closed_end  {"n": 160, "w_R": {"p50": 12.316105101950193, "p90": 12.56878953068298, "max": 12.5771575373241, "min": 10.723909026163405}, "w_P": {"p50": -0.6731201758003285, "p90": -0.6100994528813947, "max": -0.6080806090272067, "min": -0.99119555758744}, "dw": {"p50": 12.989802523424487, "p90": 13.179076205230176, "max": 13.185238146351308, "min": 11.715104583750845}, "res_p": {"p50": 6.5444998241246655, "p90": 6.647031091775921, "max": 6.650160912147119, "min": 5.8864714978080315}, "res_m": {"p50": 6.585910902895451, "p90": 6.692963411215708, "max": 6.6965402074024, "min": 5.861755689353307}}
+  blocked_object   {"n": 2224, "w_R": {"p50": 44.173379908205916, "p90": 61.56787308782862, "max": 97.9530389458755, "min": 33.6409988195813}, "w_P": {"p50": 11.462996744143553, "p90": 28.258222135244132, "max": 75.14535829533324, "min": 5.682374435993634}, "dw": {"p50": 30.947859241165123, "p90": 33.920494366385654, "max": 36.46911279924728, "min": 16.76252705800082}, "res_p": {"p50": 16.943758752986888, "p90": 19.045398207666324, "max": 21.001284523313252, "min": 8.64846997417069}, "res_m": {"p50": 16.863561989987616, "p90": 19.2365062973886, "max": 20.416511338448018, "min": 8.685433874794047}}
+  blocked_bowl     {"n": 1109, "w_R": {"p50": 11.993789192555747, "p90": 34.130196836905256, "max": 103.83091906995226, "min": -3.1570540401197507}, "w_P": {"p50": -0.7406276917054166, "p90": 0.875960720729607, "max": 75.14515666575134, "min": -0.99119555758744}, "dw": {"p50": 12.754359216597678, "p90": 21.27891161492041, "max": 43.968656226650246, "min": -3.2229702546692494}, "res_p": {"p50": 7.013822974333344, "p90": 13.718816458292528, "max": 41.52346794790103, "min": 4.499930174954461}, "res_m": {"p50": 6.296764506282258, "p90": 7.032392500631764, "max": 12.529870586092024, "min": 2.464956633299503}}
+
+######## §7.1 抓取物理合理性（kp20 列对旧配置正常集；触发线只决定「交 Astra」，不进判定）
+  -- slice0 OFT/object
+     kp20        {"n_keys": 100, "n_segments": 100, "no_pad_contact_carried_n": 0, "no_pad_contact_carried_frac": 0.0, "penetration_p50": 0.7906915067649213, "penetration_p90": 2.7822667135801473, "penetration_max": 4.186774986743888, "carry_frac_median": 1.0, "dual_pad_frac_median": 1.0, "any_pad_frac_median": 1.0, "pad_inface_frac_median": 1.0, "slip_p50": 1.6437474176563254, "slip_p90": 3.861647071713696, "force_median": 57.701332092285156, "passive_keys_over": 100, "passive_max_excess_rad": 0.2911, "check_live_vs_recon_count_equal_frac_median": 0.8477344573234984, "check_live_vs_recon_count_equal_frac_min": 0.0, "check_live_vs_recon_mindist_absdiff_mm_p90_median": 0.02502576159552749}
+     kp20_G2     {"n_keys": 50, "n_segments": 50, "no_pad_contact_carried_n": 0, "no_pad_contact_carried_frac": 0.0, "penetration_p50": 1.0182391969738485, "penetration_p90": 3.2934331260724163, "penetration_max": 4.186774986743888, "carry_frac_median": 1.0, "dual_pad_frac_median": 1.0, "any_pad_frac_median": 1.0, "pad_inface_frac_median": 1.0, "slip_p50": 1.573939815771935, "slip_p90": 3.31613467269747, "force_median": 70.23864555358887, "passive_keys_over": 50, "passive_max_excess_rad": 0.2911, "check_live_vs_recon_count_equal_frac_median": 0.8465325342465753, "check_live_vs_recon_count_equal_frac_min": 0.0, "check_live_vs_recon_mindist_absdiff_mm_p90_median": 0.04335322758686974}
+     kp20_GTfc2  {"n_keys": 50, "n_segments": 50, "no_pad_contact_carried_n": 0, "no_pad_contact_carried_frac": 0.0, "penetration_p50": 0.7876008711486444, "penetration_p90": 1.3370691685258675, "penetration_max": 3.4609875797053116, "carry_frac_median": 1.0, "dual_pad_frac_median": 1.0, "any_pad_frac_median": 1.0, "pad_inface_frac_median": 1.0, "slip_p50": 1.689671742717185, "slip_p90": 5.661454707775976, "force_median": 40.89682102203369, "passive_keys_over": 50, "passive_max_excess_rad": 0.2774, "check_live_vs_recon_count_equal_frac_median": 0.8484500574052813, "check_live_vs_recon_count_equal_frac_min": 0.0, "check_live_vs_recon_mindist_absdiff_mm_p90_median": 0.021069016156112497}
+     old_normal  {"n_keys": 48, "n_segments": 48, "no_pad_contact_carried_n": 11, "no_pad_contact_carried_frac": 0.22916666666666666, "penetration_p50": 2.808196138878964, "penetration_p90": 4.29961024956696, "penetration_max": 6.005246502105062, "carry_frac_median": 1.0, "dual_pad_frac_median": 0.0, "any_pad_frac_median": 0.08695652173913043, "pad_inface_frac_median": 1.0, "slip_p50": 5.989548352020979, "slip_p90": 21.822502819981995, "force_median": null, "passive_keys_over": 48, "passive_max_excess_rad": 0.5879}
+     kp20 触发线 无指垫接触而物体被携带 > 1%：未触发
+     kp20 触发线 穿透 p90 > 旧配置正常集 2 倍：未触发
+     kp20 触发线 携带比例中位 < 旧配置正常集 0.8 倍：未触发
+     kp20_G2 触发线 无指垫接触而物体被携带 > 1%：未触发
+     kp20_G2 触发线 穿透 p90 > 旧配置正常集 2 倍：未触发
+     kp20_G2 触发线 携带比例中位 < 旧配置正常集 0.8 倍：未触发
+     kp20_GTfc2 触发线 无指垫接触而物体被携带 > 1%：未触发
+     kp20_GTfc2 触发线 穿透 p90 > 旧配置正常集 2 倍：未触发
+     kp20_GTfc2 触发线 携带比例中位 < 旧配置正常集 0.8 倍：未触发
+  -- slice0 OFTi/object
+     kp20        {"n_keys": 100, "n_segments": 100, "no_pad_contact_carried_n": 0, "no_pad_contact_carried_frac": 0.0, "penetration_p50": 0.9429162618033602, "penetration_p90": 2.348429929313548, "penetration_max": 7.427944863340328, "carry_frac_median": 1.0, "dual_pad_frac_median": 1.0, "any_pad_frac_median": 1.0, "pad_inface_frac_median": 1.0, "slip_p50": 1.5768568052785836, "slip_p90": 3.6823327265521897, "force_median": 66.21524333953857, "passive_keys_over": 100, "passive_max_excess_rad": 0.3194, "check_live_vs_recon_count_equal_frac_median": 0.8273958333333333, "check_live_vs_recon_count_equal_frac_min": 0.0, "check_live_vs_recon_mindist_absdiff_mm_p90_median": 0.04794456213206011}
+     kp20_G2     {"n_keys": 50, "n_segments": 50, "no_pad_contact_carried_n": 0, "no_pad_contact_carried_frac": 0.0, "penetration_p50": 1.2491697590370592, "penetration_p90": 3.6995313360299296, "penetration_max": 7.427944863340328, "carry_frac_median": 1.0, "dual_pad_frac_median": 1.0, "any_pad_frac_median": 1.0, "pad_inface_frac_median": 1.0, "slip_p50": 1.5000981665554625, "slip_p90": 3.48489877328751, "force_median": 66.21524333953857, "passive_keys_over": 50, "passive_max_excess_rad": 0.3117, "check_live_vs_recon_count_equal_frac_median": 0.8204365079365079, "check_live_vs_recon_count_equal_frac_min": 0.0, "check_live_vs_recon_mindist_absdiff_mm_p90_median": 0.06948824025736947}
+     kp20_GTfc2  {"n_keys": 50, "n_segments": 50, "no_pad_contact_carried_n": 0, "no_pad_contact_carried_frac": 0.0, "penetration_p50": 0.7903117112939586, "penetration_p90": 1.2351260922060439, "penetration_max": 1.7457400508883465, "carry_frac_median": 1.0, "dual_pad_frac_median": 1.0, "any_pad_frac_median": 1.0, "pad_inface_frac_median": 1.0, "slip_p50": 1.6458628849808088, "slip_p90": 4.332696935061153, "force_median": 66.34700584411621, "passive_keys_over": 50, "passive_max_excess_rad": 0.3194, "check_live_vs_recon_count_equal_frac_median": 0.8417184265010351, "check_live_vs_recon_count_equal_frac_min": 0.0, "check_live_vs_recon_mindist_absdiff_mm_p90_median": 0.03245672393157144}
+     old_normal  {"n_keys": 48, "n_segments": 48, "no_pad_contact_carried_n": 11, "no_pad_contact_carried_frac": 0.22916666666666666, "penetration_p50": 2.808196138878964, "penetration_p90": 4.29961024956696, "penetration_max": 6.005246502105062, "carry_frac_median": 1.0, "dual_pad_frac_median": 0.0, "any_pad_frac_median": 0.08695652173913043, "pad_inface_frac_median": 1.0, "slip_p50": 5.989548352020979, "slip_p90": 21.822502819981995, "force_median": null, "passive_keys_over": 48, "passive_max_excess_rad": 0.5879}
+     kp20 触发线 无指垫接触而物体被携带 > 1%：未触发
+     kp20 触发线 穿透 p90 > 旧配置正常集 2 倍：未触发
+     kp20 触发线 携带比例中位 < 旧配置正常集 0.8 倍：未触发
+     kp20_G2 触发线 无指垫接触而物体被携带 > 1%：未触发
+     kp20_G2 触发线 穿透 p90 > 旧配置正常集 2 倍：未触发
+     kp20_G2 触发线 携带比例中位 < 旧配置正常集 0.8 倍：未触发
+     kp20_GTfc2 触发线 无指垫接触而物体被携带 > 1%：未触发
+     kp20_GTfc2 触发线 穿透 p90 > 旧配置正常集 2 倍：未触发
+     kp20_GTfc2 触发线 携带比例中位 < 旧配置正常集 0.8 倍：未触发
+  -- full OFT/object
+     kp20        {"n_keys": 400, "n_segments": 400, "no_pad_contact_carried_n": 0, "no_pad_contact_carried_frac": 0.0, "penetration_p50": 0.8035976114493054, "penetration_p90": 2.6900099678661475, "penetration_max": 4.365653729634359, "carry_frac_median": 1.0, "dual_pad_frac_median": 1.0, "any_pad_frac_median": 1.0, "pad_inface_frac_median": 1.0, "slip_p50": 1.6821902315326842, "slip_p90": 3.643797634679688, "force_median": 57.13075828552246, "passive_keys_over": 400, "passive_max_excess_rad": 0.3229, "check_live_vs_recon_count_equal_frac_median": 0.8554216867469879, "check_live_vs_recon_count_equal_frac_min": 0.0, "check_live_vs_recon_mindist_absdiff_mm_p90_median": 0.026655265729143066}
+     kp20_G2     {"n_keys": 200, "n_segments": 200, "no_pad_contact_carried_n": 0, "no_pad_contact_carried_frac": 0.0, "penetration_p50": 0.8808168972155366, "penetration_p90": 3.2628267118764853, "penetration_max": 4.365653729634359, "carry_frac_median": 1.0, "dual_pad_frac_median": 1.0, "any_pad_frac_median": 1.0, "pad_inface_frac_median": 1.0, "slip_p50": 1.578410840932695, "slip_p90": 3.4280253290757865, "force_median": 69.16231441497803, "passive_keys_over": 200, "passive_max_excess_rad": 0.3229, "check_live_vs_recon_count_equal_frac_median": 0.8541814316087881, "check_live_vs_recon_count_equal_frac_min": 0.0, "check_live_vs_recon_mindist_absdiff_mm_p90_median": 0.04049056944766155}
+     kp20_GTfc2  {"n_keys": 200, "n_segments": 200, "no_pad_contact_carried_n": 0, "no_pad_contact_carried_frac": 0.0, "penetration_p50": 0.7574469902739364, "penetration_p90": 1.4015460226922705, "penetration_max": 3.4609875797053116, "carry_frac_median": 1.0, "dual_pad_frac_median": 1.0, "any_pad_frac_median": 1.0, "pad_inface_frac_median": 1.0, "slip_p50": 1.7231346442071582, "slip_p90": 4.1585591916367965, "force_median": 42.74915409088135, "passive_keys_over": 200, "passive_max_excess_rad": 0.2879, "check_live_vs_recon_count_equal_frac_median": 0.8554216867469879, "check_live_vs_recon_count_equal_frac_min": 0.0, "check_live_vs_recon_mindist_absdiff_mm_p90_median": 0.01945131006387322}
+     old_normal  {"n_keys": 194, "n_segments": 194, "no_pad_contact_carried_n": 35, "no_pad_contact_carried_frac": 0.18041237113402062, "penetration_p50": 2.6444485470895867, "penetration_p90": 4.577009203668856, "penetration_max": 8.669058008747355, "carry_frac_median": 1.0, "dual_pad_frac_median": 0.17236024844720496, "any_pad_frac_median": 0.5555555555555556, "pad_inface_frac_median": 1.0, "slip_p50": 6.778449336162694, "slip_p90": 35.76954274808935, "force_median": null, "passive_keys_over": 194, "passive_max_excess_rad": 0.6084}
+     kp20 触发线 无指垫接触而物体被携带 > 1%：未触发
+     kp20 触发线 穿透 p90 > 旧配置正常集 2 倍：未触发
+     kp20 触发线 携带比例中位 < 旧配置正常集 0.8 倍：未触发
+     kp20_G2 触发线 无指垫接触而物体被携带 > 1%：未触发
+     kp20_G2 触发线 穿透 p90 > 旧配置正常集 2 倍：未触发
+     kp20_G2 触发线 携带比例中位 < 旧配置正常集 0.8 倍：未触发
+     kp20_GTfc2 触发线 无指垫接触而物体被携带 > 1%：未触发
+     kp20_GTfc2 触发线 穿透 p90 > 旧配置正常集 2 倍：未触发
+     kp20_GTfc2 触发线 携带比例中位 < 旧配置正常集 0.8 倍：未触发
+  -- full OFTi/object
+     kp20        {"n_keys": 400, "n_segments": 400, "no_pad_contact_carried_n": 0, "no_pad_contact_carried_frac": 0.0, "penetration_p50": 0.9727966849277341, "penetration_p90": 2.462718032214625, "penetration_max": 7.427944863340328, "carry_frac_median": 1.0, "dual_pad_frac_median": 1.0, "any_pad_frac_median": 1.0, "pad_inface_frac_median": 1.0, "slip_p50": 1.647479215402822, "slip_p90": 3.8403675465717684, "force_median": 59.69132614135742, "passive_keys_over": 400, "passive_max_excess_rad": 0.3194, "check_live_vs_recon_count_equal_frac_median": 0.8273733503618561, "check_live_vs_recon_count_equal_frac_min": 0.0, "check_live_vs_recon_mindist_absdiff_mm_p90_median": 0.05621541159608997}
+     kp20_G2     {"n_keys": 200, "n_segments": 200, "no_pad_contact_carried_n": 0, "no_pad_contact_carried_frac": 0.0, "penetration_p50": 1.319390598336302, "penetration_p90": 3.113553705938089, "penetration_max": 7.427944863340328, "carry_frac_median": 1.0, "dual_pad_frac_median": 1.0, "any_pad_frac_median": 1.0, "pad_inface_frac_median": 1.0, "slip_p50": 1.6272613778577887, "slip_p90": 3.5543807493573256, "force_median": 60.71527862548828, "passive_keys_over": 200, "passive_max_excess_rad": 0.3117, "check_live_vs_recon_count_equal_frac_median": 0.8238924050632912, "check_live_vs_recon_count_equal_frac_min": 0.0, "check_live_vs_recon_mindist_absdiff_mm_p90_median": 0.08182840569166487}
+     kp20_GTfc2  {"n_keys": 200, "n_segments": 200, "no_pad_contact_carried_n": 0, "no_pad_contact_carried_frac": 0.0, "penetration_p50": 0.7916290767035985, "penetration_p90": 1.4892385250662805, "penetration_max": 2.631871934695997, "carry_frac_median": 1.0, "dual_pad_frac_median": 1.0, "any_pad_frac_median": 1.0, "pad_inface_frac_median": 1.0, "slip_p50": 1.6496477532471525, "slip_p90": 5.072900231339796, "force_median": 58.01002883911133, "passive_keys_over": 200, "passive_max_excess_rad": 0.3194, "check_live_vs_recon_count_equal_frac_median": 0.8343137254901961, "check_live_vs_recon_count_equal_frac_min": 0.0, "check_live_vs_recon_mindist_absdiff_mm_p90_median": 0.03572156969106537}
+     old_normal  {"n_keys": 194, "n_segments": 194, "no_pad_contact_carried_n": 35, "no_pad_contact_carried_frac": 0.18041237113402062, "penetration_p50": 2.6444485470895867, "penetration_p90": 4.577009203668856, "penetration_max": 8.669058008747355, "carry_frac_median": 1.0, "dual_pad_frac_median": 0.17236024844720496, "any_pad_frac_median": 0.5555555555555556, "pad_inface_frac_median": 1.0, "slip_p50": 6.778449336162694, "slip_p90": 35.76954274808935, "force_median": null, "passive_keys_over": 194, "passive_max_excess_rad": 0.6084}
+     kp20 触发线 无指垫接触而物体被携带 > 1%：未触发
+     kp20 触发线 穿透 p90 > 旧配置正常集 2 倍：未触发
+     kp20 触发线 携带比例中位 < 旧配置正常集 0.8 倍：未触发
+     kp20_G2 触发线 无指垫接触而物体被携带 > 1%：未触发
+     kp20_G2 触发线 穿透 p90 > 旧配置正常集 2 倍：未触发
+     kp20_G2 触发线 携带比例中位 < 旧配置正常集 0.8 倍：未触发
+     kp20_GTfc2 触发线 无指垫接触而物体被携带 > 1%：未触发
+     kp20_GTfc2 触发线 穿透 p90 > 旧配置正常集 2 倍：未触发
+     kp20_GTfc2 触发线 携带比例中位 < 旧配置正常集 0.8 倍：未触发
+
+==== Holm 附表（透明度，P18）：bootstrap 双侧 p（H0 = 0）
+  kp20 / object：
+    OFT drop_nat(G'')                  点   -7.00  p = 0.0018  Holm p = 0.0072
+    OFT recovery(G'';GTfc'')           点   +5.50  p = 0.0300  Holm p = 0.0900
+    OFTi drop_nat(G'')                 点   -0.50  p = 0.8986  Holm p = 1.0000
+    OFTi recovery(G'';GTfc'')          点   -1.50  p = 0.5252  Holm p = 1.0000
+
+######## Δ_old = est(kp20 配置) − est(旧 kp100 配置)（透明度，只印不判；按键配对 bootstrap，200 键；旧配置含仿真失效、旧 G_T 相机后移、卡型混杂；开度映射新旧同为既定 kp20 表（旧映射 kp20），Δ_old 的差不来自映射表；配置不同：旧 kp100 物理对 kp20 物理。Δ_old 不解释为失效修复的效应，也不解释为刚度效应：新旧差异里有多少由失效导致，本批不识别。）
+
+  -- 合训 OFT object（kp20 主配置（kp20 原资产 + 既定旧 kp20 开度映射）；配置不同）
+    drop_nat: 新 − 旧          +9.00  95% [  +3.50,  +14.50]  90% [  +4.50,  +13.50]  n=200  | 旧配置卡型 S {'NVIDIA A100 80GB PCIe': 200}；T0 {'NVIDIA A100 80GB PCIe': 200}；G {'NVIDIA A100 80GB PCIe': 100, 'NVIDIA A100-PCIE-40GB': 100}；GT {'NVIDIA A100 80GB PCIe': 100, 'NVIDIA H100 NVL': 100}
+    d5: 新 − 旧                -0.50  95% [  -3.00,   +1.50]  90% [  -2.50,   +1.50]  n=200  | 旧配置卡型 S {'NVIDIA A100 80GB PCIe': 200}；T0 {'NVIDIA A100 80GB PCIe': 200}；G {'NVIDIA A100 80GB PCIe': 100, 'NVIDIA A100-PCIE-40GB': 100}；GT {'NVIDIA A100 80GB PCIe': 100, 'NVIDIA H100 NVL': 100}
+    rec_fc: 新 − 旧           +10.50  95% [  +3.00,  +18.00]  90% [  +4.00,  +17.00]  n=200；旧 GT = G_T（替身相机随替身手，相机后移约 6.4 mm，SYNC 关），与新 GTfc′ 相机钉法不同  | 旧配置卡型 S {'NVIDIA A100 80GB PCIe': 200}；T0 {'NVIDIA A100 80GB PCIe': 200}；G {'NVIDIA A100 80GB PCIe': 100, 'NVIDIA A100-PCIE-40GB': 100}；GT {'NVIDIA A100 80GB PCIe': 100, 'NVIDIA H100 NVL': 100}
+    recovery: 新 − 旧         +11.00  95% [  +3.00,  +19.50]  90% [  +4.00,  +18.00]  n=200；旧 GT = G_T（替身相机随替身手，相机后移约 6.4 mm，SYNC 关），与新 GTfc′ 相机钉法不同  | 旧配置卡型 S {'NVIDIA A100 80GB PCIe': 200}；T0 {'NVIDIA A100 80GB PCIe': 200}；G {'NVIDIA A100 80GB PCIe': 100, 'NVIDIA A100-PCIE-40GB': 100}；GT {'NVIDIA A100 80GB PCIe': 100, 'NVIDIA H100 NVL': 100}
+
+  -- 独立 OFTi object（kp20 主配置（kp20 原资产 + 既定旧 kp20 开度映射）；配置不同）
+    drop_nat: 新 − 旧         +11.50  95% [  +6.50,  +16.50]  90% [  +7.50,  +16.00]  n=200  | 旧配置卡型 S {'NVIDIA A100-PCIE-40GB': 200}；T0 {'NVIDIA A100-PCIE-40GB': 200}；G {'NVIDIA A100-PCIE-40GB': 200}；GT {'NVIDIA A100-PCIE-40GB': 200}（旧 object GTfc 在 models1 §8.8 第 0 步一致性不过（does not count））
+    d5: 新 − 旧                +0.00  95% [  +0.00,   +0.00]  90% [  +0.00,   +0.00]  n=200  | 旧配置卡型 S {'NVIDIA A100-PCIE-40GB': 200}；T0 {'NVIDIA A100-PCIE-40GB': 200}；G {'NVIDIA A100-PCIE-40GB': 200}；GT {'NVIDIA A100-PCIE-40GB': 200}（旧 object GTfc 在 models1 §8.8 第 0 步一致性不过（does not count））
+    rec_fc: 新 − 旧            +7.50  95% [  +0.50,  +14.50]  90% [  +1.50,  +13.50]  n=200；旧 GT = GTfc（固定相机，SYNC 开）  | 旧配置卡型 S {'NVIDIA A100-PCIE-40GB': 200}；T0 {'NVIDIA A100-PCIE-40GB': 200}；G {'NVIDIA A100-PCIE-40GB': 200}；GT {'NVIDIA A100-PCIE-40GB': 200}（旧 object GTfc 在 models1 §8.8 第 0 步一致性不过（does not count））
+    recovery: 新 − 旧          +7.50  95% [  +0.50,  +14.50]  90% [  +1.50,  +13.50]  n=200；旧 GT = GTfc（固定相机，SYNC 开）  | 旧配置卡型 S {'NVIDIA A100-PCIE-40GB': 200}；T0 {'NVIDIA A100-PCIE-40GB': 200}；G {'NVIDIA A100-PCIE-40GB': 200}；GT {'NVIDIA A100-PCIE-40GB': 200}（旧 object GTfc 在 models1 §8.8 第 0 步一致性不过（does not count））
+
+######## K_old 子集描述（只印不判，不检验）：旧失效键在 kp20 配置各格的成功数 / 键数，与非失效键并列（只含整片）
+  合训 OFT spatial：K_old 1 键（oft_pub|libero_spatial）
+    S        K_old 1/1  非 K_old 193/199
+    T0       K_old 1/1  非 K_old 196/199
+  合训 OFT object：K_old 14 键（oft_pub|libero_object）
+    S        K_old 13/14  非 K_old 184/186
+    T0       K_old 13/14  非 K_old 182/186
+    G''      K_old 14/14  非 K_old 169/186
+    GTfc''   K_old 12/14  非 K_old 180/186
+  独立 OFTi spatial：K_old 0 键（oft_sp|libero_spatial）
+  独立 OFTi object：K_old 31 键（oft_obj|libero_object）
+    S        K_old 30/31  非 K_old 162/169
+    T0       K_old 31/31  非 K_old 163/169
+    G''      K_old 29/31  非 K_old 162/169
+    GTfc''   K_old 31/31  非 K_old 159/169
+
+######## 描述：10 任务表、GPU 组成、在线接触
+
+==== 10 任务表 + conc（相对 S）+ GPU 型号组成（合训 OFT，spatial；只含整片）
+  S        SR  97.0% (194/200) | t0:20/20 t1:20/20 t2:20/20 t3:20/20 t4:19/20 t5:20/20 t6:20/20 t7:18/20 t8:19/20 t9:18/20 | conc - | GPU NVIDIA A100-PCIE-40GB x200
+  T0       SR  98.5% (197/200) | t0:20/20 t1:20/20 t2:20/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:19/20 t8:19/20 t9:19/20 | conc 无净增失败（净 -3） | GPU NVIDIA A100-PCIE-40GB x200
+  GPU 组成（同 checkpoint 同套件各格）：S {'NVIDIA A100-PCIE-40GB': 200}；T0 {'NVIDIA A100-PCIE-40GB': 200}
+
+==== 10 任务表 + conc（相对 S）+ GPU 型号组成（合训 OFT，object；只含整片）
+  S        SR  98.5% (197/200) | t0:20/20 t1:19/20 t2:20/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:19/20 t8:20/20 t9:19/20 | conc - | GPU NVIDIA A100-PCIE-40GB x200
+  T0       SR  97.5% (195/200) | t0:19/20 t1:19/20 t2:19/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:19/20 t8:20/20 t9:19/20 | conc 0.50（最差任务 0，+1/+2） | GPU NVIDIA A100-PCIE-40GB x200
+  G''      SR  91.5% (183/200) | t0:20/20 t1:20/20 t2:6/20 t3:17/20 t4:20/20 t5:20/20 t6:20/20 t7:20/20 t8:20/20 t9:20/20 | conc 1.00（最差任务 2，+14/+14） | GPU NVIDIA A100-PCIE-40GB x200
+  GTfc''   SR  96.0% (192/200) | t0:18/20 t1:20/20 t2:18/20 t3:20/20 t4:17/20 t5:20/20 t6:20/20 t7:19/20 t8:20/20 t9:20/20 | conc 0.60（最差任务 4，+3/+5） | GPU NVIDIA A100-PCIE-40GB x200
+  GPU 组成（同 checkpoint 同套件各格）：S {'NVIDIA A100-PCIE-40GB': 200}；T0 {'NVIDIA A100-PCIE-40GB': 200}；G'' {'NVIDIA A100-PCIE-40GB': 200}；GTfc'' {'NVIDIA A100-PCIE-40GB': 200}
+
+==== 10 任务表 + conc（相对 S）+ GPU 型号组成（独立 OFTi，spatial；只含整片）
+  S        SR  99.0% (198/200) | t0:20/20 t1:20/20 t2:20/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:18/20 t8:20/20 t9:20/20 | conc - | GPU NVIDIA A100-PCIE-40GB x200
+  T0       SR  98.0% (196/200) | t0:20/20 t1:20/20 t2:19/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:20/20 t8:18/20 t9:19/20 | conc 1.00（最差任务 8，+2/+2） | GPU NVIDIA A100-PCIE-40GB x200
+  GPU 组成（同 checkpoint 同套件各格）：S {'NVIDIA A100-PCIE-40GB': 200}；T0 {'NVIDIA A100-PCIE-40GB': 200}
+
+==== 10 任务表 + conc（相对 S）+ GPU 型号组成（独立 OFTi，object；只含整片）
+  S        SR  96.0% (192/200) | t0:20/20 t1:18/20 t2:20/20 t3:19/20 t4:18/20 t5:20/20 t6:19/20 t7:20/20 t8:20/20 t9:18/20 | conc - | GPU NVIDIA A100-PCIE-40GB x200
+  T0       SR  97.0% (194/200) | t0:20/20 t1:18/20 t2:20/20 t3:19/20 t4:20/20 t5:20/20 t6:19/20 t7:20/20 t8:19/20 t9:19/20 | conc 无净增失败（净 -2） | GPU NVIDIA A100-PCIE-40GB x200
+  G''      SR  95.5% (191/200) | t0:20/20 t1:20/20 t2:13/20 t3:20/20 t4:18/20 t5:20/20 t6:20/20 t7:20/20 t8:20/20 t9:20/20 | conc 7.00（最差任务 2，+7/+1） | GPU NVIDIA A100-PCIE-40GB x200
+  GTfc''   SR  95.0% (190/200) | t0:20/20 t1:18/20 t2:16/20 t3:20/20 t4:17/20 t5:20/20 t6:20/20 t7:20/20 t8:20/20 t9:19/20 | conc 2.00（最差任务 2，+4/+2） | GPU NVIDIA A100-PCIE-40GB x200
+  GPU 组成（同 checkpoint 同套件各格）：S {'NVIDIA A100-PCIE-40GB': 200}；T0 {'NVIDIA A100-PCIE-40GB': 200}；G'' {'NVIDIA A100-PCIE-40GB': 200}；GTfc'' {'NVIDIA A100-PCIE-40GB': 200}
+
+==== 在线接触汇总（合训 OFT，spatial）：每任务 接触集数/有记录集数（s=停滞集数），首次接触中位步，pairs 前三
+  S     t0:0/20 t1:0/20 t2:0/20s6 t3:0/20 t4:0/20s1 t5:0/20 t6:0/20 t7:0/20s1 t8:0/20 t9:0/20s1
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 6 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  T0    t0:0/20 t1:0/20 t2:0/20s6 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:1/20 t9:0/20s1
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 6 集
+      t8: 接触 1 集，首次接触中位步 113，pairs 前三 [('robot0_link7|wooden_cabinet_1_base', 1)]，停滞 0 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+
+==== 在线接触汇总（合训 OFT，object）：每任务 接触集数/有记录集数（s=停滞集数），首次接触中位步，pairs 前三
+  S     t0:0/20 t1:0/20 t2:0/20s2 t3:0/20 t4:0/20s2 t5:0/20 t6:0/20 t7:0/20s1 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  T0    t0:0/20 t1:0/20 t2:0/20s2 t3:0/20 t4:0/20s4 t5:0/20 t6:0/20 t7:0/20s1 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  G''   t0:0/20 t1:0/20 t2:0/20s1 t3:0/20s1 t4:0/20s1 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  GTfc'' t0:0/20 t1:0/20 t2:0/20 t3:0/20 t4:0/20s3 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+
+==== 在线接触汇总（独立 OFTi，spatial）：每任务 接触集数/有记录集数（s=停滞集数），首次接触中位步，pairs 前三
+  S     t0:0/20 t1:0/20 t2:0/20s8 t3:0/20 t4:0/20s1 t5:0/20 t6:0/20 t7:0/20s1 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 8 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  T0    t0:0/20 t1:0/20 t2:0/20s6 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 6 集
+
+==== 在线接触汇总（独立 OFTi，object）：每任务 接触集数/有记录集数（s=停滞集数），首次接触中位步，pairs 前三
+  S     t0:0/20s1 t1:0/20s1 t2:0/20s2 t3:0/20 t4:0/20s5 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20s1
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  T0    t0:0/20s1 t1:0/20 t2:0/20s2 t3:0/20 t4:0/20s4 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+  G''   t0:0/20 t1:0/20 t2:0/20s1 t3:0/20 t4:0/20s3 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+  GTfc'' t0:0/20 t1:0/20s1 t2:0/20s3 t3:0/20s1 t4:0/20s7 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 7 集
+
+==== 文件 sha256（重印）
+  protocol_physfix.md                c8bd3fd8e8ba254a1a08aabece6dc77a01a48e7969086a6ad845dedbdef76df7
+  prereg_physfix.py（本脚本）             534477a68a2b69c6e6c7f7257f4bd5011fd65d506ca663f9c8202f8da77167fe
+  prereg_models1.py（冻结，被 import）     29faca6ae9d63233b21378b62b61f40655a052cab924bd0c20e451f1e1c346e5
+  cells_next.sh                      e38bce0ab4b057be0a9b1cf1434f8f1f99a962ff7fb522516e2fe65ef407ed58
+  embody_next body_env.py（含 kp20 表与指垫位置表） 38a1b81a3661312f6d7ca46c78dc96c67756a1a06c3baf38bef8645a77034747
+  embody_next robots.py              28e6722e57531ba5aa55b96db6c0a36829166b8fe761dde5d635628afd3f59b9
+  Robotiq XML 1                      c6149c3322a1eef4ed4eef1002500f7949887a2c6f0b569156766d0b6cdbdf18
+  映射表 kp20                           38a1b81a3661312f6d7ca46c78dc96c67756a1a06c3baf38bef8645a77034747
+  --gate-json                        104ce3fdeeeea7c8cef56f8826ab9c70e5fc63167d000b8a6ebbee823fb4f1a1
+  gate jsonl t0_spatial.jsonl        9577c9b8d5f64e368b0cdebdbb7ffa0ead9946f3bdce5fe2b6c6644845ff4da0
+  gate jsonl t0_object.jsonl         61d72474198df4204b0bc9c16c5acc597a8bb82a1c3597dd8df82aa9ca3fcb76
+  --gate0-json                       e3c129cff84393a4f5fc9623033657753ea825ac1f3ba8b91dee9e126c43c416
+  --breakdown-json                   63e62a4134dc1f8ec0ea867ec5b886e17fdb952a582dfde859be5fe83b8f49e3
+  --padlr-json                       24120472ae3b9364d1c4dcd238c9f523468437ad29bf201dd517203b8eb17c63
+  --grasp-json                       818d89db7a3555b2f87f5a84a3bd8401e199d1799a7af582ab73a7c6b8bd6499
+  §7.0 夹持检查 summary.json             f54f95cacf2fe56499b79dc2af67b0f0b33a381057b61a25ce99b9e422e27ff6
+  t0check_bg_diag_2026-11-07.md      16dd9734657fbe1bc8bf0b8adb83a77b1af2ed011d0497ae4c3ee42a0ae8d02d
+  K_old m1                           fe810632231a9548245007e20b8bb66ab8eb58348f63a7b7c862564400914ad3
+  K_old published                    15b7c5aad7052ed789b6d77ce17772ef960185fc0cb7005eb5f39de467130cd3

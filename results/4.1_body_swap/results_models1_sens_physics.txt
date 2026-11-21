@@ -1,0 +1,986 @@
+物理失效集剔除版，diff 见 prereg_models1_sens.diff
+==== 剔除版 sha256（Fable 补裁一 §2.3 第 2 条）
+  prereg_models1.py（冻结原版，同目录）      29faca6ae9d63233b21378b62b61f40655a052cab924bd0c20e451f1e1c346e5  [$PROJ_ROOT/vla_zoo/analysis/prereg_models1.py]
+  prereg_models1_sens.py（剔除版）      fb3f636e0f7c499ad219ca6e97baa3b2180f8ce15b78627ef922a8511aca35f9  [$PROJ_ROOT/vla_zoo/analysis/prereg_models1_sens.py]
+  prereg_models1_sens.diff         c54929af261100d2e165e4ba15662d8ab56e786d7a5f1e901f80279a3486053d  [$PROJ_ROOT/vla_zoo/analysis/prereg_models1_sens.diff]
+  --exclude-keys                   fe810632231a9548245007e20b8bb66ab8eb58348f63a7b7c862564400914ad3  [$PROJ_ROOT/vla_zoo/out/physics_breakdown_m1.json]
+  --bounds                         32bc96613bcd311846b7681e734fefb033e0a1c28e94725be2c961562c2a66ac  [$PROJ_ROOT/vla_zoo/out/physics_breakdown_m1_logs.json]
+  剔除表 oft_obj|libero_object: 31 键 [(0, 0), (0, 2), (0, 3), (0, 4), (0, 6), (0, 7), (0, 8), (0, 9), (0, 11), (0, 13), (0, 14), (0, 15), (0, 16), (0, 19), (1, 12), (2, 8), (3, 7), (3, 8), (3, 19), (4, 5), (4, 7), (9, 1), (9, 2), (9, 4), (9, 7), (9, 10), (9, 11), (9, 13), (9, 15), (9, 17), (9, 19)]
+  剔除表 oft_sp|libero_spatial: 0 键 []
+  警告表 openvla|g_ta_fc: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 openvla|g_tfc: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 openvla|g_tw_fc: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 openvla|grpkp100: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 openvla|sham_cg: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 openvla|sham_twin: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 openvla|src: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 pi0|g_t: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 pi0|g_ta_fc: e0=0, e5=0, e10=0, e15=1（合计 1）
+  警告表 pi0|g_tfc: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 pi0|g_tw_fc: e0=0, e5=0, e10=1, e15=0（合计 1）
+  警告表 pi0|grpkp100: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 pi0|obj_g_t: e0=2, e5=0, e10=4, e15=1（合计 7）
+  警告表 pi0|obj_g_ta_fc: e0=1, e5=0, e10=1, e15=0（合计 2）
+  警告表 pi0|obj_g_tfc: e0=1, e5=0, e10=2, e15=5（合计 8）
+  警告表 pi0|obj_g_tw_fc: e0=2, e5=1, e10=1, e15=1（合计 5）
+  警告表 pi0|obj_grpkp100: e0=0, e5=0, e10=3, e15=1（合计 4）
+  警告表 pi0|obj_sham: e0=0（合计 0）
+  警告表 pi0|obj_sham_cg: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 pi0|obj_sham_twin: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 pi0|obj_src: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 pi0|sham: e0=0（合计 0）
+  警告表 pi0|sham_cg: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 pi0|sham_twin: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 pi0|src: e0=0, e5=0, e10=0, e15=0（合计 0）
+  警告表 pi0|tput: e20=0, e25=0, e30=0, e35=0, e40=0, e45=0（合计 0）
+  口径：OFTi 按键剔除（某模型某套件任一格被检测器 D 标记的键，从该模型该套件所有格剔除，保持按键配对；在 §7.1 整片规则之后、只作用于估计量矩阵：估计量、判定、Holm、Δ_model 用剔除后的键；门槛、10 任务表、在线接触、E1/E2 仍按全部键照印，门槛不因剔除追认）。π0 / OVLA 不剔除，--bounds 给出时每个估计量行末印「失效集上界 ±x」，x = 100 × Σ|系数| × w_格 / n（w_格 = 该格在估计量所用片上的 QACC 警告数之和；两格估计量即 (w_a + w_b) / n），向上取到 0.1。判定读法见补裁一 §2.3 第 3 条（与主读数不同则降为不确定，人工比对）。
+prereg_models1.py：models1 预注册分析（protocol_models1.md §4、§5、§7、§8）
+==== 冻结文件 sha256
+  protocol_models1.md              d50c54fe19c83655b15c3f16ca04dcbd2e08df52ae3489095c748b8c17778286  [$PROJ_ROOT/vla_zoo/analysis/protocol_models1.md]
+  protocol_models1_decisions.md    76b7ff674d20f396434b6a626a6d5ac0815027d2d7246d55e8a3f0ea30c056bd  [$PROJ_ROOT/vla_zoo/analysis/protocol_models1_decisions.md]
+  prereg_models1.py（本脚本）           fb3f636e0f7c499ad219ca6e97baa3b2180f8ce15b78627ef922a8511aca35f9  [$PROJ_ROOT/vla_zoo/analysis/prereg_models1_sens.py]
+  zoo_cells.sh                     3aa7ac574f61bd113648b180ec00c157cfd09ed2a53cbd4ce9237c5cfa5858d6  [$PROJ_ROOT/vla_zoo/tools/zoo_cells.sh]
+B=10000 seed=0 zoo-runs=$PROJ_ROOT/vla_zoo/runs pub-runs=$PROJ_ROOT/runs pi05=$PROJ_ROOT/pi05/v2 gate-json=$PROJ_ROOT/vla_zoo/out/gate_m1.json
+§6 措辞约束：复现只说明「不是权重版本效应」，不说明「是架构」；不复现只写「对微调数据敏感」；任何「因为 X 架构 / X 输入所以 Y」的句子不许出现
+
+######## 已发表两模型：从已发表数据重算（只读），与协议文字比对
+
+  -- 合训 OFT（已发表） spatial：每格键数 SRC 200, S 200, T0 200, G 200, G_T 200, G_Tw 200, G_Ta 200
+     drop_nat(G)     -45.00  95% [ -52.00,  -38.00]  90% [ -51.00,  -39.00]  n=200
+     d5               +0.00  95% [  -2.00,   +2.00]  90% [  -1.50,   +1.50]  n=200
+     rec_w           +32.50  95% [ +25.50,  +39.50]  90% [ +27.00,  +38.00]  n=200
+     rec_a           +21.50  95% [ +15.00,  +28.00]  90% [ +16.00,  +27.00]  n=200
+     channel         +11.00  95% [  +5.00,  +17.50]  90% [  +6.00,  +16.00]  n=200
+     recovery(G)     +36.00  95% [ +28.00,  +44.00]  90% [ +29.50,  +42.50]  n=200
+     协议文字比对（容差 ±0.5，协议数字取到 0.5）：
+       drop_nat(G)    协议 -45 [-52, -38]         重算 -45.00 [-52.00, -38.00] -> 一致
+       rec_w          协议 +32.5                  重算 +32.50 [+25.50, +39.50] -> 一致
+       rec_a          协议 +21.5                  重算 +21.50 [+15.00, +28.00] -> 一致
+       channel        协议 +11 [+5, +17.5]        重算 +11.00 [+5.00, +17.50] -> 一致
+       recovery(G)    协议 +36 [+28, +44]         重算 +36.00 [+28.00, +44.00] -> 一致
+
+  -- π0.5（已发表） spatial：每格键数 SRC 200, S 200, T0 200, G 200, G_T 200, G_Tw 200, G_Ta 200；jsonl 丢 error SRC 0, S 0, T0 0, G 0, G_T 0, G_Tw 0, G_Ta 0；重复正常记录 SRC 0, S 0, T0 0, G 0, G_T 0, G_Tw 0, G_Ta 0
+     drop_nat(G)     -17.00  95% [ -22.50,  -12.00]  90% [ -21.50,  -12.50]  n=200
+     d5               -3.50  95% [  -6.50,   -1.00]  90% [  -6.00,   -1.00]  n=200
+     rec_w            +0.50  95% [  -5.50,   +6.00]  90% [  -4.50,   +5.50]  n=200
+     rec_a           +10.00  95% [  +5.00,  +15.50]  90% [  +5.50,  +14.50]  n=200
+     channel          -9.50  95% [ -15.01,   -4.00]  90% [ -14.50,   -5.00]  n=200
+     recovery(G)     +11.50  95% [  +5.99,  +17.50]  90% [  +6.50,  +16.50]  n=200
+     协议文字比对（容差 ±0.5，协议数字取到 0.5）：
+       drop_nat(G)    协议 -17 [-22.5, -12]       重算 -17.00 [-22.50, -12.00] -> 一致
+       rec_w          协议 +0.5                   重算 +0.50 [-5.50, +6.00] -> 一致
+       rec_a          协议 +10                    重算 +10.00 [+5.00, +15.50] -> 一致
+       channel        协议 -9.5 [-15, -4]         重算 -9.50 [-15.01, -4.00] -> 一致
+       recovery(G)    协议 +11.5 [+6, +17.5]      重算 +11.50 [+5.99, +17.50] -> 一致
+       d5             协议 -3.5 [-6.5, -1]        重算 -3.50 [-6.50, -1.00] -> 一致
+
+  -- 合训 OFT（已发表） object：每格键数 SRC 200, S 200, T0 200, G 200, G_T 200
+     drop_nat(G)     -16.00  95% [ -22.00,  -10.00]  90% [ -21.00,  -11.00]  n=200
+     d5               -0.50  95% [  -2.50,   +1.50]  90% [  -2.50,   +1.50]  n=200
+     recovery(G)      -5.50  95% [ -13.00,   +2.00]  90% [ -12.00,   +0.50]  n=200
+     协议文字比对（容差 ±0.5，协议数字取到 0.5）：
+       drop_nat(G)    协议 -16 [-22, -10]         重算 -16.00 [-22.00, -10.00] -> 一致
+       recovery(G)    协议 -5.5 [-13, +2]         重算 -5.50 [-13.00, +2.00] -> 一致
+
+  -- π0.5（已发表） object：每格键数 SRC 200, S 200, T0 200, G 200, G_T 200；jsonl 丢 error SRC 0, S 0, T0 0, G 0, G_T 0；重复正常记录 SRC 0, S 0, T0 0, G 0, G_T 0
+     drop_nat(G)     -17.00  95% [ -23.50,  -10.50]  90% [ -22.50,  -11.50]  n=200
+     d5               +2.50  95% [  -0.50,   +5.50]  90% [  +0.00,   +5.00]  n=200
+     recovery(G)      +3.50  95% [  -3.50,  +10.50]  90% [  -2.50,   +9.50]  n=200
+     协议文字比对（容差 ±0.5，协议数字取到 0.5）：
+       drop_nat(G)    协议 -17                    重算 -17.00 [-23.50, -10.50] -> 一致
+       recovery(G)    协议 +3.5 [-3.5, +10.5]     重算 +3.50 [-3.50, +10.50] -> 一致
+
+==== 门槛（OFTi，spatial）
+  SRC   (src): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        NA    无迁移
+      首帧对齐                 NA    无迁移
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 200}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+  S     (sham_cg): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0093 mm / 0.0195°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 200}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+  T0    (sham_twin): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0093 mm / 0.0195°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/2700 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    T0 相机随替身手（TWIN_CAM=twin），差 = IK 残差，只印：查询帧均值 0.006 mm，最大 0.071 mm，200 集
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 200}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；t0_vs_s_agent=PASS(0.0082)，t0_vs_s_wrist=PASS(0.0447)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，keys=NA(50)
+      T0 对 S 同键一致率         PASS  97.5%（200 键，门槛 >= 90%，低于先看图）
+  G     (grpkp100): 齐的片 [0, 1, 2, 3, 4, 5, 6, 7]（设计 8 片），读入 400 键，原始正常记录 400 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0，200 键无参照
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 400, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0042 mm / 0.0576°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 400}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+  GTfc  (g_tfc): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0042 mm / 0.0576°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/2880 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                PASS  查询帧最大 0.0000 mm / 0.0000°，超 0.01 mm/0.01° 的查询帧 0/2880；全帧最大 0.0000 mm
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 200}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，replaced_agent_both_hidden_mean=PASS(0.7937)，replaced_robot_both_hidden_mean=PASS(0.0017)
+  GTw   (g_tw_fc): 齐的片 [0, 1, 2, 3, 4, 5, 6, 7]（设计 8 片），读入 400 键，原始正常记录 400 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0，200 键无参照
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 400, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0042 mm / 0.0576°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/6134 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                PASS  查询帧最大 0.0000 mm / 0.0000°，超 0.01 mm/0.01° 的查询帧 0/6134；全帧最大 0.0000 mm
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 400}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，unreplaced_agent=PASS(max 1 mean 9.16e-07)，replaced_robot_both_hidden_mean=PASS(0.0017)
+  GTa   (g_ta_fc): 齐的片 [0, 1, 2, 3, 4, 5, 6, 7]（设计 8 片），读入 400 键，原始正常记录 400 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0，200 键无参照
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 400, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0042 mm / 0.0576°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/6773 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    相机差（腕部未换，只印）：查询帧均值 0.000 mm，最大 0.000 mm，400 集
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 400}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，unreplaced_robot=PASS(max 0 mean 0.00e+00)，replaced_agent_both_hidden_mean=PASS(0.7937)
+  G_T   (g_t): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0042 mm / 0.0576°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/2768 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    G_T 相机差均值（预期约 6.4 mm，只印）：查询帧均值 6.400 mm，最大 6.416 mm，200 集
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 200}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，replaced_agent_both_hidden_mean=PASS(0.7937)，replaced_robot_both_hidden_mean=PASS(5.4561)
+
+==== §4 估计量（200 键）（OFTi，spatial）：点估计、95% / 90% bootstrap CI、键数、共同整片数
+  drop_nat(G)       -30.00 pp  95% [ -36.50,  -23.50]  90% [ -35.50,  -24.50]  n=200 片=4
+  d5                 -0.50 pp  95% [  -2.50,   +1.50]  90% [  -2.50,   +1.50]  n=200 片=4
+  rec_fc            +22.00 pp  95% [ +15.49,  +29.00]  90% [ +16.50,  +28.00]  n=200 片=4
+  rec_w             +16.00 pp  95% [ +10.00,  +22.50]  90% [ +11.00,  +21.02]  n=200 片=4
+  rec_a              +8.50 pp  95% [  +3.00,  +14.00]  90% [  +4.00,  +13.00]  n=200 片=4
+  channel            +7.50 pp  95% [  +2.00,  +13.50]  90% [  +2.50,  +12.50]  n=200 片=4
+  recovery(G)       +22.50 pp  95% [ +15.50,  +30.00]  90% [ +16.50,  +28.50]  n=200 片=4
+  recovery_GT(G)    +24.50 pp  95% [ +17.50,  +31.50]  90% [ +19.00,  +30.50]  n=200 片=4
+  add                +2.50 pp  95% [  -5.50,  +10.50]  90% [  -4.00,   +9.00]  n=200 片=4
+
+==== R2 通道加密估计量（400 键）（OFTi，spatial）：点估计、95% / 90% bootstrap CI、键数、共同整片数
+  rec_w             +15.75 pp  95% [ +11.50,  +20.00]  90% [ +12.25,  +19.25]  n=400 片=8
+  rec_a              +5.75 pp  95% [  +2.00,   +9.50]  90% [  +2.50,   +9.00]  n=400 片=8
+  channel           +10.00 pp  95% [  +5.75,  +14.25]  90% [  +6.50,  +13.50]  n=400 片=8
+  frac = recovery(G)/|drop_nat(G)| = 0.75（描述，点估计）
+  d5 门槛（§7.3）：d5 = -0.50 [-2.50, +1.50]，95% 下界 >= -7 -> 不触发
+
+==== 门槛（OFTi，object）
+  SRC   (obj_src): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        NA    无迁移
+      首帧对齐                 NA    无迁移
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 200}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+  S     (obj_sham_cg): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0098 mm / 0.0367°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 200}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+  T0    (obj_sham_twin): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0098 mm / 0.0367°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/3585 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    T0 相机随替身手（TWIN_CAM=twin），差 = IK 残差，只印：查询帧均值 0.005 mm，最大 0.099 mm，200 集
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 200}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；t0_vs_s_agent=PASS(0.0114)，t0_vs_s_wrist=PASS(0.0541)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，keys=NA(50)
+      T0 对 S 同键一致率         PASS  98.0%（200 键，门槛 >= 90%，低于先看图）
+  G     (obj_grpkp100): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0044 mm / 0.0432°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 200}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+  GTfc  (obj_g_tfc): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键  <<< does not count
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0044 mm / 0.0432°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：17/4299 = 0.40%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.40%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                PASS  查询帧最大 0.0000 mm / 0.0000°，超 0.01 mm/0.01° 的查询帧 0/4299；全帧最大 0.0000 mm
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 200}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            FAIL  cell FAIL；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，replaced_agent_both_hidden_mean=FAIL(1.4636)，replaced_robot_both_hidden_mean=PASS(0.0)
+  GTw   (obj_g_tw_fc): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0044 mm / 0.0432°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/4162 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                PASS  查询帧最大 0.0000 mm / 0.0000°，超 0.01 mm/0.01° 的查询帧 0/4162；全帧最大 0.0000 mm
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 200}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，unreplaced_agent=PASS(max 0 mean 0.00e+00)，replaced_robot_both_hidden_mean=PASS(0.0)
+  GTa   (obj_g_ta_fc): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键  <<< does not count
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0044 mm / 0.0432°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：25/4450 = 0.56%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.56%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    相机差（腕部未换，只印）：查询帧均值 0.000 mm，最大 0.000 mm，200 集
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 200}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            FAIL  cell FAIL；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，unreplaced_robot=PASS(max 0 mean 0.00e+00)，replaced_agent_both_hidden_mean=FAIL(1.4636)
+  G_T   (obj_g_t): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键  <<< does not count
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0044 mm / 0.0432°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/4040 = 0.00%（门槛 < 1%）；第二批口径 pos>2mm 或 rot>1° 0.00%（只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    G_T 相机差均值（预期约 6.4 mm，只印）：查询帧均值 6.400 mm，最大 6.437 mm，200 集
+      GPU 型号               PASS  {'NVIDIA A100-PCIE-40GB': 200}（应为 A100 40GB）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            FAIL  cell FAIL；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，replaced_agent_both_hidden_mean=FAIL(1.4636)，replaced_robot_both_hidden_mean=FAIL(9.2683)
+
+==== §4 估计量（200 键）（OFTi，object）：点估计、95% / 90% bootstrap CI、键数、共同整片数
+  [剔除版] 物理失效键 31 个在整片内、已从本模型本套件所有格剔除（json 列出 31）：[(0, 0), (0, 2), (0, 3), (0, 4), (0, 6), (0, 7), (0, 8), (0, 9), (0, 11), (0, 13), (0, 14), (0, 15), (0, 16), (0, 19), (1, 12), (2, 8), (3, 7), (3, 8), (3, 19), (4, 5), (4, 7), (9, 1), (9, 2), (9, 4), (9, 7), (9, 10), (9, 11), (9, 13), (9, 15), (9, 17), (9, 19)]
+  drop_nat(G)       -10.06 pp  95% [ -15.85,   -4.22]  90% [ -14.97,   -5.23]  n=169 片=4
+  d5                 +0.59 pp  95% [  -1.22,   +2.86]  90% [  -1.16,   +2.38]  n=169 片=4
+  rec_fc             -6.51 pp  95% [ -13.37,   +0.00]  90% [ -12.12,   -1.08]  n=169 片=4  <<< does not count（GTfc）
+  rec_w              -1.78 pp  95% [  -8.64,   +5.13]  90% [  -7.50,   +3.95]  n=169 片=4  <<< does not count（GTa）
+  rec_a             -10.65 pp  95% [ -17.42,   -4.14]  90% [ -16.36,   -5.20]  n=169 片=4  <<< does not count（GTa）
+  channel            +8.88 pp  95% [  +1.72,  +16.07]  90% [  +2.84,  +14.97]  n=169 片=4  <<< does not count（GTa）
+  recovery(G)        -7.10 pp  95% [ -14.12,   +0.00]  90% [ -13.02,   -1.19]  n=169 片=4  <<< does not count（GTfc）
+  recovery_GT(G)     -1.18 pp  95% [  -8.88,   +6.47]  90% [  -7.69,   +5.26]  n=169 片=4  <<< does not count（G_T）
+  add                -5.92 pp  95% [ -16.28,   +4.14]  90% [ -14.55,   +2.34]  n=169 片=4  <<< does not count（GTa,GTfc）
+  frac = recovery(G)/|drop_nat(G)| = -0.71（描述，点估计）
+  d5 门槛（§7.3）：d5 = +0.59 [-1.22, +2.86]，95% 下界 >= -7 -> 不触发
+
+==== 门槛（π0，spatial）
+  SRC   (src): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0  （有门槛无法核实）
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        NA    无迁移
+      首帧对齐                 NA    无迁移
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） UNK   server_gpu {'': 200}；server_host {None: 200}；chunk_len {None: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 129 ms，> 500 ms 的集 3（只印）
+      GPU 型号               WARN  {'NVIDIA A100 80GB PCIe': 100, 'Tesla T4': 100}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+  S     (sham_cg): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0097 mm / 0.0221°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 37, 'node31': 163}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 1176 ms，> 500 ms 的集 108（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+  T0    (sham_twin): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0097 mm / 0.0221°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/4608 = 0.00%（门槛 < 1%）；第二批口径 miss/n_paint 0/22617（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    T0 相机随替身手（TWIN_CAM=twin），差 = IK 残差，只印：查询帧均值 0.006 mm，最大 0.061 mm，200 集
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 5, 'node31': 195}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 1235 ms，> 500 ms 的集 115（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；t0_vs_s_agent=PASS(0.0082)，t0_vs_s_wrist=PASS(0.0447)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，keys=NA(50)
+      T0 对 S 同键一致率         PASS  93.0%（200 键，门槛 >= 90%，低于先看图）
+  G     (grpkp100): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 30, 'node31': 170}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 1249 ms，> 500 ms 的集 117（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+  GTfc  (g_tfc): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：1/4714 = 0.02%（门槛 < 1%）；第二批口径 miss/n_paint 0/23122（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                PASS  查询帧最大 0.0000 mm / 0.0000°，超 0.01 mm/0.01° 的查询帧 0/4714；全帧最大 0.0000 mm
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 5, 'node31': 195}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 1244 ms，> 500 ms 的集 115（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，replaced_agent_both_hidden_mean=PASS(0.7937)，replaced_robot_both_hidden_mean=PASS(0.0017)
+  GTw   (g_tw_fc): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/5157 = 0.00%（门槛 < 1%）；第二批口径 miss/n_paint 0/25292（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                PASS  查询帧最大 0.0000 mm / 0.0000°，超 0.01 mm/0.01° 的查询帧 0/5157；全帧最大 0.0000 mm
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 3, 'node31': 197}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 1235 ms，> 500 ms 的集 125（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，unreplaced_agent=PASS(max 1 mean 9.16e-07)，replaced_robot_both_hidden_mean=PASS(0.0017)
+  GTa   (g_ta_fc): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：4/5268 = 0.08%（门槛 < 1%）；第二批口径 miss/n_paint 16/25921（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    相机差（腕部未换，只印）：查询帧均值 0.000 mm，最大 0.000 mm，200 集
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 6, 'node31': 194}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 1197 ms，> 500 ms 的集 123（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，unreplaced_robot=PASS(max 0 mean 0.00e+00)，replaced_agent_both_hidden_mean=PASS(0.7937)
+  G_T   (g_t): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/4638 = 0.00%（门槛 < 1%）；第二批口径 miss/n_paint 0/22738（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    G_T 相机差均值（预期约 6.4 mm，只印）：查询帧均值 6.400 mm，最大 6.443 mm，200 集
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 27, 'node31': 173}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 1235 ms，> 500 ms 的集 121（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，replaced_agent_both_hidden_mean=PASS(0.7937)，replaced_robot_both_hidden_mean=PASS(5.4561)
+
+==== §4 估计量（200 键）（π0，spatial）：点估计、95% / 90% bootstrap CI、键数、共同整片数
+  drop_nat(G)       -29.50 pp  95% [ -36.50,  -23.00]  90% [ -35.00,  -24.00]  n=200 片=4  失效集上界 ±0.0
+  d5                 -1.00 pp  95% [  -5.00,   +2.50]  90% [  -4.00,   +2.00]  n=200 片=4  [在渲染节点噪声带内：π0/OVLA 在 T4 渲染，§7.1 一律标]  失效集上界 ±0.0
+  rec_fc            +23.50 pp  95% [ +16.00,  +31.00]  90% [ +17.50,  +29.50]  n=200 片=4  失效集上界 ±0.0
+  rec_w             +12.50 pp  95% [  +5.00,  +19.50]  90% [  +6.50,  +18.50]  n=200 片=4  失效集上界 ±0.5
+  rec_a             +15.00 pp  95% [  +7.00,  +22.50]  90% [  +8.50,  +21.50]  n=200 片=4  失效集上界 ±0.5
+  channel            -2.50 pp  95% [  -9.00,   +4.00]  90% [  -8.00,   +3.00]  n=200 片=4  [在渲染节点噪声带内：π0/OVLA 在 T4 渲染，§7.1 一律标]  失效集上界 ±1.0
+  recovery(G)       +24.50 pp  95% [ +16.50,  +33.00]  90% [ +17.50,  +31.50]  n=200 片=4  失效集上界 ±0.0
+  recovery_GT(G)    +23.00 pp  95% [ +15.50,  +30.50]  90% [ +16.50,  +29.50]  n=200 片=4  失效集上界 ±0.0
+  add                +4.00 pp  95% [  -5.50,  +13.50]  90% [  -4.00,  +12.00]  n=200 片=4  失效集上界 ±1.0
+  frac = recovery(G)/|drop_nat(G)| = 0.83（描述，点估计）
+  d5 门槛（§7.3）：d5 = -1.00 [-5.00, +2.50]，95% 下界 >= -7 -> 不触发
+
+==== 门槛（π0，object）
+  SRC   (obj_src): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0  （有门槛无法核实）
+      fixcheck             PASS  keys 200, 最大差 0.0000 mm（门槛 <= 0.005 记录精度），init 编号不符 0；SRC 的 objq 在等待步之前，只比 fix
+      copy_grip_cmd        NA    无迁移
+      首帧对齐                 NA    无迁移
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） UNK   server_gpu {'': 200}；server_host {None: 200}；chunk_len {None: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 130 ms，> 500 ms 的集 2（只印）
+      GPU 型号               WARN  {'NVIDIA A100 80GB PCIe': 100, 'Tesla T4': 100}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+  S     (obj_sham_cg): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0098 mm / 0.0367°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 48, 'node31': 152}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 1303 ms，> 500 ms 的集 150（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+  T0    (obj_sham_twin): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0098 mm / 0.0367°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/5832 = 0.00%（门槛 < 1%）；第二批口径 miss/n_paint 0/28774（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    T0 相机随替身手（TWIN_CAM=twin），差 = IK 残差，只印：查询帧均值 0.005 mm，最大 0.097 mm，200 集
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 3, 'node31': 197}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 1288 ms，> 500 ms 的集 150（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；t0_vs_s_agent=PASS(0.0114)，t0_vs_s_wrist=PASS(0.0541)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，keys=NA(50)
+      T0 对 S 同键一致率         PASS  94.5%（200 键，门槛 >= 90%，低于先看图）
+  G     (obj_grpkp100): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0046 mm / 0.0417°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 39, 'node31': 161}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 915 ms，> 500 ms 的集 124（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+  GTfc  (obj_g_tfc): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0  <<< does not count
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0046 mm / 0.0417°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/8329 = 0.00%（门槛 < 1%）；第二批口径 miss/n_paint 0/41074（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                PASS  查询帧最大 0.0000 mm / 0.0000°，超 0.01 mm/0.01° 的查询帧 0/8329；全帧最大 0.0000 mm
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 3, 'node31': 197}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 531 ms，> 500 ms 的集 103（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            FAIL  cell FAIL；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，replaced_agent_both_hidden_mean=FAIL(1.4636)，replaced_robot_both_hidden_mean=PASS(0.0)
+  GTw   (obj_g_tw_fc): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0046 mm / 0.0417°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：9/8530 = 0.11%（门槛 < 1%）；第二批口径 miss/n_paint 49/42077（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                PASS  查询帧最大 0.0000 mm / 0.0000°，超 0.01 mm/0.01° 的查询帧 0/8530；全帧最大 0.0000 mm
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 1, 'node31': 199}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 154 ms，> 500 ms 的集 56（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，unreplaced_agent=PASS(max 0 mean 0.00e+00)，replaced_robot_both_hidden_mean=PASS(0.0)
+  GTa   (obj_g_ta_fc): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0  <<< does not count
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0046 mm / 0.0417°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/7207 = 0.00%（门槛 < 1%）；第二批口径 miss/n_paint 0/35500（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    相机差（腕部未换，只印）：查询帧均值 0.000 mm，最大 0.000 mm，200 集
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 2, 'node31': 198}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 253 ms，> 500 ms 的集 67（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            FAIL  cell FAIL；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，unreplaced_robot=PASS(max 0 mean 0.00e+00)，replaced_agent_both_hidden_mean=FAIL(1.4636)
+  G_T   (obj_g_t): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0  <<< does not count
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0046 mm / 0.0417°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/8557 = 0.00%（门槛 < 1%）；第二批口径 miss/n_paint 1/42194（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    G_T 相机差均值（预期约 6.4 mm，只印）：查询帧均值 6.400 mm，最大 6.444 mm，200 集
+      replan               PASS  分布 {5: 200}（应全为 5）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 25, 'node31': 175}；chunk_len {50: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 151 ms，> 500 ms 的集 53（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            FAIL  cell FAIL；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，replaced_agent_both_hidden_mean=FAIL(1.4636)，replaced_robot_both_hidden_mean=FAIL(9.2683)
+
+==== §4 估计量（200 键）（π0，object）：点估计、95% / 90% bootstrap CI、键数、共同整片数
+  drop_nat(G)       -40.00 pp  95% [ -47.50,  -32.50]  90% [ -46.00,  -34.00]  n=200 片=4  失效集上界 ±2.0
+  d5                 -1.50 pp  95% [  -4.50,   +1.50]  90% [  -4.00,   +1.00]  n=200 片=4  [在渲染节点噪声带内：π0/OVLA 在 T4 渲染，§7.1 一律标]  失效集上界 ±0.0
+  rec_fc             -1.00 pp  95% [  -9.50,   +7.50]  90% [  -8.00,   +6.50]  n=200 片=4  <<< does not count（GTfc）  [在渲染节点噪声带内：π0/OVLA 在 T4 渲染，§7.1 一律标]  失效集上界 ±6.0
+  rec_w              -1.00 pp  95% [  -8.50,   +6.50]  90% [  -7.00,   +5.50]  n=200 片=4  <<< does not count（GTa）  [在渲染节点噪声带内：π0/OVLA 在 T4 渲染，§7.1 一律标]  失效集上界 ±4.5
+  rec_a             +15.50 pp  95% [  +8.50,  +23.00]  90% [  +9.50,  +21.50]  n=200 片=4  <<< does not count（GTa）  失效集上界 ±3.0
+  channel           -16.50 pp  95% [ -24.00,   -9.00]  90% [ -22.50,  -10.50]  n=200 片=4  <<< does not count（GTa）  失效集上界 ±3.5
+  recovery(G)        +0.50 pp  95% [  -9.00,  +10.00]  90% [  -7.50,   +8.50]  n=200 片=4  <<< does not count（GTfc）  [在渲染节点噪声带内：π0/OVLA 在 T4 渲染，§7.1 一律标]  失效集上界 ±6.0
+  recovery_GT(G)     -0.50 pp  95% [ -10.00,   +9.00]  90% [  -8.50,   +7.50]  n=200 片=4  <<< does not count（G_T）  [在渲染节点噪声带内：π0/OVLA 在 T4 渲染，§7.1 一律标]  失效集上界 ±5.5
+  add               +15.50 pp  95% [  +5.00,  +26.00]  90% [  +6.50,  +24.50]  n=200 片=4  <<< does not count（GTa,GTfc）  失效集上界 ±9.5
+  frac = recovery(G)/|drop_nat(G)| = 0.01（描述，点估计）
+  d5 门槛（§7.3）：d5 = -1.50 [-4.50, +1.50]，95% 下界 >= -7 -> 不触发
+
+==== 门槛（OVLA，spatial）
+  SRC   (src): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        NA    无迁移
+      首帧对齐                 NA    无迁移
+      replan               PASS  分布 {1: 200}（应全为 1）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 4, 'node31': 30, 'node36': 166}；chunk_len {1: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 1404 ms，> 500 ms 的集 200（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+  S     (sham_cg): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0097 mm / 0.0221°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      replan               PASS  分布 {1: 200}（应全为 1）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 8, 'node31': 5, 'node36': 37, 'node34': 147, 'node35': 3}；chunk_len {1: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 2645 ms，> 500 ms 的集 191（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+  T0    (sham_twin): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 PASS  最大 0.0097 mm / 0.0221°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+      IK 残差>1mm<1%         PASS  查询帧 > 1.0 mm：0/24816 = 0.00%（门槛 < 1%）；第二批口径 miss/n_paint 0/24816（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    T0 相机随替身手（TWIN_CAM=twin），差 = IK 残差，只印：查询帧均值 0.006 mm，最大 0.110 mm，200 集
+      replan               PASS  分布 {1: 200}（应全为 1）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 2, 'node31': 6, 'node36': 42, 'node34': 150}；chunk_len {1: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 2178 ms，> 500 ms 的集 198（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；t0_vs_s_agent=PASS(0.0082)，t0_vs_s_wrist=PASS(0.0447)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，keys=NA(50)
+      T0 对 S 同键一致率         WARN  83.5%（200 键，门槛 >= 90%，低于先看图）
+  G     (grpkp100): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      replan               PASS  分布 {1: 200}（应全为 1）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 4, 'node31': 3, 'node36': 43, 'node34': 129, 'node35': 21}；chunk_len {1: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 1434 ms，> 500 ms 的集 173（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+  GTfc  (g_tfc): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0  <<< does not count
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         FAIL  查询帧 > 1.0 mm：814/27545 = 2.96%（门槛 < 1%）；第二批口径 miss/n_paint 699/27545（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                PASS  查询帧最大 0.0000 mm / 0.0000°，超 0.01 mm/0.01° 的查询帧 0/27545；全帧最大 0.0000 mm
+      replan               PASS  分布 {1: 200}（应全为 1）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 1, 'node31': 5, 'node36': 44, 'node34': 137, 'node35': 13}；chunk_len {1: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 2567 ms，> 500 ms 的集 190（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，replaced_agent_both_hidden_mean=PASS(0.7937)，replaced_robot_both_hidden_mean=PASS(0.0017)
+  GTw   (g_tw_fc): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0  <<< does not count
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         FAIL  查询帧 > 1.0 mm：4464/43041 = 10.37%（门槛 < 1%）；第二批口径 miss/n_paint 4265/43041（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                PASS  查询帧最大 0.0000 mm / 0.0000°，超 0.01 mm/0.01° 的查询帧 0/43041；全帧最大 0.0000 mm
+      replan               PASS  分布 {1: 200}（应全为 1）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 1, 'node31': 3, 'node36': 46, 'node34': 135, 'node35': 15}；chunk_len {1: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 1275 ms，> 500 ms 的集 181（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，unreplaced_agent=PASS(max 1 mean 9.16e-07)，replaced_robot_both_hidden_mean=PASS(0.0017)
+  GTa   (g_ta_fc): 齐的片 [0, 1, 2, 3]（设计 4 片），读入 200 键，原始正常记录 200 键；jsonl 4 文件 200 行，丢 error 0，重复正常记录 0  <<< does not count
+      fixcheck             PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度），init 编号不符 0
+      copy_grip_cmd        PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      首帧对齐                 NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（PandaR85 格只印数，附录 2 裁定 1）
+      IK 残差>1mm<1%         FAIL  查询帧 > 1.0 mm：996/28177 = 3.53%（门槛 < 1%）；第二批口径 miss/n_paint 852/28177（全部帧，只印）
+      陈旧帧 0                PASS  陈旧帧合计 0
+      相机位姿差                NA    相机差（腕部未换，只印）：查询帧均值 0.000 mm，最大 0.000 mm，200 集
+      replan               PASS  分布 {1: 200}（应全为 1）
+      server GPU 单一型号（H100） PASS  server_gpu {'NVIDIA H100 NVL': 200}；server_host {'node33': 1, 'node31': 5, 'node36': 44, 'node34': 140, 'node35': 10}；chunk_len {1: 200}
+      error 记录             PASS  error 记录 0/200 行（> 1% 先查 server），只有 error 记录的键 0，重复正常记录 0
+      RTT                  NA    中位 2138 ms，> 500 ms 的集 198（只印）
+      GPU 型号               PASS  {'Tesla T4': 200}（应为 T4）
+      在线接触                 PASS  缺在线接触记录 0 集
+      gate json            PASS  cell PASS；keys=NA(50)，regression=PASS(embody_toy vs embody_v3 replay qpos diff 0 on (0,0),(2,0) S and G)，unreplaced_robot=PASS(max 0 mean 0.00e+00)，replaced_agent_both_hidden_mean=PASS(0.7937)
+
+==== §4 估计量（200 键）（OVLA，spatial）：点估计、95% / 90% bootstrap CI、键数、共同整片数
+  drop_nat(G)       -75.50 pp  95% [ -82.00,  -68.50]  90% [ -81.00,  -69.50]  n=200 片=4  失效集上界 ±0.0
+  d5                 +0.50 pp  95% [  -5.00,   +6.00]  90% [  -4.00,   +5.00]  n=200 片=4  [在渲染节点噪声带内：π0/OVLA 在 T4 渲染，§7.1 一律标]  失效集上界 ±0.0
+  rec_fc            +64.00 pp  95% [ +56.50,  +71.50]  90% [ +57.50,  +70.00]  n=200 片=4  <<< does not count（GTfc）  失效集上界 ±0.0
+  rec_w              -0.50 pp  95% [  -3.00,   +2.00]  90% [  -2.50,   +1.50]  n=200 片=4  <<< does not count（GTw,GTa）  [在渲染节点噪声带内：π0/OVLA 在 T4 渲染，§7.1 一律标]  失效集上界 ±0.0
+  rec_a             +61.00 pp  95% [ +53.00,  +68.50]  90% [ +54.50,  +67.50]  n=200 片=4  <<< does not count（GTa,GTw）  失效集上界 ±0.0
+  channel           -61.50 pp  95% [ -69.00,  -53.50]  90% [ -68.00,  -55.00]  n=200 片=4  <<< does not count（GTw,GTa）  失效集上界 ±0.0
+  recovery(G)       +63.50 pp  95% [ +53.50,  +73.01]  90% [ +55.00,  +71.50]  n=200 片=4  <<< does not count（GTfc）  失效集上界 ±0.0
+  recovery_GT(G)   缺（无数据格或无共同键）
+  add                -3.50 pp  95% [  -7.50,   +0.50]  90% [  -7.00,   -0.00]  n=200 片=4  <<< does not count（GTw,GTa,GTfc）  失效集上界 ±0.0
+  frac = recovery(G)/|drop_nat(G)| = 0.84（描述，点估计）
+  d5 门槛（§7.3）：d5 = +0.50 [-5.00, +6.00]，95% 下界 >= -7 -> 不触发
+
+######## §5.1 决策族 R：独立 OFT 复现合训 OFT（spatial）
+  预测（写死）：OFTi 的 G 掉分在 −55 到 −30 之间；rec_w > rec_a，channel > 0；recovery 过半。即复现。
+  R1 G 掉分：drop_nat(G) -30.00 [-36.50, -23.50] 对已发表 -45.00 [-52.00, -38.00]（复现 = CI 重叠且上界 < −7；不复现 = 不重叠）-> 不复现
+  R2 通道排序（400 键）：channel +10.00 [+5.75, +14.25]，rec_w +15.75 [+11.50, +20.00]，|drop_nat(G)| 点 30.00（200 键，M2）；复现 = channel 下界 > 0 且 rec_w 点 >= 15.00；不复现 = channel 上界 < 0 或 rec_w 上界 < 7.50 -> 复现
+  R3 重绘恢复：recovery(G)（GTfc）+22.50 [+15.50, +30.00]；复现 = 下界 > 0 且点 >= 15.00；不复现 = 上界 < 7.50 -> 复现
+  并列：recovery_GT(G)（G_T，移动相机，SYNC 关）+24.50 [+17.50, +31.50] 对已发表 +36.00 [+28.00, +44.00]（P7 口径）-> 复现
+  族结论：不复现 —— 不复现：该条结论对微调数据 / 训练 run 敏感，论文里对应的 OFT 结论降为『该 checkpoint』；不复现的条：R1
+
+######## §5.2 决策族 F：π0 家族对照（spatial）
+  预测（写死，家族假设）：π0 的通道排序像 π0.5（channel <= 0，第三视角占优）；G 掉分在 −35 到 −10 之间。
+  F1 通道排序：channel -2.50 [-9.00, +4.00]（像 π0.5 = 上界 < 0；像 OFT = 下界 > 0）-> 不确定
+  F2 掉分与恢复：drop_nat(G) -29.50 [-36.50, -23.00] 对 π0.5 -17.00 [-22.50, -12.00] -> P7 不确定；recovery(G) +24.50 [+16.50, +33.00] 对 π0.5 +11.50 [+5.99, +17.50] -> P7 复现（两条都复现 = 像 π0.5；都不复现 = 像 OFT）-> 不确定
+  并列（透明度）：recovery_GT(G) +23.00 [+15.50, +30.50] 对 π0.5 recovery(G) +11.50 [+5.99, +17.50] -> P7 复现
+  解读：无写死句子适用（F1 与 R2 的组合不在 §5.2 解读表内）
+  约束：π0 查询频率每 5 步（OFT 每 8 步、OVLA 每 1 步），通道估计量含反应频率差异；π0 与 π0.5 的差异不归到本体感受、chunk 或训练数据中任何一项（§6 第 3 条）
+
+######## §5.3 object（OFTi 与 π0 各自对本模型 S）
+  预测（写死）：OFTi object 的 G 掉分 −26 到 −6；重绘不恢复（复现合训 OFT）；π0 object 的 recovery 小而含 0（像 π0.5）。
+  O1 OFTi object 重绘不恢复：recovery(G) -7.10 [-14.12, +0.00]，drop_nat(G) -10.06 [-15.85, -4.22]，对已发表 recovery -5.50 [-13.00, +2.00]（复现 = 上界 < 5.03；不复现 = 下界 > 0 且点 >= 5.03）-> 不判定（does not count：GTfc 门槛不过）；按判定线本应为「复现」，仅供参考
+  并列（透明度）：recovery_GT(G) -1.18 [-8.88, +6.47] 对已发表 -5.50 [-13.00, +2.00] -> P7 复现
+  O2 π0 object：drop_nat(G) -40.00 [-47.50, -32.50] 对 π0.5 -17.00 [-23.50, -10.50] -> P7 不确定；recovery(G) +0.50 [-9.00, +10.00] 对 π0.5 +3.50 [-3.50, +10.50] -> P7 复现（两条都复现 = 复现，都不复现 = 不复现，M10）-> 不判定（does not count：GTfc 门槛不过）；按判定线本应为「不确定」，仅供参考
+      描述：π0 object recovery(G) 95% CI 含 0（预测：小而含 0）
+
+  drop_nat(G) 等的 object 对 spatial 符号一致性（第三批 §6 (iii) 口径 = P7，同一模型）：
+    OFTi  drop_nat(G)  spatial -30.00 [-36.50, -23.50]  object -10.06 [-15.85, -4.22] -> 不确定
+    OFTi  recovery(G)  spatial +22.50 [+15.50, +30.00]  object -7.10 [-14.12, +0.00] -> 不确定
+    OFTi  d5           spatial -0.50 [-2.50, +1.50]  object +0.59 [-1.22, +2.86] -> 不确定
+    pi0   drop_nat(G)  spatial -29.50 [-36.50, -23.00]  object -40.00 [-47.50, -32.50] -> 复现
+    pi0   recovery(G)  spatial +24.50 [+16.50, +33.00]  object +0.50 [-9.00, +10.00] -> 不确定
+    pi0   d5           spatial -1.00 [-5.00, +2.50]  object -1.50 [-4.50, +1.50] -> 复现
+
+######## §5.4 描述层 E：原版 OpenVLA（spatial，不进决策族）
+  基线：SRC 169/200 = 84.5%（须 >= 75%）-> 过
+  E1 agree(GTw, G) 逐键结局一致率 96.5%（200 键，共同整片 4）；首块动作 a0 逐位相同 196/200 键（期望 100%）
+      实测 < 100% 的部分就是本管线（T4 渲染 + 服务端推理）的噪声底，作为 OVLA 所有 |效应| 的下限参照
+  E2 agree(GTa, GTfc) 逐键结局一致率 96.0%（200 键，共同整片 4）；首块动作 a0 逐位相同 200/200 键（期望 100%）
+  E3 drop_nat(G) 95% 上界 < −7（只看第三人称也掉分）：-75.50 [-82.00, -68.50] -> 符合
+  E4 rec_a 95% 下界 > 0：+61.00 [+53.00, +68.50] -> 不判定（does not count：GTa,GTw 门槛不过）；按判定线本应为「符合」，仅供参考
+  E5 |drop_nat(G)|：OVLA [68.50, 82.00]，OFTi [23.50, 36.50] -> 相当或更大
+      「腕部输入不是掉分幅度的必要条件」；OVLA 与 OFTi 还差本体感受、动作头、chunk 与微调配方，不能归因到腕相机
+  OVLA 天花板低、单步、无本体感受，所有数字只与自身 S 比；OVLA 只作「输入集合不同」的对照，不是「去掉腕相机的 OFT」（§6 第 4 条）
+
+==== Holm 附表（透明度，M14）：bootstrap 双侧 p（H0 = 0）
+  族 R：
+    R1 drop_nat(G)         点  -30.00  p = 0.0000  Holm p = 0.0000
+    R2 channel(400)        点  +10.00  p = 0.0000  Holm p = 0.0000
+    R3 recovery(G)         点  +22.50  p = 0.0000  Holm p = 0.0000
+  族 F：
+    F1 channel             点   -2.50  p = 0.5136  Holm p = 0.5136
+    F2 drop_nat(G)         点  -29.50  p = 0.0000  Holm p = 0.0000
+    F2 recovery(G)         点  +24.50  p = 0.0000  Holm p = 0.0000
+  族 O：
+    O1 recovery(G) OFTi    点   -7.10  p = 0.0570  Holm p = 0.1140
+    O2 drop_nat(G) π0      点  -40.00  p = 0.0000  Holm p = 0.0000
+    O2 recovery(G) π0      点   +0.50  p = 0.9556  Holm p = 0.9556
+
+######## 跨模型配对差 Δ_model（透明度，§4；判定仍用 §5 的 P7 口径）
+
+==== Δ_model = est(OFTi) − est(合训 OFT（已发表）)（spatial，按键配对 bootstrap，200 键；只印，判定用 P7 口径）
+  drop_nat(G) − drop_nat(G)         +15.00  95% [  +8.00,  +22.00]  90% [  +9.50,  +21.00]  n=200
+  d5 − d5                            -0.50  95% [  -3.50,   +2.50]  90% [  -3.00,   +2.00]  n=200  [|Δ|<=3，GPU 组成见任务表]
+  rec_w − rec_w                     -16.50  95% [ -24.50,   -8.50]  90% [ -23.00,  -10.00]  n=200  （新=固定相机，已发表=移动相机）
+  rec_a − rec_a                     -13.00  95% [ -21.50,   -5.00]  90% [ -20.00,   -6.00]  n=200  （新=固定相机，已发表=移动相机）
+  channel − channel                  -3.50  95% [ -11.50,   +4.50]  90% [ -10.50,   +3.50]  n=200  （新=固定相机，已发表=移动相机）
+  recovery(G) − recovery(G)         -13.50  95% [ -22.50,   -4.00]  90% [ -21.00,   -6.00]  n=200  （新=GTfc 固定相机 SYNC 开，已发表=G_T 移动相机）
+  recovery_GT(G) − recovery(G)      -11.50  95% [ -20.00,   -3.00]  90% [ -18.50,   -4.50]  n=200  （配置逐项相同（G_T 对 G_T））
+
+==== Δ_model = est(OFTi) − est(合训 OFT（已发表）)（object，按键配对 bootstrap，200 键；只印，判定用 P7 口径）
+  drop_nat(G) − drop_nat(G)          +5.92  95% [  -0.60,  +12.57]  90% [  +0.57,  +11.56]  n=169
+  d5 − d5                            +0.59  95% [  -1.83,   +3.18]  90% [  -1.71,   +2.91]  n=169  [|Δ|<=3，GPU 组成见任务表]
+  recovery(G) − recovery(G)          -4.73  95% [ -13.45,   +4.02]  90% [ -11.98,   +2.48]  n=169  （新=GTfc 固定相机 SYNC 开，已发表=G_T 移动相机）
+  recovery_GT(G) − recovery(G)       +1.18  95% [  -8.43,  +10.53]  90% [  -6.86,   +9.14]  n=169  （配置逐项相同（G_T 对 G_T））  [|Δ|<=3，GPU 组成见任务表]
+
+==== Δ_model = est(π0) − est(π0.5（已发表）)（spatial，按键配对 bootstrap，200 键；只印，判定用 P7 口径）
+  drop_nat(G) − drop_nat(G)         -12.50  95% [ -20.00,   -5.00]  90% [ -19.00,   -6.00]  n=200
+  d5 − d5                            +2.50  95% [  -2.00,   +7.00]  90% [  -1.50,   +6.50]  n=200  [在渲染节点噪声带内]
+  rec_w − rec_w                     +12.00  95% [  +2.50,  +21.50]  90% [  +4.00,  +20.00]  n=200  （新=固定相机，已发表=移动相机）
+  rec_a − rec_a                      +5.00  95% [  -4.50,  +14.01]  90% [  -3.00,  +13.00]  n=200  （新=固定相机，已发表=移动相机）
+  channel − channel                  +7.00  95% [  -1.50,  +15.50]  90% [  +0.00,  +14.00]  n=200  （新=固定相机，已发表=移动相机）
+  recovery(G) − recovery(G)         +13.00  95% [  +2.50,  +23.00]  90% [  +4.50,  +21.50]  n=200  （新=GTfc 固定相机 SYNC 开，已发表=G_T 移动相机）
+  recovery_GT(G) − recovery(G)      +11.50  95% [  +2.00,  +21.00]  90% [  +3.50,  +19.50]  n=200  （配置逐项相同（G_T 对 G_T））
+
+==== Δ_model = est(π0) − est(π0.5（已发表）)（object，按键配对 bootstrap，200 键；只印，判定用 P7 口径）
+  drop_nat(G) − drop_nat(G)         -23.00  95% [ -31.00,  -15.00]  90% [ -29.50,  -16.00]  n=200
+  d5 − d5                            -4.00  95% [  -8.00,   +0.00]  90% [  -7.50,   -0.50]  n=200
+  recovery(G) − recovery(G)          -3.00  95% [ -14.00,   +8.50]  90% [ -12.50,   +6.50]  n=200  （新=GTfc 固定相机 SYNC 开，已发表=G_T 移动相机）  [在渲染节点噪声带内]
+  recovery_GT(G) − recovery(G)       -4.00  95% [ -15.50,   +7.50]  90% [ -13.50,   +5.50]  n=200  （配置逐项相同（G_T 对 G_T））
+
+######## 描述：10 任务表、GPU 组成、在线接触
+
+==== 10 任务表 + conc（相对 S）+ GPU 型号组成（OFTi，spatial；只含整片）
+  SRC   SR  98.0% (196/200) | t0:20/20 t1:20/20 t2:20/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:17/20 t8:19/20 t9:20/20 | conc - | GPU NVIDIA A100-PCIE-40GB x200
+  S     SR  98.0% (196/200) | t0:20/20 t1:19/20 t2:20/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:18/20 t8:19/20 t9:20/20 | conc - | GPU NVIDIA A100-PCIE-40GB x200
+  T0    SR  97.5% (195/200) | t0:20/20 t1:20/20 t2:19/20 t3:20/20 t4:20/20 t5:20/20 t6:19/20 t7:18/20 t8:19/20 t9:20/20 | conc 1.00（最差任务 2，+1/+1） | GPU NVIDIA A100-PCIE-40GB x200
+  G     SR  69.2% (277/400) | t0:1/40 t1:39/40 t2:12/40 t3:40/40 t4:29/40 t5:40/40 t6:38/40 t7:1/40 t8:37/40 t9:40/40 | conc 0.33（最差任务 0，+20/+60） | GPU NVIDIA A100-PCIE-40GB x400
+  GTfc  SR  90.0% (180/200) | t0:20/20 t1:20/20 t2:15/20 t3:20/20 t4:19/20 t5:20/20 t6:18/20 t7:12/20 t8:18/20 t9:18/20 | conc 0.38（最差任务 7，+6/+16） | GPU NVIDIA A100-PCIE-40GB x200
+  GTw   SR  85.0% (340/400) | t0:32/40 t1:40/40 t2:15/40 t3:40/40 t4:36/40 t5:40/40 t6:37/40 t7:23/40 t8:40/40 t9:37/40 | conc 0.50（最差任务 2，+14/+28） | GPU NVIDIA A100-PCIE-40GB x400
+  GTa   SR  75.0% (300/400) | t0:17/40 t1:40/40 t2:17/40 t3:40/40 t4:40/40 t5:37/40 t6:30/40 t7:6/40 t8:35/40 t9:38/40 | conc 0.33（最差任务 7，+14/+43） | GPU NVIDIA A100-PCIE-40GB x400
+  G_T   SR  92.0% (184/200) | t0:20/20 t1:20/20 t2:12/20 t3:20/20 t4:20/20 t5:20/20 t6:19/20 t7:15/20 t8:18/20 t9:20/20 | conc 0.67（最差任务 2，+8/+12） | GPU NVIDIA A100-PCIE-40GB x200
+
+==== 10 任务表 + conc（相对 S）+ GPU 型号组成（OFTi，object；只含整片）
+  SRC   SR  96.5% (193/200) | t0:19/20 t1:20/20 t2:20/20 t3:17/20 t4:19/20 t5:20/20 t6:19/20 t7:20/20 t8:20/20 t9:19/20 | conc - | GPU NVIDIA A100-PCIE-40GB x200
+  S     SR  96.0% (192/200) | t0:20/20 t1:18/20 t2:20/20 t3:19/20 t4:18/20 t5:20/20 t6:19/20 t7:20/20 t8:20/20 t9:18/20 | conc - | GPU NVIDIA A100-PCIE-40GB x200
+  T0    SR  97.0% (194/200) | t0:20/20 t1:18/20 t2:20/20 t3:19/20 t4:20/20 t5:20/20 t6:19/20 t7:20/20 t8:19/20 t9:19/20 | conc 无净增失败（净 -2） | GPU NVIDIA A100-PCIE-40GB x200
+  G     SR  84.0% (168/200) | t0:16/20 t1:19/20 t2:8/20 t3:15/20 t4:15/20 t5:20/20 t6:20/20 t7:19/20 t8:20/20 t9:16/20 | conc 0.50（最差任务 2，+12/+24） | GPU NVIDIA A100-PCIE-40GB x200
+  GTfc  SR  76.0% (152/200) | t0:7/20 t1:14/20 t2:6/20 t3:18/20 t4:15/20 t5:20/20 t6:19/20 t7:19/20 t8:20/20 t9:14/20 | conc 0.35（最差任务 2，+14/+40） | GPU NVIDIA A100-PCIE-40GB x200
+  GTw   SR  81.0% (162/200) | t0:6/20 t1:20/20 t2:11/20 t3:18/20 t4:9/20 t5:20/20 t6:20/20 t7:20/20 t8:20/20 t9:18/20 | conc 0.47（最差任务 0，+14/+30） | GPU NVIDIA A100-PCIE-40GB x200
+  GTa   SR  73.5% (147/200) | t0:13/20 t1:17/20 t2:3/20 t3:17/20 t4:11/20 t5:20/20 t6:19/20 t7:17/20 t8:18/20 t9:12/20 | conc 0.38（最差任务 2，+17/+45） | GPU NVIDIA A100-PCIE-40GB x200
+  G_T   SR  82.5% (165/200) | t0:13/20 t1:16/20 t2:11/20 t3:19/20 t4:13/20 t5:20/20 t6:19/20 t7:19/20 t8:20/20 t9:15/20 | conc 0.33（最差任务 2，+9/+27） | GPU NVIDIA A100-PCIE-40GB x200
+
+==== 10 任务表 + conc（相对 S）+ GPU 型号组成（π0，spatial；只含整片）
+  SRC   SR  96.0% (192/200) | t0:20/20 t1:20/20 t2:17/20 t3:20/20 t4:18/20 t5:20/20 t6:20/20 t7:19/20 t8:20/20 t9:18/20 | conc - | GPU client NVIDIA A100 80GB PCIe x100, Tesla T4 x100 | server ? x200
+  S     SR  96.5% (193/200) | t0:20/20 t1:19/20 t2:17/20 t3:20/20 t4:19/20 t5:20/20 t6:20/20 t7:19/20 t8:19/20 t9:20/20 | conc - | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  T0    SR  95.5% (191/200) | t0:20/20 t1:20/20 t2:20/20 t3:20/20 t4:17/20 t5:18/20 t6:19/20 t7:18/20 t8:20/20 t9:19/20 | conc 1.00（最差任务 4，+2/+2） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  G     SR  67.0% (134/200) | t0:13/20 t1:18/20 t2:5/20 t3:17/20 t4:15/20 t5:16/20 t6:12/20 t7:7/20 t8:16/20 t9:15/20 | conc 0.20（最差任务 2，+12/+59） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  GTfc  SR  90.5% (181/200) | t0:20/20 t1:20/20 t2:15/20 t3:20/20 t4:17/20 t5:20/20 t6:19/20 t7:15/20 t8:17/20 t9:18/20 | conc 0.33（最差任务 7，+4/+12） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  GTw   SR  79.5% (159/200) | t0:17/20 t1:18/20 t2:4/20 t3:18/20 t4:19/20 t5:19/20 t6:18/20 t7:12/20 t8:16/20 t9:18/20 | conc 0.38（最差任务 2，+13/+34） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  GTa   SR  82.0% (164/200) | t0:20/20 t1:20/20 t2:11/20 t3:18/20 t4:19/20 t5:17/20 t6:18/20 t7:8/20 t8:17/20 t9:16/20 | conc 0.38（最差任务 7，+11/+29） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  G_T   SR  89.0% (178/200) | t0:19/20 t1:19/20 t2:14/20 t3:20/20 t4:18/20 t5:17/20 t6:19/20 t7:13/20 t8:20/20 t9:19/20 | conc 0.40（最差任务 7，+6/+15） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+
+==== 10 任务表 + conc（相对 S）+ GPU 型号组成（π0，object；只含整片）
+  SRC   SR  95.0% (190/200) | t0:19/20 t1:20/20 t2:20/20 t3:20/20 t4:19/20 t5:17/20 t6:20/20 t7:19/20 t8:20/20 t9:16/20 | conc - | GPU client NVIDIA A100 80GB PCIe x100, Tesla T4 x100 | server ? x200
+  S     SR  97.5% (195/200) | t0:20/20 t1:20/20 t2:19/20 t3:20/20 t4:20/20 t5:19/20 t6:20/20 t7:17/20 t8:20/20 t9:20/20 | conc - | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  T0    SR  96.0% (192/200) | t0:19/20 t1:19/20 t2:19/20 t3:19/20 t4:18/20 t5:20/20 t6:20/20 t7:20/20 t8:20/20 t9:18/20 | conc 0.67（最差任务 4，+2/+3） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  G     SR  57.5% (115/200) | t0:15/20 t1:9/20 t2:0/20 t3:12/20 t4:12/20 t5:19/20 t6:18/20 t7:11/20 t8:16/20 t9:3/20 | conc 0.24（最差任务 2，+19/+80） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  GTfc  SR  56.5% (113/200) | t0:13/20 t1:9/20 t2:2/20 t3:13/20 t4:2/20 t5:18/20 t6:14/20 t7:14/20 t8:18/20 t9:10/20 | conc 0.22（最差任务 4，+18/+82） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  GTw   SR  56.5% (113/200) | t0:13/20 t1:13/20 t2:1/20 t3:13/20 t4:4/20 t5:20/20 t6:16/20 t7:9/20 t8:15/20 t9:9/20 | conc 0.22（最差任务 2，+18/+82） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  GTa   SR  73.0% (146/200) | t0:18/20 t1:15/20 t2:4/20 t3:17/20 t4:7/20 t5:19/20 t6:20/20 t7:19/20 t8:18/20 t9:9/20 | conc 0.31（最差任务 2，+15/+49） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  G_T   SR  55.5% (111/200) | t0:14/20 t1:13/20 t2:0/20 t3:6/20 t4:0/20 t5:20/20 t6:13/20 t7:11/20 t8:20/20 t9:14/20 | conc 0.24（最差任务 4，+20/+84） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+
+==== 10 任务表 + conc（相对 S）+ GPU 型号组成（OVLA，spatial；只含整片）
+  SRC   SR  84.5% (169/200) | t0:19/20 t1:17/20 t2:16/20 t3:17/20 t4:15/20 t5:20/20 t6:19/20 t7:19/20 t8:15/20 t9:12/20 | conc - | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  S     SR  84.0% (168/200) | t0:19/20 t1:17/20 t2:13/20 t3:19/20 t4:16/20 t5:18/20 t6:19/20 t7:18/20 t8:15/20 t9:14/20 | conc - | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  T0    SR  84.5% (169/200) | t0:19/20 t1:17/20 t2:17/20 t3:17/20 t4:17/20 t5:19/20 t6:15/20 t7:19/20 t8:16/20 t9:13/20 | conc 无净增失败（净 -1） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  G     SR   8.5% (17/200) | t0:0/20 t1:2/20 t2:1/20 t3:0/20 t4:1/20 t5:3/20 t6:5/20 t7:0/20 t8:3/20 t9:2/20 | conc 0.13（最差任务 0，+19/+151） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  GTfc  SR  72.5% (145/200) | t0:15/20 t1:17/20 t2:4/20 t3:18/20 t4:16/20 t5:14/20 t6:18/20 t7:10/20 t8:16/20 t9:17/20 | conc 0.39（最差任务 2，+9/+23） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  GTw   SR   8.0% (16/200) | t0:0/20 t1:3/20 t2:1/20 t3:0/20 t4:0/20 t5:1/20 t6:5/20 t7:0/20 t8:4/20 t9:2/20 | conc 0.12（最差任务 0，+19/+152） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+  GTa   SR  69.5% (139/200) | t0:15/20 t1:16/20 t2:4/20 t3:17/20 t4:15/20 t5:13/20 t6:18/20 t7:10/20 t8:14/20 t9:17/20 | conc 0.31（最差任务 2，+9/+29） | GPU client Tesla T4 x200 | server NVIDIA H100 NVL x200
+
+==== 在线接触汇总（OFTi，spatial）：每任务 接触集数/有记录集数（s=停滞集数），首次接触中位步，pairs 前三
+  SRC   t0:0/20 t1:0/20 t2:0/20s7 t3:0/20 t4:0/20s1 t5:0/20 t6:0/20 t7:0/20s1 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 7 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  S     t0:0/20 t1:0/20 t2:0/20s7 t3:0/20 t4:0/20s1 t5:0/20 t6:0/20 t7:0/20s1 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 7 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  T0    t0:0/20 t1:0/20 t2:0/20s7 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 7 集
+  G     t0:0/40s34 t1:0/40 t2:0/40s7 t3:0/40 t4:0/40s1 t5:0/40 t6:0/40 t7:0/40 t8:0/40 t9:0/40
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 34 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 7 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  GTfc  t0:0/20 t1:0/20 t2:0/20 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20s8 t8:0/20s1 t9:0/20
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 8 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  GTw   t0:0/40s6 t1:0/40 t2:0/40s4 t3:0/40 t4:0/40 t5:0/40s1 t6:0/40 t7:0/40s14 t8:0/40 t9:0/40
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 6 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t5: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 14 集
+  GTa   t0:0/40s10 t1:0/40 t2:0/40s5 t3:0/40 t4:0/40 t5:0/40 t6:0/40 t7:0/40s2 t8:0/40 t9:0/40
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 10 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+  G_T   t0:0/20 t1:0/20 t2:0/20s3 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20s4 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+
+==== 在线接触汇总（OFTi，object）：每任务 接触集数/有记录集数（s=停滞集数），首次接触中位步，pairs 前三
+  SRC   t0:0/20s1 t1:0/20 t2:0/20s2 t3:0/20s1 t4:0/20s6 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 6 集
+  S     t0:0/20s1 t1:0/20s1 t2:0/20s2 t3:0/20 t4:0/20s5 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20s1
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  T0    t0:0/20s1 t1:0/20 t2:0/20s2 t3:0/20 t4:0/20s4 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+  G     t0:2/20 t1:0/20 t2:0/20s2 t3:0/20s1 t4:0/20s1 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:1/20
+      t0: 接触 2 集，首次接触中位步 138，pairs 前三 [('robot0_link1|alphabet_soup_1_main', 1), ('robot0_link4|floor', 1), ('robot0_link5|floor', 1)]，停滞 0 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t9: 接触 1 集，首次接触中位步 254，pairs 前三 [('robot0_link5|floor', 1)]，停滞 0 集
+  GTfc  t0:1/20s3 t1:0/20s1 t2:0/20s2 t3:0/20s1 t4:0/20s5 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:1/20
+      t0: 接触 1 集，首次接触中位步 107，pairs 前三 [('robot0_link5|floor', 1), ('robot0_link6|floor', 1)]，停滞 3 集
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t9: 接触 1 集，首次接触中位步 76，pairs 前三 [('robot0_link5|floor', 1), ('robot0_link6|floor', 1), ('robot0_link7|floor', 1)]，停滞 0 集
+  GTw   t0:0/20 t1:0/20 t2:1/20s3 t3:0/20s1 t4:0/20s3 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20s1
+      t2: 接触 1 集，首次接触中位步 209，pairs 前三 [('robot0_link0|butter_1_main', 1)]，停滞 3 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  GTa   t0:1/20s1 t1:0/20 t2:0/20s1 t3:0/20s2 t4:0/20s3 t5:0/20 t6:0/20s1 t7:0/20s1 t8:0/20 t9:1/20s1
+      t0: 接触 1 集，首次接触中位步 79，pairs 前三 [('robot0_link7|floor', 1)]，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t9: 接触 1 集，首次接触中位步 156，pairs 前三 [('robot0_link3|floor', 1), ('robot0_link4|floor', 1), ('robot0_link5|floor', 1)]，停滞 1 集
+  G_T   t0:1/20s1 t1:0/20s1 t2:0/20 t3:0/20 t4:0/20s3 t5:0/20 t6:0/20s2 t7:0/20 t8:0/20 t9:0/20
+      t0: 接触 1 集，首次接触中位步 77，pairs 前三 [('robot0_link3|floor', 1), ('robot0_link4|floor', 1), ('robot0_link5|floor', 1)]，停滞 1 集
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+
+==== 在线接触汇总（π0，spatial）：每任务 接触集数/有记录集数（s=停滞集数），首次接触中位步，pairs 前三
+  SRC   t0:0/20 t1:0/20 t2:0/20s3 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+  S     t0:0/20 t1:0/20 t2:0/20s5 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+  T0    t0:0/20 t1:0/20 t2:0/20s5 t3:0/20 t4:0/20s1 t5:0/20 t6:0/20 t7:0/20 t8:0/20s1 t9:0/20s4
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+  G     t0:0/20s2 t1:0/20 t2:0/20s11 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:1/20s1 t8:0/20s1 t9:0/20s1
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 11 集
+      t7: 接触 1 集，首次接触中位步 185，pairs 前三 [('robot0_link7|wooden_cabinet_1_base', 1)]，停滞 1 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  GTfc  t0:0/20s1 t1:0/20 t2:0/20s4 t3:0/20 t4:0/20s1 t5:0/20 t6:0/20 t7:0/20s4 t8:0/20s2 t9:0/20
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+  GTw   t0:0/20s3 t1:0/20s1 t2:0/20s12 t3:0/20s1 t4:0/20 t5:0/20s4 t6:0/20 t7:0/20s6 t8:0/20s4 t9:0/20
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 12 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t5: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 6 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+  GTa   t0:0/20 t1:0/20 t2:0/20s5 t3:0/20s1 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:0/20s1 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  G_T   t0:0/20 t1:0/20 t2:0/20s2 t3:0/20 t4:0/20s1 t5:0/20s3 t6:0/20 t7:0/20s5 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t5: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+
+==== 在线接触汇总（π0，object）：每任务 接触集数/有记录集数（s=停滞集数），首次接触中位步，pairs 前三
+  SRC   t0:0/20s2 t1:0/20 t2:0/20s3 t3:0/20s2 t4:0/20s4 t5:0/20 t6:0/20 t7:0/20s1 t8:0/20 t9:0/20s4
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+  S     t0:0/20 t1:0/20 t2:0/20s1 t3:0/20s1 t4:0/20s4 t5:0/20 t6:0/20s1 t7:0/20s3 t8:0/20 t9:0/20s1
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  T0    t0:0/20s2 t1:0/20 t2:0/20s1 t3:0/20s3 t4:0/20s5 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20s2
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+  G     t0:0/20s1 t1:1/20 t2:0/20 t3:0/20s1 t4:0/20s5 t5:0/20 t6:1/20 t7:0/20s4 t8:0/20 t9:1/20s3
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t1: 接触 1 集，首次接触中位步 278，pairs 前三 [('robot0_link7|basket_1_main', 1), ('robot0_link6|basket_1_main', 1)]，停滞 0 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t6: 接触 1 集，首次接触中位步 100，pairs 前三 [('robot0_link6|floor', 1)]，停滞 0 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t9: 接触 1 集，首次接触中位步 264，pairs 前三 [('robot0_link7|orange_juice_1_main', 1)]，停滞 3 集
+  GTfc  t0:0/20 t1:0/20s8 t2:0/20s2 t3:0/20 t4:0/20s6 t5:0/20 t6:0/20 t7:0/20s1 t8:0/20 t9:0/20
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 8 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 6 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  GTw   t0:2/20s1 t1:0/20s2 t2:0/20s2 t3:0/20 t4:0/20s5 t5:0/20 t6:0/20 t7:0/20s2 t8:0/20s1 t9:0/20s2
+      t0: 接触 2 集，首次接触中位步 71，pairs 前三 [('robot0_link0|alphabet_soup_1_main', 2)]，停滞 1 集
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+  GTa   t0:0/20 t1:0/20s2 t2:0/20s2 t3:0/20s2 t4:0/20s5 t5:0/20 t6:0/20 t7:0/20s1 t8:0/20 t9:1/20s1
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t9: 接触 1 集，首次接触中位步 209，pairs 前三 [('robot0_link5|basket_1_main', 1)]，停滞 1 集
+  G_T   t0:1/20 t1:0/20s4 t2:0/20s1 t3:0/20s2 t4:0/20s13 t5:0/20 t6:0/20 t7:1/20s1 t8:0/20s2 t9:0/20s1
+      t0: 接触 1 集，首次接触中位步 69，pairs 前三 [('robot0_link3|floor', 1), ('robot0_link4|floor', 1)]，停滞 0 集
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 13 集
+      t7: 接触 1 集，首次接触中位步 158，pairs 前三 [('robot0_link1|orange_juice_1_main', 1)]，停滞 1 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+
+==== 在线接触汇总（OVLA，spatial）：每任务 接触集数/有记录集数（s=停滞集数），首次接触中位步，pairs 前三
+  SRC   t0:0/20 t1:0/20s1 t2:0/20s9 t3:0/20s1 t4:0/20s1 t5:0/20 t6:0/20 t7:0/20s1 t8:0/20s4 t9:0/20s1
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 9 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  S     t0:0/20 t1:0/20 t2:0/20s9 t3:0/20 t4:0/20 t5:0/20s1 t6:0/20 t7:0/20 t8:0/20s2 t9:0/20s3
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 9 集
+      t5: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+  T0    t0:0/20s1 t1:0/20 t2:0/20s5 t3:0/20 t4:0/20s2 t5:0/20 t6:0/20s1 t7:0/20s1 t8:0/20s2 t9:0/20s5
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+  G     t0:0/20s17 t1:0/20s11 t2:6/20s4 t3:0/20s15 t4:0/20s11 t5:1/20s4 t6:0/20s6 t7:0/20s17 t8:0/20s18 t9:1/20s8
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 17 集
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 11 集
+      t2: 接触 6 集，首次接触中位步 188，pairs 前三 [('robot0_link5|wooden_cabinet_1_cabinet_top', 4), ('robot0_link6|wooden_cabinet_1_cabinet_top', 2)]，停滞 4 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 15 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 11 集
+      t5: 接触 1 集，首次接触中位步 202，pairs 前三 [('robot0_link5|akita_black_bowl_1_main', 1)]，停滞 4 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 6 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 17 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 18 集
+      t9: 接触 1 集，首次接触中位步 199，pairs 前三 [('robot0_link5|glazed_rim_porcelain_ramekin_1_main', 1), ('robot0_link5|table', 1)]，停滞 8 集
+  GTfc  t0:0/20s5 t1:0/20s1 t2:0/20s8 t3:0/20 t4:0/20 t5:0/20s2 t6:0/20s2 t7:0/20s6 t8:0/20s5 t9:0/20s3
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 8 集
+      t5: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 6 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+  GTw   t0:0/20s18 t1:0/20s11 t2:5/20s4 t3:0/20s15 t4:0/20s13 t5:1/20s5 t6:0/20s6 t7:0/20s19 t8:0/20s18 t9:0/20s8
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 18 集
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 11 集
+      t2: 接触 5 集，首次接触中位步 172，pairs 前三 [('robot0_link5|wooden_cabinet_1_cabinet_top', 3), ('robot0_link6|wooden_cabinet_1_cabinet_top', 2)]，停滞 4 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 15 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 13 集
+      t5: 接触 1 集，首次接触中位步 202，pairs 前三 [('robot0_link5|akita_black_bowl_1_main', 1)]，停滞 5 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 6 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 19 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 18 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 8 集
+  GTa   t0:0/20s4 t1:0/20s2 t2:0/20s8 t3:0/20s2 t4:0/20 t5:0/20s3 t6:0/20s2 t7:0/20s7 t8:0/20s5 t9:0/20s4
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 8 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t5: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 7 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+
+==== 冻结文件 sha256（重印）
+  protocol_models1.md              d50c54fe19c83655b15c3f16ca04dcbd2e08df52ae3489095c748b8c17778286
+  protocol_models1_decisions.md    76b7ff674d20f396434b6a626a6d5ac0815027d2d7246d55e8a3f0ea30c056bd
+  prereg_models1.py（本脚本）           fb3f636e0f7c499ad219ca6e97baa3b2180f8ce15b78627ef922a8511aca35f9
+  zoo_cells.sh                     3aa7ac574f61bd113648b180ec00c157cfd09ed2a53cbd4ce9237c5cfa5858d6

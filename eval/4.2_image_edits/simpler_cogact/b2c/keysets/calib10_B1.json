@@ -1,0 +1,122 @@
+[
+ {
+  "key": "B1__ep00__t9",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep00",
+  "trial": 9,
+  "env_seed": 545542017,
+  "reset": {
+   "episode_id": 0
+  },
+  "cluster": "ep00"
+ },
+ {
+  "key": "B1__ep01__t9",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep01",
+  "trial": 9,
+  "env_seed": 2698942290,
+  "reset": {
+   "episode_id": 1
+  },
+  "cluster": "ep01"
+ },
+ {
+  "key": "B1__ep02__t9",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep02",
+  "trial": 9,
+  "env_seed": 2964574015,
+  "reset": {
+   "episode_id": 2
+  },
+  "cluster": "ep02"
+ },
+ {
+  "key": "B1__ep03__t9",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep03",
+  "trial": 9,
+  "env_seed": 3973284503,
+  "reset": {
+   "episode_id": 3
+  },
+  "cluster": "ep03"
+ },
+ {
+  "key": "B1__ep04__t9",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep04",
+  "trial": 9,
+  "env_seed": 1253325828,
+  "reset": {
+   "episode_id": 4
+  },
+  "cluster": "ep04"
+ },
+ {
+  "key": "B1__ep05__t9",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep05",
+  "trial": 9,
+  "env_seed": 3626588622,
+  "reset": {
+   "episode_id": 5
+  },
+  "cluster": "ep05"
+ },
+ {
+  "key": "B1__ep06__t9",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep06",
+  "trial": 9,
+  "env_seed": 554453132,
+  "reset": {
+   "episode_id": 6
+  },
+  "cluster": "ep06"
+ },
+ {
+  "key": "B1__ep07__t9",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep07",
+  "trial": 9,
+  "env_seed": 1278658824,
+  "reset": {
+   "episode_id": 7
+  },
+  "cluster": "ep07"
+ },
+ {
+  "key": "B1__ep08__t9",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep08",
+  "trial": 9,
+  "env_seed": 3211415066,
+  "reset": {
+   "episode_id": 8
+  },
+  "cluster": "ep08"
+ },
+ {
+  "key": "B1__ep09__t9",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep09",
+  "trial": 9,
+  "env_seed": 3339078988,
+  "reset": {
+   "episode_id": 9
+  },
+  "cluster": "ep09"
+ }
+]

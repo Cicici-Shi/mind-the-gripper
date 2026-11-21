@@ -1,0 +1,43 @@
+{
+ "not_reach_10pt_drop(R3/H2/F1附句)": {
+  "B1": {
+   "zero_effect_half_pts": 4.948,
+   "reachable": true
+  },
+  "B2": {
+   "zero_effect_half_pts": 5.208,
+   "reachable": true
+  }
+ },
+ "lower(降低)": "总够得着（§14 冻结条件 3）",
+ "F_higher_lower_half_pts": {
+  "B1": {
+   "D_Fx_null_half": 4.167,
+   "D_Fx_one_side_floor_half": 13.281
+  },
+  "B2": {
+   "D_Fx_null_half": 3.646,
+   "D_Fx_one_side_floor_half": 12.24
+  }
+ },
+ "K_A_P_sign_only_k_halfwidth_v1": {
+  "B1": {
+   "a": 0.0313,
+   "b": 0.0154
+  },
+  "B2": {
+   "a": 0.0341,
+   "b": 0.0168
+  }
+ },
+ "min_keys_77_margin_rough": {
+  "B1": {
+   "phase1_C4_closed": "120/120",
+   "expected_pairs_of_96_if_independent": 96.0
+  },
+  "B2": {
+   "phase1_C4_closed": "114/120",
+   "expected_pairs_of_96_if_independent": 86.6
+  }
+ }
+}

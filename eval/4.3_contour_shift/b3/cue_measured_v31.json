@@ -1,0 +1,250 @@
+{
+ "obcheck_v31": {
+  "B1": {
+   "keys": 10,
+   "gpx_equal": 10,
+   "frames": 300,
+   "pre_frames": 45,
+   "c1_equal": [
+    300,
+    300
+   ],
+   "c2_frames_with_outT_diff": 0,
+   "c2_outT_diff_max": 0,
+   "T_empty_frames": 0,
+   "rate-69": {
+    "median": 1.0,
+    "p5": 1.0,
+    "min": 1.0,
+    "frac_lt_0.8": 0.0,
+    "inview_lt_0.8": 0.0
+   },
+   "c3_pass-69": true,
+   "on_container_frame_frac-69": {
+    "all": 1.0,
+    "pre_close": 1.0
+   },
+   "rate+69": {
+    "median": 1.0,
+    "p5": 1.0,
+    "min": 1.0,
+    "frac_lt_0.8": 0.0,
+    "inview_lt_0.8": 0.0
+   },
+   "c3_pass+69": true,
+   "on_container_frame_frac+69": {
+    "all": 1.0,
+    "pre_close": 1.0
+   },
+   "tcp_in_Gbbox_frac": 1.0,
+   "extr_constant_keys": 10,
+   "rest_drift_xy_m": {
+    "max_over_keys": 0.01678596538203436,
+    "median_of_key_max": 2.109842081612077e-07,
+    "steps_median": 13.0
+   },
+   "half_s0_equal_c4": [
+    300,
+    300
+   ],
+   "half-17": {
+    "out_of_view_frame_frac": 0.0,
+    "protected_frac_mean": 0.0331,
+    "on_arm_frac_mean": 0.0487,
+    "line_vanish_frame_frac": 0.0,
+    "n": 45
+   },
+   "half+17": {
+    "out_of_view_frame_frac": 0.0,
+    "protected_frac_mean": 0.0367,
+    "on_arm_frac_mean": 0.0552,
+    "line_vanish_frame_frac": 0.0,
+    "n": 45
+   },
+   "half_centroid_err_max": 2.842170943040401e-14,
+   "half_centroid_n": 557,
+   "c1_pass": true,
+   "c2_pass": true,
+   "abandon_OB": false
+  },
+  "B2": {
+   "keys": 10,
+   "gpx_equal": 10,
+   "frames": 150,
+   "pre_frames": 39,
+   "c1_equal": [
+    150,
+    150
+   ],
+   "c2_frames_with_outT_diff": 0,
+   "c2_outT_diff_max": 0,
+   "T_empty_frames": 0,
+   "rate-69": {
+    "median": 1.0,
+    "p5": 1.0,
+    "min": 1.0,
+    "frac_lt_0.8": 0.0,
+    "inview_lt_0.8": 0.0
+   },
+   "c3_pass-69": true,
+   "on_container_frame_frac-69": {
+    "all": 0.56,
+    "pre_close": 0.1282
+   },
+   "rate+69": {
+    "median": 1.0,
+    "p5": 1.0,
+    "min": 1.0,
+    "frac_lt_0.8": 0.0,
+    "inview_lt_0.8": 0.0
+   },
+   "c3_pass+69": true,
+   "on_container_frame_frac+69": {
+    "all": 0.5333,
+    "pre_close": 0.1026
+   },
+   "tcp_in_Gbbox_frac": 1.0,
+   "extr_constant_keys": 10,
+   "rest_drift_xy_m": {
+    "max_over_keys": 0.0009868245768897208,
+    "median_of_key_max": 4.0553152087220027e-07,
+    "steps_median": 15.0
+   },
+   "half_s0_equal_c4": [
+    150,
+    150
+   ],
+   "half-17": {
+    "out_of_view_frame_frac": 0.0,
+    "protected_frac_mean": 0.0564,
+    "on_arm_frac_mean": 0.0613,
+    "line_vanish_frame_frac": 0.0,
+    "n": 39
+   },
+   "half+17": {
+    "out_of_view_frame_frac": 0.0,
+    "protected_frac_mean": 0.0602,
+    "on_arm_frac_mean": 0.0739,
+    "line_vanish_frame_frac": 0.0,
+    "n": 39
+   },
+   "half_centroid_err_max": 2.842170943040401e-14,
+   "half_centroid_n": 300,
+   "c1_pass": true,
+   "c2_pass": true,
+   "abandon_OB": false
+  }
+ },
+ "sr_pseudo_pair_halfwidths": {
+  "B1": {
+   "D_SR_null": {
+    "est": -5.208,
+    "lo": -10.417,
+    "hi": -0.521,
+    "half": 4.948,
+    "n": 96
+   },
+   "D_SR_floor": {
+    "est": -42.708,
+    "lo": -57.292,
+    "hi": -29.167,
+    "half": 14.062,
+    "n": 96
+   },
+   "D_Fx_null": {
+    "est": -1.562,
+    "lo": -5.729,
+    "hi": 2.604,
+    "half": 4.167,
+    "n": 96
+   },
+   "D_Fx_floor": {
+    "est": 35.417,
+    "lo": 22.396,
+    "hi": 48.958,
+    "half": 13.281,
+    "n": 96
+   },
+   "note": "D_SR 与 D_F 同一伪对算法（零效应 / 见底）；D_Fb 与 D_Fa 同一伪对算法（无差别 / 一边见底）",
+   "reach_not_10pt_drop": true
+  },
+  "B2": {
+   "D_SR_null": {
+    "est": 3.125,
+    "lo": -2.083,
+    "hi": 8.333,
+    "half": 5.208,
+    "n": 96
+   },
+   "D_SR_floor": {
+    "est": -33.854,
+    "lo": -46.875,
+    "hi": -21.875,
+    "half": 12.5,
+    "n": 96
+   },
+   "D_Fx_null": {
+    "est": 2.604,
+    "lo": -1.042,
+    "hi": 6.25,
+    "half": 3.646,
+    "n": 96
+   },
+   "D_Fx_floor": {
+    "est": 36.458,
+    "lo": 24.479,
+    "hi": 48.958,
+    "half": 12.24,
+    "n": 96
+   },
+   "note": "D_SR 与 D_F 同一伪对算法（零效应 / 见底）；D_Fb 与 D_Fa 同一伪对算法（无差别 / 一边见底）",
+   "reach_not_10pt_drop": true
+  }
+ },
+ "localq_q0": {
+  "B1": {
+   "D_a": {
+    "est": -0.7176944741211738,
+    "lo": -0.7936468124415812,
+    "hi": -0.6399809053848401,
+    "n_keys": 120,
+    "n_clusters": 24
+   },
+   "D_b": {
+    "est": -0.6073453161022653,
+    "lo": -0.6539583501863572,
+    "hi": -0.5580680071310922,
+    "n_keys": 120,
+    "n_clusters": 24
+   },
+   "excluded": {
+    "check1": 0,
+    "check2": 0,
+    "error_only": 0
+   }
+  },
+  "B2": {
+   "D_a": {
+    "est": -0.520429042627886,
+    "lo": -0.5834543148653901,
+    "hi": -0.45450687708626103,
+    "n_keys": 120,
+    "n_clusters": 24
+   },
+   "D_b": {
+    "est": -0.5116922797033496,
+    "lo": -0.5614087797414251,
+    "hi": -0.46009465505241287,
+    "n_keys": 120,
+    "n_clusters": 24
+   },
+   "excluded": {
+    "check1": 0,
+    "check2": 0,
+    "error_only": 0
+   }
+  }
+ },
+ "ref10_v1_file": "cue_ref10.json",
+ "throughput_note": "见交回"
+}

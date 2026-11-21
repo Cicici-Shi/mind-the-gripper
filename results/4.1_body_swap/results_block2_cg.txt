@@ -1,0 +1,180 @@
+# prereg_block2_cg.py sha256 138f1fe0a0855163261507cca72e7825c26b92f376b4b864f32e1f8b02a33d1a; prereg_block2.py sha256 d4f87cb555e5921757b1c3bee32cb3fd2d1a96cfbcbb98e14eb361e4181522a8; run 2026-10-31T19:26:03+08:00 on xlogin1
+# Section 1 (up to the ALIGNED banner) is byte-identical to prereg_block2_final.txt (checked with cmp).
+
+######## OpenVLA-OFT: common keys 200; cells SRC=200, S=200, T0=200, IIWA=200, IIWA_T=200, UR5e=200, UR5e_T=200, UR5e_R=200, G=200, G_T=200
+  SR %: SRC 97.0, S 97.0, T0 98.5, IIWA 93.0, IIWA_T 96.0, UR5e 83.0, UR5e_T 84.0, UR5e_R 97.5, G 53.5, G_T 89.5
+  gate T0: query-frame IK misses 0.00% -> PASS
+  gate IIWA_T: query-frame IK misses 0.00% -> PASS
+  gate UR5e_T: query-frame IK misses 3.43% -> FAIL (condition does not count)
+  gate UR5e_R: query-frame IK misses 0.00% -> PASS
+  gate G_T: query-frame IK misses 0.00% -> PASS
+  SR(S)-SR(SRC)                  +0.0 pp  95% [  -3.0,   +3.0]  90% [  -2.5,   +2.5]
+  d5 = SR(T0)-SR(S)              +1.5 pp  95% [  -0.5,   +4.0]  90% [  +0.0,   +3.5]
+  recovery(UR5e)                 -0.5 pp  95% [  -4.5,   +3.5]  90% [  -4.0,   +3.0]
+  recovery(IIWA)                 +1.5 pp  95% [  -2.5,   +5.5]  90% [  -2.0,   +5.0]
+  recovery(G)                   +34.5 pp  95% [ +26.5,  +42.5]  90% [ +27.5,  +41.5]
+  d_rev = SR(UR5e_R)-SR(T0)      -1.0 pp  95% [  -3.5,   +1.5]  90% [  -3.0,   +1.0]
+  interaction(UR5e)              +0.0 pp  95% [  -4.0,   +4.0]  90% [  -3.5,   +3.5]
+  -- decisions (OpenVLA-OFT)
+  P5 twin pipeline: equivalent within +-5
+  P3 UR5e painting recovers >= half: falsified
+  P4 Robotiq painting recovers < half: falsified
+  P6 seeing a UR5e costs < half: confirmed
+
+######## pi0.5-LIBERO: common keys 200; cells SRC=200, S=200, T0=200, IIWA=200, IIWA_T=200, UR5e=200, UR5e_T=200, UR5e_R=200, G=200, G_T=200
+  SR %: SRC 97.5, S 96.0, T0 95.5, IIWA 97.0, IIWA_T 97.5, UR5e 81.0, UR5e_T 86.0, UR5e_R 98.0, G 82.0, G_T 90.0
+  gate T0: query-frame IK misses 0.00% -> PASS
+  gate IIWA_T: query-frame IK misses 0.00% -> PASS
+  gate UR5e_T: query-frame IK misses 4.75% -> FAIL (condition does not count)
+  gate UR5e_R: query-frame IK misses 0.00% -> PASS
+  gate G_T: query-frame IK misses 0.00% -> PASS
+  SR(S)-SR(SRC)                  -1.5 pp  95% [  -4.5,   +1.5]  90% [  -4.0,   +1.0]
+  d5 = SR(T0)-SR(S)              -0.5 pp  95% [  -4.0,   +2.5]  90% [  -3.5,   +2.0]
+  recovery(UR5e)                 +5.5 pp  95% [  +0.0,  +11.0]  90% [  +1.0,  +10.0]
+  recovery(IIWA)                 +1.0 pp  95% [  -2.5,   +5.0]  90% [  -2.0,   +4.0]
+  recovery(G)                    +8.5 pp  95% [  +2.5,  +14.5]  90% [  +3.5,  +13.5]
+  d_rev = SR(UR5e_R)-SR(T0)      +2.5 pp  95% [  -1.0,   +6.0]  90% [  -0.5,   +5.5]
+  interaction(UR5e)              -7.5 pp  95% [ -13.5,   -1.5]  90% [ -12.5,   -2.5]
+  -- decisions (pi0.5-LIBERO)
+  P5 twin pipeline: equivalent within +-5
+  P3 UR5e painting recovers >= half: inconclusive
+  P4 Robotiq painting recovers < half: confirmed
+  P6 seeing a UR5e costs < half: confirmed
+
+######## P7 replication (sign agreement and CI overlap)
+  SR(S)-SR(SRC)                OFT   +0.0  pi0.5   -1.5  -> indeterminate
+  d5 = SR(T0)-SR(S)            OFT   +1.5  pi0.5   -0.5  -> indeterminate
+  recovery(UR5e)               OFT   -0.5  pi0.5   +5.5  -> indeterminate
+  recovery(IIWA)               OFT   +1.5  pi0.5   +1.0  -> replicates
+  recovery(G)                  OFT  +34.5  pi0.5   +8.5  -> indeterminate
+  d_rev = SR(UR5e_R)-SR(T0)    OFT   -1.0  pi0.5   +2.5  -> indeterminate
+  interaction(UR5e)            OFT   +0.0  pi0.5   -7.5  -> does not replicate
+
+
+==================== ALIGNED (_cg) re-analysis, Appendix A.2 swap: S: sham -> sham_cg, IIWA: iiwa -> iiwa_cg, UR5e: ur5e -> ur5e_cg ====================
+
+######## OpenVLA-OFT [_cg]: common keys 200; cells SRC=200, S=200, T0=200, IIWA=200, IIWA_T=200, UR5e=200, UR5e_T=200, UR5e_R=200, G=200, G_T=200
+  SR %: SRC 97.0, S 98.5, T0 98.5, IIWA 93.5, IIWA_T 96.0, UR5e 85.5, UR5e_T 84.0, UR5e_R 97.5, G 53.5, G_T 89.5
+  gate T0: query-frame IK misses 0.00% -> PASS
+  gate IIWA_T: query-frame IK misses 0.00% -> PASS
+  gate UR5e_T: query-frame IK misses 3.43% -> FAIL (condition does not count)
+  gate UR5e_R: query-frame IK misses 0.00% -> PASS
+  gate G_T: query-frame IK misses 0.00% -> PASS
+  SR(S)-SR(SRC)                  +1.5 pp  95% [  -1.0,   +4.0]  90% [  -0.5,   +3.5]
+  d5 = SR(T0)-SR(S)              +0.0 pp  95% [  -2.0,   +2.0]  90% [  -1.5,   +1.5]
+  recovery(UR5e)                 -1.5 pp  95% [  -5.5,   +2.5]  90% [  -4.5,   +1.5]
+  recovery(IIWA)                 +2.5 pp  95% [  -1.5,   +7.0]  90% [  -1.0,   +6.0]
+  recovery(G)                   +36.0 pp  95% [ +28.0,  +44.0]  90% [ +29.5,  +42.5]
+  d_rev = SR(UR5e_R)-SR(T0)      -1.0 pp  95% [  -3.5,   +1.5]  90% [  -3.0,   +1.0]
+  interaction(UR5e)              +2.5 pp  95% [  -2.0,   +7.0]  90% [  -1.0,   +6.0]
+  -- decisions (OpenVLA-OFT [_cg])
+  P5 twin pipeline: equivalent within +-5
+  P3 UR5e painting recovers >= half: falsified
+  P4 Robotiq painting recovers < half: falsified
+  P6 seeing a UR5e costs < half: confirmed
+
+######## pi0.5-LIBERO [_cg]: common keys 200; cells SRC=200, S=200, T0=200, IIWA=200, IIWA_T=200, UR5e=200, UR5e_T=200, UR5e_R=200, G=200, G_T=200
+  SR %: SRC 97.5, S 99.0, T0 95.5, IIWA 97.5, IIWA_T 97.5, UR5e 84.0, UR5e_T 86.0, UR5e_R 98.0, G 82.0, G_T 90.0
+  gate T0: query-frame IK misses 0.00% -> PASS
+  gate IIWA_T: query-frame IK misses 0.00% -> PASS
+  gate UR5e_T: query-frame IK misses 4.75% -> FAIL (condition does not count)
+  gate UR5e_R: query-frame IK misses 0.00% -> PASS
+  gate G_T: query-frame IK misses 0.00% -> PASS
+  SR(S)-SR(SRC)                  +1.5 pp  95% [  -0.5,   +4.0]  90% [  +0.0,   +3.5]
+  d5 = SR(T0)-SR(S)              -3.5 pp  95% [  -6.5,   -1.0]  90% [  -6.0,   -1.0]
+  recovery(UR5e)                 +5.5 pp  95% [  +0.5,  +10.5]  90% [  +1.5,  +10.0]
+  recovery(IIWA)                 +3.5 pp  95% [  -0.5,   +7.5]  90% [  +0.0,   +7.0]
+  recovery(G)                   +11.5 pp  95% [  +6.0,  +17.5]  90% [  +6.5,  +16.5]
+  d_rev = SR(UR5e_R)-SR(T0)      +2.5 pp  95% [  -1.0,   +6.0]  90% [  -0.5,   +5.5]
+  interaction(UR5e)              -4.5 pp  95% [ -10.5,   +1.0]  90% [  -9.5,   +0.0]
+  -- decisions (pi0.5-LIBERO [_cg])
+  P5 twin pipeline: twin cost NOT excluded
+  P3 UR5e painting recovers >= half: inconclusive
+  P4 Robotiq painting recovers < half: confirmed
+  P6 seeing a UR5e costs < half: confirmed
+
+######## P7 replication (sign agreement and CI overlap)
+  SR(S)-SR(SRC)                OFT   +1.5  pi0.5   +1.5  -> replicates
+  d5 = SR(T0)-SR(S)            OFT   +0.0  pi0.5   -3.5  -> does not replicate
+  recovery(UR5e)               OFT   -1.5  pi0.5   +5.5  -> does not replicate
+  recovery(IIWA)               OFT   +2.5  pi0.5   +3.5  -> replicates
+  recovery(G)                  OFT  +36.0  pi0.5  +11.5  -> indeterminate
+  d_rev = SR(UR5e_R)-SR(T0)    OFT   -1.0  pi0.5   +2.5  -> indeterminate
+  interaction(UR5e)            OFT   +2.5  pi0.5   -4.5  -> indeterminate
+
+
+==================== Appendix A / R9 extras ====================
+
+######## OpenVLA-OFT extras: joint keys 200; SRC=200, sham=200, sham_cg=200, iiwa=200, iiwa_cg=200, ur5e=200, ur5e_cg=200, G=200
+  SR %: SRC 97.0, sham 97.0, sham_cg 98.5, iiwa 93.0, iiwa_cg 93.5, ur5e 83.0, ur5e_cg 85.5, G 53.5
+  SR(sham_cg)-SR(SRC)              +1.5 pp  95% [  -1.0,   +4.0]  90% [  -0.5,   +3.5]  discordant keys 7 (5 +, 2 -)
+  SR(sham)-SR(SRC)                 +0.0 pp  95% [  -3.0,   +3.0]  90% [  -2.5,   +2.5]  discordant keys 8 (4 +, 4 -)
+  d_cg(sham) = sham_cg-sham        +1.5 pp  95% [  -0.5,   +4.0]  90% [  +0.0,   +3.5]  discordant keys 5 (4 +, 1 -)
+  d_cg(iiwa) = iiwa_cg-iiwa        +0.5 pp  95% [  -2.5,   +3.5]  90% [  -2.0,   +3.0]  discordant keys 9 (5 +, 4 -)
+  d_cg(ur5e) = ur5e_cg-ur5e        +2.5 pp  95% [  -1.0,   +6.0]  90% [  -0.5,   +5.5]  discordant keys 13 (9 +, 4 -)
+  drop_nat(G) vs sham             -43.5 pp  95% [ -51.0,  -36.0]  90% [ -49.5,  -37.5]  discordant keys 93 (3 +, 90 -)
+  drop_nat(G) vs sham_cg          -45.0 pp  95% [ -52.0,  -38.0]  90% [ -51.0,  -39.0]  discordant keys 94 (2 +, 92 -)
+  drop_nat(IIWA) vs sham           -4.0 pp  95% [  -8.5,   +0.0]  90% [  -7.5,   -0.5]  discordant keys 18 (5 +, 13 -)
+  drop_nat(IIWA_cg) vs sham_cg     -5.0 pp  95% [  -9.0,   -1.5]  90% [  -8.5,   -2.0]  discordant keys 16 (3 +, 13 -)
+  drop_nat(UR5e) vs sham          -14.0 pp  95% [ -19.5,   -9.0]  90% [ -18.5,   -9.5]  discordant keys 32 (2 +, 30 -)
+  drop_nat(UR5e_cg) vs sham_cg    -13.0 pp  95% [ -18.0,   -8.5]  90% [ -17.0,   -9.0]  discordant keys 28 (1 +, 27 -)
+  R9 prediction |d_cg(sham)| <= 3 (point): |+1.5| -> holds; 95% CI inside [-3, +3]: no
+  A.3 trigger |d_cg(sham)| > 5 (point): not triggered
+  per task sham -> sham_cg: t0 20->20/20, t1 20->20/20, t2 20->20/20, t3 19->20/20, t4 19->20/20, t5 20->20/20, t6 19->19/20, t7 19->20/20, t8 19->20/20, t9 19->18/20
+
+######## pi0.5-LIBERO extras: joint keys 200; SRC=200, sham=200, sham_cg=200, iiwa=200, iiwa_cg=200, ur5e=200, ur5e_cg=200, G=200
+  SR %: SRC 97.5, sham 96.0, sham_cg 99.0, iiwa 97.0, iiwa_cg 97.5, ur5e 81.0, ur5e_cg 84.0, G 82.0
+  SR(sham_cg)-SR(SRC)              +1.5 pp  95% [  -0.5,   +4.0]  90% [  +0.0,   +3.5]  discordant keys 5 (4 +, 1 -)
+  SR(sham)-SR(SRC)                 -1.5 pp  95% [  -4.5,   +1.5]  90% [  -4.0,   +1.0]  discordant keys 9 (3 +, 6 -)
+  d_cg(sham) = sham_cg-sham        +3.0 pp  95% [  +0.0,   +6.0]  90% [  +0.5,   +5.5]  discordant keys 10 (8 +, 2 -)
+  d_cg(iiwa) = iiwa_cg-iiwa        +0.5 pp  95% [  -2.0,   +3.0]  90% [  -1.5,   +2.5]  discordant keys 7 (4 +, 3 -)
+  d_cg(ur5e) = ur5e_cg-ur5e        +3.0 pp  95% [  -1.0,   +7.0]  90% [  -0.5,   +6.5]  discordant keys 16 (11 +, 5 -)
+  drop_nat(G) vs sham             -14.0 pp  95% [ -19.5,   -9.0]  90% [ -18.5,   -9.5]  discordant keys 34 (3 +, 31 -)
+  drop_nat(G) vs sham_cg          -17.0 pp  95% [ -22.5,  -12.0]  90% [ -21.5,  -12.5]  discordant keys 34 (0 +, 34 -)
+  drop_nat(IIWA) vs sham           +1.0 pp  95% [  -2.0,   +4.0]  90% [  -1.5,   +3.5]  discordant keys 10 (6 +, 4 -)
+  drop_nat(IIWA_cg) vs sham_cg     -1.5 pp  95% [  -4.0,   +1.0]  90% [  -3.5,   +0.5]  discordant keys 7 (2 +, 5 -)
+  drop_nat(UR5e) vs sham          -15.0 pp  95% [ -20.5,   -9.5]  90% [ -19.5,  -10.5]  discordant keys 36 (3 +, 33 -)
+  drop_nat(UR5e_cg) vs sham_cg    -15.0 pp  95% [ -20.0,  -10.0]  90% [ -19.5,  -11.0]  discordant keys 30 (0 +, 30 -)
+  R9 prediction |d_cg(sham)| <= 3 (point): |+3.0| -> holds; 95% CI inside [-3, +3]: no
+  A.3 trigger |d_cg(sham)| > 5 (point): not triggered
+  per task sham -> sham_cg: t0 20->20/20, t1 20->20/20, t2 16->18/20, t3 19->20/20, t4 20->20/20, t5 20->20/20, t6 19->20/20, t7 20->20/20, t8 20->20/20, t9 18->20/20
+
+######## block-1 P2 gripper vs arm: SR(GRP) - SR(ARM) (OFT; prereg.py method)
+GRP - IIWA     n=200  -81.0 pp  95% CI [ -86.5,  -75.5]  -> not separated (gripper hurts MORE: upper bound < 0)  [original]
+GRP - UR5E     n=200  -71.0 pp  95% CI [ -78.0,  -64.0]  -> not separated (gripper hurts MORE: upper bound < 0)  [original]
+GRP - IIWA_CG  n=200  -81.5 pp  95% CI [ -86.5,  -76.0]  -> not separated (gripper hurts MORE: upper bound < 0)  [Appendix A.2 extra]
+GRP - UR5E_CG  n=200  -73.5 pp  95% CI [ -80.0,  -66.5]  -> not separated (gripper hurts MORE: upper bound < 0)  [not listed in A.2; shown for symmetry]
+
+
+==================== Side by side: original | aligned (_cg) ====================
+  -- OFT
+  SR(S)-SR(SRC)                  +0.0 [  -3.0,   +3.0] |   +1.5 [  -1.0,   +4.0]  (90%: [ -2.5,  +2.5] | [ -0.5,  +3.5])
+  d5 = SR(T0)-SR(S)              +1.5 [  -0.5,   +4.0] |   +0.0 [  -2.0,   +2.0]  (90%: [ +0.0,  +3.5] | [ -1.5,  +1.5])
+  recovery(UR5e)                 -0.5 [  -4.5,   +3.5] |   -1.5 [  -5.5,   +2.5]  (90%: [ -4.0,  +3.0] | [ -4.5,  +1.5])
+  recovery(IIWA)                 +1.5 [  -2.5,   +5.5] |   +2.5 [  -1.5,   +7.0]  (90%: [ -2.0,  +5.0] | [ -1.0,  +6.0])
+  recovery(G)                   +34.5 [ +26.5,  +42.5] |  +36.0 [ +28.0,  +44.0]  (90%: [+27.5, +41.5] | [+29.5, +42.5])
+  d_rev = SR(UR5e_R)-SR(T0)      -1.0 [  -3.5,   +1.5] |   -1.0 [  -3.5,   +1.5]  (90%: [ -3.0,  +1.0] | [ -3.0,  +1.0])
+  interaction(UR5e)              +0.0 [  -4.0,   +4.0] |   +2.5 [  -2.0,   +7.0]  (90%: [ -3.5,  +3.5] | [ -1.0,  +6.0])
+  -- pi0.5
+  SR(S)-SR(SRC)                  -1.5 [  -4.5,   +1.5] |   +1.5 [  -0.5,   +4.0]  (90%: [ -4.0,  +1.0] | [ +0.0,  +3.5])
+  d5 = SR(T0)-SR(S)              -0.5 [  -4.0,   +2.5] |   -3.5 [  -6.5,   -1.0]  (90%: [ -3.5,  +2.0] | [ -6.0,  -1.0])
+  recovery(UR5e)                 +5.5 [  +0.0,  +11.0] |   +5.5 [  +0.5,  +10.5]  (90%: [ +1.0, +10.0] | [ +1.5, +10.0])
+  recovery(IIWA)                 +1.0 [  -2.5,   +5.0] |   +3.5 [  -0.5,   +7.5]  (90%: [ -2.0,  +4.0] | [ +0.0,  +7.0])
+  recovery(G)                    +8.5 [  +2.5,  +14.5] |  +11.5 [  +6.0,  +17.5]  (90%: [ +3.5, +13.5] | [ +6.5, +16.5])
+  d_rev = SR(UR5e_R)-SR(T0)      +2.5 [  -1.0,   +6.0] |   +2.5 [  -1.0,   +6.0]  (90%: [ -0.5,  +5.5] | [ -0.5,  +5.5])
+  interaction(UR5e)              -7.5 [ -13.5,   -1.5] |   -4.5 [ -10.5,   +1.0]  (90%: [-12.5,  -2.5] | [ -9.5,  +0.0])
+  OFT    P5: equivalent within +-5            | equivalent within +-5            (same)
+  OFT    P3: falsified                        | falsified                        (same)
+  OFT    P4: falsified                        | falsified                        (same)
+  OFT    P6: confirmed                        | confirmed                        (same)
+  pi0.5  P5: equivalent within +-5            | twin cost NOT excluded           (CHANGED)
+  pi0.5  P3: inconclusive                     | inconclusive                     (same)
+  pi0.5  P4: confirmed                        | confirmed                        (same)
+  pi0.5  P6: confirmed                        | confirmed                        (same)
+  P7 SR(S)-SR(SRC)                indeterminate        | replicates           (CHANGED)
+  P7 d5 = SR(T0)-SR(S)            indeterminate        | does not replicate   (CHANGED)
+  P7 recovery(UR5e)               indeterminate        | does not replicate   (CHANGED)
+  P7 recovery(IIWA)               replicates           | replicates           (same)
+  P7 recovery(G)                  indeterminate        | indeterminate        (same)
+  P7 d_rev = SR(UR5e_R)-SR(T0)    indeterminate        | indeterminate        (same)
+  P7 interaction(UR5e)            does not replicate   | indeterminate        (CHANGED)

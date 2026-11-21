@@ -1,0 +1,149 @@
+{
+ "note": "bench2 冻结清单候选；协调方核对后改名为 FROZEN_bench2",
+ "code_sha256": {
+  "eval_views.py": "8aee7138f91eb12f3171945439ab80ccc900e00c20741d0252e45d40c71c86f7",
+  "views.py": "24107e2bc8ec6c1502643079ed7aa9d2825dfe44611f342a41cf2daaacaac0b5",
+  "keys.py": "8e37921746a038753ad06d17cea42a9b696003f043036866584867eeae7eadd5",
+  "gate.py": "dd8db5a5428382f4ddd9b98ac6c699e0cf408534e6507fe907d02dcfd90d947f",
+  "readout.py": "56c05bc4102e55910999754e021a65dec144ef74caee3f565a57c752eded5b3b",
+  "submit_formal.sh": "5b6d365d90f02222e1555efdbffa8365ecaf268985516f53f0273301ed67a29e",
+  "jobs/common.sh": "efc12c165e7835ba81b863fb3226ed6c8d4a20b1c529a38a7874c572a24cfa2d"
+ },
+ "keylist_sha256": {
+  "B1": "33b411ea8a54e7afeb8bd80f72c2116473d07a3d78998f00c402059b60ffc2d2",
+  "B2": "624ea7a07805362b7e2efb425dc21ab36ecf0979f94f714e4194ae66f812193d",
+  "F1": "48e6e6a817f6b40528a3b202ac64c051644bb9efe8b63afcb33c862c31f63d30",
+  "F2": "1e53ce8a1c1a329ba90c52cc59c08828379b46bb537530f386d2ec5e6ffa41d3"
+ },
+ "blocks": {
+  "B1": {
+   "tasks": [
+    "widowx_put_eggplant_in_basket"
+   ],
+   "n_keys": 120,
+   "L": 8,
+   "L_rule_base": 8,
+   "iou_lag_outline_median": 0.06208164703406413,
+   "line_width": 8,
+   "query_every": 4,
+   "control_freq": 5.0,
+   "max_episode_steps": 120,
+   "g_links": [
+    "gripper_link",
+    "gripper_prop_link",
+    "gripper_bar_link",
+    "fingers_link",
+    "left_finger_link",
+    "right_finger_link",
+    "ee_gripper_link"
+   ],
+   "protect": [
+    "eggplant"
+   ],
+   "protect_expect_n": 1,
+   "blacken_weak": false,
+   "blacken_strength": 35.63689931251439,
+   "lag_weak": false
+  },
+  "B2": {
+   "tasks": [
+    "widowx_spoon_on_towel"
+   ],
+   "n_keys": 120,
+   "L": 8,
+   "L_rule_base": 8,
+   "iou_lag_outline_median": 0.07689974699105633,
+   "line_width": 8,
+   "query_every": 4,
+   "control_freq": 5.0,
+   "max_episode_steps": 60,
+   "g_links": [
+    "gripper_link",
+    "gripper_prop_link",
+    "gripper_bar_link",
+    "fingers_link",
+    "left_finger_link",
+    "right_finger_link",
+    "ee_gripper_link"
+   ],
+   "protect": [
+    "bridge_spoon_generated_modified",
+    "table_cloth_generated_shorter"
+   ],
+   "protect_expect_n": 2,
+   "blacken_weak": false,
+   "blacken_strength": 55.16968341586363,
+   "lag_weak": false
+  },
+  "F1": {
+   "tasks": [
+    "google_robot_pick_horizontal_coke_can",
+    "google_robot_pick_vertical_coke_can",
+    "google_robot_pick_standing_coke_can"
+   ],
+   "n_keys": 120,
+   "L": 4,
+   "L_rule_base": 4,
+   "iou_lag_outline_median": 0.3366344198801332,
+   "line_width": 8,
+   "query_every": 2,
+   "control_freq": 3.0,
+   "max_episode_steps": 80,
+   "g_links": [
+    "link_gripper",
+    "link_gripper_tcp",
+    "link_finger_right",
+    "link_finger_tip_right",
+    "link_finger_nail_right",
+    "link_finger_left",
+    "link_finger_tip_left",
+    "link_finger_nail_left"
+   ],
+   "protect": [
+    "opened_coke_can"
+   ],
+   "protect_expect_n": 1,
+   "blacken_weak": false,
+   "blacken_strength": 148.59369560985877,
+   "lag_weak": false
+  },
+  "F2": {
+   "tasks": [
+    "google_robot_move_near_v0"
+   ],
+   "n_keys": 120,
+   "L": 4,
+   "L_rule_base": 4,
+   "iou_lag_outline_median": 0.3437780366804709,
+   "line_width": 8,
+   "query_every": 2,
+   "control_freq": 3.0,
+   "max_episode_steps": 80,
+   "g_links": [
+    "link_gripper",
+    "link_gripper_tcp",
+    "link_finger_right",
+    "link_finger_tip_right",
+    "link_finger_nail_right",
+    "link_finger_left",
+    "link_finger_tip_left",
+    "link_finger_nail_left"
+   ],
+   "protect": [
+    "blue_plastic_bottle",
+    "baked_opened_pepsi_can",
+    "orange",
+    "baked_opened_7up_can",
+    "baked_apple",
+    "baked_sponge",
+    "baked_opened_coke_can",
+    "baked_opened_redbull_can"
+   ],
+   "protect_expect_n": 3,
+   "blacken_weak": false,
+   "blacken_strength": 147.76339546156953,
+   "lag_weak": false
+  }
+ },
+ "vk_icd_filenames": "/usr/share/vulkan/icd.d/nvidia_icd.json"
+}

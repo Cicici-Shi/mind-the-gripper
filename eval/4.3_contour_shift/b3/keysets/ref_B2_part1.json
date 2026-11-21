@@ -1,0 +1,62 @@
+[
+ {
+  "key": "B2__ep01__t9",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep01",
+  "trial": 9,
+  "env_seed": 669486401,
+  "reset": {
+   "episode_id": 1
+  },
+  "cluster": "ep01"
+ },
+ {
+  "key": "B2__ep03__t9",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep03",
+  "trial": 9,
+  "env_seed": 1114923306,
+  "reset": {
+   "episode_id": 3
+  },
+  "cluster": "ep03"
+ },
+ {
+  "key": "B2__ep05__t9",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep05",
+  "trial": 9,
+  "env_seed": 3744899748,
+  "reset": {
+   "episode_id": 5
+  },
+  "cluster": "ep05"
+ },
+ {
+  "key": "B2__ep07__t9",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep07",
+  "trial": 9,
+  "env_seed": 444726618,
+  "reset": {
+   "episode_id": 7
+  },
+  "cluster": "ep07"
+ },
+ {
+  "key": "B2__ep09__t9",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep09",
+  "trial": 9,
+  "env_seed": 2022497879,
+  "reset": {
+   "episode_id": 9
+  },
+  "cluster": "ep09"
+ }
+]

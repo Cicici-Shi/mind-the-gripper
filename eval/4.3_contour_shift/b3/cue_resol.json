@@ -1,0 +1,56 @@
+{
+ "B1": {
+  "n_closed": 120,
+  "n_pseudo_pairs": 120,
+  "E_median_in_px": 2.258,
+  "E_iqr_in_px": [
+   -0.767,
+   10.43
+  ],
+  "within_episode_sd_median_in_px": 6.943,
+  "null_O_median_ci": [
+   -0.25,
+   0.494
+  ],
+  "null_O_ci_halfwidth_px": 0.372,
+  "k_ci_halfwidth": {
+   "a": 0.0313,
+   "b": 0.0154
+  },
+  "reachable": {
+   "row1 (k_b 区间宽须 < 0.6，k_a < 1.2)": true,
+   "row3 (k_b 区间宽须 < 0.4，k_a < 0.8)": true,
+   "为负 at k = -1 (半宽 < 1)": {
+    "a": true,
+    "b": true
+   }
+  }
+ },
+ "B2": {
+  "n_closed": 114,
+  "n_pseudo_pairs": 113,
+  "E_median_in_px": 0.904,
+  "E_iqr_in_px": [
+   -4.583,
+   6.477
+  ],
+  "within_episode_sd_median_in_px": 3.036,
+  "null_O_median_ci": [
+   -0.378,
+   0.434
+  ],
+  "null_O_ci_halfwidth_px": 0.406,
+  "k_ci_halfwidth": {
+   "a": 0.0341,
+   "b": 0.0168
+  },
+  "reachable": {
+   "row1 (k_b 区间宽须 < 0.6，k_a < 1.2)": true,
+   "row3 (k_b 区间宽须 < 0.4，k_a < 0.8)": true,
+   "为负 at k = -1 (半宽 < 1)": {
+    "a": true,
+    "b": true
+   }
+  }
+ }
+}

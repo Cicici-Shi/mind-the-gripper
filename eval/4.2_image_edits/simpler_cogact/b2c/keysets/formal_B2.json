@@ -1,0 +1,1442 @@
+[
+ {
+  "key": "B2__ep00__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep00",
+  "trial": 0,
+  "env_seed": 713560504,
+  "reset": {
+   "episode_id": 0
+  },
+  "cluster": "ep00"
+ },
+ {
+  "key": "B2__ep01__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep01",
+  "trial": 0,
+  "env_seed": 669486401,
+  "reset": {
+   "episode_id": 1
+  },
+  "cluster": "ep01"
+ },
+ {
+  "key": "B2__ep02__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep02",
+  "trial": 0,
+  "env_seed": 3225147833,
+  "reset": {
+   "episode_id": 2
+  },
+  "cluster": "ep02"
+ },
+ {
+  "key": "B2__ep03__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep03",
+  "trial": 0,
+  "env_seed": 1114923306,
+  "reset": {
+   "episode_id": 3
+  },
+  "cluster": "ep03"
+ },
+ {
+  "key": "B2__ep04__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep04",
+  "trial": 0,
+  "env_seed": 799584831,
+  "reset": {
+   "episode_id": 4
+  },
+  "cluster": "ep04"
+ },
+ {
+  "key": "B2__ep05__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep05",
+  "trial": 0,
+  "env_seed": 3744899748,
+  "reset": {
+   "episode_id": 5
+  },
+  "cluster": "ep05"
+ },
+ {
+  "key": "B2__ep06__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep06",
+  "trial": 0,
+  "env_seed": 425908638,
+  "reset": {
+   "episode_id": 6
+  },
+  "cluster": "ep06"
+ },
+ {
+  "key": "B2__ep07__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep07",
+  "trial": 0,
+  "env_seed": 444726618,
+  "reset": {
+   "episode_id": 7
+  },
+  "cluster": "ep07"
+ },
+ {
+  "key": "B2__ep08__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep08",
+  "trial": 0,
+  "env_seed": 2853762158,
+  "reset": {
+   "episode_id": 8
+  },
+  "cluster": "ep08"
+ },
+ {
+  "key": "B2__ep09__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep09",
+  "trial": 0,
+  "env_seed": 2022497879,
+  "reset": {
+   "episode_id": 9
+  },
+  "cluster": "ep09"
+ },
+ {
+  "key": "B2__ep10__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep10",
+  "trial": 0,
+  "env_seed": 3891358326,
+  "reset": {
+   "episode_id": 10
+  },
+  "cluster": "ep10"
+ },
+ {
+  "key": "B2__ep11__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep11",
+  "trial": 0,
+  "env_seed": 3059108739,
+  "reset": {
+   "episode_id": 11
+  },
+  "cluster": "ep11"
+ },
+ {
+  "key": "B2__ep12__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep12",
+  "trial": 0,
+  "env_seed": 2045515828,
+  "reset": {
+   "episode_id": 12
+  },
+  "cluster": "ep12"
+ },
+ {
+  "key": "B2__ep13__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep13",
+  "trial": 0,
+  "env_seed": 590283348,
+  "reset": {
+   "episode_id": 13
+  },
+  "cluster": "ep13"
+ },
+ {
+  "key": "B2__ep14__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep14",
+  "trial": 0,
+  "env_seed": 1098193629,
+  "reset": {
+   "episode_id": 14
+  },
+  "cluster": "ep14"
+ },
+ {
+  "key": "B2__ep15__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep15",
+  "trial": 0,
+  "env_seed": 4101464569,
+  "reset": {
+   "episode_id": 15
+  },
+  "cluster": "ep15"
+ },
+ {
+  "key": "B2__ep16__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep16",
+  "trial": 0,
+  "env_seed": 3004737079,
+  "reset": {
+   "episode_id": 16
+  },
+  "cluster": "ep16"
+ },
+ {
+  "key": "B2__ep17__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep17",
+  "trial": 0,
+  "env_seed": 3087060702,
+  "reset": {
+   "episode_id": 17
+  },
+  "cluster": "ep17"
+ },
+ {
+  "key": "B2__ep18__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep18",
+  "trial": 0,
+  "env_seed": 3808243684,
+  "reset": {
+   "episode_id": 18
+  },
+  "cluster": "ep18"
+ },
+ {
+  "key": "B2__ep19__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep19",
+  "trial": 0,
+  "env_seed": 2615979697,
+  "reset": {
+   "episode_id": 19
+  },
+  "cluster": "ep19"
+ },
+ {
+  "key": "B2__ep20__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep20",
+  "trial": 0,
+  "env_seed": 1666721437,
+  "reset": {
+   "episode_id": 20
+  },
+  "cluster": "ep20"
+ },
+ {
+  "key": "B2__ep21__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep21",
+  "trial": 0,
+  "env_seed": 992487908,
+  "reset": {
+   "episode_id": 21
+  },
+  "cluster": "ep21"
+ },
+ {
+  "key": "B2__ep22__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep22",
+  "trial": 0,
+  "env_seed": 2247655046,
+  "reset": {
+   "episode_id": 22
+  },
+  "cluster": "ep22"
+ },
+ {
+  "key": "B2__ep23__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep23",
+  "trial": 0,
+  "env_seed": 2316485391,
+  "reset": {
+   "episode_id": 23
+  },
+  "cluster": "ep23"
+ },
+ {
+  "key": "B2__ep00__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep00",
+  "trial": 1,
+  "env_seed": 713560504,
+  "reset": {
+   "episode_id": 0
+  },
+  "cluster": "ep00"
+ },
+ {
+  "key": "B2__ep01__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep01",
+  "trial": 1,
+  "env_seed": 669486401,
+  "reset": {
+   "episode_id": 1
+  },
+  "cluster": "ep01"
+ },
+ {
+  "key": "B2__ep02__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep02",
+  "trial": 1,
+  "env_seed": 3225147833,
+  "reset": {
+   "episode_id": 2
+  },
+  "cluster": "ep02"
+ },
+ {
+  "key": "B2__ep03__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep03",
+  "trial": 1,
+  "env_seed": 1114923306,
+  "reset": {
+   "episode_id": 3
+  },
+  "cluster": "ep03"
+ },
+ {
+  "key": "B2__ep04__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep04",
+  "trial": 1,
+  "env_seed": 799584831,
+  "reset": {
+   "episode_id": 4
+  },
+  "cluster": "ep04"
+ },
+ {
+  "key": "B2__ep05__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep05",
+  "trial": 1,
+  "env_seed": 3744899748,
+  "reset": {
+   "episode_id": 5
+  },
+  "cluster": "ep05"
+ },
+ {
+  "key": "B2__ep06__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep06",
+  "trial": 1,
+  "env_seed": 425908638,
+  "reset": {
+   "episode_id": 6
+  },
+  "cluster": "ep06"
+ },
+ {
+  "key": "B2__ep07__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep07",
+  "trial": 1,
+  "env_seed": 444726618,
+  "reset": {
+   "episode_id": 7
+  },
+  "cluster": "ep07"
+ },
+ {
+  "key": "B2__ep08__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep08",
+  "trial": 1,
+  "env_seed": 2853762158,
+  "reset": {
+   "episode_id": 8
+  },
+  "cluster": "ep08"
+ },
+ {
+  "key": "B2__ep09__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep09",
+  "trial": 1,
+  "env_seed": 2022497879,
+  "reset": {
+   "episode_id": 9
+  },
+  "cluster": "ep09"
+ },
+ {
+  "key": "B2__ep10__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep10",
+  "trial": 1,
+  "env_seed": 3891358326,
+  "reset": {
+   "episode_id": 10
+  },
+  "cluster": "ep10"
+ },
+ {
+  "key": "B2__ep11__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep11",
+  "trial": 1,
+  "env_seed": 3059108739,
+  "reset": {
+   "episode_id": 11
+  },
+  "cluster": "ep11"
+ },
+ {
+  "key": "B2__ep12__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep12",
+  "trial": 1,
+  "env_seed": 2045515828,
+  "reset": {
+   "episode_id": 12
+  },
+  "cluster": "ep12"
+ },
+ {
+  "key": "B2__ep13__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep13",
+  "trial": 1,
+  "env_seed": 590283348,
+  "reset": {
+   "episode_id": 13
+  },
+  "cluster": "ep13"
+ },
+ {
+  "key": "B2__ep14__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep14",
+  "trial": 1,
+  "env_seed": 1098193629,
+  "reset": {
+   "episode_id": 14
+  },
+  "cluster": "ep14"
+ },
+ {
+  "key": "B2__ep15__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep15",
+  "trial": 1,
+  "env_seed": 4101464569,
+  "reset": {
+   "episode_id": 15
+  },
+  "cluster": "ep15"
+ },
+ {
+  "key": "B2__ep16__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep16",
+  "trial": 1,
+  "env_seed": 3004737079,
+  "reset": {
+   "episode_id": 16
+  },
+  "cluster": "ep16"
+ },
+ {
+  "key": "B2__ep17__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep17",
+  "trial": 1,
+  "env_seed": 3087060702,
+  "reset": {
+   "episode_id": 17
+  },
+  "cluster": "ep17"
+ },
+ {
+  "key": "B2__ep18__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep18",
+  "trial": 1,
+  "env_seed": 3808243684,
+  "reset": {
+   "episode_id": 18
+  },
+  "cluster": "ep18"
+ },
+ {
+  "key": "B2__ep19__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep19",
+  "trial": 1,
+  "env_seed": 2615979697,
+  "reset": {
+   "episode_id": 19
+  },
+  "cluster": "ep19"
+ },
+ {
+  "key": "B2__ep20__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep20",
+  "trial": 1,
+  "env_seed": 1666721437,
+  "reset": {
+   "episode_id": 20
+  },
+  "cluster": "ep20"
+ },
+ {
+  "key": "B2__ep21__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep21",
+  "trial": 1,
+  "env_seed": 992487908,
+  "reset": {
+   "episode_id": 21
+  },
+  "cluster": "ep21"
+ },
+ {
+  "key": "B2__ep22__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep22",
+  "trial": 1,
+  "env_seed": 2247655046,
+  "reset": {
+   "episode_id": 22
+  },
+  "cluster": "ep22"
+ },
+ {
+  "key": "B2__ep23__t1",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep23",
+  "trial": 1,
+  "env_seed": 2316485391,
+  "reset": {
+   "episode_id": 23
+  },
+  "cluster": "ep23"
+ },
+ {
+  "key": "B2__ep00__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep00",
+  "trial": 2,
+  "env_seed": 713560504,
+  "reset": {
+   "episode_id": 0
+  },
+  "cluster": "ep00"
+ },
+ {
+  "key": "B2__ep01__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep01",
+  "trial": 2,
+  "env_seed": 669486401,
+  "reset": {
+   "episode_id": 1
+  },
+  "cluster": "ep01"
+ },
+ {
+  "key": "B2__ep02__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep02",
+  "trial": 2,
+  "env_seed": 3225147833,
+  "reset": {
+   "episode_id": 2
+  },
+  "cluster": "ep02"
+ },
+ {
+  "key": "B2__ep03__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep03",
+  "trial": 2,
+  "env_seed": 1114923306,
+  "reset": {
+   "episode_id": 3
+  },
+  "cluster": "ep03"
+ },
+ {
+  "key": "B2__ep04__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep04",
+  "trial": 2,
+  "env_seed": 799584831,
+  "reset": {
+   "episode_id": 4
+  },
+  "cluster": "ep04"
+ },
+ {
+  "key": "B2__ep05__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep05",
+  "trial": 2,
+  "env_seed": 3744899748,
+  "reset": {
+   "episode_id": 5
+  },
+  "cluster": "ep05"
+ },
+ {
+  "key": "B2__ep06__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep06",
+  "trial": 2,
+  "env_seed": 425908638,
+  "reset": {
+   "episode_id": 6
+  },
+  "cluster": "ep06"
+ },
+ {
+  "key": "B2__ep07__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep07",
+  "trial": 2,
+  "env_seed": 444726618,
+  "reset": {
+   "episode_id": 7
+  },
+  "cluster": "ep07"
+ },
+ {
+  "key": "B2__ep08__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep08",
+  "trial": 2,
+  "env_seed": 2853762158,
+  "reset": {
+   "episode_id": 8
+  },
+  "cluster": "ep08"
+ },
+ {
+  "key": "B2__ep09__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep09",
+  "trial": 2,
+  "env_seed": 2022497879,
+  "reset": {
+   "episode_id": 9
+  },
+  "cluster": "ep09"
+ },
+ {
+  "key": "B2__ep10__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep10",
+  "trial": 2,
+  "env_seed": 3891358326,
+  "reset": {
+   "episode_id": 10
+  },
+  "cluster": "ep10"
+ },
+ {
+  "key": "B2__ep11__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep11",
+  "trial": 2,
+  "env_seed": 3059108739,
+  "reset": {
+   "episode_id": 11
+  },
+  "cluster": "ep11"
+ },
+ {
+  "key": "B2__ep12__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep12",
+  "trial": 2,
+  "env_seed": 2045515828,
+  "reset": {
+   "episode_id": 12
+  },
+  "cluster": "ep12"
+ },
+ {
+  "key": "B2__ep13__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep13",
+  "trial": 2,
+  "env_seed": 590283348,
+  "reset": {
+   "episode_id": 13
+  },
+  "cluster": "ep13"
+ },
+ {
+  "key": "B2__ep14__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep14",
+  "trial": 2,
+  "env_seed": 1098193629,
+  "reset": {
+   "episode_id": 14
+  },
+  "cluster": "ep14"
+ },
+ {
+  "key": "B2__ep15__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep15",
+  "trial": 2,
+  "env_seed": 4101464569,
+  "reset": {
+   "episode_id": 15
+  },
+  "cluster": "ep15"
+ },
+ {
+  "key": "B2__ep16__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep16",
+  "trial": 2,
+  "env_seed": 3004737079,
+  "reset": {
+   "episode_id": 16
+  },
+  "cluster": "ep16"
+ },
+ {
+  "key": "B2__ep17__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep17",
+  "trial": 2,
+  "env_seed": 3087060702,
+  "reset": {
+   "episode_id": 17
+  },
+  "cluster": "ep17"
+ },
+ {
+  "key": "B2__ep18__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep18",
+  "trial": 2,
+  "env_seed": 3808243684,
+  "reset": {
+   "episode_id": 18
+  },
+  "cluster": "ep18"
+ },
+ {
+  "key": "B2__ep19__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep19",
+  "trial": 2,
+  "env_seed": 2615979697,
+  "reset": {
+   "episode_id": 19
+  },
+  "cluster": "ep19"
+ },
+ {
+  "key": "B2__ep20__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep20",
+  "trial": 2,
+  "env_seed": 1666721437,
+  "reset": {
+   "episode_id": 20
+  },
+  "cluster": "ep20"
+ },
+ {
+  "key": "B2__ep21__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep21",
+  "trial": 2,
+  "env_seed": 992487908,
+  "reset": {
+   "episode_id": 21
+  },
+  "cluster": "ep21"
+ },
+ {
+  "key": "B2__ep22__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep22",
+  "trial": 2,
+  "env_seed": 2247655046,
+  "reset": {
+   "episode_id": 22
+  },
+  "cluster": "ep22"
+ },
+ {
+  "key": "B2__ep23__t2",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep23",
+  "trial": 2,
+  "env_seed": 2316485391,
+  "reset": {
+   "episode_id": 23
+  },
+  "cluster": "ep23"
+ },
+ {
+  "key": "B2__ep00__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep00",
+  "trial": 3,
+  "env_seed": 713560504,
+  "reset": {
+   "episode_id": 0
+  },
+  "cluster": "ep00"
+ },
+ {
+  "key": "B2__ep01__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep01",
+  "trial": 3,
+  "env_seed": 669486401,
+  "reset": {
+   "episode_id": 1
+  },
+  "cluster": "ep01"
+ },
+ {
+  "key": "B2__ep02__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep02",
+  "trial": 3,
+  "env_seed": 3225147833,
+  "reset": {
+   "episode_id": 2
+  },
+  "cluster": "ep02"
+ },
+ {
+  "key": "B2__ep03__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep03",
+  "trial": 3,
+  "env_seed": 1114923306,
+  "reset": {
+   "episode_id": 3
+  },
+  "cluster": "ep03"
+ },
+ {
+  "key": "B2__ep04__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep04",
+  "trial": 3,
+  "env_seed": 799584831,
+  "reset": {
+   "episode_id": 4
+  },
+  "cluster": "ep04"
+ },
+ {
+  "key": "B2__ep05__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep05",
+  "trial": 3,
+  "env_seed": 3744899748,
+  "reset": {
+   "episode_id": 5
+  },
+  "cluster": "ep05"
+ },
+ {
+  "key": "B2__ep06__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep06",
+  "trial": 3,
+  "env_seed": 425908638,
+  "reset": {
+   "episode_id": 6
+  },
+  "cluster": "ep06"
+ },
+ {
+  "key": "B2__ep07__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep07",
+  "trial": 3,
+  "env_seed": 444726618,
+  "reset": {
+   "episode_id": 7
+  },
+  "cluster": "ep07"
+ },
+ {
+  "key": "B2__ep08__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep08",
+  "trial": 3,
+  "env_seed": 2853762158,
+  "reset": {
+   "episode_id": 8
+  },
+  "cluster": "ep08"
+ },
+ {
+  "key": "B2__ep09__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep09",
+  "trial": 3,
+  "env_seed": 2022497879,
+  "reset": {
+   "episode_id": 9
+  },
+  "cluster": "ep09"
+ },
+ {
+  "key": "B2__ep10__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep10",
+  "trial": 3,
+  "env_seed": 3891358326,
+  "reset": {
+   "episode_id": 10
+  },
+  "cluster": "ep10"
+ },
+ {
+  "key": "B2__ep11__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep11",
+  "trial": 3,
+  "env_seed": 3059108739,
+  "reset": {
+   "episode_id": 11
+  },
+  "cluster": "ep11"
+ },
+ {
+  "key": "B2__ep12__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep12",
+  "trial": 3,
+  "env_seed": 2045515828,
+  "reset": {
+   "episode_id": 12
+  },
+  "cluster": "ep12"
+ },
+ {
+  "key": "B2__ep13__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep13",
+  "trial": 3,
+  "env_seed": 590283348,
+  "reset": {
+   "episode_id": 13
+  },
+  "cluster": "ep13"
+ },
+ {
+  "key": "B2__ep14__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep14",
+  "trial": 3,
+  "env_seed": 1098193629,
+  "reset": {
+   "episode_id": 14
+  },
+  "cluster": "ep14"
+ },
+ {
+  "key": "B2__ep15__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep15",
+  "trial": 3,
+  "env_seed": 4101464569,
+  "reset": {
+   "episode_id": 15
+  },
+  "cluster": "ep15"
+ },
+ {
+  "key": "B2__ep16__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep16",
+  "trial": 3,
+  "env_seed": 3004737079,
+  "reset": {
+   "episode_id": 16
+  },
+  "cluster": "ep16"
+ },
+ {
+  "key": "B2__ep17__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep17",
+  "trial": 3,
+  "env_seed": 3087060702,
+  "reset": {
+   "episode_id": 17
+  },
+  "cluster": "ep17"
+ },
+ {
+  "key": "B2__ep18__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep18",
+  "trial": 3,
+  "env_seed": 3808243684,
+  "reset": {
+   "episode_id": 18
+  },
+  "cluster": "ep18"
+ },
+ {
+  "key": "B2__ep19__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep19",
+  "trial": 3,
+  "env_seed": 2615979697,
+  "reset": {
+   "episode_id": 19
+  },
+  "cluster": "ep19"
+ },
+ {
+  "key": "B2__ep20__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep20",
+  "trial": 3,
+  "env_seed": 1666721437,
+  "reset": {
+   "episode_id": 20
+  },
+  "cluster": "ep20"
+ },
+ {
+  "key": "B2__ep21__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep21",
+  "trial": 3,
+  "env_seed": 992487908,
+  "reset": {
+   "episode_id": 21
+  },
+  "cluster": "ep21"
+ },
+ {
+  "key": "B2__ep22__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep22",
+  "trial": 3,
+  "env_seed": 2247655046,
+  "reset": {
+   "episode_id": 22
+  },
+  "cluster": "ep22"
+ },
+ {
+  "key": "B2__ep23__t3",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep23",
+  "trial": 3,
+  "env_seed": 2316485391,
+  "reset": {
+   "episode_id": 23
+  },
+  "cluster": "ep23"
+ },
+ {
+  "key": "B2__ep00__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep00",
+  "trial": 4,
+  "env_seed": 713560504,
+  "reset": {
+   "episode_id": 0
+  },
+  "cluster": "ep00"
+ },
+ {
+  "key": "B2__ep01__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep01",
+  "trial": 4,
+  "env_seed": 669486401,
+  "reset": {
+   "episode_id": 1
+  },
+  "cluster": "ep01"
+ },
+ {
+  "key": "B2__ep02__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep02",
+  "trial": 4,
+  "env_seed": 3225147833,
+  "reset": {
+   "episode_id": 2
+  },
+  "cluster": "ep02"
+ },
+ {
+  "key": "B2__ep03__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep03",
+  "trial": 4,
+  "env_seed": 1114923306,
+  "reset": {
+   "episode_id": 3
+  },
+  "cluster": "ep03"
+ },
+ {
+  "key": "B2__ep04__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep04",
+  "trial": 4,
+  "env_seed": 799584831,
+  "reset": {
+   "episode_id": 4
+  },
+  "cluster": "ep04"
+ },
+ {
+  "key": "B2__ep05__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep05",
+  "trial": 4,
+  "env_seed": 3744899748,
+  "reset": {
+   "episode_id": 5
+  },
+  "cluster": "ep05"
+ },
+ {
+  "key": "B2__ep06__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep06",
+  "trial": 4,
+  "env_seed": 425908638,
+  "reset": {
+   "episode_id": 6
+  },
+  "cluster": "ep06"
+ },
+ {
+  "key": "B2__ep07__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep07",
+  "trial": 4,
+  "env_seed": 444726618,
+  "reset": {
+   "episode_id": 7
+  },
+  "cluster": "ep07"
+ },
+ {
+  "key": "B2__ep08__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep08",
+  "trial": 4,
+  "env_seed": 2853762158,
+  "reset": {
+   "episode_id": 8
+  },
+  "cluster": "ep08"
+ },
+ {
+  "key": "B2__ep09__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep09",
+  "trial": 4,
+  "env_seed": 2022497879,
+  "reset": {
+   "episode_id": 9
+  },
+  "cluster": "ep09"
+ },
+ {
+  "key": "B2__ep10__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep10",
+  "trial": 4,
+  "env_seed": 3891358326,
+  "reset": {
+   "episode_id": 10
+  },
+  "cluster": "ep10"
+ },
+ {
+  "key": "B2__ep11__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep11",
+  "trial": 4,
+  "env_seed": 3059108739,
+  "reset": {
+   "episode_id": 11
+  },
+  "cluster": "ep11"
+ },
+ {
+  "key": "B2__ep12__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep12",
+  "trial": 4,
+  "env_seed": 2045515828,
+  "reset": {
+   "episode_id": 12
+  },
+  "cluster": "ep12"
+ },
+ {
+  "key": "B2__ep13__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep13",
+  "trial": 4,
+  "env_seed": 590283348,
+  "reset": {
+   "episode_id": 13
+  },
+  "cluster": "ep13"
+ },
+ {
+  "key": "B2__ep14__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep14",
+  "trial": 4,
+  "env_seed": 1098193629,
+  "reset": {
+   "episode_id": 14
+  },
+  "cluster": "ep14"
+ },
+ {
+  "key": "B2__ep15__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep15",
+  "trial": 4,
+  "env_seed": 4101464569,
+  "reset": {
+   "episode_id": 15
+  },
+  "cluster": "ep15"
+ },
+ {
+  "key": "B2__ep16__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep16",
+  "trial": 4,
+  "env_seed": 3004737079,
+  "reset": {
+   "episode_id": 16
+  },
+  "cluster": "ep16"
+ },
+ {
+  "key": "B2__ep17__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep17",
+  "trial": 4,
+  "env_seed": 3087060702,
+  "reset": {
+   "episode_id": 17
+  },
+  "cluster": "ep17"
+ },
+ {
+  "key": "B2__ep18__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep18",
+  "trial": 4,
+  "env_seed": 3808243684,
+  "reset": {
+   "episode_id": 18
+  },
+  "cluster": "ep18"
+ },
+ {
+  "key": "B2__ep19__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep19",
+  "trial": 4,
+  "env_seed": 2615979697,
+  "reset": {
+   "episode_id": 19
+  },
+  "cluster": "ep19"
+ },
+ {
+  "key": "B2__ep20__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep20",
+  "trial": 4,
+  "env_seed": 1666721437,
+  "reset": {
+   "episode_id": 20
+  },
+  "cluster": "ep20"
+ },
+ {
+  "key": "B2__ep21__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep21",
+  "trial": 4,
+  "env_seed": 992487908,
+  "reset": {
+   "episode_id": 21
+  },
+  "cluster": "ep21"
+ },
+ {
+  "key": "B2__ep22__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep22",
+  "trial": 4,
+  "env_seed": 2247655046,
+  "reset": {
+   "episode_id": 22
+  },
+  "cluster": "ep22"
+ },
+ {
+  "key": "B2__ep23__t4",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep23",
+  "trial": 4,
+  "env_seed": 2316485391,
+  "reset": {
+   "episode_id": 23
+  },
+  "cluster": "ep23"
+ }
+]

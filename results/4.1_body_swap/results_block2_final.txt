@@ -1,0 +1,49 @@
+
+######## OpenVLA-OFT: common keys 200; cells SRC=200, S=200, T0=200, IIWA=200, IIWA_T=200, UR5e=200, UR5e_T=200, UR5e_R=200, G=200, G_T=200
+  SR %: SRC 97.0, S 97.0, T0 98.5, IIWA 93.0, IIWA_T 96.0, UR5e 83.0, UR5e_T 84.0, UR5e_R 97.5, G 53.5, G_T 89.5
+  gate T0: query-frame IK misses 0.00% -> PASS
+  gate IIWA_T: query-frame IK misses 0.00% -> PASS
+  gate UR5e_T: query-frame IK misses 3.43% -> FAIL (condition does not count)
+  gate UR5e_R: query-frame IK misses 0.00% -> PASS
+  gate G_T: query-frame IK misses 0.00% -> PASS
+  SR(S)-SR(SRC)                  +0.0 pp  95% [  -3.0,   +3.0]  90% [  -2.5,   +2.5]
+  d5 = SR(T0)-SR(S)              +1.5 pp  95% [  -0.5,   +4.0]  90% [  +0.0,   +3.5]
+  recovery(UR5e)                 -0.5 pp  95% [  -4.5,   +3.5]  90% [  -4.0,   +3.0]
+  recovery(IIWA)                 +1.5 pp  95% [  -2.5,   +5.5]  90% [  -2.0,   +5.0]
+  recovery(G)                   +34.5 pp  95% [ +26.5,  +42.5]  90% [ +27.5,  +41.5]
+  d_rev = SR(UR5e_R)-SR(T0)      -1.0 pp  95% [  -3.5,   +1.5]  90% [  -3.0,   +1.0]
+  interaction(UR5e)              +0.0 pp  95% [  -4.0,   +4.0]  90% [  -3.5,   +3.5]
+  -- decisions (OpenVLA-OFT)
+  P5 twin pipeline: equivalent within +-5
+  P3 UR5e painting recovers >= half: falsified
+  P4 Robotiq painting recovers < half: falsified
+  P6 seeing a UR5e costs < half: confirmed
+
+######## pi0.5-LIBERO: common keys 200; cells SRC=200, S=200, T0=200, IIWA=200, IIWA_T=200, UR5e=200, UR5e_T=200, UR5e_R=200, G=200, G_T=200
+  SR %: SRC 97.5, S 96.0, T0 95.5, IIWA 97.0, IIWA_T 97.5, UR5e 81.0, UR5e_T 86.0, UR5e_R 98.0, G 82.0, G_T 90.0
+  gate T0: query-frame IK misses 0.00% -> PASS
+  gate IIWA_T: query-frame IK misses 0.00% -> PASS
+  gate UR5e_T: query-frame IK misses 4.75% -> FAIL (condition does not count)
+  gate UR5e_R: query-frame IK misses 0.00% -> PASS
+  gate G_T: query-frame IK misses 0.00% -> PASS
+  SR(S)-SR(SRC)                  -1.5 pp  95% [  -4.5,   +1.5]  90% [  -4.0,   +1.0]
+  d5 = SR(T0)-SR(S)              -0.5 pp  95% [  -4.0,   +2.5]  90% [  -3.5,   +2.0]
+  recovery(UR5e)                 +5.5 pp  95% [  +0.0,  +11.0]  90% [  +1.0,  +10.0]
+  recovery(IIWA)                 +1.0 pp  95% [  -2.5,   +5.0]  90% [  -2.0,   +4.0]
+  recovery(G)                    +8.5 pp  95% [  +2.5,  +14.5]  90% [  +3.5,  +13.5]
+  d_rev = SR(UR5e_R)-SR(T0)      +2.5 pp  95% [  -1.0,   +6.0]  90% [  -0.5,   +5.5]
+  interaction(UR5e)              -7.5 pp  95% [ -13.5,   -1.5]  90% [ -12.5,   -2.5]
+  -- decisions (pi0.5-LIBERO)
+  P5 twin pipeline: equivalent within +-5
+  P3 UR5e painting recovers >= half: inconclusive
+  P4 Robotiq painting recovers < half: confirmed
+  P6 seeing a UR5e costs < half: confirmed
+
+######## P7 replication (sign agreement and CI overlap)
+  SR(S)-SR(SRC)                OFT   +0.0  pi0.5   -1.5  -> indeterminate
+  d5 = SR(T0)-SR(S)            OFT   +1.5  pi0.5   -0.5  -> indeterminate
+  recovery(UR5e)               OFT   -0.5  pi0.5   +5.5  -> indeterminate
+  recovery(IIWA)               OFT   +1.5  pi0.5   +1.0  -> replicates
+  recovery(G)                  OFT  +34.5  pi0.5   +8.5  -> indeterminate
+  d_rev = SR(UR5e_R)-SR(T0)    OFT   -1.0  pi0.5   +2.5  -> indeterminate
+  interaction(UR5e)            OFT   +0.0  pi0.5   -7.5  -> does not replicate

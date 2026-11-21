@@ -1,0 +1,604 @@
+{
+ "cells": {
+  "OFT/spatial/S": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "在线接触": "PASS",
+    "armature": "PASS",
+    "盲法 pf_blind": "PASS",
+    "GPU 单一型号": "PASS",
+    "回归（§7.1）": "PASS",
+    "检测器 D + QACC": "PASS"
+   },
+   "D_keys": []
+  },
+  "OFT/spatial/T0": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "在线接触": "PASS",
+    "armature": "PASS",
+    "盲法 pf_blind": "PASS",
+    "GPU 单一型号": "PASS",
+    "回归（§7.1）": "PASS",
+    "第 0 步一致性": "PASS",
+    "检测器 D + QACC": "PASS",
+    "T0 对 S 同键一致率": "PASS"
+   },
+   "D_keys": []
+  },
+  "OFT/object/S": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "在线接触": "PASS",
+    "armature": "PASS",
+    "盲法 pf_blind": "PASS",
+    "GPU 单一型号": "PASS",
+    "回归（§7.1）": "PASS",
+    "检测器 D + QACC": "PASS"
+   },
+   "D_keys": []
+  },
+  "OFT/object/T0": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "在线接触": "PASS",
+    "armature": "PASS",
+    "盲法 pf_blind": "PASS",
+    "GPU 单一型号": "PASS",
+    "回归（§7.1）": "PASS",
+    "第 0 步一致性": "PASS",
+    "检测器 D + QACC": "PASS",
+    "T0 对 S 同键一致率": "PASS"
+   },
+   "D_keys": []
+  },
+  "OFT/object/G''": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "在线接触": "PASS",
+    "armature": "PASS",
+    "盲法 pf_blind": "PASS",
+    "GPU 单一型号": "PASS",
+    "回归（§7.1）": "PASS",
+    "检测器 D + QACC": "PASS"
+   },
+   "D_keys": []
+  },
+  "OFT/object/GTfc''": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "PASS",
+    "在线接触": "PASS",
+    "armature": "PASS",
+    "盲法 pf_blind": "PASS",
+    "GPU 单一型号": "PASS",
+    "回归（§7.1）": "PASS",
+    "第 0 步一致性": "PASS",
+    "检测器 D + QACC": "PASS"
+   },
+   "D_keys": []
+  },
+  "OFTi/spatial/S": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "在线接触": "PASS",
+    "armature": "PASS",
+    "盲法 pf_blind": "PASS",
+    "GPU 单一型号": "PASS",
+    "回归（§7.1）": "PASS",
+    "检测器 D + QACC": "PASS"
+   },
+   "D_keys": []
+  },
+  "OFTi/spatial/T0": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "在线接触": "PASS",
+    "armature": "PASS",
+    "盲法 pf_blind": "PASS",
+    "GPU 单一型号": "PASS",
+    "回归（§7.1）": "PASS",
+    "第 0 步一致性": "PASS",
+    "检测器 D + QACC": "PASS",
+    "T0 对 S 同键一致率": "PASS"
+   },
+   "D_keys": []
+  },
+  "OFTi/object/S": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "在线接触": "PASS",
+    "armature": "PASS",
+    "盲法 pf_blind": "PASS",
+    "GPU 单一型号": "PASS",
+    "回归（§7.1）": "PASS",
+    "检测器 D + QACC": "PASS"
+   },
+   "D_keys": []
+  },
+  "OFTi/object/T0": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "在线接触": "PASS",
+    "armature": "PASS",
+    "盲法 pf_blind": "PASS",
+    "GPU 单一型号": "PASS",
+    "回归（§7.1）": "PASS",
+    "第 0 步一致性": "PASS",
+    "检测器 D + QACC": "PASS",
+    "T0 对 S 同键一致率": "PASS"
+   },
+   "D_keys": []
+  },
+  "OFTi/object/G''": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "在线接触": "PASS",
+    "armature": "PASS",
+    "盲法 pf_blind": "PASS",
+    "GPU 单一型号": "PASS",
+    "回归（§7.1）": "PASS",
+    "检测器 D + QACC": "PASS"
+   },
+   "D_keys": []
+  },
+  "OFTi/object/GTfc''": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "PASS",
+    "在线接触": "PASS",
+    "armature": "PASS",
+    "盲法 pf_blind": "PASS",
+    "GPU 单一型号": "PASS",
+    "回归（§7.1）": "PASS",
+    "第 0 步一致性": "PASS",
+    "检测器 D + QACC": "PASS"
+   },
+   "D_keys": []
+  }
+ },
+ "D": {
+  "OFT/object/kp20": "0",
+  "OFTi/object/kp20": "0"
+ },
+ "est": {
+  "OFT/object/kp20/drop_nat(G'')": [
+   -7.0,
+   -11.5,
+   -3.0,
+   "完成"
+  ],
+  "OFT/object/kp20/d5": [
+   -1.0,
+   -3.0,
+   1.0,
+   "完成"
+  ],
+  "OFT/object/kp20/rec_fc(GTfc''−G'')": [
+   4.5,
+   0.0,
+   9.0,
+   "完成"
+  ],
+  "OFT/object/kp20/recovery(G'';GTfc'')": [
+   5.5,
+   1.0,
+   10.5,
+   "完成"
+  ],
+  "OFTi/object/kp20/drop_nat(G'')": [
+   -0.5,
+   -4.5,
+   3.5,
+   "完成"
+  ],
+  "OFTi/object/kp20/d5": [
+   1.0,
+   -1.0,
+   3.0,
+   "完成"
+  ],
+  "OFTi/object/kp20/rec_fc(GTfc''−G'')": [
+   -0.5,
+   -4.5,
+   3.5,
+   "完成"
+  ],
+  "OFTi/object/kp20/recovery(G'';GTfc'')": [
+   -1.5,
+   -5.5,
+   2.5,
+   "完成"
+  ]
+ },
+ "O": {
+  "OFT": "现象未保持",
+  "OFTi": "掉分不可测",
+  "family": "checkpoint 条件性"
+ },
+ "delta_old": {
+  "OFT/object/drop_nat": {
+   "point": 9.0,
+   "n": 200,
+   "missing_pairs": 0
+  },
+  "OFT/object/d5": {
+   "point": -0.5,
+   "n": 200,
+   "missing_pairs": 0
+  },
+  "OFT/object/rec_fc": {
+   "point": 10.5,
+   "n": 200,
+   "missing_pairs": 0
+  },
+  "OFT/object/recovery": {
+   "point": 11.0,
+   "n": 200,
+   "missing_pairs": 0
+  },
+  "OFTi/object/drop_nat": {
+   "point": 11.5,
+   "n": 200,
+   "missing_pairs": 0
+  },
+  "OFTi/object/d5": {
+   "point": 0.0,
+   "n": 200,
+   "missing_pairs": 0
+  },
+  "OFTi/object/rec_fc": {
+   "point": 7.5,
+   "n": 200,
+   "missing_pairs": 0
+  },
+  "OFTi/object/recovery": {
+   "point": 7.5,
+   "n": 200,
+   "missing_pairs": 0
+  }
+ },
+ "d5_trigger": {
+  "OFT/spatial": false,
+  "OFT/object": false,
+  "OFTi/spatial": false,
+  "OFTi/object": false
+ },
+ "kold": {
+  "OFT/spatial/S": [
+   1,
+   1,
+   193,
+   199
+  ],
+  "OFT/spatial/T0": [
+   1,
+   1,
+   196,
+   199
+  ],
+  "OFT/object/S": [
+   13,
+   14,
+   184,
+   186
+  ],
+  "OFT/object/T0": [
+   13,
+   14,
+   182,
+   186
+  ],
+  "OFT/object/G''": [
+   14,
+   14,
+   169,
+   186
+  ],
+  "OFT/object/GTfc''": [
+   12,
+   14,
+   180,
+   186
+  ],
+  "OFTi/object/S": [
+   30,
+   31,
+   162,
+   169
+  ],
+  "OFTi/object/T0": [
+   31,
+   31,
+   163,
+   169
+  ],
+  "OFTi/object/G''": [
+   29,
+   31,
+   162,
+   169
+  ],
+  "OFTi/object/GTfc''": [
+   31,
+   31,
+   159,
+   169
+  ]
+ },
+ "holm": {
+  "kp20/object/OFT drop_nat(G'')": 0.0072,
+  "kp20/object/OFT recovery(G'';GTfc'')": 0.09,
+  "kp20/object/OFTi drop_nat(G'')": 1.0,
+  "kp20/object/OFTi recovery(G'';GTfc'')": 1.0
+ },
+ "grasp_triggers": {
+  "slice0/OFT/object/kp20": {
+   "无指垫接触而物体被携带 > 1%": false,
+   "穿透 p90 > 旧配置正常集 2 倍": false,
+   "携带比例中位 < 旧配置正常集 0.8 倍": false
+  },
+  "slice0/OFT/object/kp20_G2": {
+   "无指垫接触而物体被携带 > 1%": false,
+   "穿透 p90 > 旧配置正常集 2 倍": false,
+   "携带比例中位 < 旧配置正常集 0.8 倍": false
+  },
+  "slice0/OFT/object/kp20_GTfc2": {
+   "无指垫接触而物体被携带 > 1%": false,
+   "穿透 p90 > 旧配置正常集 2 倍": false,
+   "携带比例中位 < 旧配置正常集 0.8 倍": false
+  },
+  "slice0/OFTi/object/kp20": {
+   "无指垫接触而物体被携带 > 1%": false,
+   "穿透 p90 > 旧配置正常集 2 倍": false,
+   "携带比例中位 < 旧配置正常集 0.8 倍": false
+  },
+  "slice0/OFTi/object/kp20_G2": {
+   "无指垫接触而物体被携带 > 1%": false,
+   "穿透 p90 > 旧配置正常集 2 倍": false,
+   "携带比例中位 < 旧配置正常集 0.8 倍": false
+  },
+  "slice0/OFTi/object/kp20_GTfc2": {
+   "无指垫接触而物体被携带 > 1%": false,
+   "穿透 p90 > 旧配置正常集 2 倍": false,
+   "携带比例中位 < 旧配置正常集 0.8 倍": false
+  },
+  "full/OFT/object/kp20": {
+   "无指垫接触而物体被携带 > 1%": false,
+   "穿透 p90 > 旧配置正常集 2 倍": false,
+   "携带比例中位 < 旧配置正常集 0.8 倍": false
+  },
+  "full/OFT/object/kp20_G2": {
+   "无指垫接触而物体被携带 > 1%": false,
+   "穿透 p90 > 旧配置正常集 2 倍": false,
+   "携带比例中位 < 旧配置正常集 0.8 倍": false
+  },
+  "full/OFT/object/kp20_GTfc2": {
+   "无指垫接触而物体被携带 > 1%": false,
+   "穿透 p90 > 旧配置正常集 2 倍": false,
+   "携带比例中位 < 旧配置正常集 0.8 倍": false
+  },
+  "full/OFTi/object/kp20": {
+   "无指垫接触而物体被携带 > 1%": false,
+   "穿透 p90 > 旧配置正常集 2 倍": false,
+   "携带比例中位 < 旧配置正常集 0.8 倍": false
+  },
+  "full/OFTi/object/kp20_G2": {
+   "无指垫接触而物体被携带 > 1%": false,
+   "穿透 p90 > 旧配置正常集 2 倍": false,
+   "携带比例中位 < 旧配置正常集 0.8 倍": false
+  },
+  "full/OFTi/object/kp20_GTfc2": {
+   "无指垫接触而物体被携带 > 1%": false,
+   "穿透 p90 > 旧配置正常集 2 倍": false,
+   "携带比例中位 < 旧配置正常集 0.8 倍": false
+  }
+ },
+ "grasp_trigger_any": false,
+ "slices_complete": 48,
+ "not_judged": [
+  "C",
+  "K",
+  "L",
+  "bridge"
+ ],
+ "sha256": {
+  "protocol_physfix.md": "c8bd3fd8e8ba254a1a08aabece6dc77a01a48e7969086a6ad845dedbdef76df7",
+  "prereg_physfix.py（本脚本）": "534477a68a2b69c6e6c7f7257f4bd5011fd65d506ca663f9c8202f8da77167fe",
+  "prereg_models1.py（冻结，被 import）": "29faca6ae9d63233b21378b62b61f40655a052cab924bd0c20e451f1e1c346e5",
+  "cells_next.sh": "e38bce0ab4b057be0a9b1cf1434f8f1f99a962ff7fb522516e2fe65ef407ed58",
+  "embody_next body_env.py（含 kp20 表与指垫位置表）": "38a1b81a3661312f6d7ca46c78dc96c67756a1a06c3baf38bef8645a77034747",
+  "embody_next robots.py": "28e6722e57531ba5aa55b96db6c0a36829166b8fe761dde5d635628afd3f59b9",
+  "Robotiq XML 1": "c6149c3322a1eef4ed4eef1002500f7949887a2c6f0b569156766d0b6cdbdf18",
+  "映射表 kp20": "38a1b81a3661312f6d7ca46c78dc96c67756a1a06c3baf38bef8645a77034747",
+  "--gate-json": "104ce3fdeeeea7c8cef56f8826ab9c70e5fc63167d000b8a6ebbee823fb4f1a1",
+  "gate jsonl t0_spatial.jsonl": "9577c9b8d5f64e368b0cdebdbb7ffa0ead9946f3bdce5fe2b6c6644845ff4da0",
+  "gate jsonl t0_object.jsonl": "61d72474198df4204b0bc9c16c5acc597a8bb82a1c3597dd8df82aa9ca3fcb76",
+  "--gate0-json": "e3c129cff84393a4f5fc9623033657753ea825ac1f3ba8b91dee9e126c43c416",
+  "--breakdown-json": "63e62a4134dc1f8ec0ea867ec5b886e17fdb952a582dfde859be5fe83b8f49e3",
+  "--padlr-json": "24120472ae3b9364d1c4dcd238c9f523468437ad29bf201dd517203b8eb17c63",
+  "--grasp-json": "818d89db7a3555b2f87f5a84a3bd8401e199d1799a7af582ab73a7c6b8bd6499",
+  "§7.0 夹持检查 summary.json": "f54f95cacf2fe56499b79dc2af67b0f0b33a381057b61a25ce99b9e422e27ff6",
+  "t0check_bg_diag_2026-11-07.md": "16dd9734657fbe1bc8bf0b8adb83a77b1af2ed011d0497ae4c3ee42a0ae8d02d",
+  "K_old m1": "fe810632231a9548245007e20b8bb66ab8eb58348f63a7b7c862564400914ad3",
+  "K_old published": "15b7c5aad7052ed789b6d77ce17772ef960185fc0cb7005eb5f39de467130cd3"
+ },
+ "old": {
+  "OFT/object/drop_nat": [
+   -16.0,
+   -22.0,
+   -10.0
+  ],
+  "OFT/object/d5": [
+   -0.5,
+   -2.5,
+   1.5
+  ],
+  "OFT/object/rec_fc": [
+   -6.0,
+   -13.0,
+   1.0
+  ],
+  "OFT/object/recovery": [
+   -5.5,
+   -13.0,
+   2.0
+  ],
+  "OFTi/object/drop_nat": [
+   -12.0,
+   -17.5,
+   -6.5
+  ],
+  "OFTi/object/d5": [
+   1.0,
+   -1.0,
+   3.0
+  ],
+  "OFTi/object/rec_fc": [
+   -8.0,
+   -14.5,
+   -1.5
+  ],
+  "OFTi/object/recovery": [
+   -9.0,
+   -16.0,
+   -2.0
+  ]
+ }
+}

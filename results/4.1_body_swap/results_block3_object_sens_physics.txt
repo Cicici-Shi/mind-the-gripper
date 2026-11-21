@@ -1,0 +1,254 @@
+事后稳健性检查：物理失效集剔除版；检测器结局盲、定义于重算之前
+prereg_block3_a2.py：按附录 2 改动 D1 到 D4，其余与 f1da2c63 逐行相同
+prereg_block3.py  suite=object  n=200  B=10000  seed=0
+runs=$PROJ_ROOT/runs pi05=$PROJ_ROOT/pi05/v2 slurm-logs=~/logs eval-logs=$PROJ_ROOT/openvla-oft/experiments/logs pi05-logs=$PROJ_ROOT/pi05/logs gr-t0=$PROJ_ROOT/embody_v3/out/gr_t0
+
+==== 物理失效集剔除（OpenVLA-OFT，object）：$PROJ_ROOT/vla_zoo/out/physics_breakdown_published.json（sha256 15b7c5aad7052ed789b6d77ce17772ef960185fc0cb7005eb5f39de467130cd3，组 oft_pub|libero_object）
+  14 键：[(0, 0), (0, 1), (0, 3), (0, 4), (0, 8), (0, 11), (0, 13), (0, 15), (0, 18), (1, 3), (3, 11), (6, 9), (9, 0), (9, 5)]
+  每格剔除键数：SRC -14  S -14  T0 -14  UR5e -14  K3 -14  G -14  G_T -14
+
+==== 门槛（OpenVLA-OFT，object，每格 200 键设计）
+  SRC      (obj_src): 键 186/200（缺 14）
+      fixcheck         NA    SRC 自身
+      copy_grip_cmd    NA    无迁移
+      t0 对齐            NA    无迁移
+  S        (obj_s): 键 186/200（缺 14）
+      fixcheck         PASS  keys 186, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 186, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0098 mm / 0.0367°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+  T0       (obj_t0): 键 186/200（缺 14）
+      fixcheck         PASS  keys 186, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 186, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0098 mm / 0.0367°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  查询帧 IK 未命中（pos>2 mm 或 rot>1°） 0/3283 = 0.00%（门槛 < 1%），186 集
+      陈旧帧              PASS  陈旧帧 0
+  UR5e     (obj_ur5e): 键 186/200（缺 14）
+      fixcheck         PASS  keys 186, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 186, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0022 mm / 0.0063°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+  K3       (obj_k3): 键 186/200（缺 14）
+      fixcheck         PASS  keys 186, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 186, =0: 0, 缺: 0
+      t0 对齐            PASS  最大 0.0042 mm / 0.0467°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+  G        (obj_g): 键 186/200（缺 14）
+      fixcheck         PASS  keys 186, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 186, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0039 mm / 0.0432°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+  G_T      (obj_g_t): 键 186/200（缺 14）
+      fixcheck         PASS  keys 186, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 186, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0046 mm / 0.0417°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  查询帧 IK 未命中（pos>2 mm 或 rot>1°） 0/3968 = 0.00%（门槛 < 1%），186 集
+      陈旧帧              PASS  陈旧帧 0
+
+==== §6 object 估计量（OpenVLA-OFT）：点估计、95% / 90% bootstrap CI、键数
+  drop_nat(UR5e)               +0.00 pp  95% [  -2.67,   +2.67]  90% [  -2.16,   +2.16]  n=186
+  drop_nat(K3)                 -3.23 pp  95% [  -6.99,   +0.53]  90% [  -6.35,   +0.00]  n=186
+  drop_nat(G)                 -15.59 pp  95% [ -21.62,   -9.52]  90% [ -20.63,  -10.53]  n=186
+  recovery(G)                  -5.38 pp  95% [ -13.11,   +2.16]  90% [ -11.83,   +1.05]  n=186
+  d5                           -0.54 pp  95% [  -2.76,   +1.67]  90% [  -2.63,   +1.58]  n=186
+
+==== 门槛（pi0.5-LIBERO，object，每格 200 键设计）
+  SRC      (obj_src): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 <= 0.005 记录精度）；pi0.5 SRC 的 objq 记录在等待步之前，不可比，只比 fix
+      copy_grip_cmd    NA    无迁移
+      t0 对齐            NA    无迁移
+  S        (obj_s): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0098 mm / 0.0367°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+  T0       (obj_t0): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0098 mm / 0.0367°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  全部帧 IK 未命中（miss/n_paint） 0/28187 = 0.00%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  UR5e     (obj_ur5e): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0022 mm / 0.0063°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+  K3       (obj_k3): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            PASS  最大 0.0042 mm / 0.0467°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+  G        (obj_g): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0046 mm / 0.0417°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+  G_T      (obj_g_t): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0046 mm / 0.0417°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  全部帧 IK 未命中（miss/n_paint） 11/32642 = 0.03%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+
+==== §6 object 估计量（pi0.5-LIBERO）：点估计、95% / 90% bootstrap CI、键数
+  drop_nat(UR5e)               +0.00 pp  95% [  -3.50,   +3.50]  90% [  -3.00,   +3.00]  n=200
+  drop_nat(K3)                 -1.00 pp  95% [  -5.00,   +3.00]  90% [  -4.50,   +2.00]  n=200
+  drop_nat(G)                 -17.00 pp  95% [ -23.50,  -10.50]  90% [ -22.50,  -11.50]  n=200
+  recovery(G)                  +3.50 pp  95% [  -3.50,  +10.50]  90% [  -2.50,   +9.50]  n=200
+  d5                           +2.50 pp  95% [  -0.50,   +5.50]  90% [  +0.00,   +5.00]  n=200  [R10: 在渲染节点噪声带内]
+
+==== spatial 同名估计量（为期望 (iii) 现算，n=200）
+
+==== spatial 对照（OpenVLA-OFT spatial）：点估计、95% / 90% bootstrap CI、键数
+  drop_nat(UR5e)              -13.00 pp  95% [ -18.00,   -8.50]  90% [ -17.00,   -9.00]  n=200
+  drop_nat(K3)                 -2.00 pp  95% [  -5.00,   +0.50]  90% [  -4.50,   +0.00]  n=200
+  drop_nat(G)                 -45.00 pp  95% [ -52.00,  -38.00]  90% [ -51.00,  -39.00]  n=200  （门槛未核实：G）
+  recovery(G)                 +36.00 pp  95% [ +28.00,  +44.00]  90% [ +29.50,  +42.50]  n=200  （门槛未核实：G_T,T0,G）
+  d5                           +0.00 pp  95% [  -2.00,   +2.00]  90% [  -1.50,   +1.50]  n=200  （门槛未核实：T0）
+
+==== spatial 对照（pi0.5-LIBERO spatial）：点估计、95% / 90% bootstrap CI、键数
+  drop_nat(UR5e)              -15.00 pp  95% [ -20.00,  -10.00]  90% [ -19.50,  -11.00]  n=200  （门槛未核实：UR5e_cg,S）
+  drop_nat(K3)                 +0.00 pp  95% [  -2.00,   +2.00]  90% [  -1.50,   +1.50]  n=200  （门槛未核实：S）  [R10: |效应|<=3，GPU 组成有缺，无法判定]
+  drop_nat(G)                 -17.00 pp  95% [ -22.50,  -12.00]  90% [ -21.50,  -12.50]  n=200  （门槛未核实：G,S）
+  recovery(G)                 +11.50 pp  95% [  +5.99,  +17.50]  90% [  +6.50,  +16.50]  n=200  （门槛未核实：G_T,T0,G,S）
+  d5                           -3.50 pp  95% [  -6.50,   -1.00]  90% [  -6.00,   -1.00]  n=200  （门槛未核实：T0,S）
+
+==== §6 事先写定的期望（描述，不判定）
+  -- OpenVLA-OFT
+  (i) UR5e R1 类 = S（期望 S 或 U：符合）
+      「SR <= 25% 而 S >= 75%」的任务：无（期望无）
+  (ii) recovery(G) -5.38：符号非正（不符）
+
+==== (iii) object 对 spatial 符号一致性（OpenVLA-OFT，P7 口径）：符号一致且 95% CI 重叠 = 复现；符号相反且 object CI 不含 0 = 不复现；其余 不确定
+  drop_nat(UR5e)             spatial  -13.00 [-18.00, -8.50]  object   +0.00 [-2.67, +2.67] -> 不确定
+  drop_nat(K3)               spatial   -2.00 [-5.00, +0.50]  object   -3.23 [-6.99, +0.53] -> 复现
+  drop_nat(G)                spatial  -45.00 [-52.00, -38.00]  object  -15.59 [-21.62, -9.52] -> 不确定
+  recovery(G)                spatial  +36.00 [+28.00, +44.00]  object   -5.38 [-13.11, +2.16] -> 不确定
+  d5                         spatial   +0.00 [-2.00, +2.00]  object   -0.54 [-2.76, +1.67] -> 不确定
+  -- pi0.5-LIBERO
+  (i) UR5e R1 类 = S（期望 S 或 U：符合）
+      「SR <= 25% 而 S >= 75%」的任务：无（期望无）
+  (ii) recovery(G) +3.50：符号为正（符合）
+
+==== (iii) object 对 spatial 符号一致性（pi0.5-LIBERO，P7 口径）：符号一致且 95% CI 重叠 = 复现；符号相反且 object CI 不含 0 = 不复现；其余 不确定
+  drop_nat(UR5e)             spatial  -15.00 [-20.00, -10.00]  object   +0.00 [-3.50, +3.50] -> 不确定
+  drop_nat(K3)               spatial   +0.00 [-2.00, +2.00]  object   -1.00 [-5.00, +3.00] -> 不确定
+  drop_nat(G)                spatial  -17.00 [-22.50, -12.00]  object  -17.00 [-23.50, -10.50] -> 复现
+  recovery(G)                spatial  +11.50 [+5.99, +17.50]  object   +3.50 [-3.50, +10.50] -> 复现
+  d5                         spatial   -3.50 [-6.50, -1.00]  object   +2.50 [-0.50, +5.50] -> 不确定
+
+==== P7 复现（object，π0.5 对 OFT）：符号一致且 95% CI 重叠 = 复现；符号相反且 π0.5 CI 不含 0 = 不复现；其余 不确定
+  drop_nat(UR5e)             OFT   +0.00 [-2.67, +2.67]  π0.5   +0.00 [-3.50, +3.50] -> 不确定
+  drop_nat(K3)               OFT   -3.23 [-6.99, +0.53]  π0.5   -1.00 [-5.00, +3.00] -> 复现
+  drop_nat(G)                OFT  -15.59 [-21.62, -9.52]  π0.5  -17.00 [-23.50, -10.50] -> 复现
+  recovery(G)                OFT   -5.38 [-13.11, +2.16]  π0.5   +3.50 [-3.50, +10.50] -> 不确定
+  d5                         OFT   -0.54 [-2.76, +1.67]  π0.5   +2.50 [-0.50, +5.50] -> 不确定
+
+==== R1（object，OpenVLA-OFT）
+  UR5e  +0.00 [-2.67, +2.67] -> S 类
+  K3    -3.23 [-6.99, +0.53] -> S 类
+  G     -15.59 [-21.62, -9.52] -> L 类
+
+==== R1（object，pi0.5-LIBERO）
+  UR5e  +0.00 [-3.50, +3.50] -> S 类
+  K3    -1.00 [-5.00, +3.00] -> S 类
+  G     -17.00 [-23.50, -10.50] -> L 类
+
+==== R8 按任务表 + conc(X)（相对 S）+ R10 GPU 型号组成（OpenVLA-OFT，object）
+  SRC      SR  97.8% (182/186) | t0:10/11 t1:18/19 t2:20/20 t3:19/19 t4:20/20 t5:20/20 t6:18/19 t7:19/20 t8:20/20 t9:18/18 | conc - | GPU NVIDIA A100 80GB PCIe x186
+  S        SR  97.8% (182/186) | t0:10/11 t1:18/19 t2:20/20 t3:19/19 t4:20/20 t5:20/20 t6:19/19 t7:19/20 t8:20/20 t9:17/18 | conc - | GPU NVIDIA A100 80GB PCIe x186
+  T0       SR  97.3% (181/186) | t0:9/11 t1:18/19 t2:19/20 t3:19/19 t4:20/20 t5:20/20 t6:19/19 t7:19/20 t8:20/20 t9:18/18 | conc 1.00（最差任务 0，+1/+1） | GPU NVIDIA A100 80GB PCIe x186
+  UR5e     SR  97.8% (182/186) | t0:11/11 t1:18/19 t2:20/20 t3:18/19 t4:20/20 t5:19/20 t6:19/19 t7:19/20 t8:20/20 t9:18/18 | conc 无净增失败（净 +0） | GPU NVIDIA A100 80GB PCIe x186
+  K3       SR  94.6% (176/186) | t0:11/11 t1:19/19 t2:19/20 t3:19/19 t4:20/20 t5:20/20 t6:19/19 t7:15/20 t8:16/20 t9:18/18 | conc 0.67（最差任务 7，+4/+6） | GPU NVIDIA A100 80GB PCIe x186
+  G        SR  82.3% (153/186) | t0:10/11 t1:15/19 t2:3/20 t3:16/19 t4:19/20 t5:20/20 t6:18/19 t7:20/20 t8:18/20 t9:14/18 | conc 0.59（最差任务 2，+17/+29） | GPU NVIDIA A100 80GB PCIe x91, NVIDIA A100-PCIE-40GB x95
+  G_T      SR  76.3% (142/186) | t0:3/11 t1:15/19 t2:8/20 t3:18/19 t4:18/20 t5:20/20 t6:15/19 t7:17/20 t8:19/20 t9:9/18 | conc 0.30（最差任务 2，+12/+40） | GPU NVIDIA A100 80GB PCIe x92, NVIDIA H100 NVL x94
+
+==== R8 按任务表 + conc(X)（相对 S）+ R10 GPU 型号组成（pi0.5-LIBERO，object）
+  SRC      SR  98.5% (197/200) | t0:18/20 t1:19/20 t2:20/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:20/20 t8:20/20 t9:20/20 | conc - | GPU NVIDIA H200 NVL x200
+  S        SR  96.5% (193/200) | t0:20/20 t1:19/20 t2:20/20 t3:20/20 t4:20/20 t5:19/20 t6:20/20 t7:18/20 t8:18/20 t9:19/20 | conc - | GPU NVIDIA H200 NVL x200
+  T0       SR  99.0% (198/200) | t0:20/20 t1:20/20 t2:19/20 t3:19/20 t4:20/20 t5:20/20 t6:20/20 t7:20/20 t8:20/20 t9:20/20 | conc 无净增失败（净 -5） | GPU NVIDIA A100 80GB PCIe x50, NVIDIA H100 NVL x150
+  UR5e     SR  96.5% (193/200) | t0:20/20 t1:19/20 t2:20/20 t3:19/20 t4:20/20 t5:20/20 t6:20/20 t7:19/20 t8:17/20 t9:19/20 | conc 无净增失败（净 +0） | GPU NVIDIA H200 NVL x200
+  K3       SR  95.5% (191/200) | t0:18/20 t1:19/20 t2:20/20 t3:20/20 t4:18/20 t5:20/20 t6:20/20 t7:18/20 t8:18/20 t9:20/20 | conc 1.00（最差任务 0，+2/+2） | GPU NVIDIA H200 NVL x200
+  G        SR  79.5% (159/200) | t0:13/20 t1:20/20 t2:2/20 t3:17/20 t4:17/20 t5:20/20 t6:20/20 t7:20/20 t8:20/20 t9:10/20 | conc 0.53（最差任务 2，+18/+34） | GPU NVIDIA A100 80GB PCIe x200
+  G_T      SR  85.5% (171/200) | t0:19/20 t1:19/20 t2:6/20 t3:20/20 t4:12/20 t5:20/20 t6:20/20 t7:18/20 t8:19/20 t9:18/20 | conc 0.64（最差任务 2，+14/+22） | GPU NVIDIA A100 80GB PCIe x50, NVIDIA H100 NVL x150
+
+==== 在线接触汇总（§8 第 6 条；OpenVLA-OFT，object）：每任务 接触集数/有记录集数，首次接触中位步，pairs 前三（按出现集数），停滞集数
+  SRC      t0:0/11 t1:0/19 t2:0/20s2 t3:0/19 t4:0/20s1 t5:0/20 t6:0/19 t7:0/20s1 t8:0/20 t9:0/18
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  S        t0:0/11 t1:0/19 t2:0/20s1 t3:0/19s2 t4:0/20s2 t5:0/20 t6:0/19 t7:0/20s1 t8:0/20 t9:0/18
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  T0       t0:0/11s1 t1:0/19 t2:0/20 t3:0/19s1 t4:0/20s1 t5:0/20 t6:0/19 t7:0/20s1 t8:0/20 t9:0/18
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  UR5e     t0:0/11 t1:0/19s1 t2:0/20s2 t3:0/19 t4:0/20s5 t5:0/20 t6:0/19 t7:0/20 t8:0/20 t9:0/18s1
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  K3       t0:0/11s3 t1:0/19 t2:0/20 t3:0/19 t4:0/20s7 t5:0/20 t6:0/19 t7:0/20s2 t8:0/20s1 t9:0/18
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 7 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  G        t0:0/11 t1:0/19 t2:2/20 t3:0/19 t4:0/20s2 t5:0/20 t6:0/19s1 t7:0/20 t8:0/20 t9:0/18
+      t2: 接触 2 集，首次接触中位步 64，pairs 前三 [('robot0_link0|butter_1_main', 2)]，停滞 0 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  G_T      t0:0/11 t1:0/19 t2:1/20 t3:1/19 t4:0/20 t5:0/20 t6:0/19s3 t7:0/20s1 t8:0/20 t9:0/18
+      t2: 接触 1 集，首次接触中位步 279，pairs 前三 [('robot0_link7|basket_1_main', 1)]，停滞 0 集
+      t3: 接触 1 集，首次接触中位步 65，pairs 前三 [('robot0_link1|chocolate_pudding_1_main', 1)]，停滞 0 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+
+==== 在线接触汇总（§8 第 6 条；pi0.5-LIBERO，object）：每任务 接触集数/有记录集数，首次接触中位步，pairs 前三（按出现集数），停滞集数
+  SRC      t0:0/20 t1:0/20s1 t2:0/20s2 t3:0/20 t4:0/20s7 t5:0/20 t6:0/20s1 t7:0/20 t8:0/20 t9:0/20s4
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 7 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+  S        t0:0/20 t1:0/20 t2:0/20s3 t3:0/20s1 t4:0/20s5 t5:0/20 t6:0/20 t7:0/20s2 t8:0/20s1 t9:0/20s2
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+  T0       t0:0/20 t1:0/20 t2:0/20s3 t3:0/20 t4:0/20s5 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+  UR5e     t0:0/20 t1:0/20s1 t2:0/20s2 t3:0/20s1 t4:0/20s6 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20s5
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 6 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+  K3       t0:0/20s3 t1:0/20s1 t2:0/20s5 t3:0/20s5 t4:0/20s5 t5:0/20 t6:0/20 t7:0/20s4 t8:0/20 t9:1/20s1
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t9: 接触 1 集，首次接触中位步 68，pairs 前三 [('robot0_HalfArm2_Link|bbq_sauce_1_main', 1), ('robot0_forearm_link|bbq_sauce_1_main', 1)]，停滞 1 集
+  G        t0:0/20 t1:0/20 t2:0/20s8 t3:0/20s2 t4:0/20s11 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:1/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 8 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 11 集
+      t9: 接触 1 集，首次接触中位步 124，pairs 前三 [('robot0_link6|floor', 1), ('robot0_link7|floor', 1), ('robot0_link6|butter_1_main', 1)]，停滞 0 集
+  G_T      t0:2/20 t1:0/20s1 t2:0/20s1 t3:0/20 t4:0/20s7 t5:0/20 t6:0/20 t7:1/20 t8:0/20 t9:0/20s1
+      t0: 接触 2 集，首次接触中位步 130，pairs 前三 [('robot0_link3|floor', 2), ('robot0_link4|floor', 2), ('robot0_link5|floor', 2)]，停滞 0 集
+      t1: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 7 集
+      t7: 接触 1 集，首次接触中位步 213，pairs 前三 [('robot0_link0|chocolate_pudding_1_main', 1)]，停滞 0 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+
+==== 冻结文件 sha256
+  protocol_block3.md                 3875470456102d60668a02f6a7ff0610faf2b32a15f8112821fff52781690616 = 冻结值  [$PROJ_ROOT/embody_v3/protocol_block3.md]
+  protocol_block3_amendment1.md      eee344bef35f20115ef98179fed415c11df464af1493445cdfae28d5d349cd5d = 冻结值  [$PROJ_ROOT/embody_v3/protocol_block3_amendment1.md]
+  r7_predictions.tsv                 9a353acb7b877aea12bd68aa42939f2cc9db13a64e8b73fb0bafadd515d2ee6b = 冻结值  [$PROJ_ROOT/embody_v3/out/r7_predictions.tsv]
+  stages.py（失败阶段口径）                  ff34aa3dd462b67b4069901ae8630a8bd7c3c5169d9160b1c75f4b06467d4e3b  [$PROJ_ROOT/embody/analysis/stages.py]
+  protocol_block3_amendment2.md      3ef9ff455ce9316440f6081213339c1a8c1e7bf3bc4e3c7070414af5e4ec62bf = 冻结值  [$PROJ_ROOT/embody_v3/protocol_block3_amendment2.md]
+  prereg_block3.py（冻结原版）             f1da2c63cbc16ab346e569b59d9dd50cae8504766860640f445a17c5613976cf = 冻结值  [$PROJ_ROOT/embody_v3/analysis/prereg_block3.py]
+  prereg_block3_a2.py（a2 原版）         003032bace8edc99bb032cc32f504318e4d7640bc23e71b974735d2a9bd6eb22 = 冻结值  [$PROJ_ROOT/embody_v3/analysis/prereg_block3_a2.py]
+  prereg_block3_a2_sens.py（本脚本）      fd7065b285943f7086c7449ca26905751c231d26d42fa970089ee04ec2e2d26d  [$PROJ_ROOT/embody_v3/analysis/prereg_block3_a2_sens.py]

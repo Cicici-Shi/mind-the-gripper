@@ -1,0 +1,132 @@
+[
+ {
+  "key": "F2__ep00_u1__t9",
+  "block": "F2",
+  "task": "google_robot_move_near_v0",
+  "cfg_id": "ep00_u1",
+  "trial": 9,
+  "env_seed": 4000918,
+  "reset": {
+   "episode_id": 0,
+   "urdf_version": "recolor_tabletop_visual_matching_1"
+  },
+  "cluster": "ep00"
+ },
+ {
+  "key": "F2__ep01_u2__t9",
+  "block": "F2",
+  "task": "google_robot_move_near_v0",
+  "cfg_id": "ep01_u2",
+  "trial": 9,
+  "env_seed": 4001902,
+  "reset": {
+   "episode_id": 1,
+   "urdf_version": "recolor_tabletop_visual_matching_2"
+  },
+  "cluster": "ep01"
+ },
+ {
+  "key": "F2__ep02_u3__t9",
+  "block": "F2",
+  "task": "google_robot_move_near_v0",
+  "cfg_id": "ep02_u3",
+  "trial": 9,
+  "env_seed": 4002902,
+  "reset": {
+   "episode_id": 2,
+   "urdf_version": "recolor_cabinet_visual_matching_1"
+  },
+  "cluster": "ep02"
+ },
+ {
+  "key": "F2__ep03_u0__t9",
+  "block": "F2",
+  "task": "google_robot_move_near_v0",
+  "cfg_id": "ep03_u0",
+  "trial": 9,
+  "env_seed": 4003901,
+  "reset": {
+   "episode_id": 3,
+   "urdf_version": ""
+  },
+  "cluster": "ep03"
+ },
+ {
+  "key": "F2__ep04_u1__t9",
+  "block": "F2",
+  "task": "google_robot_move_near_v0",
+  "cfg_id": "ep04_u1",
+  "trial": 9,
+  "env_seed": 4004901,
+  "reset": {
+   "episode_id": 4,
+   "urdf_version": "recolor_tabletop_visual_matching_1"
+  },
+  "cluster": "ep04"
+ },
+ {
+  "key": "F2__ep05_u2__t9",
+  "block": "F2",
+  "task": "google_robot_move_near_v0",
+  "cfg_id": "ep05_u2",
+  "trial": 9,
+  "env_seed": 4005908,
+  "reset": {
+   "episode_id": 5,
+   "urdf_version": "recolor_tabletop_visual_matching_2"
+  },
+  "cluster": "ep05"
+ },
+ {
+  "key": "F2__ep06_u3__t9",
+  "block": "F2",
+  "task": "google_robot_move_near_v0",
+  "cfg_id": "ep06_u3",
+  "trial": 9,
+  "env_seed": 4006901,
+  "reset": {
+   "episode_id": 6,
+   "urdf_version": "recolor_cabinet_visual_matching_1"
+  },
+  "cluster": "ep06"
+ },
+ {
+  "key": "F2__ep07_u0__t9",
+  "block": "F2",
+  "task": "google_robot_move_near_v0",
+  "cfg_id": "ep07_u0",
+  "trial": 9,
+  "env_seed": 4007920,
+  "reset": {
+   "episode_id": 7,
+   "urdf_version": ""
+  },
+  "cluster": "ep07"
+ },
+ {
+  "key": "F2__ep08_u1__t9",
+  "block": "F2",
+  "task": "google_robot_move_near_v0",
+  "cfg_id": "ep08_u1",
+  "trial": 9,
+  "env_seed": 4008905,
+  "reset": {
+   "episode_id": 8,
+   "urdf_version": "recolor_tabletop_visual_matching_1"
+  },
+  "cluster": "ep08"
+ },
+ {
+  "key": "F2__ep09_u2__t9",
+  "block": "F2",
+  "task": "google_robot_move_near_v0",
+  "cfg_id": "ep09_u2",
+  "trial": 9,
+  "env_seed": 4009901,
+  "reset": {
+   "episode_id": 9,
+   "urdf_version": "recolor_tabletop_visual_matching_2"
+  },
+  "cluster": "ep09"
+ }
+]

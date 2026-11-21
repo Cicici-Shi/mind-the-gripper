@@ -1,0 +1,14 @@
+[
+ {
+  "key": "B2__ep00__t9",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep00",
+  "trial": 9,
+  "env_seed": 713560504,
+  "reset": {
+   "episode_id": 0
+  },
+  "cluster": "ep00"
+ }
+]

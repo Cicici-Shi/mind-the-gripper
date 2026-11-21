@@ -1,0 +1,1025 @@
+prereg_block3_a2.py：按附录 2 改动 D1 到 D4，其余与 f1da2c63 逐行相同
+prereg_block3.py  suite=spatial  n=200  B=10000  seed=0
+runs=$PROJ_ROOT/runs pi05=$PROJ_ROOT/pi05/v2 slurm-logs=~/logs eval-logs=$PROJ_ROOT/openvla-oft/experiments/logs pi05-logs=$PROJ_ROOT/pi05/logs gr-t0=$PROJ_ROOT/embody_v3/out/gr_t0
+
+######## 第一部分：n = 200（第一次看数）
+
+==== 门槛（OpenVLA-OFT，spatial，每格 200 键设计）
+  SRC      (src): 键 200/200（缺 0）
+      fixcheck         NA    SRC 自身
+      copy_grip_cmd    NA    无迁移
+      t0 对齐            NA    无迁移
+  S        (sham_cg): 键 200/200（缺 0）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0097 mm / 0.0221°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+  S0       (sham): 键 200/200（缺 0）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    NA    copy_grip_cmd=1: 0, =0: 0, 缺: 200（第一批设计上不复制，只入 d_cg 描述）
+      t0 对齐            NA    最大 0.0097 mm / 0.0221°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+  T0       (sham_twin): 键 200/200（缺 0）  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            NA    最大 0.0097 mm / 0.0221°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  查询帧 IK 未命中（pos>2 mm 或 rot>1°） 0/2669 = 0.00%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  IIWA     (iiwa): 键 200/200（缺 0）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    NA    copy_grip_cmd=1: 0, =0: 0, 缺: 200（第一批设计上不复制，只入 d_cg 描述）
+      t0 对齐            NA    最大 0.0099 mm / 0.0364°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+  IIWA_cg  (iiwa_cg): 键 200/200（缺 0）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0099 mm / 0.0363°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+  IIWA_T   (iiwa_twin): 键 200/200（缺 0）  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            NA    最大 0.0099 mm / 0.0363°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  查询帧 IK 未命中（pos>2 mm 或 rot>1°） 0/2767 = 0.00%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  UR5e     (ur5e): 键 200/200（缺 0）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    NA    copy_grip_cmd=1: 0, =0: 0, 缺: 200（第一批设计上不复制，只入 d_cg 描述）
+      t0 对齐            NA    最大 0.0016 mm / 0.0062°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+  UR5e_cg  (ur5e_cg): 键 200/200（缺 0）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0016 mm / 0.0062°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+  UR5e_T   (ur5e_twin): 键 200/200（缺 0）  <<< does not count
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            NA    最大 0.0016 mm / 0.0062°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             FAIL  查询帧 IK 未命中（pos>2 mm 或 rot>1°） 109/3181 = 3.43%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  UR5e_R   (ur5e_rev): 键 200/200（缺 0）  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            NA    最大 0.0097 mm / 0.0221°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  查询帧 IK 未命中（pos>2 mm 或 rot>1°） 0/2670 = 0.00%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  G        (grpkp100): 键 200/200（缺 0）  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 3 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+  G_T      (grpkp100_twin): 键 200/200（缺 0）  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 3 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  查询帧 IK 未命中（pos>2 mm 或 rot>1°） 0/2867 = 0.00%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  G_Tw     (grpkp100_tw): 键 200/200（缺 0）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  查询帧 IK 未命中（pos>2 mm 或 rot>1°） 0/2996 = 0.00%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  G_Ta     (grpkp100_ta): 键 200/200（缺 0）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 3 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  查询帧 IK 未命中（pos>2 mm 或 rot>1°） 3/3484 = 0.09%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  G_R      (g_r): 键 200/200（缺 0）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0097 mm / 0.0221°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  查询帧指垫残差 > 1 mm 0/3447 = 0.00%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+      腕相机位姿差 0         UNK   dump 无此字段，以冒烟记录为准（不作 does-not-count 依据）
+      G_R 第 0 步 (i)    PASS  隐藏夹爪口径按格平均（附录 2 裁定 2，门槛 < 0.11）：全部 400 个初始状态 agent 0.0087 wrist 0.0436；分作业 node16/NVIDIA A100-PCIE-40GB（50 键）agent 0.0081 wrist 0.0381；node24/NVIDIA A100 80GB PCIe（50 键）agent 0.0085 wrist 0.0647；node26/NVIDIA A100 80GB PCIe（150 键）agent 0.0088 wrist 0.0410；node41/NVIDIA H200 NVL（150 键）agent 0.0088 wrist 0.0410；缺隐藏字段 0
+        描述（不设门槛）：隐藏口径逐键 agent 均值 0.0087 最大 0.0227 ≥0.11 键 0/400，wrist 均值 0.0436 最大 0.3714 ≥0.11 键 26/400
+        描述：分割口径 M 外 agent 均值 0.0437 最大 0.0805 ≥0.11 键 0/400，wrist 均值 0.1077 最大 0.4882 ≥0.11 键 149/400；M 内均值 agent 60.621 wrist 79.675
+        噪声参照：同作业 T0 对参考 Panda agent 均值 0.0025 最大 0.0258 ≥0.11 键 0/400，wrist 均值 0.0434 最大 0.3491 ≥0.11 键 29/400
+        （冻结版逐键口径：不过，M 外最大 agent 0.0805 wrist 0.4882，口径 {'mask:segmentation': 400}）；节点/GPU {'node24/NVIDIA A100 80GB PCIe': 50, 'node26/NVIDIA A100 80GB PCIe': 150, 'node16/NVIDIA A100-PCIE-40GB': 50, 'node41/NVIDIA H200 NVL': 150}
+      G_R 第 0 步 (ii)   PASS  G_R 对 G 腕部最大 4.718（门槛 < 8）；agentview 只报数，最大 1.856
+  G_Rw     (g_rw): 缺（无数据）
+  P6j3     (p6j3): 键 200/200（缺 0）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            PASS  最大 0.0099 mm / 0.0171°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+  K3       (k3): 键 200/200（缺 0）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            PASS  最大 0.0044 mm / 0.0372°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+  UR5e_nc  (ur5e_nc): 键 200/200（缺 0）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            PASS  最大 0.0016 mm / 0.0062°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+  RT2      (rt2): 键 200/200（缺 0）
+      fixcheck         PASS  keys 200, 最大差 0.0000 mm（门槛 0.0000）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            PASS  最大 0.0099 mm / 0.0264°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+  RT2_T    (rt2_twin): 缺（无数据）
+  K3_T     (k3_twin): 缺（无数据）
+    G_R 第 0 步逐状态（gr_t0）：
+      t0 e0 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0533 wrist 0.1462 [mask:segmentation] inside agent 60.34674535050072 wrist 79.51548380546248 mask_px 1864/13132 | (ii) G_R-G wrist 3.8799896240234375 agent 1.5739847819010417 | G-ref agent 2.980656941731771 | G_R-ref agent 1.7676849365234375
+      t0 e1 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0439 wrist 0.2147 [mask:segmentation] inside agent 62.91548496880318 wrist 77.74984770027415 mask_px 1763/13132 | (ii) G_R-G wrist 3.853185017903646 agent 1.7942860921223958 | G-ref agent 3.1828104654947915 | G_R-ref agent 1.7345326741536458
+      t0 e2 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0304 wrist 0.1102 [mask:segmentation] inside agent 60.99486897562763 wrist 79.30701086404711 mask_px 1819/13132 | (ii) G_R-G wrist 3.8024800618489585 agent 1.6947987874348958 | G-ref agent 3.058954874674479 | G_R-ref agent 1.7240498860677083
+      t0 e3 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0389 wrist 0.0880 [mask:segmentation] inside agent 61.03697661772703 wrist 79.36437709412122 mask_px 1839/13132 | (ii) G_R-G wrist 3.8222147623697915 agent 1.6348775227864583 | G-ref agent 3.0196533203125 | G_R-ref agent 1.749267578125
+      t0 e4 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0368 wrist 0.0645 [mask:segmentation] inside agent 61.15251897860593 wrist 80.13085084780181 mask_px 1932/13132 | (ii) G_R-G wrist 3.8395284016927085 agent 1.6067911783854167 | G-ref agent 3.065984090169271 | G_R-ref agent 1.8385467529296875
+      t1 e0 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0295 wrist 0.1111 [mask:segmentation] inside agent 60.52527394839166 wrist 78.66537211899686 mask_px 1886/13132 | (ii) G_R-G wrist 3.7932281494140625 agent 1.6379648844401042 | G-ref agent 3.052007039388021 | G_R-ref agent 1.7703959147135417
+      t1 e1 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0299 wrist 0.0690 [mask:segmentation] inside agent 61.11691542288557 wrist 79.37049446644329 mask_px 1876/13132 | (ii) G_R-G wrist 3.9086201985677085 agent 1.6038055419921875 | G-ref agent 2.991114298502604 | G_R-ref agent 1.77886962890625
+      t1 e2 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0495 wrist 0.1642 [mask:segmentation] inside agent 62.377599694714746 wrist 78.8382830744238 mask_px 1747/13132 | (ii) G_R-G wrist 3.7895660400390625 agent 1.7567392985026042 | G-ref agent 3.1356709798177085 | G_R-ref agent 1.7115224202473958
+      t1 e3 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0519 wrist 0.1334 [mask:segmentation] inside agent 61.77618795265854 wrist 80.3182302771855 mask_px 1887/13132 | (ii) G_R-G wrist 3.823481241861979 agent 1.624542236328125 | G-ref agent 3.084503173828125 | G_R-ref agent 1.8289794921875
+      t1 e4 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0376 wrist 0.1092 [mask:segmentation] inside agent 60.62203548085901 wrist 78.89953294750737 mask_px 1785/13132 | (ii) G_R-G wrist 3.810791015625 agent 1.7423095703125 | G-ref agent 3.0981547037760415 | G_R-ref agent 1.6888224283854167
+      t2 e0 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0435 wrist 0.0922 [mask:segmentation] inside agent 62.52088936704321 wrist 80.47050461975834 mask_px 1859/13132 | (ii) G_R-G wrist 4.128896077473958 agent 1.5701395670572917 | G-ref agent 2.9919840494791665 | G_R-ref agent 1.8185628255208333
+      t2 e1 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0667 wrist 0.0595 [mask:segmentation] inside agent 61.110988404196576 wrist 79.1505482790131 mask_px 1811/13132 | (ii) G_R-G wrist 3.8222452799479165 agent 1.6864776611328125 | G-ref agent 3.086639404296875 | G_R-ref agent 1.7535552978515625
+      t2 e2 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0564 wrist 0.1198 [mask:segmentation] inside agent 61.13551488260307 wrist 79.33830845771145 mask_px 1803/13132 | (ii) G_R-G wrist 3.8322041829427085 agent 1.688873291015625 | G-ref agent 3.07568359375 | G_R-ref agent 1.736236572265625
+      t2 e3 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0331 wrist 0.1015 [mask:segmentation] inside agent 61.39254503299447 wrist 79.45288861813383 mask_px 1869/13132 | (ii) G_R-G wrist 3.8312835693359375 agent 1.6229705810546875 | G-ref agent 3.038152058919271 | G_R-ref agent 1.78265380859375
+      t2 e4 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0628 wrist 0.0575 [mask:segmentation] inside agent 61.285360746240244 wrist 78.71222966798659 mask_px 1751/13132 | (ii) G_R-G wrist 3.9993743896484375 agent 1.7117716471354167 | G-ref agent 3.0553487141927085 | G_R-ref agent 1.6985982259114583
+      t3 e0 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0331 wrist 0.0731 [mask:segmentation] inside agent 60.61075036075036 wrist 79.91191999187735 mask_px 1848/13132 | (ii) G_R-G wrist 3.892186482747396 agent 1.5957743326822917 | G-ref agent 2.966608683268229 | G_R-ref agent 1.7408192952473958
+      t3 e1 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0475 wrist 0.1606 [mask:segmentation] inside agent 61.07382550335571 wrist 80.0668849629404 mask_px 1788/13132 | (ii) G_R-G wrist 3.8967437744140625 agent 1.656524658203125 | G-ref agent 3.0243631998697915 | G_R-ref agent 1.7114156087239583
+      t3 e2 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0431 wrist 0.0528 [mask:segmentation] inside agent 60.572266666666664 wrist 79.40712255051274 mask_px 1875/13132 | (ii) G_R-G wrist 4.0407867431640625 agent 1.670684814453125 | G-ref agent 3.0833892822265625 | G_R-ref agent 1.7781219482421875
+      t3 e3 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0323 wrist 0.1297 [mask:segmentation] inside agent 60.69126111983255 wrist 81.37767793684638 mask_px 1911/13132 | (ii) G_R-G wrist 3.8906962076822915 agent 1.5190327962239583 | G-ref agent 2.939671834309896 | G_R-ref agent 1.7980295817057292
+      t3 e4 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0365 wrist 0.1089 [mask:segmentation] inside agent 60.512650046168055 wrist 80.2316986496091 mask_px 1805/13132 | (ii) G_R-G wrist 3.844334920247396 agent 1.6882069905598958 | G-ref agent 3.048731486002604 | G_R-ref agent 1.7013346354166667
+      t4 e0 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0371 wrist 0.0926 [mask:segmentation] inside agent 59.371041552260664 wrist 79.49685247233222 mask_px 1821/13132 | (ii) G_R-G wrist 3.979680379231771 agent 1.6361287434895833 | G-ref agent 2.97943115234375 | G_R-ref agent 1.6846822102864583
+      t4 e1 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0339 wrist 0.0481 [mask:segmentation] inside agent 60.558387563268255 wrist 79.33757234236978 mask_px 1844/13132 | (ii) G_R-G wrist 3.9703776041666665 agent 1.5628102620442708 | G-ref agent 2.9234619140625 | G_R-ref agent 1.7427520751953125
+      t4 e2 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0745 wrist 0.0831 [mask:segmentation] inside agent 60.686094621334775 wrist 79.67098182556605 mask_px 1853/13132 | (ii) G_R-G wrist 3.816411336263021 agent 1.6190287272135417 | G-ref agent 3.0307413736979165 | G_R-ref agent 1.7877095540364583
+      t4 e3 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0596 wrist 0.0934 [mask:segmentation] inside agent 61.59377875943309 wrist 79.48593765864555 mask_px 1811/13132 | (ii) G_R-G wrist 3.696924845377604 agent 1.6795247395833333 | G-ref agent 3.0557861328125 | G_R-ref agent 1.7608540852864583
+      t4 e4 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0417 wrist 0.0963 [mask:segmentation] inside agent 60.7261448640759 wrist 79.01863133313027 mask_px 1827/13132 | (ii) G_R-G wrist 3.826507568359375 agent 1.6536966959635417 | G-ref agent 3.032318115234375 | G_R-ref agent 1.7343953450520833
+      t5 e0 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0510 wrist 0.1412 [mask:segmentation] inside agent 62.075298953662184 wrist 78.51083866382373 mask_px 1784/13132 | (ii) G_R-G wrist 4.069895426432292 agent 1.7246754964192708 | G-ref agent 3.1181538899739585 | G_R-ref agent 1.7398427327473958
+      t5 e1 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0613 wrist 0.0886 [mask:segmentation] inside agent 62.15321375186846 wrist 78.65587876941821 mask_px 1784/13132 | (ii) G_R-G wrist 3.759791056315104 agent 1.6985321044921875 | G-ref agent 3.076349894205729 | G_R-ref agent 1.7514750162760417
+      t5 e2 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0410 wrist 0.0524 [mask:segmentation] inside agent 61.281439197370695 wrist 79.80805157884049 mask_px 1927/13132 | (ii) G_R-G wrist 3.9026641845703125 agent 1.5710856119791667 | G-ref agent 3.0254923502604165 | G_R-ref agent 1.8424173990885417
+      t5 e3 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0440 wrist 0.1576 [mask:segmentation] inside agent 60.94963655244029 wrist 80.3327241344299 mask_px 1926/13132 | (ii) G_R-G wrist 3.8521728515625 agent 1.5509287516276042 | G-ref agent 2.986414591471354 | G_R-ref agent 1.833526611328125
+      t5 e4 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0805 wrist 0.0672 [mask:segmentation] inside agent 61.349126718691934 wrist 79.50106609808103 mask_px 1794/13132 | (ii) G_R-G wrist 4.01251220703125 agent 1.7015787760416667 | G-ref agent 3.102452596028646 | G_R-ref agent 1.7583262125651042
+      t6 e0 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0371 wrist 0.0650 [mask:segmentation] inside agent 60.583595113438044 wrist 79.95022337293126 mask_px 1910/13132 | (ii) G_R-G wrist 3.841710408528646 agent 1.5841725667317708 | G-ref agent 3.0040130615234375 | G_R-ref agent 1.8018697102864583
+      t6 e1 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0277 wrist 0.0691 [mask:segmentation] inside agent 60.937713157422365 wrist 78.77957153010458 mask_px 1857/13132 | (ii) G_R-G wrist 3.8014373779296875 agent 1.6111043294270833 | G-ref agent 2.9846038818359375 | G_R-ref agent 1.7539621988932292
+      t6 e2 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0477 wrist 0.1171 [mask:segmentation] inside agent 61.63957783641161 wrist 79.63082546451416 mask_px 1895/13132 | (ii) G_R-G wrist 3.788426717122396 agent 1.5744476318359375 | G-ref agent 2.9990692138671875 | G_R-ref agent 1.8280537923177083
+      t6 e3 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0440 wrist 0.1323 [mask:segmentation] inside agent 61.01109917651271 wrist 79.8982130165499 mask_px 1862/13132 | (ii) G_R-G wrist 4.0355478922526045 agent 1.633331298828125 | G-ref agent 3.0190633138020835 | G_R-ref agent 1.7761128743489583
+      t6 e4 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0660 wrist 0.0694 [mask:segmentation] inside agent 61.34265232974911 wrist 79.24261346329577 mask_px 1860/13132 | (ii) G_R-G wrist 4.1377716064453125 agent 1.6550496419270833 | G-ref agent 3.1003265380859375 | G_R-ref agent 1.8102976481119792
+      t7 e0 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0504 wrist 0.1211 [mask:segmentation] inside agent 60.644724812579994 wrist 80.22905878769419 mask_px 1823/13132 | (ii) G_R-G wrist 3.8564860026041665 agent 1.6869455973307292 | G-ref agent 3.044459025065104 | G_R-ref agent 1.7361958821614583
+      t7 e1 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0474 wrist 0.1164 [mask:segmentation] inside agent 61.03947368421053 wrist 78.76863133313027 mask_px 1824/13132 | (ii) G_R-G wrist 3.836766560872396 agent 1.6273600260416667 | G-ref agent 3.0017598470052085 | G_R-ref agent 1.7450052897135417
+      t7 e2 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0509 wrist 0.0772 [mask:segmentation] inside agent 59.77387486278815 wrist 79.12595187328662 mask_px 1822/13132 | (ii) G_R-G wrist 4.218729654947917 agent 1.6357014973958333 | G-ref agent 2.998601277669271 | G_R-ref agent 1.7138214111328125
+      t7 e3 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0595 wrist 0.4882 [mask:segmentation] inside agent 61.50043561596097 wrist 79.65666565133516 mask_px 1913/13132 | (ii) G_R-G wrist 4.030324300130208 agent 1.6147816975911458 | G-ref agent 3.06817626953125 | G_R-ref agent 1.8517710367838542
+      t7 e4 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0368 wrist 0.1129 [mask:segmentation] inside agent 61.361671207992735 wrist 79.48086100111686 mask_px 1835/13132 | (ii) G_R-G wrist 4.17333984375 agent 1.6105295817057292 | G-ref agent 2.9911702473958335 | G_R-ref agent 1.7541961669921875
+      t8 e0 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0705 wrist 0.0790 [mask:segmentation] inside agent 60.617863720073665 wrist 80.95865062442887 mask_px 1810/13132 | (ii) G_R-G wrist 3.920344034830729 agent 1.5735422770182292 | G-ref agent 2.941431681315104 | G_R-ref agent 1.7428995768229167
+      t8 e1 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0318 wrist 0.0841 [mask:segmentation] inside agent 60.09425287356322 wrist 79.64884759874099 mask_px 1885/13132 | (ii) G_R-G wrist 4.1979420979817705 agent 1.6089935302734375 | G-ref agent 3.0055999755859375 | G_R-ref agent 1.7593790690104167
+      t8 e2 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0624 wrist 0.4450 [mask:segmentation] inside agent 63.77306967984934 wrist 79.16191999187735 mask_px 1770/13132 | (ii) G_R-G wrist 4.717783610026042 agent 1.7663116455078125 | G-ref agent 3.1986897786458335 | G_R-ref agent 1.7843983968098958
+      t8 e3 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0641 wrist 0.0936 [mask:segmentation] inside agent 61.378681120144535 wrist 81.16620976748908 mask_px 1845/13132 | (ii) G_R-G wrist 4.4631703694661455 agent 1.6190083821614583 | G-ref agent 3.020411173502604 | G_R-ref agent 1.7900950113932292
+      t8 e4 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0636 wrist 0.1758 [mask:segmentation] inside agent 60.92255707762557 wrist 80.55736623007412 mask_px 1825/13132 | (ii) G_R-G wrist 3.958282470703125 agent 1.6230265299479167 | G-ref agent 3.0084940592447915 | G_R-ref agent 1.75897216796875
+      t9 e0 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0396 wrist 0.2152 [mask:segmentation] inside agent 63.57625145518044 wrist 79.99969540054828 mask_px 1718/13132 | (ii) G_R-G wrist 3.901336669921875 agent 1.7513834635416667 | G-ref agent 3.114507039388021 | G_R-ref agent 1.7034861246744792
+      t9 e1 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0356 wrist 0.3273 [mask:segmentation] inside agent 60.289459311851445 wrist 80.1247080921921 mask_px 1831/13132 | (ii) G_R-G wrist 4.039581298828125 agent 1.5731302897135417 | G-ref agent 2.9235076904296875 | G_R-ref agent 1.7191619873046875
+      t9 e2 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0343 wrist 0.4442 [mask:segmentation] inside agent 61.36017777777778 wrist 79.87671337191593 mask_px 1875/13132 | (ii) G_R-G wrist 4.126169840494792 agent 1.608856201171875 | G-ref agent 3.0063323974609375 | G_R-ref agent 1.7884267171223958
+      t9 e3 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0576 wrist 0.2218 [mask:segmentation] inside agent 61.99792139077854 wrist 80.26403695806681 mask_px 1764/13132 | (ii) G_R-G wrist 3.942754109700521 agent 1.764739990234375 | G-ref agent 3.158055623372396 | G_R-ref agent 1.7259165445963542
+      t9 e4 host=node24 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0651 wrist 0.1445 [mask:segmentation] inside agent 60.76350719760703 wrist 79.92471316884964 mask_px 1783/13132 | (ii) G_R-G wrist 4.094919840494792 agent 1.6361033121744792 | G-ref agent 3.015355428059896 | G_R-ref agent 1.7167460123697917
+      t0 e10 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0585 wrist 0.0785 [mask:segmentation] inside agent 59.25575953923686 wrist 78.8473593599676 mask_px 1852/13166 | (ii) G_R-G wrist 3.78594970703125 agent 1.6613362630208333 | G-ref agent 3.0256245930989585 | G_R-ref agent 1.7309977213541667
+      t0 e11 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0455 wrist 0.0983 [mask:segmentation] inside agent 61.45895096921323 wrist 78.78359816518412 mask_px 1754/13153 | (ii) G_R-G wrist 3.7794036865234375 agent 1.7048441569010417 | G-ref agent 3.04364013671875 | G_R-ref agent 1.6889241536458333
+      t0 e12 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0395 wrist 0.1381 [mask:segmentation] inside agent 60.645636172450054 wrist 79.99187424058323 mask_px 1902/13168 | (ii) G_R-G wrist 3.8509419759114585 agent 1.5625762939453125 | G-ref agent 2.9818623860677085 | G_R-ref agent 1.7976837158203125
+      t0 e13 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0304 wrist 0.0535 [mask:segmentation] inside agent 60.424916181401095 wrist 79.86664132775877 mask_px 1889/13155 | (ii) G_R-G wrist 4.0524749755859375 agent 1.6143798828125 | G-ref agent 3.0051116943359375 | G_R-ref agent 1.7738698323567708
+      t0 e14 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0387 wrist 0.1233 [mask:segmentation] inside agent 61.43709468223087 wrist 79.8936757591875 mask_px 1799/13161 | (ii) G_R-G wrist 3.8756561279296875 agent 1.67572021484375 | G-ref agent 3.0303802490234375 | G_R-ref agent 1.7250010172526042
+      t1 e10 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0531 wrist 0.2203 [mask:segmentation] inside agent 59.144836051201125 wrist 79.5026906284902 mask_px 1901/13132 | (ii) G_R-G wrist 3.9121856689453125 agent 1.5980021158854167 | G-ref agent 3.0033976236979165 | G_R-ref agent 1.7677714029947917
+      t1 e11 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0491 wrist 0.1126 [mask:segmentation] inside agent 61.36846038863976 wrist 78.91721182615751 mask_px 1784/13146 | (ii) G_R-G wrist 3.752685546875 agent 1.71795654296875 | G-ref agent 3.0855611165364585 | G_R-ref agent 1.7185465494791667
+      t1 e12 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0313 wrist 0.0858 [mask:segmentation] inside agent 60.305433989788476 wrist 79.32325304561456 mask_px 1828/13161 | (ii) G_R-G wrist 3.8094024658203125 agent 1.5957539876302083 | G-ref agent 2.954249064127604 | G_R-ref agent 1.7121327718098958
+      t1 e13 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0326 wrist 0.0834 [mask:segmentation] inside agent 60.39108998063039 wrist 80.89111398766467 mask_px 1893/13133 | (ii) G_R-G wrist 4.3624521891276045 agent 1.5910135904947917 | G-ref agent 2.978947957356771 | G_R-ref agent 1.7763926188151042
+      t1 e14 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0366 wrist 0.1215 [mask:segmentation] inside agent 63.47385252069225 wrist 79.40024220405692 mask_px 1772/13212 | (ii) G_R-G wrist 3.815831502278646 agent 1.7853240966796875 | G-ref agent 3.185882568359375 | G_R-ref agent 1.7511037190755208
+      t2 e10 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0274 wrist 0.0821 [mask:segmentation] inside agent 59.78562642769285 wrist 80.62882018479033 mask_px 1897/13132 | (ii) G_R-G wrist 3.8465677897135415 agent 1.5343068440755208 | G-ref agent 2.9331817626953125 | G_R-ref agent 1.7573954264322917
+      t2 e11 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0524 wrist 0.0464 [mask:segmentation] inside agent 60.5511640498105 wrist 79.48656731549067 mask_px 1847/13152 | (ii) G_R-G wrist 3.8413289388020835 agent 1.5840555826822917 | G-ref agent 2.969538370768229 | G_R-ref agent 1.7580515543619792
+      t2 e12 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0362 wrist 0.0704 [mask:segmentation] inside agent 60.23096841015018 wrist 80.39507296962339 mask_px 1931/13179 | (ii) G_R-G wrist 3.8701375325520835 agent 1.5846608479817708 | G-ref agent 3.012842814127604 | G_R-ref agent 1.8100687662760417
+      t2 e13 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0362 wrist 0.1613 [mask:segmentation] inside agent 61.510883967442744 wrist 79.06000556778781 mask_px 1761/13171 | (ii) G_R-G wrist 3.8632914225260415 agent 1.7401987711588542 | G-ref agent 3.0887552897135415 | G_R-ref agent 1.6875864664713542
+      t2 e14 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0473 wrist 0.1575 [mask:segmentation] inside agent 61.070420017873104 wrist 79.6893503081742 mask_px 1865/13196 | (ii) G_R-G wrist 3.8513081868489585 agent 1.5656280517578125 | G-ref agent 2.9702351888020835 | G_R-ref agent 1.7829132080078125
+      t3 e10 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0340 wrist 0.0641 [mask:segmentation] inside agent 60.78829987991079 wrist 81.25511990864103 mask_px 1943/13135 | (ii) G_R-G wrist 4.3115997314453125 agent 1.5269877115885417 | G-ref agent 2.9958394368489585 | G_R-ref agent 1.835296630859375
+      t3 e11 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0522 wrist 0.1454 [mask:segmentation] inside agent 60.24617067833698 wrist 80.2177284476205 mask_px 1828/13154 | (ii) G_R-G wrist 3.920257568359375 agent 1.6493072509765625 | G-ref agent 2.99664306640625 | G_R-ref agent 1.7312876383463542
+      t3 e12 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0411 wrist 0.2245 [mask:segmentation] inside agent 58.38801811215604 wrist 80.32247094056139 mask_px 1914/13134 | (ii) G_R-G wrist 3.954157511393229 agent 1.6481831868489583 | G-ref agent 3.023371378580729 | G_R-ref agent 1.7462921142578125
+      t3 e13 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0456 wrist 0.1243 [mask:segmentation] inside agent 60.4397504456328 wrist 80.79951581177183 mask_px 1870/13218 | (ii) G_R-G wrist 3.919896443684896 agent 1.592132568359375 | G-ref agent 2.987523396809896 | G_R-ref agent 1.7689666748046875
+      t3 e14 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0480 wrist 0.1731 [mask:segmentation] inside agent 61.0273344340488 wrist 80.07970247100353 mask_px 1817/13220 | (ii) G_R-G wrist 4.2344818115234375 agent 1.7188161214192708 | G-ref agent 3.087977091471354 | G_R-ref agent 1.73809814453125
+      t4 e10 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0365 wrist 0.1130 [mask:segmentation] inside agent 58.78897370653096 wrist 80.1030888618381 mask_px 1965/13144 | (ii) G_R-G wrist 3.8176981608072915 agent 1.5579986572265625 | G-ref agent 2.9674072265625 | G_R-ref agent 1.7980397542317708
+      t4 e11 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0585 wrist 0.0833 [mask:segmentation] inside agent 60.896705750977105 wrist 77.69986419194205 mask_px 1791/13254 | (ii) G_R-G wrist 3.775965372721354 agent 1.7240091959635417 | G-ref agent 3.097752888997396 | G_R-ref agent 1.7206370035807292
+      t4 e12 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0362 wrist 0.1212 [mask:segmentation] inside agent 61.04283576505799 wrist 79.29960981047938 mask_px 1782/13156 | (ii) G_R-G wrist 3.851557413736979 agent 1.7397867838541667 | G-ref agent 3.1010538736979165 | G_R-ref agent 1.694580078125
+      t4 e13 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0623 wrist 0.0757 [mask:segmentation] inside agent 60.687222222222225 wrist 79.33305454176805 mask_px 1800/13152 | (ii) G_R-G wrist 3.8533732096354165 agent 1.6478983561197917 | G-ref agent 2.992253621419271 | G_R-ref agent 1.7277475992838542
+      t4 e14 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0317 wrist 0.0947 [mask:segmentation] inside agent 60.849080648097576 wrist 79.81263782221885 mask_px 1831/13151 | (ii) G_R-G wrist 4.389719645182292 agent 1.7017262776692708 | G-ref agent 3.064793904622396 | G_R-ref agent 1.7303975423177083
+      t5 e10 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0457 wrist 0.0963 [mask:segmentation] inside agent 59.141046831955926 wrist 79.15790672945465 mask_px 1815/13166 | (ii) G_R-G wrist 3.786860148111979 agent 1.7085673014322917 | G-ref agent 3.056981404622396 | G_R-ref agent 1.6814422607421875
+      t5 e11 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0517 wrist 0.0781 [mask:segmentation] inside agent 60.064350064350066 wrist 78.9813140903912 mask_px 1813/13165 | (ii) G_R-G wrist 3.7716064453125 agent 1.6396077473958333 | G-ref agent 2.994659423828125 | G_R-ref agent 1.7117411295572917
+      t5 e12 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0373 wrist 0.1144 [mask:segmentation] inside agent 60.56572645023949 wrist 79.92264619438532 mask_px 1879/13156 | (ii) G_R-G wrist 3.8090108235677085 agent 1.6186676025390625 | G-ref agent 3.028010050455729 | G_R-ref agent 1.7718098958333333
+      t5 e13 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0608 wrist 0.0892 [mask:segmentation] inside agent 60.60250896057347 wrist 80.53654636820465 mask_px 1860/13134 | (ii) G_R-G wrist 3.8477935791015625 agent 1.5361226399739583 | G-ref agent 2.951690673828125 | G_R-ref agent 1.777801513671875
+      t5 e14 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0333 wrist 0.0467 [mask:segmentation] inside agent 60.65573466740782 wrist 78.88251532188623 mask_px 1799/13162 | (ii) G_R-G wrist 3.889195760091146 agent 1.7428690592447917 | G-ref agent 3.092748006184896 | G_R-ref agent 1.6988372802734375
+      t6 e10 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0264 wrist 0.0903 [mask:segmentation] inside agent 59.230877192982454 wrist 80.14839609483961 mask_px 1900/13145 | (ii) G_R-G wrist 3.8446502685546875 agent 1.6482289632161458 | G-ref agent 3.0377655029296875 | G_R-ref agent 1.7429402669270833
+      t6 e11 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0633 wrist 0.1418 [mask:segmentation] inside agent 60.448641842057924 wrist 78.63214023355371 mask_px 1853/13159 | (ii) G_R-G wrist 3.846552530924479 agent 1.6436513264973958 | G-ref agent 3.04888916015625 | G_R-ref agent 1.7711537679036458
+      t6 e12 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0426 wrist 0.0858 [mask:segmentation] inside agent 60.61519213583557 wrist 78.7557875624149 mask_px 1865/13218 | (ii) G_R-G wrist 3.7796223958333335 agent 1.6152191162109375 | G-ref agent 3.022547403971354 | G_R-ref agent 1.76568603515625
+      t6 e13 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0437 wrist 0.1202 [mask:segmentation] inside agent 60.46544035674471 wrist 79.69014369560817 mask_px 1794/13176 | (ii) G_R-G wrist 3.840825398763021 agent 1.6795145670572917 | G-ref agent 3.025792439778646 | G_R-ref agent 1.6976267496744792
+      t6 e14 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0438 wrist 0.0741 [mask:segmentation] inside agent 62.965711073636875 wrist 78.64449310379543 mask_px 1779/13244 | (ii) G_R-G wrist 3.8189595540364585 agent 1.75860595703125 | G-ref agent 3.148829142252604 | G_R-ref agent 1.7516021728515625
+      t7 e10 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0395 wrist 0.0905 [mask:segmentation] inside agent 59.8209483368719 wrist 80.07631652341472 mask_px 1884/13147 | (ii) G_R-G wrist 3.8568318684895835 agent 1.6251576741536458 | G-ref agent 3.01043701171875 | G_R-ref agent 1.7583160400390625
+      t7 e11 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0408 wrist 0.1412 [mask:segmentation] inside agent 60.87332230189373 wrist 78.70156246043202 mask_px 1813/13163 | (ii) G_R-G wrist 3.8541412353515625 agent 1.6952463785807292 | G-ref agent 3.0644327799479165 | G_R-ref agent 1.7239430745442708
+      t7 e12 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0445 wrist 0.0599 [mask:segmentation] inside agent 60.17876700229641 wrist 80.14504319627068 mask_px 1887/13157 | (ii) G_R-G wrist 3.850489298502604 agent 1.5214996337890625 | G-ref agent 2.942682902018229 | G_R-ref agent 1.7749226888020833
+      t7 e13 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0317 wrist 0.1581 [mask:segmentation] inside agent 61.71943964690079 wrist 79.06110562435109 mask_px 1737/13163 | (ii) G_R-G wrist 3.816655476888021 agent 1.765167236328125 | G-ref agent 3.109553019205729 | G_R-ref agent 1.6655019124348958
+      t7 e14 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0340 wrist 0.0552 [mask:segmentation] inside agent 60.9015361836017 wrist 79.08233540498206 mask_px 1801/13194 | (ii) G_R-G wrist 3.920781453450521 agent 1.6650441487630208 | G-ref agent 3.012791951497396 | G_R-ref agent 1.70770263671875
+      t8 e10 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0532 wrist 0.0700 [mask:segmentation] inside agent 59.488496799861615 wrist 80.824514790354 mask_px 1927/13173 | (ii) G_R-G wrist 3.962732950846354 agent 1.5641326904296875 | G-ref agent 2.976557413736979 | G_R-ref agent 1.8012797037760417
+      t8 e11 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0482 wrist 0.0496 [mask:segmentation] inside agent 62.16778149386845 wrist 78.86328421692238 mask_px 1794/13166 | (ii) G_R-G wrist 3.9750264485677085 agent 1.7175445556640625 | G-ref agent 3.1021219889322915 | G_R-ref agent 1.7509104410807292
+      t8 e12 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0504 wrist 0.1577 [mask:segmentation] inside agent 59.92783505154639 wrist 79.72179155900086 mask_px 1843/13158 | (ii) G_R-G wrist 3.913141886393229 agent 1.6451365152994792 | G-ref agent 3.031041463216146 | G_R-ref agent 1.7346700032552083
+      t8 e13 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0484 wrist 0.1874 [mask:segmentation] inside agent 61.949045766166385 wrist 80.6350376054091 mask_px 1799/13163 | (ii) G_R-G wrist 3.9664510091145835 agent 1.7239430745442708 | G-ref agent 3.116643269856771 | G_R-ref agent 1.7476298014322917
+      t8 e14 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0366 wrist 0.0773 [mask:segmentation] inside agent 62.74419920769666 wrist 80.01933834510339 mask_px 1767/13169 | (ii) G_R-G wrist 3.8462015787760415 agent 1.8091837565104167 | G-ref agent 3.1854044596354165 | G_R-ref agent 1.7275797526041667
+      t9 e10 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0356 wrist 0.1421 [mask:segmentation] inside agent 58.65151515151515 wrist 80.33234504079874 mask_px 1870/13154 | (ii) G_R-G wrist 3.977869669596354 agent 1.6140187581380208 | G-ref agent 2.9720306396484375 | G_R-ref agent 1.7082417805989583
+      t9 e11 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0299 wrist 0.1698 [mask:segmentation] inside agent 60.60711692084241 wrist 79.30403680392305 mask_px 1836/13187 | (ii) G_R-G wrist 3.953893025716146 agent 1.6507720947265625 | G-ref agent 3.002985636393229 | G_R-ref agent 1.7264404296875
+      t9 e12 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0459 wrist 0.3902 [mask:segmentation] inside agent 61.03324348607367 wrist 78.40656298756858 mask_px 1855/13246 | (ii) G_R-G wrist 4.1335601806640625 agent 1.7251942952473958 | G-ref agent 3.123143513997396 | G_R-ref agent 1.7718709309895833
+      t9 e13 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0398 wrist 0.1122 [mask:segmentation] inside agent 62.12652207001522 wrist 79.71611220821308 mask_px 1752/13166 | (ii) G_R-G wrist 3.8623504638671875 agent 1.7573293050130208 | G-ref agent 3.126708984375 | G_R-ref agent 1.7002817789713542
+      t9 e14 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0593 wrist 0.0490 [mask:segmentation] inside agent 61.65349656835466 wrist 80.09742810084886 mask_px 1797/13155 | (ii) G_R-G wrist 3.9720052083333335 agent 1.7416788736979167 | G-ref agent 3.112055460611979 | G_R-ref agent 1.7479400634765625
+      t0 e15 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0540 wrist 0.1441 [mask:segmentation] inside agent 59.387575590984056 wrist 77.86109851347946 mask_px 1819/13230 | (ii) G_R-G wrist 3.828028361002604 agent 1.7575937906901042 | G-ref agent 3.1333160400390625 | G_R-ref agent 1.70098876953125
+      t0 e16 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0264 wrist 0.0942 [mask:segmentation] inside agent 60.284887924801154 wrist 78.96689194319994 mask_px 1844/13169 | (ii) G_R-G wrist 4.0870005289713545 agent 1.6103312174479167 | G-ref agent 2.9838358561197915 | G_R-ref agent 1.7227376302083333
+      t0 e17 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0506 wrist 0.0686 [mask:segmentation] inside agent 60.65876777251185 wrist 79.48452335977836 mask_px 1899/13235 | (ii) G_R-G wrist 4.0829823811848955 agent 1.5324147542317708 | G-ref agent 2.9646097819010415 | G_R-ref agent 1.8070322672526042
+      t0 e18 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0378 wrist 0.1093 [mask:segmentation] inside agent 58.728285077951 wrist 79.20952236004364 mask_px 1796/13141 | (ii) G_R-G wrist 4.1102142333984375 agent 1.6608734130859375 | G-ref agent 2.9725748697916665 | G_R-ref agent 1.6446889241536458
+      t0 e19 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0329 wrist 0.0975 [mask:segmentation] inside agent 60.97925685425685 wrist 79.97638393196142 mask_px 1848/13169 | (ii) G_R-G wrist 3.8259989420572915 agent 1.6182352701822917 | G-ref agent 3.0073954264322915 | G_R-ref agent 1.74945068359375
+      t1 e15 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0344 wrist 0.0825 [mask:segmentation] inside agent 59.21322609472743 wrist 79.30483007182923 mask_px 1865/13133 | (ii) G_R-G wrist 4.1058603922526045 agent 1.6482899983723958 | G-ref agent 3.017644246419271 | G_R-ref agent 1.7184651692708333
+      t1 e16 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0466 wrist 0.0603 [mask:segmentation] inside agent 60.17205499814195 wrist 79.15770010131712 mask_px 1794/13160 | (ii) G_R-G wrist 3.780278523763021 agent 1.630706787109375 | G-ref agent 3.005671183268229 | G_R-ref agent 1.7130076090494792
+      t1 e17 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0304 wrist 0.1077 [mask:segmentation] inside agent 60.57854802552164 wrist 80.70834284554702 mask_px 1933/13141 | (ii) G_R-G wrist 3.8631591796875 agent 1.467864990234375 | G-ref agent 2.9250284830729165 | G_R-ref agent 1.8160502115885417
+      t1 e18 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0394 wrist 0.0608 [mask:segmentation] inside agent 60.6917502787068 wrist 79.12998859749145 mask_px 1794/13155 | (ii) G_R-G wrist 3.83062744140625 agent 1.7431081136067708 | G-ref agent 3.092961629231771 | G_R-ref agent 1.7002156575520833
+      t1 e19 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0529 wrist 0.0792 [mask:segmentation] inside agent 59.98336871903751 wrist 79.83931870523625 mask_px 1884/13171 | (ii) G_R-G wrist 3.8334859212239585 agent 1.5416666666666667 | G-ref agent 2.9278767903645835 | G_R-ref agent 1.77581787109375
+      t2 e15 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0190 wrist 0.1041 [mask:segmentation] inside agent 60.95334796926454 wrist 80.2588644381837 mask_px 1822/13133 | (ii) G_R-G wrist 3.829839070638021 agent 1.605438232421875 | G-ref agent 2.960871378580729 | G_R-ref agent 1.7127329508463542
+      t2 e16 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0258 wrist 0.0780 [mask:segmentation] inside agent 60.44396396396397 wrist 80.01465145754119 mask_px 1850/13150 | (ii) G_R-G wrist 3.6791839599609375 agent 1.6520589192708333 | G-ref agent 3.0045928955078125 | G_R-ref agent 1.7305043538411458
+      t2 e17 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0675 wrist 0.1076 [mask:segmentation] inside agent 61.039800995024876 wrist 80.44527193049117 mask_px 1876/13159 | (ii) G_R-G wrist 3.8435211181640625 agent 1.5434112548828125 | G-ref agent 2.9771626790364585 | G_R-ref agent 1.8128712972005208
+      t2 e18 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0420 wrist 0.0443 [mask:segmentation] inside agent 61.797247023809526 wrist 79.39791303469012 mask_px 1792/13193 | (ii) G_R-G wrist 3.771942138671875 agent 1.7106068929036458 | G-ref agent 3.071039835611979 | G_R-ref agent 1.7309672037760417
+      t2 e19 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0500 wrist 0.1110 [mask:segmentation] inside agent 60.44407096171802 wrist 79.78321784816873 mask_px 1785/13133 | (ii) G_R-G wrist 3.972529093424479 agent 1.7435251871744792 | G-ref agent 3.109776814778646 | G_R-ref agent 1.6948649088541667
+      t3 e15 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0381 wrist 0.0709 [mask:segmentation] inside agent 60.10879158180584 wrist 81.64447319028052 mask_px 1964/13142 | (ii) G_R-G wrist 3.90142822265625 agent 1.5118408203125 | G-ref agent 2.9842071533203125 | G_R-ref agent 1.8389841715494792
+      t3 e16 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0538 wrist 0.0881 [mask:segmentation] inside agent 60.17817371937639 wrist 80.2153990182683 mask_px 1796/13174 | (ii) G_R-G wrist 4.1275787353515625 agent 1.6221415201822917 | G-ref agent 2.979670206705729 | G_R-ref agent 1.7013600667317708
+      t3 e17 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0617 wrist 0.1714 [mask:segmentation] inside agent 60.22801243371732 wrist 79.54974007861037 mask_px 1823/13145 | (ii) G_R-G wrist 3.91326904296875 agent 1.7607218424479167 | G-ref agent 3.1579691569010415 | G_R-ref agent 1.7352701822916667
+      t3 e18 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0652 wrist 0.1166 [mask:segmentation] inside agent 61.50215476859659 wrist 80.74946776155718 mask_px 1779/13152 | (ii) G_R-G wrist 3.8587239583333335 agent 1.6773834228515625 | G-ref agent 3.0455474853515625 | G_R-ref agent 1.732666015625
+      t3 e19 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0533 wrist 0.1300 [mask:segmentation] inside agent 60.98385416666667 wrist 81.441210739615 mask_px 1920/13160 | (ii) G_R-G wrist 3.90374755859375 agent 1.5220794677734375 | G-ref agent 2.974095662434896 | G_R-ref agent 1.8386942545572917
+      t4 e15 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0496 wrist 0.0849 [mask:segmentation] inside agent 62.1265275427712 wrist 78.42393565738062 mask_px 1773/13138 | (ii) G_R-G wrist 3.799748738606771 agent 1.7801564534505208 | G-ref agent 3.185307820638021 | G_R-ref agent 1.7310587565104167
+      t4 e16 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0302 wrist 0.0620 [mask:segmentation] inside agent 60.04718170358365 wrist 79.53764503217307 mask_px 1851/13158 | (ii) G_R-G wrist 3.972503662109375 agent 1.5918426513671875 | G-ref agent 2.960637410481771 | G_R-ref agent 1.72454833984375
+      t4 e17 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0465 wrist 0.0688 [mask:segmentation] inside agent 60.4751041100851 wrist 79.89189189189189 mask_px 1841/13135 | (ii) G_R-G wrist 3.801264444986979 agent 1.6182963053385417 | G-ref agent 3.003453572591146 | G_R-ref agent 1.7439015706380208
+      t4 e18 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0577 wrist 0.0820 [mask:segmentation] inside agent 59.8687707641196 wrist 79.4067238804081 mask_px 1806/13167 | (ii) G_R-G wrist 3.831761678059896 agent 1.6114959716796875 | G-ref agent 2.962427775065104 | G_R-ref agent 1.7056986490885417
+      t4 e19 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0314 wrist 0.0705 [mask:segmentation] inside agent 60.394498733260946 wrist 79.64390652355941 mask_px 1842/13137 | (ii) G_R-G wrist 3.839019775390625 agent 1.5541483561197917 | G-ref agent 2.9184112548828125 | G_R-ref agent 1.7287343343098958
+      t5 e15 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0390 wrist 0.0725 [mask:segmentation] inside agent 58.737808075511275 wrist 79.02756224960697 mask_px 1907/13146 | (ii) G_R-G wrist 4.1224416097005205 agent 1.6341349283854167 | G-ref agent 2.995142618815104 | G_R-ref agent 1.7469940185546875
+      t5 e16 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0386 wrist 0.0845 [mask:segmentation] inside agent 60.41515796947107 wrist 79.308337109198 mask_px 1878/13242 | (ii) G_R-G wrist 3.805933634440104 agent 1.5475667317708333 | G-ref agent 2.952356974283854 | G_R-ref agent 1.7683054606119792
+      t5 e17 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0307 wrist 0.0698 [mask:segmentation] inside agent 60.92985347985348 wrist 79.3015728288124 mask_px 1820/13161 | (ii) G_R-G wrist 3.7746785481770835 agent 1.7239735921223958 | G-ref agent 3.0947977701822915 | G_R-ref agent 1.7209523518880208
+      t5 e18 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0337 wrist 0.0752 [mask:segmentation] inside agent 62.20101781170484 wrist 79.46943220381908 mask_px 1834/13162 | (ii) G_R-G wrist 3.8445281982421875 agent 1.7307891845703125 | G-ref agent 3.15081787109375 | G_R-ref agent 1.7736155192057292
+      t5 e19 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0352 wrist 0.0480 [mask:segmentation] inside agent 62.34611715321503 wrist 78.76118797830824 mask_px 1747/13154 | (ii) G_R-G wrist 3.86834716796875 agent 1.8246866861979167 | G-ref agent 3.198638916015625 | G_R-ref agent 1.6965433756510417
+      t6 e15 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0416 wrist 0.0706 [mask:segmentation] inside agent 59.609936393329896 wrist 80.43036789636152 mask_px 1939/13174 | (ii) G_R-G wrist 3.932917277018229 agent 1.5836639404296875 | G-ref agent 2.996978759765625 | G_R-ref agent 1.8044586181640625
+      t6 e16 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0312 wrist 0.1269 [mask:segmentation] inside agent 60.61448349307774 wrist 78.84176129195055 mask_px 1878/13210 | (ii) G_R-G wrist 3.8173624674479165 agent 1.5890604654947917 | G-ref agent 2.99072265625 | G_R-ref agent 1.767120361328125
+      t6 e17 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0324 wrist 0.0707 [mask:segmentation] inside agent 60.66849615806806 wrist 79.17882115360344 mask_px 1822/13205 | (ii) G_R-G wrist 3.9139302571614585 agent 1.6844991048177083 | G-ref agent 3.038416544596354 | G_R-ref agent 1.7180328369140625
+      t6 e18 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0330 wrist 0.1616 [mask:segmentation] inside agent 60.006410256410255 wrist 79.77413950654889 mask_px 1820/13132 | (ii) G_R-G wrist 3.869420369466146 agent 1.6464080810546875 | G-ref agent 2.9876607259114585 | G_R-ref agent 1.6988372802734375
+      t6 e19 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0388 wrist 0.1002 [mask:segmentation] inside agent 61.57502295684114 wrist 79.53301874825583 mask_px 1815/13139 | (ii) G_R-G wrist 3.779118855794271 agent 1.7437998453776042 | G-ref agent 3.148615519205729 | G_R-ref agent 1.7424723307291667
+      t7 e15 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0406 wrist 0.1045 [mask:segmentation] inside agent 59.31978319783198 wrist 79.97425948468249 mask_px 1845/13144 | (ii) G_R-G wrist 3.842900594075521 agent 1.6646169026692708 | G-ref agent 3.017181396484375 | G_R-ref agent 1.7104949951171875
+      t7 e16 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0503 wrist 0.1463 [mask:segmentation] inside agent 59.97553017944535 wrist 79.50794254009273 mask_px 1839/13157 | (ii) G_R-G wrist 4.118998209635417 agent 1.58343505859375 | G-ref agent 2.9546407063802085 | G_R-ref agent 1.7333984375
+      t7 e17 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0397 wrist 0.1468 [mask:segmentation] inside agent 60.051576453435395 wrist 79.24479918915495 mask_px 1829/13155 | (ii) G_R-G wrist 3.8763020833333335 agent 1.6630655924479167 | G-ref agent 3.0137430826822915 | G_R-ref agent 1.7147013346354167
+      t7 e18 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0364 wrist 0.1891 [mask:segmentation] inside agent 59.789964157706095 wrist 79.69453522839554 mask_px 1860/13157 | (ii) G_R-G wrist 3.916712443033854 agent 1.7008158365885417 | G-ref agent 3.0711771647135415 | G_R-ref agent 1.7323201497395833
+      t7 e19 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0320 wrist 0.0829 [mask:segmentation] inside agent 60.507222222222225 wrist 79.2189247311828 mask_px 1800/13175 | (ii) G_R-G wrist 3.816401163736979 agent 1.6986440022786458 | G-ref agent 3.035578409830729 | G_R-ref agent 1.6912129720052083
+      t8 e15 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0491 wrist 0.1025 [mask:segmentation] inside agent 59.68411053540587 wrist 80.4083213483713 mask_px 1930/13211 | (ii) G_R-G wrist 3.9405415852864585 agent 1.6439615885416667 | G-ref agent 3.059351603190104 | G_R-ref agent 1.8039194742838542
+      t8 e16 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0626 wrist 0.0985 [mask:segmentation] inside agent 61.034733297891194 wrist 80.66659051680374 mask_px 1881/13132 | (ii) G_R-G wrist 3.8081766764322915 agent 1.5565287272135417 | G-ref agent 2.9790751139322915 | G_R-ref agent 1.8118082682291667
+      t8 e17 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0375 wrist 0.1192 [mask:segmentation] inside agent 63.29394441376772 wrist 79.23996357289217 mask_px 1811/13177 | (ii) G_R-G wrist 3.8478240966796875 agent 1.7550760904947917 | G-ref agent 3.187830607096354 | G_R-ref agent 1.7861480712890625
+      t8 e18 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0306 wrist 0.1460 [mask:segmentation] inside agent 59.518840579710144 wrist 81.00753768844221 mask_px 1840/13134 | (ii) G_R-G wrist 3.932861328125 agent 1.5916697184244792 | G-ref agent 2.9406534830729165 | G_R-ref agent 1.7011260986328125
+      t8 e19 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0474 wrist 0.1433 [mask:segmentation] inside agent 62.187899285982716 wrist 79.94933820173436 mask_px 1774/13146 | (ii) G_R-G wrist 4.2707672119140625 agent 1.7567392985026042 | G-ref agent 3.1474456787109375 | G_R-ref agent 1.7292887369791667
+      t9 e15 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0495 wrist 0.0957 [mask:segmentation] inside agent 58.87217514124294 wrist 80.74480156016513 mask_px 1888/13161 | (ii) G_R-G wrist 3.8984832763671875 agent 1.6096598307291667 | G-ref agent 3.0041402180989585 | G_R-ref agent 1.7438456217447917
+      t9 e16 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0525 wrist 0.0595 [mask:segmentation] inside agent 60.53789592760181 wrist 78.81112959322546 mask_px 1768/13226 | (ii) G_R-G wrist 3.8230794270833335 agent 1.740570068359375 | G-ref agent 3.121190388997396 | G_R-ref agent 1.6850535074869792
+      t9 e17 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0349 wrist 0.0913 [mask:segmentation] inside agent 60.01447661469933 wrist 79.78481140917496 mask_px 1796/13159 | (ii) G_R-G wrist 3.8542022705078125 agent 1.643646240234375 | G-ref agent 2.9694671630859375 | G_R-ref agent 1.6779022216796875
+      t9 e18 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0683 wrist 0.1412 [mask:segmentation] inside agent 60.76326381266008 wrist 80.93517108335871 mask_px 1822/13132 | (ii) G_R-G wrist 3.9342142740885415 agent 1.5644632975260417 | G-ref agent 2.9518941243489585 | G_R-ref agent 1.755645751953125
+      t9 e19 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0344 wrist 0.1256 [mask:segmentation] inside agent 59.972536348949916 wrist 81.24920839982775 mask_px 1857/13159 | (ii) G_R-G wrist 3.9277852376302085 agent 1.5719401041666667 | G-ref agent 2.948949178059896 | G_R-ref agent 1.7330881754557292
+      t0 e5 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0289 wrist 0.1130 [mask:segmentation] inside agent 58.97687861271676 wrist 79.29888627926358 mask_px 1903/13199 | (ii) G_R-G wrist 3.802118937174479 agent 1.6809794108072917 | G-ref agent 3.037846883138021 | G_R-ref agent 1.7403717041015625
+      t0 e6 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0521 wrist 0.1346 [mask:segmentation] inside agent 61.470498956554735 wrist 77.6009642081882 mask_px 1757/13206 | (ii) G_R-G wrist 3.7696533203125 agent 1.7917887369791667 | G-ref agent 3.164820353190104 | G_R-ref agent 1.6981557210286458
+      t0 e7 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0425 wrist 0.0592 [mask:segmentation] inside agent 60.39285085402359 wrist 79.62856925880924 mask_px 1893/13168 | (ii) G_R-G wrist 3.856623331705729 agent 1.6311086018880208 | G-ref agent 3.0452423095703125 | G_R-ref agent 1.78729248046875
+      t0 e8 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0650 wrist 0.0650 [mask:segmentation] inside agent 60.25829725829726 wrist 80.0360722964763 mask_px 1848/13168 | (ii) G_R-G wrist 4.0334930419921875 agent 1.7022145589192708 | G-ref agent 3.114013671875 | G_R-ref agent 1.7636159261067708
+      t0 e9 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0472 wrist 0.0713 [mask:segmentation] inside agent 60.85395822362647 wrist 80.05341523838415 mask_px 1899/13186 | (ii) G_R-G wrist 4.2251637776692705 agent 1.5533447265625 | G-ref agent 2.985987345377604 | G_R-ref agent 1.8120574951171875
+      t1 e5 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0455 wrist 0.1244 [mask:segmentation] inside agent 58.87683791731534 wrist 80.71294040004061 mask_px 1927/13132 | (ii) G_R-G wrist 3.86016845703125 agent 1.5190073649088542 | G-ref agent 2.9285176595052085 | G_R-ref agent 1.7760264078776042
+      t1 e6 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0485 wrist 0.0991 [mask:segmentation] inside agent 62.20737842370039 wrist 77.6316267110338 mask_px 1789/13223 | (ii) G_R-G wrist 4.027028401692708 agent 1.7690836588541667 | G-ref agent 3.1645406087239585 | G_R-ref agent 1.7450663248697917
+      t1 e7 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0495 wrist 0.0985 [mask:segmentation] inside agent 61.07600073787124 wrist 79.90160200440361 mask_px 1807/13171 | (ii) G_R-G wrist 3.7943115234375 agent 1.6986185709635417 | G-ref agent 3.058710734049479 | G_R-ref agent 1.7315419514973958
+      t1 e8 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0400 wrist 0.1645 [mask:segmentation] inside agent 60.03511615343058 wrist 79.45565516892063 mask_px 1851/13162 | (ii) G_R-G wrist 3.9141642252604165 agent 1.7061920166015625 | G-ref agent 3.0747782389322915 | G_R-ref agent 1.7345428466796875
+      t1 e9 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0380 wrist 0.0514 [mask:segmentation] inside agent 60.11686026047167 wrist 79.66615973436747 mask_px 1894/13151 | (ii) G_R-G wrist 3.8581441243489585 agent 1.568084716796875 | G-ref agent 2.9591217041015625 | G_R-ref agent 1.7728017171223958
+      t2 e5 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0435 wrist 0.0848 [mask:segmentation] inside agent 61.24150036954915 wrist 77.82578291273943 mask_px 1804/13156 | (ii) G_R-G wrist 3.7908732096354165 agent 1.8558146158854167 | G-ref agent 3.25579833984375 | G_R-ref agent 1.7276204427083333
+      t2 e6 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0583 wrist 0.0606 [mask:segmentation] inside agent 60.56976097832129 wrist 79.37337185140134 mask_px 1799/13154 | (ii) G_R-G wrist 3.7673441569010415 agent 1.6534678141276042 | G-ref agent 3.0066070556640625 | G_R-ref agent 1.719146728515625
+      t2 e7 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0497 wrist 0.0684 [mask:segmentation] inside agent 60.936301121968874 wrist 79.48935846761934 mask_px 1842/13156 | (ii) G_R-G wrist 3.7742156982421875 agent 1.5981547037760417 | G-ref agent 2.9750874837239585 | G_R-ref agent 1.7609354654947917
+      t2 e8 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0565 wrist 0.0854 [mask:segmentation] inside agent 61.06280464941882 wrist 80.04625199362042 mask_px 1778/13167 | (ii) G_R-G wrist 3.624445597330729 agent 1.65924072265625 | G-ref agent 3.0012054443359375 | G_R-ref agent 1.7113393147786458
+      t2 e9 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0392 wrist 0.1344 [mask:segmentation] inside agent 60.56780870806567 wrist 80.14786051469468 mask_px 1868/13134 | (ii) G_R-G wrist 3.8373311360677085 agent 1.6480255126953125 | G-ref agent 3.0567474365234375 | G_R-ref agent 1.7630513509114583
+      t3 e5 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0274 wrist 0.1226 [mask:segmentation] inside agent 61.740861974904526 wrist 80.3768491030423 mask_px 1833/13137 | (ii) G_R-G wrist 3.881378173828125 agent 1.7005157470703125 | G-ref agent 3.092992146809896 | G_R-ref agent 1.7533060709635417
+      t3 e6 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0558 wrist 0.0851 [mask:segmentation] inside agent 59.724502827951106 wrist 80.31967773808618 mask_px 1827/13157 | (ii) G_R-G wrist 3.8797403971354165 agent 1.6237691243489583 | G-ref agent 2.9950714111328125 | G_R-ref agent 1.7190806070963542
+      t3 e7 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0446 wrist 0.0508 [mask:segmentation] inside agent 58.75849963045085 wrist 79.4155709254896 mask_px 1804/13157 | (ii) G_R-G wrist 3.873163859049479 agent 1.6722208658854167 | G-ref agent 2.999786376953125 | G_R-ref agent 1.6610921223958333
+      t3 e8 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0446 wrist 0.2630 [mask:segmentation] inside agent 62.470319634703195 wrist 80.04254239009036 mask_px 1752/13132 | (ii) G_R-G wrist 4.367838541666667 agent 1.72589111328125 | G-ref agent 3.0989227294921875 | G_R-ref agent 1.7123565673828125
+      t3 e9 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0465 wrist 0.1293 [mask:segmentation] inside agent 60.77642060541689 wrist 80.41169191919192 mask_px 1883/13200 | (ii) G_R-G wrist 3.849146525065104 agent 1.5828603108723958 | G-ref agent 2.989476521809896 | G_R-ref agent 1.7915242513020833
+      t4 e5 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0392 wrist 0.0838 [mask:segmentation] inside agent 60.125877903835764 wrist 78.31898228858738 mask_px 1851/13193 | (ii) G_R-G wrist 3.780827840169271 agent 1.7191009521484375 | G-ref agent 3.090850830078125 | G_R-ref agent 1.7362416585286458
+      t4 e6 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0342 wrist 0.0624 [mask:segmentation] inside agent 62.36490041337843 wrist 77.77892499240814 mask_px 1774/13172 | (ii) G_R-G wrist 3.8395589192708335 agent 1.7828776041666667 | G-ref agent 3.169123331705729 | G_R-ref agent 1.7255198160807292
+      t4 e7 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0495 wrist 0.0714 [mask:segmentation] inside agent 61.93613879660391 wrist 79.64123006833712 mask_px 1806/13170 | (ii) G_R-G wrist 4.2363840738932295 agent 1.7039744059244792 | G-ref agent 3.0832621256510415 | G_R-ref agent 1.7585500081380208
+      t4 e8 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0417 wrist 0.1099 [mask:segmentation] inside agent 60.70753715498938 wrist 81.32767286018885 mask_px 1884/13132 | (ii) G_R-G wrist 3.869420369466146 agent 1.551605224609375 | G-ref agent 2.963068644205729 | G_R-ref agent 1.7855987548828125
+      t4 e9 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0383 wrist 0.0985 [mask:segmentation] inside agent 59.553726323243055 wrist 80.1531901933912 mask_px 1883/13134 | (ii) G_R-G wrist 3.808985392252604 agent 1.6483408610026042 | G-ref agent 3.0287628173828125 | G_R-ref agent 1.7470499674479167
+      t5 e5 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0444 wrist 0.1298 [mask:segmentation] inside agent 58.87217092160058 wrist 79.48427912165931 mask_px 1841/13146 | (ii) G_R-G wrist 3.821568806966146 agent 1.6634775797526042 | G-ref agent 3.013117472330729 | G_R-ref agent 1.6968282063802083
+      t5 e6 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0387 wrist 0.0697 [mask:segmentation] inside agent 61.358265582655825 wrist 79.23720140841503 mask_px 1845/13159 | (ii) G_R-G wrist 3.771326700846354 agent 1.5982106526692708 | G-ref agent 2.984380086263021 | G_R-ref agent 1.76519775390625
+      t5 e7 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0393 wrist 0.0469 [mask:segmentation] inside agent 61.05407849520709 wrist 79.32606106676802 mask_px 1843/13155 | (ii) G_R-G wrist 3.9694925944010415 agent 1.6956024169921875 | G-ref agent 3.0863037109375 | G_R-ref agent 1.7595672607421875
+      t5 e8 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0485 wrist 0.0916 [mask:segmentation] inside agent 62.29348441926346 wrist 79.11084080887943 mask_px 1765/13154 | (ii) G_R-G wrist 3.8065643310546875 agent 1.7415618896484375 | G-ref agent 3.1173604329427085 | G_R-ref agent 1.7257843017578125
+      t5 e9 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0446 wrist 0.0571 [mask:segmentation] inside agent 60.33677536231884 wrist 79.20332801458856 mask_px 1840/13161 | (ii) G_R-G wrist 3.841156005859375 agent 1.593963623046875 | G-ref agent 2.9724019368489585 | G_R-ref agent 1.7363382975260417
+      t6 e5 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0763 wrist 0.1058 [mask:segmentation] inside agent 58.62225907499539 wrist 79.73473055407902 mask_px 1809/13169 | (ii) G_R-G wrist 3.838038126627604 agent 1.6318206787109375 | G-ref agent 2.9749298095703125 | G_R-ref agent 1.6915283203125
+      t6 e6 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0499 wrist 0.1191 [mask:segmentation] inside agent 59.41832170334586 wrist 78.99756764974157 mask_px 1863/13156 | (ii) G_R-G wrist 3.81671142578125 agent 1.6296844482421875 | G-ref agent 3.0015106201171875 | G_R-ref agent 1.7372945149739583
+      t6 e7 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0357 wrist 0.1318 [mask:segmentation] inside agent 60.631370430397986 wrist 79.4964037886846 mask_px 1851/13162 | (ii) G_R-G wrist 3.813868204752604 agent 1.6624654134114583 | G-ref agent 3.038782755533854 | G_R-ref agent 1.7471160888671875
+      t6 e8 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0376 wrist 0.0872 [mask:segmentation] inside agent 59.751826117940496 wrist 80.37650373077508 mask_px 1871/13134 | (ii) G_R-G wrist 4.1443735758463545 agent 1.5718994140625 | G-ref agent 2.956568400065104 | G_R-ref agent 1.7427825927734375
+      t6 e9 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0503 wrist 0.2161 [mask:segmentation] inside agent 60.26234567901235 wrist 78.85569059661307 mask_px 1836/13247 | (ii) G_R-G wrist 3.9768473307291665 agent 1.5793660481770833 | G-ref agent 2.9372965494791665 | G_R-ref agent 1.7373046875
+      t7 e5 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0283 wrist 0.1254 [mask:segmentation] inside agent 58.89886112527622 wrist 79.92416641329685 mask_px 1961/13156 | (ii) G_R-G wrist 4.48492431640625 agent 1.5579986572265625 | G-ref agent 2.9573567708333335 | G_R-ref agent 1.7890268961588542
+      t7 e6 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0424 wrist 0.0781 [mask:segmentation] inside agent 59.2729055258467 wrist 79.28734231833295 mask_px 1870/13133 | (ii) G_R-G wrist 3.767303466796875 agent 1.5946604410807292 | G-ref agent 2.974492390950521 | G_R-ref agent 1.733154296875
+      t7 e7 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0440 wrist 0.0499 [mask:segmentation] inside agent 61.01351598173516 wrist 78.87637801262069 mask_px 1825/13153 | (ii) G_R-G wrist 3.9251861572265625 agent 1.6836496988932292 | G-ref agent 3.0568745930989585 | G_R-ref agent 1.7421417236328125
+      t7 e8 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0331 wrist 0.0922 [mask:segmentation] inside agent 61.11644204851752 wrist 78.60107837181044 mask_px 1855/13168 | (ii) G_R-G wrist 3.806767781575521 agent 1.7911936442057292 | G-ref agent 3.2064412434895835 | G_R-ref agent 1.7624766031901042
+      t7 e9 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0492 wrist 0.1414 [mask:segmentation] inside agent 61.2418779342723 wrist 78.86217291080882 mask_px 1775/13159 | (ii) G_R-G wrist 3.8396708170572915 agent 1.8040364583333333 | G-ref agent 3.1938680013020835 | G_R-ref agent 1.7072652180989583
+      t8 e5 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0526 wrist 0.1278 [mask:segmentation] inside agent 59.344780454467795 wrist 82.50643852978453 mask_px 1951/13150 | (ii) G_R-G wrist 3.950770060221354 agent 1.4980367024739583 | G-ref agent 2.94000244140625 | G_R-ref agent 1.816925048828125
+      t8 e6 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0518 wrist 0.1329 [mask:segmentation] inside agent 61.76871880199667 wrist 78.78377419681767 mask_px 1803/13156 | (ii) G_R-G wrist 3.9314727783203125 agent 1.6983439127604167 | G-ref agent 3.0753885904947915 | G_R-ref agent 1.7504984537760417
+      t8 e7 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0270 wrist 0.0651 [mask:segmentation] inside agent 62.045112781954884 wrist 79.58678546045284 mask_px 1729/13132 | (ii) G_R-G wrist 3.9483489990234375 agent 1.7884572347005208 | G-ref agent 3.133997599283854 | G_R-ref agent 1.6668294270833333
+      t8 e8 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0288 wrist 0.0993 [mask:segmentation] inside agent 60.441797509474824 wrist 80.46805439489478 mask_px 1847/13163 | (ii) G_R-G wrist 3.887852986653646 agent 1.6263478597005208 | G-ref agent 3.014704386393229 | G_R-ref agent 1.7313435872395833
+      t8 e9 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0443 wrist 0.0915 [mask:segmentation] inside agent 60.59617154426652 wrist 80.05399114484503 mask_px 1811/13175 | (ii) G_R-G wrist 3.8441874186197915 agent 1.6016845703125 | G-ref agent 2.9682515462239585 | G_R-ref agent 1.7174072265625
+      t9 e5 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0303 wrist 0.0765 [mask:segmentation] inside agent 59.32792086599478 wrist 79.9716220328667 mask_px 1786/13144 | (ii) G_R-G wrist 3.8855489095052085 agent 1.6484120686848958 | G-ref agent 2.955591837565104 | G_R-ref agent 1.6464742024739583
+      t9 e6 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0622 wrist 0.0798 [mask:segmentation] inside agent 60.745044052863435 wrist 78.47085665305299 mask_px 1816/13222 | (ii) G_R-G wrist 3.8211771647135415 agent 1.7419484456380208 | G-ref agent 3.1402994791666665 | G_R-ref agent 1.7437489827473958
+      t9 e7 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0464 wrist 0.0986 [mask:segmentation] inside agent 60.79033404406539 wrist 79.01082496286786 mask_px 1876/13241 | (ii) G_R-G wrist 3.838831583658854 agent 1.6483713785807292 | G-ref agent 3.0447794596354165 | G_R-ref agent 1.7844289143880208
+      t9 e8 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0362 wrist 0.0989 [mask:segmentation] inside agent 60.47493403693932 wrist 80.88749620176239 mask_px 1895/13164 | (ii) G_R-G wrist 4.2306671142578125 agent 1.5687357584635417 | G-ref agent 2.9889729817708335 | G_R-ref agent 1.783538818359375
+      t9 e9 host=node26 gpu=NVIDIA A100 80GB PCIe (i) agent 0.0360 wrist 0.0732 [mask:segmentation] inside agent 60.79155810317874 wrist 81.63401029385665 mask_px 1919/13147 | (ii) G_R-G wrist 4.1895395914713545 agent 1.4987742106119792 | G-ref agent 2.937555948893229 | G_R-ref agent 1.819580078125
+      t0 e0 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0557 wrist 0.1215 [mask:segmentation] inside agent 58.66177754496246 wrist 79.71634006785153 mask_px 1909/13166 | (ii) G_R-G wrist 3.850804646809896 agent 1.5708109537760417 | G-ref agent 2.9741109212239585 | G_R-ref agent 1.7625528971354167
+      t0 e1 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0441 wrist 0.1624 [mask:segmentation] inside agent 62.04605511513779 wrist 77.95358906190657 mask_px 1766/13165 | (ii) G_R-G wrist 3.8252461751302085 agent 1.7879384358723958 | G-ref agent 3.163396199544271 | G_R-ref agent 1.714385986328125
+      t0 e2 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0290 wrist 0.0983 [mask:segmentation] inside agent 60.05126801678526 wrist 79.59755788620357 mask_px 1827/13158 | (ii) G_R-G wrist 3.791753133138021 agent 1.6899464925130208 | G-ref agent 3.0402374267578125 | G_R-ref agent 1.7025858561197917
+      t0 e3 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0333 wrist 0.1644 [mask:segmentation] inside agent 60.77519798416127 wrist 79.62773852037586 mask_px 1852/13161 | (ii) G_R-G wrist 3.905731201171875 agent 1.6324462890625 | G-ref agent 3.0239969889322915 | G_R-ref agent 1.750762939453125
+      t0 e4 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0323 wrist 0.1159 [mask:segmentation] inside agent 60.34362669411563 wrist 80.39551671732522 mask_px 1943/13160 | (ii) G_R-G wrist 3.838750203450521 agent 1.6038869222005208 | G-ref agent 3.0456339518229165 | G_R-ref agent 1.8201039632161458
+      t1 e0 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0287 wrist 0.3046 [mask:segmentation] inside agent 59.07762793914246 wrist 78.9512510457069 mask_px 1928/13149 | (ii) G_R-G wrist 4.064971923828125 agent 1.6345011393229167 | G-ref agent 3.0427093505859375 | G_R-ref agent 1.7665354410807292
+      t1 e1 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0291 wrist 0.1039 [mask:segmentation] inside agent 59.94689325544344 wrist 79.78059489366022 mask_px 1883/13134 | (ii) G_R-G wrist 3.8320109049479165 agent 1.5987955729166667 | G-ref agent 2.965087890625 | G_R-ref agent 1.7508748372395833
+      t1 e2 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0472 wrist 0.0477 [mask:segmentation] inside agent 61.736111111111114 wrist 79.00865275142316 mask_px 1752/13175 | (ii) G_R-G wrist 3.790191650390625 agent 1.7515106201171875 | G-ref agent 3.118982950846354 | G_R-ref agent 1.6963297526041667
+      t1 e3 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0484 wrist 0.1001 [mask:segmentation] inside agent 60.272743238496666 wrist 80.54729541600223 mask_px 1898/13169 | (ii) G_R-G wrist 4.1536305745442705 agent 1.6212819417317708 | G-ref agent 3.0452677408854165 | G_R-ref agent 1.7919464111328125
+      t1 e4 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0374 wrist 0.1419 [mask:segmentation] inside agent 60.085051067780874 wrist 79.25818310894755 mask_px 1795/13147 | (ii) G_R-G wrist 3.863922119140625 agent 1.7377777099609375 | G-ref agent 3.0940653483072915 | G_R-ref agent 1.6825103759765625
+      t2 e0 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0435 wrist 0.1067 [mask:segmentation] inside agent 60.80512269389217 wrist 80.93435881815412 mask_px 1861/13132 | (ii) G_R-G wrist 3.8324483235677085 agent 1.5666656494140625 | G-ref agent 2.9490203857421875 | G_R-ref agent 1.7681986490885417
+      t2 e1 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0597 wrist 0.0655 [mask:segmentation] inside agent 60.870973679366834 wrist 79.5705694275274 mask_px 1811/13136 | (ii) G_R-G wrist 3.9953511555989585 agent 1.6838328043619792 | G-ref agent 3.0664774576822915 | G_R-ref agent 1.7395884195963542
+      t2 e2 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0481 wrist 0.1165 [mask:segmentation] inside agent 60.704113632171186 wrist 79.64229434268196 mask_px 1807/13157 | (ii) G_R-G wrist 3.8390045166015625 agent 1.6847381591796875 | G-ref agent 3.0574239095052085 | G_R-ref agent 1.7203826904296875
+      t2 e3 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0306 wrist 0.0985 [mask:segmentation] inside agent 60.73913817663818 wrist 79.75641220600163 mask_px 1872/13152 | (ii) G_R-G wrist 3.8260650634765625 agent 1.6166890462239583 | G-ref agent 3.0169525146484375 | G_R-ref agent 1.7645314534505208
+      t2 e4 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0528 wrist 0.0562 [mask:segmentation] inside agent 60.91049030786773 wrist 78.9883467598926 mask_px 1754/13158 | (ii) G_R-G wrist 3.888158162434896 agent 1.705047607421875 | G-ref agent 3.0376180013020835 | G_R-ref agent 1.6836751302083333
+      t3 e0 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0330 wrist 0.0809 [mask:segmentation] inside agent 60.19411553641909 wrist 80.0590393764551 mask_px 1858/13172 | (ii) G_R-G wrist 3.871098836263021 agent 1.5907389322916667 | G-ref agent 2.963200887044271 | G_R-ref agent 1.7379608154296875
+      t3 e1 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0478 wrist 0.0995 [mask:segmentation] inside agent 60.32644320297952 wrist 80.19597722960152 mask_px 1790/13175 | (ii) G_R-G wrist 4.010386149088542 agent 1.6536153157552083 | G-ref agent 3.005671183268229 | G_R-ref agent 1.6935068766276042
+      t3 e2 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0410 wrist 0.0510 [mask:segmentation] inside agent 58.63262115685253 wrist 79.63982868293672 mask_px 1919/13153 | (ii) G_R-G wrist 3.9858907063802085 agent 1.6666920979817708 | G-ref agent 3.06640625 | G_R-ref agent 1.7610829671223958
+      t3 e3 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0311 wrist 0.1050 [mask:segmentation] inside agent 60.17197563098346 wrist 81.68917788424976 mask_px 1915/13149 | (ii) G_R-G wrist 3.8887532552083335 agent 1.51483154296875 | G-ref agent 2.929595947265625 | G_R-ref agent 1.786163330078125
+      t3 e4 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0365 wrist 0.1204 [mask:segmentation] inside agent 60.766169154228855 wrist 80.65463682046597 mask_px 1809/13134 | (ii) G_R-G wrist 3.8668924967447915 agent 1.6832173665364583 | G-ref agent 3.059870402018229 | G_R-ref agent 1.7122751871744792
+      t4 e0 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0395 wrist 0.1676 [mask:segmentation] inside agent 58.17309753483387 wrist 79.86246163990971 mask_px 1866/13143 | (ii) G_R-G wrist 3.853327433268229 agent 1.6338653564453125 | G-ref agent 2.9878336588541665 | G_R-ref agent 1.6939951578776042
+      t4 e1 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0303 wrist 0.0468 [mask:segmentation] inside agent 60.02773275706825 wrist 79.0639631475608 mask_px 1851/13242 | (ii) G_R-G wrist 4.351837158203125 agent 1.558319091796875 | G-ref agent 2.9103597005208335 | G_R-ref agent 1.730255126953125
+      t4 e2 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0644 wrist 0.0829 [mask:segmentation] inside agent 60.487165679411234 wrist 79.36152608017706 mask_px 1857/13254 | (ii) G_R-G wrist 3.8060201009114585 agent 1.6122843424479167 | G-ref agent 3.0196634928385415 | G_R-ref agent 1.7760111490885417
+      t4 e3 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0518 wrist 0.0880 [mask:segmentation] inside agent 61.00695206732529 wrist 79.77575849745267 mask_px 1822/13151 | (ii) G_R-G wrist 3.701756795247396 agent 1.6748301188151042 | G-ref agent 3.0396575927734375 | G_R-ref agent 1.7466939290364583
+      t4 e4 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0400 wrist 0.0548 [mask:segmentation] inside agent 59.99400871459695 wrist 79.26321786690976 mask_px 1836/13164 | (ii) G_R-G wrist 3.8340301513671875 agent 1.6487274169921875 | G-ref agent 3.0199991861979165 | G_R-ref agent 1.7199350992838542
+      t5 e0 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0532 wrist 0.1360 [mask:segmentation] inside agent 59.454910551296095 wrist 78.92180599969545 mask_px 1826/13134 | (ii) G_R-G wrist 3.8065592447916665 agent 1.7188313802083333 | G-ref agent 3.085627237955729 | G_R-ref agent 1.7088165283203125
+      t5 e1 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0525 wrist 0.0854 [mask:segmentation] inside agent 61.65029761904762 wrist 78.27163099186012 mask_px 1792/13268 | (ii) G_R-G wrist 3.7763519287109375 agent 1.6970926920572917 | G-ref agent 3.0585225423177085 | G_R-ref agent 1.7363484700520833
+      t5 e2 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0348 wrist 0.0516 [mask:segmentation] inside agent 60.334366391184574 wrist 79.88551856626475 mask_px 1936/13187 | (ii) G_R-G wrist 4.1104482014973955 agent 1.5652923583984375 | G-ref agent 2.997589111328125 | G_R-ref agent 1.8165842692057292
+      t5 e3 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0405 wrist 0.0675 [mask:segmentation] inside agent 60.933986591026304 wrist 79.96034976631992 mask_px 1939/13266 | (ii) G_R-G wrist 3.8498026529947915 agent 1.5460205078125 | G-ref agent 2.9953409830729165 | G_R-ref agent 1.8420613606770833
+      t5 e4 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0717 wrist 0.0808 [mask:segmentation] inside agent 60.82491208587822 wrist 79.76147787991593 mask_px 1801/13163 | (ii) G_R-G wrist 4.0010426839192705 agent 1.6961568196614583 | G-ref agent 3.0810445149739585 | G_R-ref agent 1.7412516276041667
+      t6 e0 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0330 wrist 0.0637 [mask:segmentation] inside agent 58.87267451783581 wrist 80.17602086023139 mask_px 1953/13167 | (ii) G_R-G wrist 3.8748016357421875 agent 1.5789235432942708 | G-ref agent 2.98748779296875 | G_R-ref agent 1.7869110107421875
+      t6 e1 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0303 wrist 0.0665 [mask:segmentation] inside agent 60.50339043540328 wrist 79.02827822120867 mask_px 1868/13155 | (ii) G_R-G wrist 3.8050079345703125 agent 1.6065114339192708 | G-ref agent 2.985224405924479 | G_R-ref agent 1.75384521484375
+      t6 e2 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0461 wrist 0.0959 [mask:segmentation] inside agent 61.20568122041031 wrist 79.8070388656792 mask_px 1901/13165 | (ii) G_R-G wrist 3.7815704345703125 agent 1.5702718098958333 | G-ref agent 2.9924825032552085 | G_R-ref agent 1.8192036946614583
+      t6 e3 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0394 wrist 0.1161 [mask:segmentation] inside agent 60.241465594280605 wrist 80.24897307165678 mask_px 1865/13146 | (ii) G_R-G wrist 3.999237060546875 agent 1.6268717447916667 | G-ref agent 2.99664306640625 | G_R-ref agent 1.7520853678385417
+      t6 e4 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0534 wrist 0.0886 [mask:segmentation] inside agent 60.63498030791264 wrist 79.64169901804065 mask_px 1862/13137 | (ii) G_R-G wrist 3.80609130859375 agent 1.6505584716796875 | G-ref agent 3.065007527669271 | G_R-ref agent 1.7736714680989583
+      t7 e0 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0484 wrist 0.1057 [mask:segmentation] inside agent 60.007510729613735 wrist 80.69148963171654 mask_px 1864/13133 | (ii) G_R-G wrist 4.303853352864583 agent 1.6822611490885417 | G-ref agent 3.0612386067708335 | G_R-ref agent 1.7539164225260417
+      t7 e1 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0427 wrist 0.0907 [mask:segmentation] inside agent 59.99001452432825 wrist 79.06940958754785 mask_px 1836/13149 | (ii) G_R-G wrist 3.821751912434896 agent 1.6219635009765625 | G-ref agent 2.980779012044271 | G_R-ref agent 1.7220357259114583
+      t7 e2 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0419 wrist 0.0722 [mask:segmentation] inside agent 59.55209471766849 wrist 78.85196648297728 mask_px 1830/13247 | (ii) G_R-G wrist 3.8054606119791665 agent 1.6260019938151042 | G-ref agent 2.98663330078125 | G_R-ref agent 1.7063242594401042
+      t7 e3 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0506 wrist 0.0588 [mask:segmentation] inside agent 61.09747606614447 wrist 79.88502430133657 mask_px 1915/13168 | (ii) G_R-G wrist 3.817596435546875 agent 1.6089986165364583 | G-ref agent 3.0546722412109375 | G_R-ref agent 1.8344879150390625
+      t7 e4 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0363 wrist 0.0999 [mask:segmentation] inside agent 60.68605072463768 wrist 79.646555867547 mask_px 1840/13177 | (ii) G_R-G wrist 3.8329874674479165 agent 1.6041666666666667 | G-ref agent 2.9767049153645835 | G_R-ref agent 1.7394307454427083
+      t8 e0 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0641 wrist 0.0872 [mask:segmentation] inside agent 59.19668289165315 wrist 81.32546810777896 mask_px 1849/13138 | (ii) G_R-G wrist 3.9310302734375 agent 1.5684712727864583 | G-ref agent 2.929468790690104 | G_R-ref agent 1.7324371337890625
+      t8 e1 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0357 wrist 0.0794 [mask:segmentation] inside agent 59.53678282294967 wrist 79.8209843706462 mask_px 1894/13159 | (ii) G_R-G wrist 4.085927327473958 agent 1.6043853759765625 | G-ref agent 2.998138427734375 | G_R-ref agent 1.7549591064453125
+      t8 e2 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0543 wrist 0.1163 [mask:segmentation] inside agent 63.56237103732883 wrist 79.31321031715899 mask_px 1777/13169 | (ii) G_R-G wrist 3.846654256184896 agent 1.7582244873046875 | G-ref agent 3.191706339518229 | G_R-ref agent 1.7748514811197917
+      t8 e3 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0482 wrist 0.0913 [mask:segmentation] inside agent 61.11255177381596 wrist 81.53436897146918 mask_px 1851/13132 | (ii) G_R-G wrist 3.908075968424479 agent 1.6123860677083333 | G-ref agent 3.0015869140625 | G_R-ref agent 1.7727559407552083
+      t8 e4 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0485 wrist 0.1424 [mask:segmentation] inside agent 60.705261241580196 wrist 80.72589102515389 mask_px 1831/13159 | (ii) G_R-G wrist 4.3249867757161455 agent 1.6168924967447917 | G-ref agent 2.989954630533854 | G_R-ref agent 1.7437591552734375
+      t9 e0 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0376 wrist 0.0924 [mask:segmentation] inside agent 61.52510896342619 wrist 80.24980377262945 mask_px 1759/13165 | (ii) G_R-G wrist 3.914891560872396 agent 1.7453562418619792 | G-ref agent 3.0980631510416665 | G_R-ref agent 1.6880950927734375
+      t9 e1 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0330 wrist 0.2436 [mask:segmentation] inside agent 60.210211841390546 wrist 79.78850262675012 mask_px 1841/13261 | (ii) G_R-G wrist 3.9746805826822915 agent 1.5698750813802083 | G-ref agent 2.9260457356770835 | G_R-ref agent 1.723114013671875
+      t9 e2 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0293 wrist 0.0831 [mask:segmentation] inside agent 60.913744243712365 wrist 80.25151630503743 mask_px 1882/13135 | (ii) G_R-G wrist 3.8358001708984375 agent 1.6019490559895833 | G-ref agent 2.9999237060546875 | G_R-ref agent 1.7775421142578125
+      t9 e3 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0514 wrist 0.0730 [mask:segmentation] inside agent 61.559584513692165 wrist 80.25819320305004 mask_px 1765/13202 | (ii) G_R-G wrist 3.920618693033854 agent 1.7587788899739583 | G-ref agent 3.141016642252604 | G_R-ref agent 1.7095591227213542
+      t9 e4 host=node16 gpu=NVIDIA A100-PCIE-40GB (i) agent 0.0552 wrist 0.1236 [mask:segmentation] inside agent 60.2186741363212 wrist 80.19882907542579 mask_px 1785/13152 | (ii) G_R-G wrist 3.8737030029296875 agent 1.6320292154947917 | G-ref agent 2.9904632568359375 | G_R-ref agent 1.6939544677734375
+      t0 e10 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0585 wrist 0.0785 [mask:segmentation] inside agent 59.25575953923686 wrist 78.8473593599676 mask_px 1852/13166 | (ii) G_R-G wrist 3.78594970703125 agent 1.6613362630208333 | G-ref agent 3.0256245930989585 | G_R-ref agent 1.7309977213541667
+      t0 e11 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0455 wrist 0.0983 [mask:segmentation] inside agent 61.45895096921323 wrist 78.78359816518412 mask_px 1754/13153 | (ii) G_R-G wrist 3.7794036865234375 agent 1.7048441569010417 | G-ref agent 3.04364013671875 | G_R-ref agent 1.6889241536458333
+      t0 e12 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0395 wrist 0.1380 [mask:segmentation] inside agent 60.645636172450054 wrist 79.99187424058323 mask_px 1902/13168 | (ii) G_R-G wrist 3.8508809407552085 agent 1.5625762939453125 | G-ref agent 2.9818623860677085 | G_R-ref agent 1.7976837158203125
+      t0 e13 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0304 wrist 0.0535 [mask:segmentation] inside agent 60.424916181401095 wrist 79.86664132775877 mask_px 1889/13155 | (ii) G_R-G wrist 4.052490234375 agent 1.6143798828125 | G-ref agent 3.0051116943359375 | G_R-ref agent 1.7738698323567708
+      t0 e14 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0387 wrist 0.1233 [mask:segmentation] inside agent 61.43709468223087 wrist 79.8936757591875 mask_px 1799/13161 | (ii) G_R-G wrist 3.87567138671875 agent 1.67572021484375 | G-ref agent 3.030364990234375 | G_R-ref agent 1.7249857584635417
+      t1 e10 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0530 wrist 0.2203 [mask:segmentation] inside agent 59.144836051201125 wrist 79.5026906284902 mask_px 1901/13132 | (ii) G_R-G wrist 3.9122161865234375 agent 1.5979868570963542 | G-ref agent 3.003392537434896 | G_R-ref agent 1.7677510579427083
+      t1 e11 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0491 wrist 0.1125 [mask:segmentation] inside agent 61.36846038863976 wrist 78.91721182615751 mask_px 1784/13146 | (ii) G_R-G wrist 3.7526702880859375 agent 1.71795654296875 | G-ref agent 3.0855611165364585 | G_R-ref agent 1.7185465494791667
+      t1 e12 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0313 wrist 0.0857 [mask:segmentation] inside agent 60.305433989788476 wrist 79.32325304561456 mask_px 1828/13161 | (ii) G_R-G wrist 3.8093414306640625 agent 1.5957539876302083 | G-ref agent 2.954249064127604 | G_R-ref agent 1.7121327718098958
+      t1 e13 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0326 wrist 0.0834 [mask:segmentation] inside agent 60.39108998063039 wrist 80.89111398766467 mask_px 1893/13133 | (ii) G_R-G wrist 4.362436930338542 agent 1.5910135904947917 | G-ref agent 2.978947957356771 | G_R-ref agent 1.7763926188151042
+      t1 e14 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0366 wrist 0.1215 [mask:segmentation] inside agent 63.47385252069225 wrist 79.40024220405692 mask_px 1772/13212 | (ii) G_R-G wrist 3.815831502278646 agent 1.7853240966796875 | G-ref agent 3.185882568359375 | G_R-ref agent 1.7511037190755208
+      t2 e10 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0274 wrist 0.0821 [mask:segmentation] inside agent 59.78562642769285 wrist 80.62882018479033 mask_px 1897/13132 | (ii) G_R-G wrist 3.846491495768229 agent 1.5343068440755208 | G-ref agent 2.9331817626953125 | G_R-ref agent 1.7573954264322917
+      t2 e11 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0524 wrist 0.0464 [mask:segmentation] inside agent 60.5511640498105 wrist 79.48656731549067 mask_px 1847/13152 | (ii) G_R-G wrist 3.8413289388020835 agent 1.5840250651041667 | G-ref agent 2.9694925944010415 | G_R-ref agent 1.7580362955729167
+      t2 e12 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0362 wrist 0.0704 [mask:segmentation] inside agent 60.23096841015018 wrist 80.39507296962339 mask_px 1931/13179 | (ii) G_R-G wrist 3.870091756184896 agent 1.5846608479817708 | G-ref agent 3.012842814127604 | G_R-ref agent 1.8100687662760417
+      t2 e13 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0362 wrist 0.1613 [mask:segmentation] inside agent 61.510883967442744 wrist 79.06000556778781 mask_px 1761/13171 | (ii) G_R-G wrist 3.863306681315104 agent 1.7401987711588542 | G-ref agent 3.0887552897135415 | G_R-ref agent 1.6875864664713542
+      t2 e14 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0473 wrist 0.1575 [mask:segmentation] inside agent 61.070420017873104 wrist 79.68927452763464 mask_px 1865/13196 | (ii) G_R-G wrist 3.851262410481771 agent 1.5656280517578125 | G-ref agent 2.9702351888020835 | G_R-ref agent 1.7829132080078125
+      t3 e10 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0340 wrist 0.0641 [mask:segmentation] inside agent 60.78829987991079 wrist 81.25511990864103 mask_px 1943/13135 | (ii) G_R-G wrist 4.311614990234375 agent 1.5269877115885417 | G-ref agent 2.9958394368489585 | G_R-ref agent 1.835296630859375
+      t3 e11 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0521 wrist 0.1454 [mask:segmentation] inside agent 60.24617067833698 wrist 80.2177284476205 mask_px 1828/13154 | (ii) G_R-G wrist 3.9202728271484375 agent 1.6493072509765625 | G-ref agent 2.9966278076171875 | G_R-ref agent 1.7312723795572917
+      t3 e12 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0411 wrist 0.2245 [mask:segmentation] inside agent 58.38801811215604 wrist 80.32247094056139 mask_px 1914/13134 | (ii) G_R-G wrist 3.9542643229166665 agent 1.6481831868489583 | G-ref agent 3.023401896158854 | G_R-ref agent 1.7463226318359375
+      t3 e13 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0456 wrist 0.1243 [mask:segmentation] inside agent 60.4397504456328 wrist 80.79946537549806 mask_px 1870/13218 | (ii) G_R-G wrist 3.9198811848958335 agent 1.592132568359375 | G-ref agent 2.987523396809896 | G_R-ref agent 1.7689666748046875
+      t3 e14 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0480 wrist 0.1731 [mask:segmentation] inside agent 61.0273344340488 wrist 80.07970247100353 mask_px 1817/13220 | (ii) G_R-G wrist 4.2344716389973955 agent 1.7188161214192708 | G-ref agent 3.087977091471354 | G_R-ref agent 1.73809814453125
+      t4 e10 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0365 wrist 0.1130 [mask:segmentation] inside agent 58.78897370653096 wrist 80.1030888618381 mask_px 1965/13144 | (ii) G_R-G wrist 3.8176981608072915 agent 1.5579833984375 | G-ref agent 2.9673868815104165 | G_R-ref agent 1.79803466796875
+      t4 e11 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0585 wrist 0.0833 [mask:segmentation] inside agent 60.896705750977105 wrist 77.69981389266134 mask_px 1791/13254 | (ii) G_R-G wrist 3.7759602864583335 agent 1.7240091959635417 | G-ref agent 3.097752888997396 | G_R-ref agent 1.7206370035807292
+      t4 e12 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0362 wrist 0.1210 [mask:segmentation] inside agent 61.04283576505799 wrist 79.29960981047938 mask_px 1782/13156 | (ii) G_R-G wrist 3.851465861002604 agent 1.7397867838541667 | G-ref agent 3.1010538736979165 | G_R-ref agent 1.694580078125
+      t4 e13 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0623 wrist 0.0757 [mask:segmentation] inside agent 60.687222222222225 wrist 79.3330291970803 mask_px 1800/13152 | (ii) G_R-G wrist 3.8533528645833335 agent 1.6478983561197917 | G-ref agent 2.992253621419271 | G_R-ref agent 1.7277475992838542
+      t4 e14 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0317 wrist 0.0947 [mask:segmentation] inside agent 60.849080648097576 wrist 79.81263782221885 mask_px 1831/13151 | (ii) G_R-G wrist 4.389689127604167 agent 1.7017262776692708 | G-ref agent 3.064793904622396 | G_R-ref agent 1.7303975423177083
+      t5 e10 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0457 wrist 0.0963 [mask:segmentation] inside agent 59.141046831955926 wrist 79.15790672945465 mask_px 1815/13166 | (ii) G_R-G wrist 3.786860148111979 agent 1.7085673014322917 | G-ref agent 3.056976318359375 | G_R-ref agent 1.6814371744791667
+      t5 e11 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0517 wrist 0.0781 [mask:segmentation] inside agent 60.064350064350066 wrist 78.9813140903912 mask_px 1813/13165 | (ii) G_R-G wrist 3.7715911865234375 agent 1.6396077473958333 | G-ref agent 2.994659423828125 | G_R-ref agent 1.7117411295572917
+      t5 e12 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0373 wrist 0.1144 [mask:segmentation] inside agent 60.56572645023949 wrist 79.92267153136719 mask_px 1879/13156 | (ii) G_R-G wrist 3.8089803059895835 agent 1.6186676025390625 | G-ref agent 3.028010050455729 | G_R-ref agent 1.7718098958333333
+      t5 e13 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0608 wrist 0.0891 [mask:segmentation] inside agent 60.60250896057347 wrist 80.53654636820465 mask_px 1860/13134 | (ii) G_R-G wrist 3.847747802734375 agent 1.5361226399739583 | G-ref agent 2.951690673828125 | G_R-ref agent 1.777801513671875
+      t5 e14 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0333 wrist 0.0466 [mask:segmentation] inside agent 60.65573466740782 wrist 78.88251532188623 mask_px 1799/13162 | (ii) G_R-G wrist 3.8891448974609375 agent 1.7428690592447917 | G-ref agent 3.092748006184896 | G_R-ref agent 1.6988372802734375
+      t6 e10 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0264 wrist 0.0903 [mask:segmentation] inside agent 59.230877192982454 wrist 80.14839609483961 mask_px 1900/13145 | (ii) G_R-G wrist 3.8446502685546875 agent 1.6482289632161458 | G-ref agent 3.037750244140625 | G_R-ref agent 1.7429250081380208
+      t6 e11 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0633 wrist 0.1417 [mask:segmentation] inside agent 60.448641842057924 wrist 78.63214023355371 mask_px 1853/13159 | (ii) G_R-G wrist 3.846552530924479 agent 1.6436513264973958 | G-ref agent 3.04888916015625 | G_R-ref agent 1.7711537679036458
+      t6 e12 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0427 wrist 0.0858 [mask:segmentation] inside agent 60.61519213583557 wrist 78.7557875624149 mask_px 1865/13218 | (ii) G_R-G wrist 3.7796173095703125 agent 1.6152191162109375 | G-ref agent 3.0225626627604165 | G_R-ref agent 1.7657012939453125
+      t6 e13 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0437 wrist 0.1202 [mask:segmentation] inside agent 60.46544035674471 wrist 79.69014369560817 mask_px 1794/13176 | (ii) G_R-G wrist 3.8408203125 agent 1.6795145670572917 | G-ref agent 3.025792439778646 | G_R-ref agent 1.6976267496744792
+      t6 e14 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0438 wrist 0.0741 [mask:segmentation] inside agent 62.965711073636875 wrist 78.64449310379543 mask_px 1779/13244 | (ii) G_R-G wrist 3.8189595540364585 agent 1.75860595703125 | G-ref agent 3.148829142252604 | G_R-ref agent 1.7516021728515625
+      t7 e10 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0395 wrist 0.0904 [mask:segmentation] inside agent 59.8209483368719 wrist 80.07631652341472 mask_px 1884/13147 | (ii) G_R-G wrist 3.8567708333333335 agent 1.6251576741536458 | G-ref agent 3.01043701171875 | G_R-ref agent 1.7583160400390625
+      t7 e11 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0408 wrist 0.1412 [mask:segmentation] inside agent 60.87332230189373 wrist 78.70156246043202 mask_px 1813/13163 | (ii) G_R-G wrist 3.8541259765625 agent 1.6952463785807292 | G-ref agent 3.0644327799479165 | G_R-ref agent 1.7239430745442708
+      t7 e12 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0445 wrist 0.0599 [mask:segmentation] inside agent 60.17876700229641 wrist 80.14504319627068 mask_px 1887/13157 | (ii) G_R-G wrist 3.8504740397135415 agent 1.5214996337890625 | G-ref agent 2.942682902018229 | G_R-ref agent 1.7749226888020833
+      t7 e13 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0317 wrist 0.1581 [mask:segmentation] inside agent 61.71943964690079 wrist 79.06110562435109 mask_px 1737/13163 | (ii) G_R-G wrist 3.816624959309896 agent 1.765167236328125 | G-ref agent 3.109553019205729 | G_R-ref agent 1.6655019124348958
+      t7 e14 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0340 wrist 0.0552 [mask:segmentation] inside agent 60.9015361836017 wrist 79.0821838209287 mask_px 1801/13194 | (ii) G_R-G wrist 3.920710245768229 agent 1.6650441487630208 | G-ref agent 3.012791951497396 | G_R-ref agent 1.70770263671875
+      t8 e10 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0532 wrist 0.0700 [mask:segmentation] inside agent 59.488496799861615 wrist 80.824514790354 mask_px 1927/13173 | (ii) G_R-G wrist 3.9627176920572915 agent 1.5641326904296875 | G-ref agent 2.976557413736979 | G_R-ref agent 1.8012797037760417
+      t8 e11 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0482 wrist 0.0495 [mask:segmentation] inside agent 62.16778149386845 wrist 78.86328421692238 mask_px 1794/13166 | (ii) G_R-G wrist 3.9749298095703125 agent 1.7175445556640625 | G-ref agent 3.1021219889322915 | G_R-ref agent 1.7509104410807292
+      t8 e12 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0504 wrist 0.1577 [mask:segmentation] inside agent 59.92783505154639 wrist 79.72179155900086 mask_px 1843/13158 | (ii) G_R-G wrist 3.9131317138671875 agent 1.6451365152994792 | G-ref agent 3.031041463216146 | G_R-ref agent 1.7346700032552083
+      t8 e13 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0484 wrist 0.1874 [mask:segmentation] inside agent 61.949045766166385 wrist 80.6350376054091 mask_px 1799/13163 | (ii) G_R-G wrist 3.966435750325521 agent 1.7239430745442708 | G-ref agent 3.116643269856771 | G_R-ref agent 1.7476298014322917
+      t8 e14 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0366 wrist 0.0773 [mask:segmentation] inside agent 62.74419920769666 wrist 80.01928772116334 mask_px 1767/13169 | (ii) G_R-G wrist 3.84619140625 agent 1.8091837565104167 | G-ref agent 3.1854044596354165 | G_R-ref agent 1.7275797526041667
+      t9 e10 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0356 wrist 0.1420 [mask:segmentation] inside agent 58.65151515151515 wrist 80.33234504079874 mask_px 1870/13154 | (ii) G_R-G wrist 3.977839152018229 agent 1.6140187581380208 | G-ref agent 2.9720306396484375 | G_R-ref agent 1.7082417805989583
+      t9 e11 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0299 wrist 0.1697 [mask:segmentation] inside agent 60.60711692084241 wrist 79.30403680392305 mask_px 1836/13187 | (ii) G_R-G wrist 3.9538421630859375 agent 1.6507720947265625 | G-ref agent 3.002985636393229 | G_R-ref agent 1.7264404296875
+      t9 e12 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0459 wrist 0.3902 [mask:segmentation] inside agent 61.03324348607367 wrist 78.40656298756858 mask_px 1855/13246 | (ii) G_R-G wrist 4.133565266927083 agent 1.7251942952473958 | G-ref agent 3.123143513997396 | G_R-ref agent 1.7718709309895833
+      t9 e13 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0398 wrist 0.1122 [mask:segmentation] inside agent 62.12652207001522 wrist 79.71611220821308 mask_px 1752/13166 | (ii) G_R-G wrist 3.862213134765625 agent 1.7573293050130208 | G-ref agent 3.126708984375 | G_R-ref agent 1.7002817789713542
+      t9 e14 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0593 wrist 0.0490 [mask:segmentation] inside agent 61.65349656835466 wrist 80.09742810084886 mask_px 1797/13155 | (ii) G_R-G wrist 3.97198486328125 agent 1.7416788736979167 | G-ref agent 3.112055460611979 | G_R-ref agent 1.7479400634765625
+      t0 e15 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0539 wrist 0.1441 [mask:segmentation] inside agent 59.387575590984056 wrist 77.86109851347946 mask_px 1819/13230 | (ii) G_R-G wrist 3.828028361002604 agent 1.7575785319010417 | G-ref agent 3.13330078125 | G_R-ref agent 1.70098876953125
+      t0 e16 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0264 wrist 0.0942 [mask:segmentation] inside agent 60.284887924801154 wrist 78.96689194319994 mask_px 1844/13169 | (ii) G_R-G wrist 4.0869089762369795 agent 1.6103312174479167 | G-ref agent 2.9838358561197915 | G_R-ref agent 1.7227376302083333
+      t0 e17 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0506 wrist 0.0686 [mask:segmentation] inside agent 60.65876777251185 wrist 79.48452335977836 mask_px 1899/13235 | (ii) G_R-G wrist 4.082997639973958 agent 1.5324147542317708 | G-ref agent 2.9646097819010415 | G_R-ref agent 1.8070322672526042
+      t0 e18 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0378 wrist 0.1093 [mask:segmentation] inside agent 58.728285077951 wrist 79.20952236004364 mask_px 1796/13141 | (ii) G_R-G wrist 4.110239664713542 agent 1.6608734130859375 | G-ref agent 2.9725748697916665 | G_R-ref agent 1.6446889241536458
+      t0 e19 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0329 wrist 0.0975 [mask:segmentation] inside agent 60.97925685425685 wrist 79.97638393196142 mask_px 1848/13169 | (ii) G_R-G wrist 3.8259989420572915 agent 1.6182352701822917 | G-ref agent 3.0073954264322915 | G_R-ref agent 1.74945068359375
+      t1 e15 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0344 wrist 0.0825 [mask:segmentation] inside agent 59.21322609472743 wrist 79.30483007182923 mask_px 1865/13133 | (ii) G_R-G wrist 4.1058298746744795 agent 1.6482747395833333 | G-ref agent 3.0176289876302085 | G_R-ref agent 1.7184651692708333
+      t1 e16 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0466 wrist 0.0603 [mask:segmentation] inside agent 60.17205499814195 wrist 79.15770010131712 mask_px 1794/13160 | (ii) G_R-G wrist 3.780278523763021 agent 1.630706787109375 | G-ref agent 3.005671183268229 | G_R-ref agent 1.7130076090494792
+      t1 e17 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0304 wrist 0.1076 [mask:segmentation] inside agent 60.57854802552164 wrist 80.70834284554702 mask_px 1933/13141 | (ii) G_R-G wrist 3.8631591796875 agent 1.467864990234375 | G-ref agent 2.9250284830729165 | G_R-ref agent 1.8160502115885417
+      t1 e18 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0394 wrist 0.0608 [mask:segmentation] inside agent 60.6917502787068 wrist 79.12998859749145 mask_px 1794/13155 | (ii) G_R-G wrist 3.830632527669271 agent 1.7431081136067708 | G-ref agent 3.092961629231771 | G_R-ref agent 1.7002156575520833
+      t1 e19 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0529 wrist 0.0792 [mask:segmentation] inside agent 59.98336871903751 wrist 79.83931870523625 mask_px 1884/13171 | (ii) G_R-G wrist 3.833470662434896 agent 1.5416666666666667 | G-ref agent 2.9278767903645835 | G_R-ref agent 1.77581787109375
+      t2 e15 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0190 wrist 0.1041 [mask:segmentation] inside agent 60.95334796926454 wrist 80.2588644381837 mask_px 1822/13133 | (ii) G_R-G wrist 3.829839070638021 agent 1.605438232421875 | G-ref agent 2.960871378580729 | G_R-ref agent 1.7127329508463542
+      t2 e16 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0258 wrist 0.0780 [mask:segmentation] inside agent 60.44396396396397 wrist 80.01465145754119 mask_px 1850/13150 | (ii) G_R-G wrist 3.67919921875 agent 1.6520589192708333 | G-ref agent 3.0045928955078125 | G_R-ref agent 1.7305043538411458
+      t2 e17 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0675 wrist 0.1076 [mask:segmentation] inside agent 61.039800995024876 wrist 80.44527193049117 mask_px 1876/13159 | (ii) G_R-G wrist 3.8435211181640625 agent 1.5434112548828125 | G-ref agent 2.9771626790364585 | G_R-ref agent 1.8128712972005208
+      t2 e18 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0420 wrist 0.0443 [mask:segmentation] inside agent 61.797247023809526 wrist 79.39791303469012 mask_px 1792/13193 | (ii) G_R-G wrist 3.7719217936197915 agent 1.7106068929036458 | G-ref agent 3.071039835611979 | G_R-ref agent 1.7309672037760417
+      t2 e19 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0500 wrist 0.1110 [mask:segmentation] inside agent 60.44407096171802 wrist 79.78321784816873 mask_px 1785/13133 | (ii) G_R-G wrist 3.9725138346354165 agent 1.7435251871744792 | G-ref agent 3.109776814778646 | G_R-ref agent 1.6948649088541667
+      t3 e15 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0381 wrist 0.0709 [mask:segmentation] inside agent 60.10879158180584 wrist 81.64447319028052 mask_px 1964/13142 | (ii) G_R-G wrist 3.9013875325520835 agent 1.5118408203125 | G-ref agent 2.9842071533203125 | G_R-ref agent 1.8389841715494792
+      t3 e16 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0538 wrist 0.0881 [mask:segmentation] inside agent 60.17817371937639 wrist 80.2153990182683 mask_px 1796/13174 | (ii) G_R-G wrist 4.1275380452473955 agent 1.6221415201822917 | G-ref agent 2.979670206705729 | G_R-ref agent 1.7013600667317708
+      t3 e17 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0617 wrist 0.1715 [mask:segmentation] inside agent 60.22801243371732 wrist 79.54974007861037 mask_px 1823/13145 | (ii) G_R-G wrist 3.9132588704427085 agent 1.7607218424479167 | G-ref agent 3.1579691569010415 | G_R-ref agent 1.7352701822916667
+      t3 e18 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0652 wrist 0.1166 [mask:segmentation] inside agent 61.50215476859659 wrist 80.74946776155718 mask_px 1779/13152 | (ii) G_R-G wrist 3.8586883544921875 agent 1.6773834228515625 | G-ref agent 3.0455474853515625 | G_R-ref agent 1.732666015625
+      t3 e19 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0532 wrist 0.1300 [mask:segmentation] inside agent 60.98385416666667 wrist 81.441210739615 mask_px 1920/13160 | (ii) G_R-G wrist 3.903711954752604 agent 1.5220794677734375 | G-ref agent 2.974095662434896 | G_R-ref agent 1.8386942545572917
+      t4 e15 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0496 wrist 0.0849 [mask:segmentation] inside agent 62.1265275427712 wrist 78.42393565738062 mask_px 1773/13138 | (ii) G_R-G wrist 3.7998250325520835 agent 1.7801361083984375 | G-ref agent 3.1852874755859375 | G_R-ref agent 1.7310587565104167
+      t4 e16 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0302 wrist 0.0620 [mask:segmentation] inside agent 60.04718170358365 wrist 79.53764503217307 mask_px 1851/13158 | (ii) G_R-G wrist 3.972478230794271 agent 1.5918426513671875 | G-ref agent 2.960637410481771 | G_R-ref agent 1.72454833984375
+      t4 e17 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0465 wrist 0.0688 [mask:segmentation] inside agent 60.4751041100851 wrist 79.89189189189189 mask_px 1841/13135 | (ii) G_R-G wrist 3.8012186686197915 agent 1.6182963053385417 | G-ref agent 3.003453572591146 | G_R-ref agent 1.7439015706380208
+      t4 e18 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0577 wrist 0.0820 [mask:segmentation] inside agent 59.8687707641196 wrist 79.4067238804081 mask_px 1806/13167 | (ii) G_R-G wrist 3.8317464192708335 agent 1.6114959716796875 | G-ref agent 2.962427775065104 | G_R-ref agent 1.7056986490885417
+      t4 e19 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0314 wrist 0.0704 [mask:segmentation] inside agent 60.394498733260946 wrist 79.64390652355941 mask_px 1842/13137 | (ii) G_R-G wrist 3.839019775390625 agent 1.5541483561197917 | G-ref agent 2.9184112548828125 | G_R-ref agent 1.7287343343098958
+      t5 e15 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0389 wrist 0.0725 [mask:segmentation] inside agent 58.737808075511275 wrist 79.02756224960697 mask_px 1907/13146 | (ii) G_R-G wrist 4.122446695963542 agent 1.6341145833333333 | G-ref agent 2.9951273600260415 | G_R-ref agent 1.7469889322916667
+      t5 e16 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0386 wrist 0.0844 [mask:segmentation] inside agent 60.41515796947107 wrist 79.308337109198 mask_px 1878/13242 | (ii) G_R-G wrist 3.805933634440104 agent 1.5475667317708333 | G-ref agent 2.952356974283854 | G_R-ref agent 1.7683054606119792
+      t5 e17 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0307 wrist 0.0698 [mask:segmentation] inside agent 60.92985347985348 wrist 79.3015728288124 mask_px 1820/13161 | (ii) G_R-G wrist 3.774693806966146 agent 1.7239583333333333 | G-ref agent 3.0947977701822915 | G_R-ref agent 1.7209370930989583
+      t5 e18 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0337 wrist 0.0753 [mask:segmentation] inside agent 62.20101781170484 wrist 79.46943220381908 mask_px 1834/13162 | (ii) G_R-G wrist 3.84454345703125 agent 1.7307891845703125 | G-ref agent 3.15081787109375 | G_R-ref agent 1.7736155192057292
+      t5 e19 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0352 wrist 0.0480 [mask:segmentation] inside agent 62.34611715321503 wrist 78.76118797830824 mask_px 1747/13154 | (ii) G_R-G wrist 3.8683573404947915 agent 1.8246866861979167 | G-ref agent 3.198638916015625 | G_R-ref agent 1.6965433756510417
+      t6 e15 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0416 wrist 0.0706 [mask:segmentation] inside agent 59.609936393329896 wrist 80.43036789636152 mask_px 1939/13174 | (ii) G_R-G wrist 3.932917277018229 agent 1.5836639404296875 | G-ref agent 2.996978759765625 | G_R-ref agent 1.8044586181640625
+      t6 e16 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0312 wrist 0.1269 [mask:segmentation] inside agent 60.61448349307774 wrist 78.84176129195055 mask_px 1878/13210 | (ii) G_R-G wrist 3.8173624674479165 agent 1.5890604654947917 | G-ref agent 2.99072265625 | G_R-ref agent 1.767120361328125
+      t6 e17 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0324 wrist 0.0707 [mask:segmentation] inside agent 60.66849615806806 wrist 79.17882115360344 mask_px 1822/13205 | (ii) G_R-G wrist 3.913945515950521 agent 1.6844991048177083 | G-ref agent 3.038416544596354 | G_R-ref agent 1.7180328369140625
+      t6 e18 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0330 wrist 0.1616 [mask:segmentation] inside agent 60.006410256410255 wrist 79.77413950654889 mask_px 1820/13132 | (ii) G_R-G wrist 3.869420369466146 agent 1.6464080810546875 | G-ref agent 2.9876607259114585 | G_R-ref agent 1.6988372802734375
+      t6 e19 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0388 wrist 0.1002 [mask:segmentation] inside agent 61.57502295684114 wrist 79.53301874825583 mask_px 1815/13139 | (ii) G_R-G wrist 3.779118855794271 agent 1.7437998453776042 | G-ref agent 3.148615519205729 | G_R-ref agent 1.7424723307291667
+      t7 e15 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0406 wrist 0.1045 [mask:segmentation] inside agent 59.31978319783198 wrist 79.97425948468249 mask_px 1845/13144 | (ii) G_R-G wrist 3.842900594075521 agent 1.6646016438802083 | G-ref agent 3.017181396484375 | G_R-ref agent 1.710479736328125
+      t7 e16 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0503 wrist 0.1462 [mask:segmentation] inside agent 59.97553017944535 wrist 79.50794254009273 mask_px 1839/13157 | (ii) G_R-G wrist 4.1190134684244795 agent 1.58343505859375 | G-ref agent 2.9546407063802085 | G_R-ref agent 1.7333984375
+      t7 e17 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0397 wrist 0.1468 [mask:segmentation] inside agent 60.051576453435395 wrist 79.24479918915495 mask_px 1829/13155 | (ii) G_R-G wrist 3.8763020833333335 agent 1.6630655924479167 | G-ref agent 3.0137430826822915 | G_R-ref agent 1.7147013346354167
+      t7 e18 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0364 wrist 0.1891 [mask:segmentation] inside agent 59.789964157706095 wrist 79.69453522839554 mask_px 1860/13157 | (ii) G_R-G wrist 3.916712443033854 agent 1.7008158365885417 | G-ref agent 3.0711771647135415 | G_R-ref agent 1.7323201497395833
+      t7 e19 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0320 wrist 0.0829 [mask:segmentation] inside agent 60.507222222222225 wrist 79.2189247311828 mask_px 1800/13175 | (ii) G_R-G wrist 3.816401163736979 agent 1.6986440022786458 | G-ref agent 3.035578409830729 | G_R-ref agent 1.6912129720052083
+      t8 e15 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0491 wrist 0.1024 [mask:segmentation] inside agent 59.68411053540587 wrist 80.4083213483713 mask_px 1930/13211 | (ii) G_R-G wrist 3.940526326497396 agent 1.6439615885416667 | G-ref agent 3.059351603190104 | G_R-ref agent 1.8039194742838542
+      t8 e16 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0626 wrist 0.0985 [mask:segmentation] inside agent 61.034733297891194 wrist 80.66659051680374 mask_px 1881/13132 | (ii) G_R-G wrist 3.8081868489583335 agent 1.5565287272135417 | G-ref agent 2.9790751139322915 | G_R-ref agent 1.8118082682291667
+      t8 e17 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0375 wrist 0.1191 [mask:segmentation] inside agent 63.29394441376772 wrist 79.23996357289217 mask_px 1811/13177 | (ii) G_R-G wrist 3.847773234049479 agent 1.7550760904947917 | G-ref agent 3.187861124674479 | G_R-ref agent 1.7861785888671875
+      t8 e18 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0306 wrist 0.1459 [mask:segmentation] inside agent 59.518840579710144 wrist 81.00753768844221 mask_px 1840/13134 | (ii) G_R-G wrist 3.932866414388021 agent 1.5916697184244792 | G-ref agent 2.9406534830729165 | G_R-ref agent 1.7011260986328125
+      t8 e19 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0474 wrist 0.1433 [mask:segmentation] inside agent 62.187899285982716 wrist 79.94933820173436 mask_px 1774/13146 | (ii) G_R-G wrist 4.270762125651042 agent 1.7567392985026042 | G-ref agent 3.1474456787109375 | G_R-ref agent 1.7292887369791667
+      t9 e15 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0495 wrist 0.0957 [mask:segmentation] inside agent 58.87217514124294 wrist 80.74480156016513 mask_px 1888/13161 | (ii) G_R-G wrist 3.8984832763671875 agent 1.6096598307291667 | G-ref agent 3.0041402180989585 | G_R-ref agent 1.7438456217447917
+      t9 e16 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0525 wrist 0.0594 [mask:segmentation] inside agent 60.53789592760181 wrist 78.81112959322546 mask_px 1768/13226 | (ii) G_R-G wrist 3.8229878743489585 agent 1.7405548095703125 | G-ref agent 3.1211751302083335 | G_R-ref agent 1.6850535074869792
+      t9 e17 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0349 wrist 0.0913 [mask:segmentation] inside agent 60.01447661469933 wrist 79.78481140917496 mask_px 1796/13159 | (ii) G_R-G wrist 3.854217529296875 agent 1.643646240234375 | G-ref agent 2.9694671630859375 | G_R-ref agent 1.6779022216796875
+      t9 e18 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0683 wrist 0.1412 [mask:segmentation] inside agent 60.76326381266008 wrist 80.93517108335871 mask_px 1822/13132 | (ii) G_R-G wrist 3.934199015299479 agent 1.5644632975260417 | G-ref agent 2.9518941243489585 | G_R-ref agent 1.755645751953125
+      t9 e19 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0344 wrist 0.1256 [mask:segmentation] inside agent 59.972536348949916 wrist 81.24920839982775 mask_px 1857/13159 | (ii) G_R-G wrist 3.927800496419271 agent 1.5719401041666667 | G-ref agent 2.948949178059896 | G_R-ref agent 1.7330881754557292
+      t0 e5 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0289 wrist 0.1130 [mask:segmentation] inside agent 58.97687861271676 wrist 79.29888627926358 mask_px 1903/13199 | (ii) G_R-G wrist 3.8021443684895835 agent 1.6809794108072917 | G-ref agent 3.037846883138021 | G_R-ref agent 1.7403717041015625
+      t0 e6 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0521 wrist 0.1346 [mask:segmentation] inside agent 61.470498956554735 wrist 77.6009642081882 mask_px 1757/13206 | (ii) G_R-G wrist 3.769683837890625 agent 1.7917887369791667 | G-ref agent 3.164820353190104 | G_R-ref agent 1.6981557210286458
+      t0 e7 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0425 wrist 0.0592 [mask:segmentation] inside agent 60.39285085402359 wrist 79.62856925880924 mask_px 1893/13168 | (ii) G_R-G wrist 3.8566385904947915 agent 1.6311086018880208 | G-ref agent 3.0452423095703125 | G_R-ref agent 1.78729248046875
+      t0 e8 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0650 wrist 0.0650 [mask:segmentation] inside agent 60.25829725829726 wrist 80.0360722964763 mask_px 1848/13168 | (ii) G_R-G wrist 4.033498128255208 agent 1.7022145589192708 | G-ref agent 3.114013671875 | G_R-ref agent 1.7636159261067708
+      t0 e9 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0472 wrist 0.0713 [mask:segmentation] inside agent 60.85395822362647 wrist 80.05341523838415 mask_px 1899/13186 | (ii) G_R-G wrist 4.2251942952473955 agent 1.5533447265625 | G-ref agent 2.985987345377604 | G_R-ref agent 1.8120574951171875
+      t1 e5 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0455 wrist 0.1244 [mask:segmentation] inside agent 58.87683791731534 wrist 80.71294040004061 mask_px 1927/13132 | (ii) G_R-G wrist 3.86016845703125 agent 1.5189921061197917 | G-ref agent 2.9285176595052085 | G_R-ref agent 1.7760111490885417
+      t1 e6 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0485 wrist 0.0991 [mask:segmentation] inside agent 62.20737842370039 wrist 77.63160150243263 mask_px 1789/13223 | (ii) G_R-G wrist 4.026967366536458 agent 1.7690836588541667 | G-ref agent 3.1645406087239585 | G_R-ref agent 1.7450663248697917
+      t1 e7 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0495 wrist 0.0985 [mask:segmentation] inside agent 61.07600073787124 wrist 79.90160200440361 mask_px 1807/13171 | (ii) G_R-G wrist 3.7943267822265625 agent 1.6986185709635417 | G-ref agent 3.058710734049479 | G_R-ref agent 1.7315419514973958
+      t1 e8 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0400 wrist 0.1644 [mask:segmentation] inside agent 60.03511615343058 wrist 79.45565516892063 mask_px 1851/13162 | (ii) G_R-G wrist 3.9141337076822915 agent 1.7061920166015625 | G-ref agent 3.0747782389322915 | G_R-ref agent 1.7345428466796875
+      t1 e9 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0380 wrist 0.0514 [mask:segmentation] inside agent 60.11686026047167 wrist 79.66615973436747 mask_px 1894/13151 | (ii) G_R-G wrist 3.858159383138021 agent 1.568084716796875 | G-ref agent 2.959136962890625 | G_R-ref agent 1.7728169759114583
+      t2 e5 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0435 wrist 0.0848 [mask:segmentation] inside agent 61.24150036954915 wrist 77.82578291273943 mask_px 1804/13156 | (ii) G_R-G wrist 3.7908732096354165 agent 1.8558146158854167 | G-ref agent 3.25579833984375 | G_R-ref agent 1.7276204427083333
+      t2 e6 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0583 wrist 0.0605 [mask:segmentation] inside agent 60.56976097832129 wrist 79.37337185140134 mask_px 1799/13154 | (ii) G_R-G wrist 3.767328898111979 agent 1.6534678141276042 | G-ref agent 3.0065765380859375 | G_R-ref agent 1.7191162109375
+      t2 e7 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0497 wrist 0.0684 [mask:segmentation] inside agent 60.936301121968874 wrist 79.48935846761934 mask_px 1842/13156 | (ii) G_R-G wrist 3.7742156982421875 agent 1.5981547037760417 | G-ref agent 2.9750874837239585 | G_R-ref agent 1.7609354654947917
+      t2 e8 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0565 wrist 0.0854 [mask:segmentation] inside agent 61.06280464941882 wrist 80.04625199362042 mask_px 1778/13167 | (ii) G_R-G wrist 3.6244303385416665 agent 1.6592254638671875 | G-ref agent 3.0012054443359375 | G_R-ref agent 1.7113545735677083
+      t2 e9 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0392 wrist 0.1344 [mask:segmentation] inside agent 60.56780870806567 wrist 80.14786051469468 mask_px 1868/13134 | (ii) G_R-G wrist 3.8373311360677085 agent 1.6480255126953125 | G-ref agent 3.0567474365234375 | G_R-ref agent 1.7630513509114583
+      t3 e5 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0274 wrist 0.1226 [mask:segmentation] inside agent 61.740861974904526 wrist 80.3768491030423 mask_px 1833/13137 | (ii) G_R-G wrist 3.881378173828125 agent 1.7005157470703125 | G-ref agent 3.092992146809896 | G_R-ref agent 1.7533060709635417
+      t3 e6 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0558 wrist 0.0850 [mask:segmentation] inside agent 59.724502827951106 wrist 80.31967773808618 mask_px 1827/13157 | (ii) G_R-G wrist 3.8797098795572915 agent 1.6237691243489583 | G-ref agent 2.9950714111328125 | G_R-ref agent 1.7190806070963542
+      t3 e7 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0446 wrist 0.0508 [mask:segmentation] inside agent 58.75849963045085 wrist 79.4155709254896 mask_px 1804/13157 | (ii) G_R-G wrist 3.873163859049479 agent 1.6722208658854167 | G-ref agent 2.9998016357421875 | G_R-ref agent 1.6611073811848958
+      t3 e8 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0446 wrist 0.2629 [mask:segmentation] inside agent 62.470319634703195 wrist 80.04254239009036 mask_px 1752/13132 | (ii) G_R-G wrist 4.367848714192708 agent 1.72589111328125 | G-ref agent 3.0989227294921875 | G_R-ref agent 1.7123565673828125
+      t3 e9 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0465 wrist 0.1293 [mask:segmentation] inside agent 60.77642060541689 wrist 80.41169191919192 mask_px 1883/13200 | (ii) G_R-G wrist 3.849034627278646 agent 1.5828603108723958 | G-ref agent 2.989476521809896 | G_R-ref agent 1.7915242513020833
+      t4 e5 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0392 wrist 0.0838 [mask:segmentation] inside agent 60.125877903835764 wrist 78.31895702266354 mask_px 1851/13193 | (ii) G_R-G wrist 3.780797322591146 agent 1.7191009521484375 | G-ref agent 3.090850830078125 | G_R-ref agent 1.7362416585286458
+      t4 e6 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0342 wrist 0.0624 [mask:segmentation] inside agent 62.36490041337843 wrist 77.77892499240814 mask_px 1774/13172 | (ii) G_R-G wrist 3.8395284016927085 agent 1.7828776041666667 | G-ref agent 3.169123331705729 | G_R-ref agent 1.7255198160807292
+      t4 e7 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0495 wrist 0.0714 [mask:segmentation] inside agent 61.93613879660391 wrist 79.64123006833712 mask_px 1806/13170 | (ii) G_R-G wrist 4.2363535563151045 agent 1.7039744059244792 | G-ref agent 3.0832621256510415 | G_R-ref agent 1.7585500081380208
+      t4 e8 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0417 wrist 0.1099 [mask:segmentation] inside agent 60.70753715498938 wrist 81.32767286018885 mask_px 1884/13132 | (ii) G_R-G wrist 3.869420369466146 agent 1.551605224609375 | G-ref agent 2.963068644205729 | G_R-ref agent 1.7855987548828125
+      t4 e9 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0383 wrist 0.0985 [mask:segmentation] inside agent 59.553726323243055 wrist 80.1531901933912 mask_px 1883/13134 | (ii) G_R-G wrist 3.8089701334635415 agent 1.6483408610026042 | G-ref agent 3.0287628173828125 | G_R-ref agent 1.7470499674479167
+      t5 e5 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0444 wrist 0.1299 [mask:segmentation] inside agent 58.87217092160058 wrist 79.48427912165931 mask_px 1841/13146 | (ii) G_R-G wrist 3.821568806966146 agent 1.6634775797526042 | G-ref agent 3.0131022135416665 | G_R-ref agent 1.6968129475911458
+      t5 e6 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0387 wrist 0.0697 [mask:segmentation] inside agent 61.358265582655825 wrist 79.23720140841503 mask_px 1845/13159 | (ii) G_R-G wrist 3.771326700846354 agent 1.5981953938802083 | G-ref agent 2.984380086263021 | G_R-ref agent 1.7651824951171875
+      t5 e7 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0392 wrist 0.0469 [mask:segmentation] inside agent 61.05407849520709 wrist 79.32606106676802 mask_px 1843/13155 | (ii) G_R-G wrist 3.9694925944010415 agent 1.6956024169921875 | G-ref agent 3.0862884521484375 | G_R-ref agent 1.759552001953125
+      t5 e8 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0485 wrist 0.0915 [mask:segmentation] inside agent 62.29348441926346 wrist 79.11084080887943 mask_px 1765/13154 | (ii) G_R-G wrist 3.8065338134765625 agent 1.7415618896484375 | G-ref agent 3.1173604329427085 | G_R-ref agent 1.7257843017578125
+      t5 e9 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0446 wrist 0.0571 [mask:segmentation] inside agent 60.33677536231884 wrist 79.20332801458856 mask_px 1840/13161 | (ii) G_R-G wrist 3.84112548828125 agent 1.593963623046875 | G-ref agent 2.9724019368489585 | G_R-ref agent 1.7363382975260417
+      t6 e5 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0763 wrist 0.1058 [mask:segmentation] inside agent 58.62225907499539 wrist 79.73473055407902 mask_px 1809/13169 | (ii) G_R-G wrist 3.838038126627604 agent 1.6318206787109375 | G-ref agent 2.9749298095703125 | G_R-ref agent 1.6915283203125
+      t6 e6 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0499 wrist 0.1191 [mask:segmentation] inside agent 59.41832170334586 wrist 78.99751697577784 mask_px 1863/13156 | (ii) G_R-G wrist 3.8167012532552085 agent 1.629669189453125 | G-ref agent 3.001495361328125 | G_R-ref agent 1.7372945149739583
+      t6 e7 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0357 wrist 0.1318 [mask:segmentation] inside agent 60.631370430397986 wrist 79.4964037886846 mask_px 1851/13162 | (ii) G_R-G wrist 3.813878377278646 agent 1.6624654134114583 | G-ref agent 3.038813273111979 | G_R-ref agent 1.7471466064453125
+      t6 e8 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0376 wrist 0.0872 [mask:segmentation] inside agent 59.751826117940496 wrist 80.37650373077508 mask_px 1871/13134 | (ii) G_R-G wrist 4.1443125406901045 agent 1.5718994140625 | G-ref agent 2.956568400065104 | G_R-ref agent 1.7427825927734375
+      t6 e9 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0503 wrist 0.2161 [mask:segmentation] inside agent 60.26234567901235 wrist 78.85569059661307 mask_px 1836/13247 | (ii) G_R-G wrist 3.976832071940104 agent 1.5793507893880208 | G-ref agent 2.9372965494791665 | G_R-ref agent 1.7372894287109375
+      t7 e5 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0283 wrist 0.1254 [mask:segmentation] inside agent 58.89886112527622 wrist 79.92416641329685 mask_px 1961/13156 | (ii) G_R-G wrist 4.484903971354167 agent 1.5579986572265625 | G-ref agent 2.9573567708333335 | G_R-ref agent 1.7890268961588542
+      t7 e6 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0424 wrist 0.0781 [mask:segmentation] inside agent 59.2729055258467 wrist 79.28734231833295 mask_px 1870/13133 | (ii) G_R-G wrist 3.767303466796875 agent 1.5946604410807292 | G-ref agent 2.974492390950521 | G_R-ref agent 1.733154296875
+      t7 e7 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0440 wrist 0.0499 [mask:segmentation] inside agent 61.01351598173516 wrist 78.87637801262069 mask_px 1825/13153 | (ii) G_R-G wrist 3.9251861572265625 agent 1.6836496988932292 | G-ref agent 3.0568745930989585 | G_R-ref agent 1.7421417236328125
+      t7 e8 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0331 wrist 0.0921 [mask:segmentation] inside agent 61.11644204851752 wrist 78.60107837181044 mask_px 1855/13168 | (ii) G_R-G wrist 3.806706746419271 agent 1.7911936442057292 | G-ref agent 3.2064412434895835 | G_R-ref agent 1.7624766031901042
+      t7 e9 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0492 wrist 0.1414 [mask:segmentation] inside agent 61.2418779342723 wrist 78.86217291080882 mask_px 1775/13159 | (ii) G_R-G wrist 3.839625040690104 agent 1.8040364583333333 | G-ref agent 3.1938680013020835 | G_R-ref agent 1.7072652180989583
+      t8 e5 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0526 wrist 0.1278 [mask:segmentation] inside agent 59.344780454467795 wrist 82.50643852978453 mask_px 1951/13150 | (ii) G_R-G wrist 3.9507548014322915 agent 1.4980367024739583 | G-ref agent 2.94000244140625 | G_R-ref agent 1.816925048828125
+      t8 e6 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0517 wrist 0.1329 [mask:segmentation] inside agent 61.76871880199667 wrist 78.78377419681767 mask_px 1803/13156 | (ii) G_R-G wrist 3.931462605794271 agent 1.6983439127604167 | G-ref agent 3.075373331705729 | G_R-ref agent 1.7504831949869792
+      t8 e7 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0270 wrist 0.0651 [mask:segmentation] inside agent 62.045112781954884 wrist 79.58678546045284 mask_px 1729/13132 | (ii) G_R-G wrist 3.9483439127604165 agent 1.7884572347005208 | G-ref agent 3.133997599283854 | G_R-ref agent 1.6668294270833333
+      t8 e8 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0288 wrist 0.0993 [mask:segmentation] inside agent 60.441797509474824 wrist 80.46805439489478 mask_px 1847/13163 | (ii) G_R-G wrist 3.8878173828125 agent 1.6263478597005208 | G-ref agent 3.014704386393229 | G_R-ref agent 1.7313435872395833
+      t8 e9 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0443 wrist 0.0914 [mask:segmentation] inside agent 60.59617154426652 wrist 80.05399114484503 mask_px 1811/13175 | (ii) G_R-G wrist 3.8441619873046875 agent 1.6016845703125 | G-ref agent 2.9682515462239585 | G_R-ref agent 1.7174072265625
+      t9 e5 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0303 wrist 0.0765 [mask:segmentation] inside agent 59.32792086599478 wrist 79.9716220328667 mask_px 1786/13144 | (ii) G_R-G wrist 3.8854573567708335 agent 1.6484120686848958 | G-ref agent 2.955591837565104 | G_R-ref agent 1.6464742024739583
+      t9 e6 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0622 wrist 0.0798 [mask:segmentation] inside agent 60.745044052863435 wrist 78.47085665305299 mask_px 1816/13222 | (ii) G_R-G wrist 3.8208516438802085 agent 1.7419484456380208 | G-ref agent 3.1402994791666665 | G_R-ref agent 1.7437489827473958
+      t9 e7 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0464 wrist 0.0985 [mask:segmentation] inside agent 60.79033404406539 wrist 79.01082496286786 mask_px 1876/13241 | (ii) G_R-G wrist 3.8387044270833335 agent 1.6483713785807292 | G-ref agent 3.0447794596354165 | G_R-ref agent 1.7844289143880208
+      t9 e8 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0362 wrist 0.0989 [mask:segmentation] inside agent 60.47493403693932 wrist 80.88749620176239 mask_px 1895/13164 | (ii) G_R-G wrist 4.230682373046875 agent 1.5687357584635417 | G-ref agent 2.9889424641927085 | G_R-ref agent 1.78350830078125
+      t9 e9 host=node41 gpu=NVIDIA H200 NVL (i) agent 0.0360 wrist 0.0732 [mask:segmentation] inside agent 60.79155810317874 wrist 81.63401029385665 mask_px 1919/13147 | (ii) G_R-G wrist 4.189524332682292 agent 1.4987742106119792 | G-ref agent 2.937555948893229 | G_R-ref agent 1.819580078125
+
+==== §2 估计量 n=200（OpenVLA-OFT）：点估计、95% / 90% bootstrap CI、键数
+  drop_nat(P6j3)               +0.00 pp  95% [  -2.00,   +2.00]  90% [  -1.50,   +1.50]  n=200
+  drop_nat(K3)                 -2.00 pp  95% [  -5.00,   +0.50]  90% [  -4.50,   +0.00]  n=200
+  drop_nat(RT2)                -4.50 pp  95% [  -8.50,   -1.00]  90% [  -7.50,   -1.50]  n=200
+  drop_nat(UR5e_nc)            -4.00 pp  95% [  -7.00,   -1.00]  90% [  -6.50,   -1.50]  n=200
+  drop_nat(UR5e_cg)           -13.00 pp  95% [ -18.00,   -8.50]  90% [ -17.00,   -9.00]  n=200
+  drop_nat(IIWA_cg)            -5.00 pp  95% [  -9.00,   -1.50]  90% [  -8.50,   -2.00]  n=200
+  drop_nat(G)                 -45.00 pp  95% [ -52.00,  -38.00]  90% [ -51.00,  -39.00]  n=200  （门槛未核实：G）
+  d6                           +0.00 pp  95% [  -2.00,   +2.00]  90% [  -1.50,   +1.50]  n=200
+  d_Grev                      -20.00 pp  95% [ -26.00,  -14.00]  90% [ -25.00,  -15.00]  n=200  （门槛未核实：T0）
+  rec_w                       +32.50 pp  95% [ +25.50,  +39.50]  90% [ +27.00,  +38.00]  n=200  （门槛未核实：G）
+  rec_a                       +21.50 pp  95% [ +15.00,  +28.00]  90% [ +16.00,  +27.00]  n=200  （门槛未核实：G）
+  channel                     +11.00 pp  95% [  +5.00,  +17.50]  90% [  +6.00,  +16.00]  n=200  （门槛未核实：G）
+  recovery(G)                 +36.00 pp  95% [ +28.00,  +44.00]  90% [ +29.50,  +42.50]  n=200  （门槛未核实：G_T,T0,G）
+  recovery(K3)               缺（无数据格：K3_T）
+  recovery(RT2)              缺（无数据格：RT2_T）
+  inter_G                     -16.00 pp  95% [ -24.00,   -8.00]  90% [ -22.50,   -9.50]  n=200  （门槛未核实：G,G_T,T0）
+  Delta3                      +19.00 集  95% [ +11.00,  +27.00]  90% [ +12.00,  +26.00]  n=20
+  spec                         -0.56 pp  95% [  -2.69,   +1.14]  90% [  -2.22,   +1.10]  n=180
+  d_cg(sham)                   +1.50 pp  95% [  -0.50,   +4.00]  90% [  +0.00,   +3.50]  n=200  [R10: 在渲染节点噪声带内]
+  d_cg(iiwa)                   +0.50 pp  95% [  -2.50,   +3.50]  90% [  -2.00,   +3.00]  n=200  [R10: 在渲染节点噪声带内]
+  d_cg(ur5e)                   +2.50 pp  95% [  -1.00,   +6.00]  90% [  -0.50,   +5.50]  n=200  [R10: 在渲染节点噪声带内]
+  d_Grw = SR(G_Rw)-SR(T0)    缺（无数据格：G_Rw）
+
+==== 门槛（pi0.5-LIBERO，spatial，每格 200 键设计）
+  SRC      (src): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    NA    无迁移
+      t0 对齐            NA    无迁移
+  S        (sham_cg): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            UNK   无对齐记录
+  S0       (sham): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    NA    copy_grip_cmd=1: 0, =0: 0, 缺: 200（第一批设计上不复制，只入 d_cg 描述）
+      t0 对齐            UNK   无对齐记录
+  T0       (sham_twin): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            UNK   无对齐记录
+      替身残差             PASS  全部帧 IK 未命中（miss/n_paint） 0/22015 = 0.00%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  IIWA     (iiwa): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    NA    copy_grip_cmd=1: 0, =0: 0, 缺: 200（第一批设计上不复制，只入 d_cg 描述）
+      t0 对齐            UNK   无对齐记录
+  IIWA_cg  (iiwa_cg): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            UNK   无对齐记录
+  IIWA_T   (iiwa_twin): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            UNK   无对齐记录
+      替身残差             PASS  全部帧 IK 未命中（miss/n_paint） 0/21553 = 0.00%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  UR5e     (ur5e): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    NA    copy_grip_cmd=1: 0, =0: 0, 缺: 200（第一批设计上不复制，只入 d_cg 描述）
+      t0 对齐            UNK   无对齐记录
+  UR5e_cg  (ur5e_cg): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            UNK   无对齐记录
+  UR5e_T   (ur5e_twin): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0  <<< does not count
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            UNK   无对齐记录
+      替身残差             FAIL  全部帧 IK 未命中（miss/n_paint） 1159/24388 = 4.75%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  UR5e_R   (ur5e_rev): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            UNK   无对齐记录
+      替身残差             PASS  全部帧 IK 未命中（miss/n_paint） 0/21614 = 0.00%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  G        (grpkp100): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            UNK   无对齐记录
+  G_T      (grpkp100_twin): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0  （有门槛无法核实）
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    UNK   copy_grip_cmd=1: 0, =0: 0, 缺: 200（日志无此字段，无法核对；协议 0.4/A.1 记载此格复制）
+      t0 对齐            UNK   无对齐记录
+      替身残差             PASS  全部帧 IK 未命中（miss/n_paint） 0/22745 = 0.00%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  G_Tw     (grpkp100_tw): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  全部帧 IK 未命中（miss/n_paint） 138/25450 = 0.54%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  G_Ta     (grpkp100_ta): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0045 mm / 0.0533°（门槛 0.01 mm / 0.05°），超门槛 2 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  全部帧 IK 未命中（miss/n_paint） 70/23261 = 0.30%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+  G_R      (g_r): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            NA    最大 0.0093 mm / 0.0164°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0（身体于第一/二批接受，§4.3 新身体门槛不适用；附录 2 裁定 1）
+      替身残差             PASS  查询帧指垫残差 > 1 mm 0/4898 = 0.00%（门槛 < 1%），200 集
+      陈旧帧              PASS  陈旧帧 0
+      腕相机位姿差 0         UNK   dump 无此字段，以冒烟记录为准（不作 does-not-count 依据）
+      G_R 第 0 步 (i)    PASS  隐藏夹爪口径按格平均（附录 2 裁定 2，门槛 < 0.11）：全部 400 个初始状态 agent 0.0087 wrist 0.0436；分作业 node16/NVIDIA A100-PCIE-40GB（50 键）agent 0.0081 wrist 0.0381；node24/NVIDIA A100 80GB PCIe（50 键）agent 0.0085 wrist 0.0647；node26/NVIDIA A100 80GB PCIe（150 键）agent 0.0088 wrist 0.0410；node41/NVIDIA H200 NVL（150 键）agent 0.0088 wrist 0.0410；缺隐藏字段 0
+        描述（不设门槛）：隐藏口径逐键 agent 均值 0.0087 最大 0.0227 ≥0.11 键 0/400，wrist 均值 0.0436 最大 0.3714 ≥0.11 键 26/400
+        描述：分割口径 M 外 agent 均值 0.0437 最大 0.0805 ≥0.11 键 0/400，wrist 均值 0.1077 最大 0.4882 ≥0.11 键 149/400；M 内均值 agent 60.621 wrist 79.675
+        噪声参照：同作业 T0 对参考 Panda agent 均值 0.0025 最大 0.0258 ≥0.11 键 0/400，wrist 均值 0.0434 最大 0.3491 ≥0.11 键 29/400
+        （冻结版逐键口径：不过，M 外最大 agent 0.0805 wrist 0.4882，口径 {'mask:segmentation': 400}）；节点/GPU {'node24/NVIDIA A100 80GB PCIe': 50, 'node26/NVIDIA A100 80GB PCIe': 150, 'node16/NVIDIA A100-PCIE-40GB': 50, 'node41/NVIDIA H200 NVL': 150}
+      G_R 第 0 步 (ii)   PASS  G_R 对 G 腕部最大 4.718（门槛 < 8）；agentview 只报数，最大 1.856
+  G_Rw     (g_rw): 缺（无数据）
+  P6j3     (p6j3): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            PASS  最大 0.0099 mm / 0.0171°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+  K3       (k3): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            PASS  最大 0.0044 mm / 0.0372°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+  UR5e_nc  (ur5e_nc): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            PASS  最大 0.0016 mm / 0.0062°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+  RT2      (rt2): 键 200/200（缺 0）；jsonl 4 个文件 200 行，丢 error 0，重复正常记录 0
+      fixcheck         PASS  keys 200, 最大差 0.0050 mm（门槛 <= 0.005 记录精度）
+      copy_grip_cmd    PASS  copy_grip_cmd=1: 200, =0: 0, 缺: 0
+      t0 对齐            PASS  最大 0.0099 mm / 0.0264°（门槛 0.01 mm / 0.05°），超门槛 0 集，缺 0
+  RT2_T    (rt2_twin): 缺（无数据）
+  K3_T     (k3_twin): 缺（无数据）
+
+==== §2 估计量 n=200（pi0.5-LIBERO）：点估计、95% / 90% bootstrap CI、键数
+  drop_nat(P6j3)               -2.00 pp  95% [  -4.50,   +0.00]  90% [  -4.00,   +0.00]  n=200  （门槛未核实：S）  [R10: |效应|<=3，GPU 组成有缺，无法判定]
+  drop_nat(K3)                 +0.00 pp  95% [  -2.00,   +2.00]  90% [  -1.50,   +1.50]  n=200  （门槛未核实：S）  [R10: |效应|<=3，GPU 组成有缺，无法判定]
+  drop_nat(RT2)               -32.50 pp  95% [ -39.00,  -26.00]  90% [ -38.00,  -27.00]  n=200  （门槛未核实：S）
+  drop_nat(UR5e_nc)            -6.00 pp  95% [  -9.50,   -3.00]  90% [  -9.00,   -3.50]  n=200  （门槛未核实：S）
+  drop_nat(UR5e_cg)           -15.00 pp  95% [ -20.00,  -10.00]  90% [ -19.50,  -11.00]  n=200  （门槛未核实：UR5e_cg,S）
+  drop_nat(IIWA_cg)            -1.50 pp  95% [  -4.00,   +1.00]  90% [  -3.50,   +0.50]  n=200  （门槛未核实：IIWA_cg,S）  [R10: |效应|<=3，GPU 组成有缺，无法判定]
+  drop_nat(G)                 -17.00 pp  95% [ -22.50,  -12.00]  90% [ -21.50,  -12.50]  n=200  （门槛未核实：G,S）
+  d6                           -2.00 pp  95% [  -4.50,   +0.00]  90% [  -4.00,   +0.00]  n=200  （门槛未核实：S）  [R10: |效应|<=3，GPU 组成有缺，无法判定]
+  d_Grev                       +1.00 pp  95% [  -2.00,   +4.00]  90% [  -1.50,   +3.50]  n=200  （门槛未核实：T0）  [R10: |效应|<=3，GPU 组成有缺，无法判定]
+  rec_w                        +0.50 pp  95% [  -5.50,   +6.00]  90% [  -4.50,   +5.50]  n=200  （门槛未核实：G）  [R10: |效应|<=3，GPU 组成有缺，无法判定]
+  rec_a                       +10.00 pp  95% [  +5.00,  +15.50]  90% [  +5.50,  +14.50]  n=200  （门槛未核实：G）
+  channel                      -9.50 pp  95% [ -15.01,   -4.00]  90% [ -14.50,   -5.00]  n=200  （门槛未核实：G）
+  recovery(G)                 +11.50 pp  95% [  +5.99,  +17.50]  90% [  +6.50,  +16.50]  n=200  （门槛未核实：G_T,T0,G,S）
+  recovery(K3)               缺（无数据格：K3_T）
+  recovery(RT2)              缺（无数据格：RT2_T）
+  inter_G                      -9.00 pp  95% [ -15.00,   -3.00]  90% [ -14.00,   -4.00]  n=200  （门槛未核实：G,G_T,T0）
+  Delta3                      +19.00 集  95% [ +11.00,  +27.00]  90% [ +12.00,  +26.00]  n=20  （门槛未核实：UR5e_cg）
+  spec                         -0.56 pp  95% [  -4.47,   +3.37]  90% [  -3.87,   +2.78]  n=180  （门槛未核实：UR5e_cg）  [R10: |效应|<=3，GPU 组成有缺，无法判定]
+  d_cg(sham)                   +3.00 pp  95% [  +0.00,   +6.00]  90% [  +0.50,   +5.50]  n=200  （门槛未核实：S,S0）
+  d_cg(iiwa)                   +0.50 pp  95% [  -2.00,   +3.00]  90% [  -1.50,   +2.50]  n=200  （门槛未核实：IIWA_cg,IIWA）  [R10: |效应|<=3，GPU 组成有缺，无法判定]
+  d_cg(ur5e)                   +3.00 pp  95% [  -1.00,   +7.00]  90% [  -0.50,   +6.50]  n=200  （门槛未核实：UR5e_cg,UR5e）  [R10: |效应|<=3，GPU 组成有缺，无法判定]
+  d_Grw = SR(G_Rw)-SR(T0)    缺（无数据格：G_Rw）
+
+==== 裁定 3.1 G_R 根 body 偏移（查询帧，横向 = hypot(dx, dy)）
+  -- OpenVLA-OFT
+  G_R: 200/200 集有偏移记录，200 集有 first_grip_obj；轴向 dz 中位 -43.60 mm，范围 [-46.96, -41.02]
+      横向 全部     帧  3447  中位 0.300  p95 1.330  最大 11.339 mm  > 2 mm 比例 3.08%
+      横向 接触前    帧  1228  中位 0.038  p95 0.162  最大 9.208 mm  > 2 mm 比例 0.81%
+      横向 接触后    帧  2219  中位 0.656  p95 1.819  最大 11.339 mm  > 2 mm 比例 4.33%
+  接触前（自由物体口径）横向 > 1 mm 的查询帧 15（最大 9.21 mm），任务分布 {2: 15}；附录 2 裁定 3：固定体推指，不作警报
+  恒等式核对（字段 gripper_qpos）：200 集 3432 个查询帧，max |横向 − |q1+q2|/2| = 0.749 mm（门槛 ≤ 0.5）  !!!!!!!! 停下查：实现有别的问题 !!!!!!!!
+  降级线：横向 p95 = 1.330 mm <= 6.4，不降级
+  -- pi0.5-LIBERO
+  G_R: 200/200 集有偏移记录，200 集有 first_grip_obj；轴向 dz 中位 -42.82 mm，范围 [-46.96, -41.02]
+      横向 全部     帧  4898  中位 0.325  p95 3.161  最大 17.487 mm  > 2 mm 比例 8.53%
+      横向 接触前    帧  1889  中位 0.050  p95 0.175  最大 17.487 mm  > 2 mm 比例 1.80%
+      横向 接触后    帧  3009  中位 0.741  p95 3.997  最大 14.445 mm  > 2 mm 比例 12.76%
+  接触前（自由物体口径）横向 > 1 mm 的查询帧 37（最大 17.49 mm），任务分布 {2: 36, 4: 1}；附录 2 裁定 3：固定体推指，不作警报
+  恒等式核对：π0.5 jsonl 无手指关节值；同一代码路径，以 OFT 核对为准
+  降级线：横向 p95 = 3.161 mm <= 6.4，不降级
+
+==== 决策 §3（OpenVLA-OFT）
+  P8'（自由度）d6 +0.00 95% [-2.00, +2.00] 线 -7 -> 证伪
+        辅助（描述）：P6j3 闭环回放 76.8%、跟踪误差 0.92 mm（协议 §3 原文数字）
+  P9（夹爪外观）d_Grev -20.00 95% [-26.00, -14.00] 线 -21.75 -> 不确定（门槛未核实：T0）
+        inter_G（只报 CI）-16.00 95% [-24.00, -8.00]
+  P10（相机通道）channel +11.00 95% [+5.00, +17.50]，rec_w 点 +32.50（需 >= 17.25）-> 确认（门槛未核实：G）
+  P11（碰撞反事实）任务 3 配对键 20：UR5e_cg 0/20，UR5e_nc 19/20，Delta3 = +19  bootstrap 95% [+11.0, +27.0]；McNemar 精确 p = 3.815e-06（不一致对 19 正 / 0 负）
+        前提检查 UR5e_cg 任务 3 成功 <= 4：0 -> 复现
+        操纵检查 UR5e_nc 任务 3 小臂穿透 >= 15 集：20（有穿透字段 20 集）-> 生效
+        判定（+10 确认 / +4 证伪）-> 确认
+
+==== 决策 §3（π0.5，按 P7 读，不进决策族）（pi0.5-LIBERO）
+  P8'（自由度）d6 -2.00 95% [-4.50, +0.00] 线 -7 -> 证伪（门槛未核实：S）
+        辅助（描述）：P6j3 闭环回放 76.8%、跟踪误差 0.92 mm（协议 §3 原文数字）
+  P9（夹爪外观）d_Grev +1.00 95% [-2.00, +4.00] 线 -21.75 -> 证伪（门槛未核实：T0）
+        inter_G（只报 CI）-9.00 95% [-15.00, -3.00]
+  P10（相机通道）channel -9.50 95% [-15.01, -4.00]，rec_w 点 +0.50（需 >= 17.25）-> 证伪（门槛未核实：G）
+  P11（碰撞反事实）任务 3 配对键 20：UR5e_cg 1/20，UR5e_nc 20/20，Delta3 = +19  bootstrap 95% [+11.0, +27.0]；McNemar 精确 p = 3.815e-06（不一致对 19 正 / 0 负）
+        前提检查 UR5e_cg 任务 3 成功 <= 4：1 -> 复现
+        操纵检查 UR5e_nc 任务 3 小臂穿透 >= 15 集：20（有穿透字段 20 集）-> 生效
+        判定（+10 确认 / +4 证伪）-> 确认（门槛未核实：UR5e_cg）
+
+==== Holm 附表（n=200）：bootstrap 双侧 p（H0 = 0，见口径 K4）与 Holm 校正（族 P8'、P9、P10、P11，OFT）
+  P8'  d6         点   +0.00  p = 1.0000  Holm p = 1.0000
+  P9   d_Grev     点  -20.00  p = 0.0000  Holm p = 0.0000
+  P10  channel    点  +11.00  p = 0.0006  Holm p = 0.0012
+  P11  Delta3     点  +19.00  p = 0.0000  Holm p = 0.0000
+
+==== P7 复现（π0.5 对 OFT）：符号一致且 95% CI 重叠 = 复现；符号相反且 π0.5 CI 不含 0 = 不复现；其余 不确定
+  drop_nat(P6j3)             OFT   +0.00 [-2.00, +2.00]  π0.5   -2.00 [-4.50, +0.00] -> 不确定
+  drop_nat(K3)               OFT   -2.00 [-5.00, +0.50]  π0.5   +0.00 [-2.00, +2.00] -> 不确定
+  drop_nat(RT2)              OFT   -4.50 [-8.50, -1.00]  π0.5  -32.50 [-39.00, -26.00] -> 不确定
+  drop_nat(UR5e_nc)          OFT   -4.00 [-7.00, -1.00]  π0.5   -6.00 [-9.50, -3.00] -> 复现
+  drop_nat(UR5e_cg)          OFT  -13.00 [-18.00, -8.50]  π0.5  -15.00 [-20.00, -10.00] -> 复现
+  drop_nat(IIWA_cg)          OFT   -5.00 [-9.00, -1.50]  π0.5   -1.50 [-4.00, +1.00] -> 复现
+  drop_nat(G)                OFT  -45.00 [-52.00, -38.00]  π0.5  -17.00 [-22.50, -12.00] -> 不确定
+  d6                         OFT   +0.00 [-2.00, +2.00]  π0.5   -2.00 [-4.50, +0.00] -> 不确定
+  d_Grev                     OFT  -20.00 [-26.00, -14.00]  π0.5   +1.00 [-2.00, +4.00] -> 不确定
+  rec_w                      OFT  +32.50 [+25.50, +39.50]  π0.5   +0.50 [-5.50, +6.00] -> 不确定
+  rec_a                      OFT  +21.50 [+15.00, +28.00]  π0.5  +10.00 [+5.00, +15.50] -> 复现
+  channel                    OFT  +11.00 [+5.00, +17.50]  π0.5   -9.50 [-15.01, -4.00] -> 不复现
+  recovery(G)                OFT  +36.00 [+28.00, +44.00]  π0.5  +11.50 [+5.99, +17.50] -> 不确定
+  recovery(K3)               缺
+  recovery(RT2)              缺
+  inter_G                    OFT  -16.00 [-24.00, -8.00]  π0.5   -9.00 [-15.00, -3.00] -> 复现
+  Delta3                     OFT  +19.00 [+11.00, +27.00]  π0.5  +19.00 [+11.00, +27.00] -> 复现
+  spec                       OFT   -0.56 [-2.69, +1.14]  π0.5   -0.56 [-4.47, +3.37] -> 复现
+  d_cg(sham)                 OFT   +1.50 [-0.50, +4.00]  π0.5   +3.00 [+0.00, +6.00] -> 复现
+  d_cg(iiwa)                 OFT   +0.50 [-2.50, +3.50]  π0.5   +0.50 [-2.00, +3.00] -> 复现
+  d_cg(ur5e)                 OFT   +2.50 [-1.00, +6.00]  π0.5   +3.00 [-1.00, +7.00] -> 复现
+  d_Grw = SR(G_Rw)-SR(T0)    缺
+
+==== R1 新身体分类 / R2 L 类归因（OpenVLA-OFT）
+  R1 P6j3     drop_nat  +0.00 [-2.00, +2.00] -> S 类
+  R1 K3       drop_nat  -2.00 [-5.00, +0.50] -> S 类
+  R1 RT2      drop_nat  -4.50 [-8.50, -1.00] -> U 类
+  R1 UR5e_nc  drop_nat  -4.00 [-7.00, -1.00] -> S 类
+  R1 UR5e_cg  drop_nat -13.00 [-18.00, -8.50] -> L 类（非新身体，仅参考）
+  R1 IIWA_cg  drop_nat  -5.00 [-9.00, -1.50] -> U 类（非新身体，仅参考）
+  R1 G        drop_nat -45.00 [-52.00, -38.00] -> L 类（非新身体，仅参考）（门槛未核实 G）
+  R2 K3: 非 L 类（S），不适用
+  R2 RT2: 非 L 类（U），不适用
+  recovery(G)（§2，描述）+36.00 [+28.00, +44.00]
+
+==== R1 新身体分类 / R2 L 类归因（pi0.5-LIBERO）
+  R1 P6j3     drop_nat  -2.00 [-4.50, +0.00] -> S 类（门槛未核实 S）
+  R1 K3       drop_nat  +0.00 [-2.00, +2.00] -> S 类（门槛未核实 S）
+  R1 RT2      drop_nat -32.50 [-39.00, -26.00] -> L 类（门槛未核实 S）
+  R1 UR5e_nc  drop_nat  -6.00 [-9.50, -3.00] -> U 类（门槛未核实 S）
+  R1 UR5e_cg  drop_nat -15.00 [-20.00, -10.00] -> L 类（非新身体，仅参考）（门槛未核实 UR5e_cg,S）
+  R1 IIWA_cg  drop_nat  -1.50 [-4.00, +1.00] -> S 类（非新身体，仅参考）（门槛未核实 IIWA_cg,S）
+  R1 G        drop_nat -17.00 [-22.50, -12.00] -> L 类（非新身体，仅参考）（门槛未核实 G,S）
+  R2 K3: 非 L 类（S），不适用
+  R2 RT2: L 类但 RT2_T 无数据（条件格未跑或缺）
+  recovery(G)（§2，描述）+11.50 [+5.99, +17.50]
+
+==== P11 辅助（描述）
+  spec（任务 3 以外 UR5e_nc − UR5e_cg）-0.56 [-2.69, +1.14] -> 95% CI 在 ±5 内
+  drop_nat(UR5e_nc) -4.00 [-7.00, -1.00]（并列，描述）
+  drop_nat(IIWA_cg) -5.00 [-9.00, -1.50]（并列，描述）
+
+==== R9 复制开关效应 d_cg(X)（描述）
+  d_cg(sham) +1.50 [-0.50, +4.00]
+  d_cg(iiwa) +0.50 [-2.50, +3.50]
+  d_cg(ur5e) +2.50 [-1.00, +6.00]
+  预测 |d_cg(sham)| <= 3（点）：成立；附录 A.3 |d_cg(sham)| > 5：不触发
+
+==== R7 回放接触预测（只对 P6j3、K3 计分；IIWA、UR5e、UR5e_nc、RT2、Panda 行为校准/参考，不计分）
+  预测表 sha256 9a353acb7b877aea12bd68aa42939f2cc9db13a64e8b73fb0bafadd515d2ee6b = 冻结值
+  -- OpenVLA-OFT（主）
+    UR5e     t0 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 100% SR(S) 100% [参考，不计分]
+    UR5e     t1 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 100% SR(S) 100% [参考，不计分]
+    UR5e     t2 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 80% SR(S) 100% [参考，不计分]
+    UR5e     t3 c_t 1.00 预测「calibration only」 SR(UR5e_cg) 0% SR(S) 100% [参考，不计分]
+    UR5e     t4 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 100% SR(S) 100% [参考，不计分]
+    UR5e     t5 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 100% SR(S) 100% [参考，不计分]
+    UR5e     t6 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 90% SR(S) 95% [参考，不计分]
+    UR5e     t7 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 95% SR(S) 100% [参考，不计分]
+    UR5e     t8 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 95% SR(S) 100% [参考，不计分]
+    UR5e     t9 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 95% SR(S) 90% [参考，不计分]
+    PandaL3  t0 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 100% -> 计分：正确
+    PandaL3  t1 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 100% -> 计分：正确
+    PandaL3  t2 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 95% SR(S) 100% -> 计分：正确
+    PandaL3  t3 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 100% -> 计分：正确
+    PandaL3  t4 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 100% -> 计分：正确
+    PandaL3  t5 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 100% -> 计分：正确
+    PandaL3  t6 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 95% -> 计分：正确
+    PandaL3  t7 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 100% -> 计分：正确
+    PandaL3  t8 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 95% SR(S) 100% -> 计分：正确
+    PandaL3  t9 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 95% SR(S) 90% -> 计分：正确
+    Kinova3  t0 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 85% SR(S) 100% -> 计分：正确
+    Kinova3  t1 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 100% SR(S) 100% -> 计分：正确
+    Kinova3  t2 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 100% SR(S) 100% -> 计分：正确
+    Kinova3  t3 c_t 0.05 预测「none」 SR(K3) 100% SR(S) 100% -> 无预测
+    Kinova3  t4 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 100% SR(S) 100% -> 计分：正确
+    Kinova3  t5 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 100% SR(S) 100% -> 计分：正确
+    Kinova3  t6 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 100% SR(S) 95% -> 计分：正确
+    Kinova3  t7 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 90% SR(S) 100% -> 计分：正确
+    Kinova3  t8 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 95% SR(S) 100% -> 计分：正确
+    Kinova3  t9 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 95% SR(S) 90% -> 计分：正确
+    PandaL3: 预测正确 10 / 预测数 10
+    Kinova3: 预测正确 9 / 预测数 9
+    合计（P6j3 + K3）：19 / 19
+  -- pi0.5-LIBERO（描述，不计分）
+    UR5e     t0 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 100% SR(S) 100% [参考，不计分]
+    UR5e     t1 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 100% SR(S) 100% [参考，不计分]
+    UR5e     t2 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 60% SR(S) 90% [参考，不计分]
+    UR5e     t3 c_t 1.00 预测「calibration only」 SR(UR5e_cg) 5% SR(S) 100% [参考，不计分]
+    UR5e     t4 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 90% SR(S) 100% [参考，不计分]
+    UR5e     t5 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 100% SR(S) 100% [参考，不计分]
+    UR5e     t6 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 95% SR(S) 100% [参考，不计分]
+    UR5e     t7 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 100% SR(S) 100% [参考，不计分]
+    UR5e     t8 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 100% SR(S) 100% [参考，不计分]
+    UR5e     t9 c_t 0.00 预测「calibration only」 SR(UR5e_cg) 90% SR(S) 100% [参考，不计分]
+    PandaL3  t0 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 100% -> 计分：正确
+    PandaL3  t1 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 100% -> 计分：正确
+    PandaL3  t2 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 90% SR(S) 90% -> 计分：正确
+    PandaL3  t3 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 100% -> 计分：正确
+    PandaL3  t4 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 100% -> 计分：正确
+    PandaL3  t5 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 100% -> 计分：正确
+    PandaL3  t6 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 100% -> 计分：正确
+    PandaL3  t7 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 90% SR(S) 100% -> 计分：正确
+    PandaL3  t8 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 100% SR(S) 100% -> 计分：正确
+    PandaL3  t9 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(P6j3) 90% SR(S) 100% -> 计分：正确
+    Kinova3  t0 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 100% SR(S) 100% -> 计分：正确
+    Kinova3  t1 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 100% SR(S) 100% -> 计分：正确
+    Kinova3  t2 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 95% SR(S) 90% -> 计分：正确
+    Kinova3  t3 c_t 0.05 预测「none」 SR(K3) 100% SR(S) 100% -> 无预测
+    Kinova3  t4 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 100% SR(S) 100% -> 计分：正确
+    Kinova3  t5 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 100% SR(S) 100% -> 计分：正确
+    Kinova3  t6 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 100% SR(S) 100% -> 计分：正确
+    Kinova3  t7 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 95% SR(S) 100% -> 计分：正确
+    Kinova3  t8 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 100% SR(S) 100% -> 计分：正确
+    Kinova3  t9 c_t 0.00 预测「SR > 25% (scored only if S >= 75% on this task)」 SR(K3) 100% SR(S) 100% -> 计分：正确
+    PandaL3: 预测正确 10 / 预测数 10
+    Kinova3: 预测正确 9 / 预测数 9
+    合计（P6j3 + K3）：19 / 19
+
+==== R8 按任务表 + conc(X)（相对 S）+ R10 GPU 型号组成（OpenVLA-OFT，spatial）
+  SRC      SR  97.0% (194/200) | t0:20/20 t1:20/20 t2:20/20 t3:20/20 t4:20/20 t5:20/20 t6:19/20 t7:18/20 t8:19/20 t9:18/20 | conc - | GPU NVIDIA A100 80GB PCIe x100, NVIDIA A100-PCIE-40GB x50, NVIDIA H200 NVL x50
+  S        SR  98.5% (197/200) | t0:20/20 t1:20/20 t2:20/20 t3:20/20 t4:20/20 t5:20/20 t6:19/20 t7:20/20 t8:20/20 t9:18/20 | conc - | GPU NVIDIA A100 80GB PCIe x200
+  S0       SR  97.0% (194/200) | t0:20/20 t1:20/20 t2:20/20 t3:19/20 t4:19/20 t5:20/20 t6:19/20 t7:19/20 t8:19/20 t9:19/20 | conc 0.33（最差任务 3，+1/+3） | GPU NVIDIA A100 80GB PCIe x50, NVIDIA A100-PCIE-40GB x150
+  T0       SR  98.5% (197/200) | t0:20/20 t1:20/20 t2:20/20 t3:20/20 t4:19/20 t5:20/20 t6:19/20 t7:20/20 t8:20/20 t9:19/20 | conc 无净增失败（净 +0） | GPU NVIDIA A100 80GB PCIe x200
+  IIWA     SR  93.0% (186/200) | t0:17/20 t1:20/20 t2:19/20 t3:19/20 t4:16/20 t5:20/20 t6:20/20 t7:18/20 t8:19/20 t9:18/20 | conc 0.36（最差任务 4，+4/+11） | GPU NVIDIA A100 80GB PCIe x100, NVIDIA A100-PCIE-40GB x50, NVIDIA H100 NVL x50
+  IIWA_cg  SR  93.5% (187/200) | t0:19/20 t1:20/20 t2:18/20 t3:20/20 t4:16/20 t5:20/20 t6:19/20 t7:18/20 t8:19/20 t9:18/20 | conc 0.40（最差任务 4，+4/+10） | GPU NVIDIA A100 80GB PCIe x200
+  IIWA_T   SR  96.0% (192/200) | t0:19/20 t1:20/20 t2:17/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:18/20 t8:19/20 t9:19/20 | conc 0.60（最差任务 2，+3/+5） | GPU NVIDIA A100 80GB PCIe x150, NVIDIA A100-PCIE-40GB x50
+  UR5e     SR  83.0% (166/200) | t0:20/20 t1:19/20 t2:17/20 t3:0/20 t4:17/20 t5:20/20 t6:20/20 t7:17/20 t8:19/20 t9:17/20 | conc 0.65（最差任务 3，+20/+31） | GPU NVIDIA A100 80GB PCIe x50, NVIDIA H100 NVL x100, NVIDIA H200 NVL x50
+  UR5e_cg  SR  85.5% (171/200) | t0:20/20 t1:20/20 t2:16/20 t3:0/20 t4:20/20 t5:20/20 t6:18/20 t7:19/20 t8:19/20 t9:19/20 | conc 0.77（最差任务 3，+20/+26） | GPU NVIDIA A100 80GB PCIe x200
+  UR5e_T   SR  84.0% (168/200) | t0:20/20 t1:20/20 t2:16/20 t3:0/20 t4:20/20 t5:20/20 t6:19/20 t7:15/20 t8:19/20 t9:19/20 | conc 0.69（最差任务 3，+20/+29） | GPU NVIDIA A100 80GB PCIe x150, NVIDIA A100-PCIE-40GB x50
+  UR5e_R   SR  97.5% (195/200) | t0:19/20 t1:20/20 t2:20/20 t3:20/20 t4:19/20 t5:20/20 t6:19/20 t7:20/20 t8:19/20 t9:19/20 | conc 0.50（最差任务 0，+1/+2） | GPU NVIDIA A100 80GB PCIe x200
+  G        SR  53.5% (107/200) | t0:0/20 t1:15/20 t2:10/20 t3:16/20 t4:11/20 t5:20/20 t6:2/20 t7:0/20 t8:14/20 t9:19/20 | conc 0.22（最差任务 0，+20/+90） | GPU NVIDIA A100 80GB PCIe x100, NVIDIA A100-PCIE-40GB x50, NVIDIA H200 NVL x50
+  G_T      SR  89.5% (179/200) | t0:19/20 t1:20/20 t2:14/20 t3:20/20 t4:19/20 t5:20/20 t6:20/20 t7:13/20 t8:16/20 t9:18/20 | conc 0.39（最差任务 7，+7/+18） | GPU NVIDIA A100 80GB PCIe x150, NVIDIA A100-PCIE-40GB x50
+  G_Tw     SR  86.0% (172/200) | t0:14/20 t1:20/20 t2:13/20 t3:20/20 t4:19/20 t5:20/20 t6:17/20 t7:10/20 t8:19/20 t9:20/20 | conc 0.40（最差任务 7，+10/+25） | GPU NVIDIA A100 80GB PCIe x50, NVIDIA H200 NVL x150
+  G_Ta     SR  75.0% (150/200) | t0:8/20 t1:17/20 t2:12/20 t3:20/20 t4:19/20 t5:20/20 t6:13/20 t7:8/20 t8:17/20 t9:16/20 | conc 0.26（最差任务 0，+12/+47） | GPU NVIDIA A100 80GB PCIe x150, NVIDIA A100-PCIE-40GB x50
+  G_R      SR  78.5% (157/200) | t0:12/20 t1:18/20 t2:18/20 t3:19/20 t4:15/20 t5:20/20 t6:16/20 t7:5/20 t8:16/20 t9:18/20 | conc 0.38（最差任务 7，+15/+40） | GPU NVIDIA A100 80GB PCIe x200
+  G_Rw     缺
+  P6j3     SR  98.5% (197/200) | t0:20/20 t1:20/20 t2:19/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:20/20 t8:19/20 t9:19/20 | conc 无净增失败（净 +0） | GPU NVIDIA A100 80GB PCIe x200
+  K3       SR  96.5% (193/200) | t0:17/20 t1:20/20 t2:20/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:18/20 t8:19/20 t9:19/20 | conc 0.75（最差任务 0，+3/+4） | GPU NVIDIA A100 80GB PCIe x200
+  UR5e_nc  SR  94.5% (189/200) | t0:20/20 t1:20/20 t2:17/20 t3:19/20 t4:20/20 t5:20/20 t6:16/20 t7:19/20 t8:19/20 t9:19/20 | conc 0.38（最差任务 2，+3/+8） | GPU NVIDIA A100 80GB PCIe x200
+  RT2      SR  94.0% (188/200) | t0:20/20 t1:20/20 t2:20/20 t3:20/20 t4:18/20 t5:19/20 t6:20/20 t7:14/20 t8:18/20 t9:19/20 | conc 0.67（最差任务 7，+6/+9） | GPU NVIDIA A100 80GB PCIe x200
+  RT2_T    缺
+  K3_T     缺
+
+==== R8 按任务表 + conc(X)（相对 S）+ R10 GPU 型号组成（pi0.5-LIBERO，spatial）
+  SRC      SR  97.5% (195/200) | t0:20/20 t1:20/20 t2:18/20 t3:20/20 t4:20/20 t5:20/20 t6:19/20 t7:19/20 t8:20/20 t9:19/20 | conc - | GPU ? x200
+  S        SR  99.0% (198/200) | t0:20/20 t1:20/20 t2:18/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:20/20 t8:20/20 t9:20/20 | conc - | GPU ? x200
+  S0       SR  96.0% (192/200) | t0:20/20 t1:20/20 t2:16/20 t3:19/20 t4:20/20 t5:20/20 t6:19/20 t7:20/20 t8:20/20 t9:18/20 | conc 0.33（最差任务 2，+2/+6） | GPU ? x200
+  T0       SR  95.5% (191/200) | t0:20/20 t1:20/20 t2:17/20 t3:19/20 t4:20/20 t5:20/20 t6:20/20 t7:17/20 t8:19/20 t9:19/20 | conc 0.43（最差任务 7，+3/+7） | GPU ? x200
+  IIWA     SR  97.0% (194/200) | t0:19/20 t1:20/20 t2:16/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:19/20 t8:20/20 t9:20/20 | conc 0.50（最差任务 2，+2/+4） | GPU ? x200
+  IIWA_cg  SR  97.5% (195/200) | t0:19/20 t1:20/20 t2:18/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:18/20 t8:20/20 t9:20/20 | conc 0.67（最差任务 7，+2/+3） | GPU ? x200
+  IIWA_T   SR  97.5% (195/200) | t0:20/20 t1:20/20 t2:16/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:20/20 t8:20/20 t9:19/20 | conc 0.67（最差任务 2，+2/+3） | GPU ? x200
+  UR5e     SR  81.0% (162/200) | t0:20/20 t1:20/20 t2:7/20 t3:1/20 t4:19/20 t5:20/20 t6:18/20 t7:18/20 t8:20/20 t9:19/20 | conc 0.53（最差任务 3，+19/+36） | GPU ? x200
+  UR5e_cg  SR  84.0% (168/200) | t0:20/20 t1:20/20 t2:12/20 t3:1/20 t4:18/20 t5:20/20 t6:19/20 t7:20/20 t8:20/20 t9:18/20 | conc 0.63（最差任务 3，+19/+30） | GPU ? x200
+  UR5e_T   SR  86.0% (172/200) | t0:20/20 t1:20/20 t2:14/20 t3:2/20 t4:20/20 t5:20/20 t6:19/20 t7:19/20 t8:20/20 t9:18/20 | conc 0.69（最差任务 3，+18/+26） | GPU ? x200
+  UR5e_R   SR  98.0% (196/200) | t0:20/20 t1:20/20 t2:19/20 t3:20/20 t4:19/20 t5:20/20 t6:20/20 t7:19/20 t8:19/20 t9:20/20 | conc 0.50（最差任务 4，+1/+2） | GPU ? x200
+  G        SR  82.0% (164/200) | t0:19/20 t1:20/20 t2:7/20 t3:19/20 t4:18/20 t5:20/20 t6:17/20 t7:8/20 t8:20/20 t9:16/20 | conc 0.35（最差任务 7，+12/+34） | GPU ? x200
+  G_T      SR  90.0% (180/200) | t0:20/20 t1:20/20 t2:9/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:13/20 t8:18/20 t9:20/20 | conc 0.50（最差任务 2，+9/+18） | GPU ? x200
+  G_Tw     SR  82.5% (165/200) | t0:17/20 t1:20/20 t2:6/20 t3:20/20 t4:20/20 t5:19/20 t6:16/20 t7:10/20 t8:19/20 t9:18/20 | conc 0.36（最差任务 2，+12/+33） | GPU NVIDIA H200 NVL x200
+  G_Ta     SR  92.0% (184/200) | t0:20/20 t1:19/20 t2:12/20 t3:20/20 t4:20/20 t5:19/20 t6:19/20 t7:17/20 t8:19/20 t9:19/20 | conc 0.43（最差任务 2，+6/+14） | GPU NVIDIA H200 NVL x200
+  G_R      SR  96.5% (193/200) | t0:20/20 t1:20/20 t2:18/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:17/20 t8:20/20 t9:18/20 | conc 0.60（最差任务 7，+3/+5） | GPU NVIDIA A100-PCIE-40GB x50, NVIDIA H200 NVL x150
+  G_Rw     缺
+  P6j3     SR  97.0% (194/200) | t0:20/20 t1:20/20 t2:18/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:18/20 t8:20/20 t9:18/20 | conc 0.50（最差任务 7，+2/+4） | GPU NVIDIA H200 NVL x200
+  K3       SR  99.0% (198/200) | t0:20/20 t1:20/20 t2:19/20 t3:20/20 t4:20/20 t5:20/20 t6:20/20 t7:19/20 t8:20/20 t9:20/20 | conc 无净增失败（净 +0） | GPU NVIDIA H200 NVL x200
+  UR5e_nc  SR  93.0% (186/200) | t0:20/20 t1:20/20 t2:11/20 t3:20/20 t4:18/20 t5:20/20 t6:18/20 t7:19/20 t8:20/20 t9:20/20 | conc 0.58（最差任务 2，+7/+12） | GPU NVIDIA H200 NVL x200
+  RT2      SR  66.5% (133/200) | t0:7/20 t1:20/20 t2:9/20 t3:10/20 t4:15/20 t5:19/20 t6:14/20 t7:13/20 t8:20/20 t9:6/20 | conc 0.22（最差任务 9，+14/+65） | GPU NVIDIA H200 NVL x200
+  RT2_T    缺
+  K3_T     缺
+
+==== 在线接触汇总（§8 第 6 条；OpenVLA-OFT，spatial）：每任务 接触集数/有记录集数，首次接触中位步，pairs 前三（按出现集数），停滞集数
+  SRC      t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  S        t0:0/10 t1:0/10 t2:0/10s3 t3:0/10 t4:0/10 t5:0/10 t6:0/10 t7:0/10 t8:0/10 t9:0/10 | 缺接触字段 100 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+  S0       t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  T0       t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  IIWA     t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  IIWA_cg  t0:0/20s1 t1:0/20 t2:0/20s4 t3:0/20 t4:0/20s1 t5:0/20 t6:0/20 t7:0/20s1 t8:0/20s1 t9:0/20
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  IIWA_T   t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  UR5e     t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  UR5e_cg  t0:0/10 t1:0/10 t2:0/10 t3:10/10s9 t4:0/10 t5:0/10 t6:0/10 t7:0/10 t8:0/10s1 t9:0/10 | 缺接触字段 100 集
+      t3: 接触 10 集，首次接触中位步 41，pairs 前三 [('robot0_forearm_link|wooden_cabinet_1_base', 10)]，停滞 9 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  UR5e_T   t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  UR5e_R   t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  G        t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  G_T      t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  G_Tw     t0:0/20s6 t1:0/20 t2:0/20s4 t3:0/20 t4:0/20s1 t5:0/20 t6:0/20s1 t7:0/20s3 t8:0/20 t9:0/20
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 6 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+  G_Ta     t0:0/20 t1:0/20 t2:0/20s1 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20s1 t8:0/20s1 t9:0/20s1
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  G_R      t0:0/20s2 t1:0/20 t2:0/20s6 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:0/20s1 t9:0/20
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 6 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  P6j3     t0:0/20 t1:0/20 t2:0/20s2 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+  K3       t0:0/20 t1:0/20 t2:0/20s2 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:0/20s1 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  UR5e_nc  t0:0/20s1 t1:0/20 t2:0/20s1 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:0/20s1 t9:0/20
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  RT2      t0:0/20 t1:0/20 t2:0/20s2 t3:0/20 t4:0/20 t5:0/20s1 t6:0/20 t7:0/20s2 t8:0/20s2 t9:0/20s1
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t5: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t8: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  UR5e_nc 小臂：forearm_geoms_off 分布 {'1': 200}；穿透集 任务 3 20，任务 3 以外 0；最深 75.9 mm
+
+==== 在线接触汇总（§8 第 6 条；pi0.5-LIBERO，spatial）：每任务 接触集数/有记录集数，首次接触中位步，pairs 前三（按出现集数），停滞集数
+  SRC      t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  S        t0:0/20 t1:0/20 t2:0/20s5 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+  S0       t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  T0       t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  IIWA     t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  IIWA_cg  t0:0/20s1 t1:0/20 t2:0/20s10 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20s2 t8:0/20 t9:0/20
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 10 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+  IIWA_T   t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  UR5e     t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  UR5e_cg  t0:0/20 t1:0/20 t2:0/20s4 t3:20/20s20 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t3: 接触 20 集，首次接触中位步 40，pairs 前三 [('robot0_forearm_link|wooden_cabinet_1_base', 20)]，停滞 20 集
+  UR5e_T   t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  UR5e_R   t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  G        t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  G_T      t0:0/0 t1:0/0 t2:0/0 t3:0/0 t4:0/0 t5:0/0 t6:0/0 t7:0/0 t8:0/0 t9:0/0 | 缺接触字段 200 集
+  G_Tw     t0:0/20 t1:0/20 t2:0/20s9 t3:0/20 t4:0/20 t5:0/20s1 t6:0/20 t7:0/20s4 t8:0/20 t9:0/20s1
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 9 集
+      t5: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 4 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  G_Ta     t0:0/20 t1:0/20 t2:0/20s8 t3:0/20 t4:0/20s2 t5:0/20 t6:0/20s1 t7:0/20s1 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 8 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  G_R      t0:0/20 t1:0/20 t2:0/20s7 t3:0/20 t4:0/20s1 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20s1
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 7 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  P6j3     t0:0/20 t1:0/20 t2:0/20s2 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+  K3       t0:0/20 t1:0/20 t2:0/20 t3:0/20 t4:0/20 t5:0/20 t6:0/20 t7:0/20 t8:0/20 t9:0/20s2
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+  UR5e_nc  t0:0/20 t1:0/20 t2:1/20s7 t3:0/20 t4:0/20 t5:0/20 t6:0/20s1 t7:0/20 t8:0/20 t9:0/20
+      t2: 接触 1 集，首次接触中位步 128，pairs 前三 [('robot0_upper_arm_link|glazed_rim_porcelain_ramekin_1_main', 1)]，停滞 7 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 1 集
+  RT2      t0:0/20s10 t1:0/20 t2:0/20s10 t3:0/20s2 t4:0/20s3 t5:0/20 t6:0/20s3 t7:0/20s2 t8:0/20 t9:0/20s5
+      t0: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 10 集
+      t2: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 10 集
+      t3: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t4: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t6: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 3 集
+      t7: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 2 集
+      t9: 接触 0 集，首次接触中位步 nan，pairs 前三 []，停滞 5 集
+  UR5e_nc 小臂：forearm_geoms_off 分布 {'1': 200}；穿透集 任务 3 20，任务 3 以外 0；最深 69.9 mm
+
+==== 裁定 3.1 接触前 / 后失败分解（G_R 相对 T0 的净增失败，OFT；P9 确认时用于判别，此处照印）
+  [stages.py（no_reach=接触前，其余失败=接触后）] 共同键 200：G_R 失败 {'post': 21, 'pre': 22}，T0 失败 {'post': 2, 'pre': 1}；净增 接触前 +21 接触后 +19（未知 +0）；配对（T0 成、G_R 败）{'post': 20, 'pre': 22}
+      接触前份额 0.53：至少一半在接触前 -> 伪影不能解释丢分，P9 的「外观」解释成立
+  [contact_first_grip_obj（-1=接触前）] 共同键 200：G_R 失败 {'post': 43}，T0 失败 {'unknown': 3}；净增 接触前 +0 接触后 +43（未知 -3）；配对（T0 成、G_R 败）{'post': 42}
+      有 3 个失败集无法按此口径分类（如 T0 来自第二批、无 contact_first_grip_obj）：份额不计算
+
+==== 条件触发（按 OFT）
+  RT2_T：不触发（RT2 R1 = U 类）
+  K3_T：不触发（K3 R1 = S 类）
+  加密到 400：不触发（P10 = 确认）
+
+==== P9 单侧解释（裁定 2）与 G_Rw 触发（n=200）
+  P9 最终读法：不确定
+  G_Rw：不触发（P9 = 不确定，P10 = 确认；条件：P9 未确认且 P10 未确认）
+
+==== 冻结文件 sha256
+  protocol_block3.md                 3875470456102d60668a02f6a7ff0610faf2b32a15f8112821fff52781690616 = 冻结值  [$PROJ_ROOT/embody_v3/protocol_block3.md]
+  protocol_block3_amendment1.md      eee344bef35f20115ef98179fed415c11df464af1493445cdfae28d5d349cd5d = 冻结值  [$PROJ_ROOT/embody_v3/protocol_block3_amendment1.md]
+  r7_predictions.tsv                 9a353acb7b877aea12bd68aa42939f2cc9db13a64e8b73fb0bafadd515d2ee6b = 冻结值  [$PROJ_ROOT/embody_v3/out/r7_predictions.tsv]
+  stages.py（失败阶段口径）                  ff34aa3dd462b67b4069901ae8630a8bd7c3c5169d9160b1c75f4b06467d4e3b  [$PROJ_ROOT/embody/analysis/stages.py]
+  protocol_block3_amendment2.md      3ef9ff455ce9316440f6081213339c1a8c1e7bf3bc4e3c7070414af5e4ec62bf = 冻结值  [$PROJ_ROOT/embody_v3/protocol_block3_amendment2.md]
+  prereg_block3.py（冻结原版）             f1da2c63cbc16ab346e569b59d9dd50cae8504766860640f445a17c5613976cf = 冻结值  [$PROJ_ROOT/embody_v3/analysis/prereg_block3.py]
+  prereg_block3_a2.py（本脚本）           003032bace8edc99bb032cc32f504318e4d7640bc23e71b974735d2a9bd6eb22  [$PROJ_ROOT/embody_v3/analysis/prereg_block3_a2.py]

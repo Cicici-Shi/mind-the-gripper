@@ -1,0 +1,1320 @@
+{
+ "proto_mismatch": [],
+ "d5_trigger": {
+  "OFTi/spatial": false,
+  "OFTi/object": false,
+  "pi0/spatial": false,
+  "pi0/object": false,
+  "OVLA/spatial": false
+ },
+ "delta": {
+  "OFTi/spatial/drop_nat(G)": 15.0,
+  "OFTi/spatial/d5": -0.5,
+  "OFTi/spatial/rec_w": -16.5,
+  "OFTi/spatial/rec_a": -13.0,
+  "OFTi/spatial/channel": -3.5,
+  "OFTi/spatial/recovery(G)": -13.5,
+  "OFTi/spatial/recovery_GT(G)": -11.5,
+  "OFTi/object/drop_nat(G)": 5.917,
+  "OFTi/object/d5": 0.592,
+  "OFTi/object/recovery(G)": -4.734,
+  "OFTi/object/recovery_GT(G)": 1.183,
+  "π0/spatial/drop_nat(G)": -12.5,
+  "π0/spatial/d5": 2.5,
+  "π0/spatial/rec_w": 12.0,
+  "π0/spatial/rec_a": 5.0,
+  "π0/spatial/channel": 7.0,
+  "π0/spatial/recovery(G)": 13.0,
+  "π0/spatial/recovery_GT(G)": 11.5,
+  "π0/object/drop_nat(G)": -23.0,
+  "π0/object/d5": -4.0,
+  "π0/object/recovery(G)": -3.0,
+  "π0/object/recovery_GT(G)": -4.0
+ },
+ "printed": {
+  "OFTi/spatial/drop_nat(G)": "完成",
+  "OFTi/spatial/d5": "完成",
+  "OFTi/spatial/rec_fc": "完成",
+  "OFTi/spatial/rec_w": "完成",
+  "OFTi/spatial/rec_a": "完成",
+  "OFTi/spatial/channel": "完成",
+  "OFTi/spatial/recovery(G)": "完成",
+  "OFTi/spatial/recovery_GT(G)": "完成",
+  "OFTi/spatial/add": "完成",
+  "OFTi/spatial/rec_w@400": "完成",
+  "OFTi/spatial/rec_a@400": "完成",
+  "OFTi/spatial/channel@400": "完成",
+  "OFTi/object/drop_nat(G)": "完成",
+  "OFTi/object/d5": "完成",
+  "OFTi/object/rec_fc": "完成",
+  "OFTi/object/rec_w": "完成",
+  "OFTi/object/rec_a": "完成",
+  "OFTi/object/channel": "完成",
+  "OFTi/object/recovery(G)": "完成",
+  "OFTi/object/recovery_GT(G)": "完成",
+  "OFTi/object/add": "完成",
+  "pi0/spatial/drop_nat(G)": "完成",
+  "pi0/spatial/d5": "完成",
+  "pi0/spatial/rec_fc": "完成",
+  "pi0/spatial/rec_w": "完成",
+  "pi0/spatial/rec_a": "完成",
+  "pi0/spatial/channel": "完成",
+  "pi0/spatial/recovery(G)": "完成",
+  "pi0/spatial/recovery_GT(G)": "完成",
+  "pi0/spatial/add": "完成",
+  "pi0/object/drop_nat(G)": "完成",
+  "pi0/object/d5": "完成",
+  "pi0/object/rec_fc": "完成",
+  "pi0/object/rec_w": "完成",
+  "pi0/object/rec_a": "完成",
+  "pi0/object/channel": "完成",
+  "pi0/object/recovery(G)": "完成",
+  "pi0/object/recovery_GT(G)": "完成",
+  "pi0/object/add": "完成",
+  "OVLA/spatial/drop_nat(G)": "完成",
+  "OVLA/spatial/d5": "完成",
+  "OVLA/spatial/rec_fc": "完成",
+  "OVLA/spatial/rec_w": "完成",
+  "OVLA/spatial/rec_a": "完成",
+  "OVLA/spatial/channel": "完成",
+  "OVLA/spatial/recovery(G)": "完成",
+  "OVLA/spatial/recovery_GT(G)": null,
+  "OVLA/spatial/add": "完成"
+ },
+ "sens_physics": {
+  "exclude_keys": "$PROJ_ROOT/vla_zoo/out/physics_breakdown_m1.json",
+  "bounds": "$PROJ_ROOT/vla_zoo/out/physics_breakdown_m1_logs.json",
+  "exclude_n": {
+   "oft_obj|libero_object": 31,
+   "oft_sp|libero_spatial": 0
+  },
+  "sha256": {
+   "prereg_models1.py": "29faca6ae9d63233b21378b62b61f40655a052cab924bd0c20e451f1e1c346e5",
+   "prereg_models1_sens.py": "fb3f636e0f7c499ad219ca6e97baa3b2180f8ce15b78627ef922a8511aca35f9",
+   "exclude": "fe810632231a9548245007e20b8bb66ab8eb58348f63a7b7c862564400914ad3",
+   "bounds": "32bc96613bcd311846b7681e734fefb033e0a1c28e94725be2c961562c2a66ac"
+  }
+ },
+ "published": {
+  "OFT/spatial/drop_nat(G)": [
+   -45.0,
+   -52.0,
+   -38.0
+  ],
+  "OFT/spatial/d5": [
+   0.0,
+   -2.0,
+   2.0
+  ],
+  "OFT/spatial/rec_w": [
+   32.5,
+   25.5,
+   39.5
+  ],
+  "OFT/spatial/rec_a": [
+   21.5,
+   15.0,
+   28.0
+  ],
+  "OFT/spatial/channel": [
+   11.0,
+   5.0,
+   17.5
+  ],
+  "OFT/spatial/recovery(G)": [
+   36.0,
+   28.0,
+   44.0
+  ],
+  "pi05/spatial/drop_nat(G)": [
+   -17.0,
+   -22.5,
+   -12.0
+  ],
+  "pi05/spatial/d5": [
+   -3.5,
+   -6.5,
+   -1.0
+  ],
+  "pi05/spatial/rec_w": [
+   0.5,
+   -5.5,
+   6.0
+  ],
+  "pi05/spatial/rec_a": [
+   10.0,
+   5.0,
+   15.5
+  ],
+  "pi05/spatial/channel": [
+   -9.5,
+   -15.012,
+   -4.0
+  ],
+  "pi05/spatial/recovery(G)": [
+   11.5,
+   5.988,
+   17.5
+  ],
+  "OFT/object/drop_nat(G)": [
+   -16.0,
+   -22.0,
+   -10.0
+  ],
+  "OFT/object/d5": [
+   -0.5,
+   -2.5,
+   1.5
+  ],
+  "OFT/object/recovery(G)": [
+   -5.5,
+   -13.0,
+   2.0
+  ],
+  "pi05/object/drop_nat(G)": [
+   -17.0,
+   -23.5,
+   -10.5
+  ],
+  "pi05/object/d5": [
+   2.5,
+   -0.5,
+   5.5
+  ],
+  "pi05/object/recovery(G)": [
+   3.5,
+   -3.5,
+   10.5
+  ]
+ },
+ "cells": {
+  "OFTi/spatial/SRC": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "NA",
+    "首帧对齐": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 200
+   }
+  },
+  "OFTi/spatial/S": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 200
+   }
+  },
+  "OFTi/spatial/T0": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS",
+    "T0 对 S 同键一致率": "PASS"
+   },
+   "meta": {
+    "files": 200
+   }
+  },
+  "OFTi/spatial/G": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "n": 400,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 400
+   }
+  },
+  "OFTi/spatial/GTfc": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "PASS",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS"
+   },
+   "meta": {
+    "files": 200
+   }
+  },
+  "OFTi/spatial/GTw": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "n": 400,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "PASS",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS"
+   },
+   "meta": {
+    "files": 400
+   }
+  },
+  "OFTi/spatial/GTa": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "n": 400,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS"
+   },
+   "meta": {
+    "files": 400
+   }
+  },
+  "OFTi/spatial/G_T": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS"
+   },
+   "meta": {
+    "files": 200
+   }
+  },
+  "OFTi/object/SRC": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "NA",
+    "首帧对齐": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 200
+   }
+  },
+  "OFTi/object/S": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 200
+   }
+  },
+  "OFTi/object/T0": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS",
+    "T0 对 S 同键一致率": "PASS"
+   },
+   "meta": {
+    "files": 200
+   }
+  },
+  "OFTi/object/G": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 200
+   }
+  },
+  "OFTi/object/GTfc": {
+   "status": "FAIL",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "PASS",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "FAIL"
+   },
+   "meta": {
+    "files": 200
+   }
+  },
+  "OFTi/object/GTw": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "PASS",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS"
+   },
+   "meta": {
+    "files": 200
+   }
+  },
+  "OFTi/object/GTa": {
+   "status": "FAIL",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "FAIL"
+   },
+   "meta": {
+    "files": 200
+   }
+  },
+  "OFTi/object/G_T": {
+   "status": "FAIL",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "FAIL"
+   },
+   "meta": {
+    "files": 200
+   }
+  },
+  "pi0/spatial/SRC": {
+   "status": "UNVERIFIED",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "NA",
+    "首帧对齐": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "UNK",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "WARN",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/spatial/S": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/spatial/T0": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS",
+    "T0 对 S 同键一致率": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/spatial/G": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/spatial/GTfc": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "PASS",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/spatial/GTw": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "PASS",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/spatial/GTa": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/spatial/G_T": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/object/SRC": {
+   "status": "UNVERIFIED",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "NA",
+    "首帧对齐": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "UNK",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "WARN",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/object/S": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/object/T0": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS",
+    "T0 对 S 同键一致率": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/object/G": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/object/GTfc": {
+   "status": "FAIL",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "PASS",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "FAIL"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/object/GTw": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "PASS",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/object/GTa": {
+   "status": "FAIL",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "FAIL"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "pi0/object/G_T": {
+   "status": "FAIL",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "FAIL"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "OVLA/spatial/SRC": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "NA",
+    "首帧对齐": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "OVLA/spatial/S": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "OVLA/spatial/T0": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "PASS",
+    "IK 残差>1mm<1%": "PASS",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS",
+    "T0 对 S 同键一致率": "WARN"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "OVLA/spatial/G": {
+   "status": "OK",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "OVLA/spatial/GTfc": {
+   "status": "FAIL",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "FAIL",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "PASS",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "OVLA/spatial/GTw": {
+   "status": "FAIL",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "FAIL",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "PASS",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  },
+  "OVLA/spatial/GTa": {
+   "status": "FAIL",
+   "slices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "n": 200,
+   "gates": {
+    "fixcheck": "PASS",
+    "copy_grip_cmd": "PASS",
+    "首帧对齐": "NA",
+    "IK 残差>1mm<1%": "FAIL",
+    "陈旧帧 0": "PASS",
+    "相机位姿差": "NA",
+    "replan": "PASS",
+    "server GPU 单一型号（H100）": "PASS",
+    "error 记录": "PASS",
+    "RTT": "NA",
+    "GPU 型号": "PASS",
+    "在线接触": "PASS",
+    "gate json": "PASS"
+   },
+   "meta": {
+    "files": 4,
+    "lines": 200,
+    "error_dropped": 0,
+    "dup_clean": 0,
+    "error_keys": 0,
+    "error_only_keys": 0
+   }
+  }
+ },
+ "R1": "不复现",
+ "R2": "复现",
+ "R3": "复现",
+ "recGT_P7": "复现",
+ "R_family": "不复现",
+ "R3_vs_GT_differ": false,
+ "F1": "不确定",
+ "F2": "不确定",
+ "F_reading": null,
+ "O1": "does not count",
+ "O2": "does not count",
+ "E1": 96.5,
+ "E2": 96.0,
+ "E_read": true,
+ "E3": "符合",
+ "E4": "does not count",
+ "E5": "相当或更大",
+ "holm": {
+  "R1 drop_nat(G)": 0.0,
+  "R2 channel(400)": 0.0,
+  "R3 recovery(G)": 0.0,
+  "F1 channel": 0.5136,
+  "F2 drop_nat(G)": 0.0,
+  "F2 recovery(G)": 0.0,
+  "O1 recovery(G) OFTi": 0.114,
+  "O2 drop_nat(G) π0": 0.0,
+  "O2 recovery(G) π0": 0.9556
+ }
+}

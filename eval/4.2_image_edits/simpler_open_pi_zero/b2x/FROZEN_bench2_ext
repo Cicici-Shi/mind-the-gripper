@@ -1,0 +1,344 @@
+{
+ "note": "bench2 补充协议 v1.1（填充颜色与更长滞后）冻结清单候选；协调方核对后改名为 FROZEN_bench2_ext",
+ "phase1_frozen_sha256": "9137044bf8846aab8450f8c264bd3eb1d1b76ab58b1ab03669b738d0ed334847",
+ "code_sha256": {
+  "eval_views.py": "132f857659ff136ee0c5e603627c0ceb21525557ac3708072b541399e4e5e5ac",
+  "views.py": "a5a8c81f7b9493103788a399ca966ee30f6aacfbfbec9344b5d3562dd3e62160",
+  "keys.py": "d9d9fd40da591fb67b6fad69082371373bf59edb1e6b236f20c19ed50043400e",
+  "gate.py": "fa4fd0882ba48471bb80ddf05d2b6636bdc507711ed0fd5fb785f2a3067d0471",
+  "readout.py": "24da62af815908c1cd7a27e437c8eec4aa6906db3e4525bd7644c49b5020d40d",
+  "submit_formal.sh": "74aba55b7125b7301aa81d235137fcdcf1fc2c5e06b205e4edb144cbffcefb47",
+  "jobs/common.sh": "1896d01943035a1e4b4edec3b19d57a59efdb2a4d54c7c98e898949706a4fdfe"
+ },
+ "keylist_sha256": {
+  "B2": "624ea7a07805362b7e2efb425dc21ab36ecf0979f94f714e4194ae66f812193d",
+  "F1": "48e6e6a817f6b40528a3b202ac64c051644bb9efe8b63afcb33c862c31f63d30"
+ },
+ "blocks": {
+  "B2": {
+   "tasks": [
+    "widowx_spoon_on_towel"
+   ],
+   "n_keys": 120,
+   "L": 8,
+   "line_width": 8,
+   "query_every": 4,
+   "control_freq": 5.0,
+   "max_episode_steps": 60,
+   "g_links": [
+    "gripper_link",
+    "gripper_prop_link",
+    "gripper_bar_link",
+    "fingers_link",
+    "left_finger_link",
+    "right_finger_link",
+    "ee_gripper_link"
+   ],
+   "protect": [
+    "bridge_spoon_generated_modified",
+    "table_cloth_generated_shorter"
+   ],
+   "protect_expect_n": 2,
+   "cells": [
+    "C0",
+    "C1",
+    "C1w",
+    "C1L"
+   ],
+   "cell_lag": {
+    "C5": 8
+   },
+   "fill_rgb": {
+    "k": [
+     0,
+     0,
+     0
+    ],
+    "w": [
+     255,
+     255,
+     255
+    ],
+    "L": [
+     159,
+     151,
+     120
+    ]
+   },
+   "fill_strength": {
+    "k": 55.16968341586364,
+    "w": 199.83031658413637,
+    "L": 90.06490404097549
+   },
+   "ring_contrast": {
+    "k": 117.41852872214585,
+    "w": 137.58147127785415,
+    "L": 46.12543591749249
+   },
+   "low_contrast": {
+    "k": false,
+    "w": false,
+    "L": true
+   },
+   "calib_rerun_vs_phase1": {
+    "n_ref": 10,
+    "actions_bit_equal": 10,
+    "frame0_equal": 10,
+    "differ": []
+   }
+  },
+  "F1": {
+   "tasks": [
+    "google_robot_pick_horizontal_coke_can",
+    "google_robot_pick_vertical_coke_can",
+    "google_robot_pick_standing_coke_can"
+   ],
+   "n_keys": 120,
+   "L": 4,
+   "line_width": 8,
+   "query_every": 2,
+   "control_freq": 3.0,
+   "max_episode_steps": 80,
+   "g_links": [
+    "link_gripper",
+    "link_gripper_tcp",
+    "link_finger_right",
+    "link_finger_tip_right",
+    "link_finger_nail_right",
+    "link_finger_left",
+    "link_finger_tip_left",
+    "link_finger_nail_left"
+   ],
+   "protect": [
+    "opened_coke_can"
+   ],
+   "protect_expect_n": 1,
+   "cells": [
+    "C0",
+    "C1",
+    "C1w",
+    "C1L",
+    "C3",
+    "C4",
+    "C5",
+    "C5L"
+   ],
+   "cell_lag": {
+    "C5": 4,
+    "C5L": 12
+   },
+   "fill_rgb": {
+    "k": [
+     0,
+     0,
+     0
+    ],
+    "w": [
+     255,
+     255,
+     255
+    ],
+    "L": [
+     159,
+     151,
+     120
+    ]
+   },
+   "fill_strength": {
+    "k": 148.59369560985868,
+    "w": 106.40630439014133,
+    "L": 31.518945706828525
+   },
+   "ring_contrast": {
+    "k": 94.26630777934366,
+    "w": 160.7336922206564,
+    "L": 57.28223924474548
+   },
+   "low_contrast": {
+    "k": false,
+    "w": false,
+    "L": false
+   },
+   "calib_rerun_vs_phase1": {
+    "n_ref": 10,
+    "actions_bit_equal": 10,
+    "frame0_equal": 10,
+    "differ": []
+   },
+   "fill_strength_by_urdf": {
+    "(默认)": {
+     "n_keys": 6,
+     "k": 160.4980784707924,
+     "w": 94.50192152920755,
+     "L": 31.663007688425527
+    },
+    "recolor_cabinet_visual_matching_1": {
+     "n_keys": 2,
+     "k": 125.93576123336008,
+     "w": 129.06423876663993,
+     "L": 31.72620309652537
+    },
+    "recolor_tabletop_visual_matching_1": {
+     "n_keys": 2,
+     "k": 138.7550821195443,
+     "w": 116.24491788045565,
+     "L": 30.92041130364436
+    }
+   },
+   "geom_ref": {
+    "4": {
+     "pre": {
+      "iou_median": 0.5730614973262032,
+      "centroid_shift_224_median": 2.0468624368878223,
+      "visible_ratio_224_median": 0.9713235294117647,
+      "frames": 20
+     },
+     "all": {
+      "iou_median": 0.3366344198801332,
+      "centroid_shift_224_median": 2.434260710893147,
+      "visible_ratio_224_median": 1.0230359070778587,
+      "frames": 400
+     },
+     "full": {
+      "iou_median": 0.3366344198801332,
+      "centroid_shift_224_median": 2.434260710893147,
+      "visible_ratio_224_median": 1.027077838262529,
+      "frames": 380
+     }
+    },
+    "8": {
+     "pre": {
+      "iou_median": 0.038709414894523224,
+      "centroid_shift_224_median": 15.63153773925108,
+      "visible_ratio_224_median": 0.8395723255335209,
+      "frames": 40
+     },
+     "all": {
+      "iou_median": 0.12056592513046391,
+      "centroid_shift_224_median": 5.690675439706689,
+      "visible_ratio_224_median": 1.038910458330281,
+      "frames": 400
+     },
+     "full": {
+      "iou_median": 0.12886751644254996,
+      "centroid_shift_224_median": 4.57487865683633,
+      "visible_ratio_224_median": 1.052465022626313,
+      "frames": 360
+     }
+    },
+    "12": {
+     "pre": {
+      "iou_median": 0.019781143084878383,
+      "centroid_shift_224_median": 30.049819318588543,
+      "visible_ratio_224_median": 0.8473324526547915,
+      "frames": 60
+     },
+     "all": {
+      "iou_median": 0.06680234520514367,
+      "centroid_shift_224_median": 10.711758416469088,
+      "visible_ratio_224_median": 1.0452609190762243,
+      "frames": 400
+     },
+     "full": {
+      "iou_median": 0.07661123327107174,
+      "centroid_shift_224_median": 6.931166271621715,
+      "visible_ratio_224_median": 1.0637792062034488,
+      "frames": 340
+     }
+    }
+   },
+   "frozen_segment": {
+    "4": {
+     "frozen_steps": 6,
+     "ratio_to_median_first_success": 0.3,
+     "per_key_ratio_median": 0.3
+    },
+    "8": {
+     "frozen_steps": 10,
+     "ratio_to_median_first_success": 0.5,
+     "per_key_ratio_median": 0.5
+    },
+    "12": {
+     "frozen_steps": 14,
+     "ratio_to_median_first_success": 0.7,
+     "per_key_ratio_median": 0.7
+    }
+   },
+   "first_success_steps_calib": {
+    "n_success_keys": 9,
+    "median": 20.0,
+    "values": [
+     12,
+     12,
+     20,
+     20,
+     20,
+     20,
+     21,
+     45,
+     59
+    ]
+   }
+  }
+ },
+ "FL": {
+  "rgb": [
+   159,
+   151,
+   120
+  ],
+  "channel_median": [
+   160.0,
+   147.0,
+   122.0
+  ],
+  "nearest_distance": 4.58257569495584,
+  "n_G_pixels": 3753744,
+  "n_distinct_colors": 20894,
+  "channel_peaks": [
+   17,
+   16,
+   24
+  ],
+  "mean_rgb": [
+   169.02746191535704,
+   152.63737697616034,
+   124.11624793805865
+  ],
+  "frac_G_within_20_of_FL": 0.057431194029214566
+ },
+ "fills": {
+  "k": [
+   0,
+   0,
+   0
+  ],
+  "w": [
+   255,
+   255,
+   255
+  ],
+  "L": [
+   159,
+   151,
+   120
+  ]
+ },
+ "lag_long": 12,
+ "lag_long_rule": {
+  "candidates": [
+   8,
+   12
+  ],
+  "iou_max": 0.08,
+  "all_iou_median": {
+   "8": 0.12056592513046391,
+   "12": 0.06680234520514367
+  },
+  "chosen": 12,
+  "note": "满足规则"
+ },
+ "lag_long_source": "规则选择",
+ "vk_icd_filenames": "/usr/share/vulkan/icd.d/nvidia_icd.json",
+ "ref_root_phase1": "$PROJ_ROOT/bench2_simpler/b2/out_formal"
+}

@@ -1,0 +1,122 @@
+[
+ {
+  "key": "B2__ep00__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep00",
+  "trial": 0,
+  "env_seed": 713560504,
+  "reset": {
+   "episode_id": 0
+  },
+  "cluster": "ep00"
+ },
+ {
+  "key": "B2__ep01__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep01",
+  "trial": 0,
+  "env_seed": 669486401,
+  "reset": {
+   "episode_id": 1
+  },
+  "cluster": "ep01"
+ },
+ {
+  "key": "B2__ep02__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep02",
+  "trial": 0,
+  "env_seed": 3225147833,
+  "reset": {
+   "episode_id": 2
+  },
+  "cluster": "ep02"
+ },
+ {
+  "key": "B2__ep03__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep03",
+  "trial": 0,
+  "env_seed": 1114923306,
+  "reset": {
+   "episode_id": 3
+  },
+  "cluster": "ep03"
+ },
+ {
+  "key": "B2__ep04__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep04",
+  "trial": 0,
+  "env_seed": 799584831,
+  "reset": {
+   "episode_id": 4
+  },
+  "cluster": "ep04"
+ },
+ {
+  "key": "B2__ep05__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep05",
+  "trial": 0,
+  "env_seed": 3744899748,
+  "reset": {
+   "episode_id": 5
+  },
+  "cluster": "ep05"
+ },
+ {
+  "key": "B2__ep06__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep06",
+  "trial": 0,
+  "env_seed": 425908638,
+  "reset": {
+   "episode_id": 6
+  },
+  "cluster": "ep06"
+ },
+ {
+  "key": "B2__ep07__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep07",
+  "trial": 0,
+  "env_seed": 444726618,
+  "reset": {
+   "episode_id": 7
+  },
+  "cluster": "ep07"
+ },
+ {
+  "key": "B2__ep08__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep08",
+  "trial": 0,
+  "env_seed": 2853762158,
+  "reset": {
+   "episode_id": 8
+  },
+  "cluster": "ep08"
+ },
+ {
+  "key": "B2__ep09__t0",
+  "block": "B2",
+  "task": "widowx_spoon_on_towel",
+  "cfg_id": "ep09",
+  "trial": 0,
+  "env_seed": 2022497879,
+  "reset": {
+   "episode_id": 9
+  },
+  "cluster": "ep09"
+ }
+]

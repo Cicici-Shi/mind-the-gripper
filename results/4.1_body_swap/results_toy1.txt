@@ -1,0 +1,126 @@
+toy1 预注册分析（protocol_toy1.md）  --keys all  B=10000 seed=0
+协议 sha256 0dc137a2fea9630e289805f6f1ad5af2bdd46dd9ecedb82bb7b2068fb34e1863（= --expect-protocol-sha）  $PROJ_ROOT/embody_toy/protocol_toy1.md
+裁定 sha256 673996dec68bdfc96483825ff6e35ff9bcb58da5e08ba748d4958f85cbfb2911（= --expect-decisions-sha）  $PROJ_ROOT/embody_toy/protocol_toy1_astra_decisions.md
+脚本 sha256 65e6c173723dff3dee8433e4ba9d17781e86a008e1f684c5bdcd1144006e08fd  $PROJ_ROOT/embody_toy/analysis/prereg_toy1.py
+runs $PROJ_ROOT/runs_toy  gate out/gate_toy1.json  probe-shift None  probe-parts None
+
+==== 门槛（§8；本脚本自算项 + 门槛 json 合并，K2-K7）  设计键 100，§8.1 剔除 0
+  S        (toy_s): 键 100/100  状态 PASS
+      场景一致(§8.1)               NA    参照格自身
+      copy_grip_cmd=1(§8.1)    PASS  =1: 100, =0: 0, 缺/其他: 0
+      grp_map(§8.1)            NA    S 家族只打印：{'<missing>': 100}
+      gate json                PASS  cell status PASS；dumps=PASS(100)，scene_vs_toy_s_mm_max=PASS(0.0)，copy_grip_cmd_all_1=PASS(100)，first_frame_rot_deg_max (print only)=PASS(0.02254393619775762)，t0_scene_all_cells_mm_max=PASS({'toy_g': 0.0, 'toy_s': 0.0, 'toy_s_hid': 0.0, 'toy_g_hid': 0.0, 'toy_g_tfc': 0.0, 'toy_g_t': 0.0, 'toy_g_cam': 0.0})，t0_host_gpu=PASS([['node10', 'Tesla T4'], ['node13', 'Tesla T4']])
+      配置核对（只印，K7）     hide_gripper {'<missing>': 100}
+  G        (toy_g): 键 100/100  状态 PASS
+      场景一致(§8.1)               PASS  对照 toy_s 100 键，一致键最大差 0.0000 mm；不一致 0 键（已从所有格剔除）
+      copy_grip_cmd=1(§8.1)    PASS  =1: 100, =0: 0, 缺/其他: 0
+      grp_map(§8.1)            PASS  应为 kp100；分布 {'kp100': 100}
+      gate json                PASS  cell status PASS；dumps=PASS(100)，scene_vs_toy_s_mm_max=PASS(0.0)，copy_grip_cmd_all_1=PASS(100)，grp_map_kp100=PASS(['kp100'])，first_frame_rot_deg_max (print only)=PASS(0.04125987643343842)
+      配置核对（只印，K7）     hide_gripper {'None': 100}
+  G_T^fc   (toy_g_tfc): 键 100/100  状态 PASS
+      场景一致(§8.1)               PASS  对照 toy_s 100 键，一致键最大差 0.0000 mm；不一致 0 键（已从所有格剔除）
+      copy_grip_cmd=1(§8.1)    PASS  =1: 100, =0: 0, 缺/其他: 0
+      grp_map(§8.1)            PASS  应为 kp100；分布 {'kp100': 100}
+      替身相机位姿差(§8.2)            PASS  查询帧最大 0.0000 mm / 0.0000°，超 0.01 mm/0.01° 的查询帧 0/1454；全帧最大 0.0000 mm / 0.0000°
+      IK 残差>1mm<1%(§8.2)       PASS  查询帧 > 1.0 mm：0/1454 = 0.00%（门槛 < 1%）；旋转残差查询帧最大 0.062°（只印）
+      陈旧帧 0(§8.2)              PASS  陈旧帧合计 0
+      吞吐/第0步一致性(§8.2)          NA    由门槛 json 承载
+      gate json                PASS  cell status PASS；dumps=PASS(100)，scene_vs_toy_s_mm_max=PASS(0.0)，copy_grip_cmd_all_1=PASS(100)，grp_map_kp100=PASS(['kp100'])，first_frame_rot_deg_max (print only)=PASS(0.04125987643343842)，twin_cam_err_query_max_mm_deg=PASS([6.206335087782094e-14, 2.9575587632280076e-06])，ik_residual_gt1mm_query_frac=PASS([0, 1454])，stale_frames=PASS(0)，sec_per_episode_vs_toy_g_t=PASS({'shard45_tfc_vs_t': [25.336825142101365, 23.482909737801066], 'shard40_tfc_vs_t (info, different cards)': [25.873882030954167, 109.02390976827972]})，arm_thirdview_consistency=PASS({'rule': 'astra_gates item 2', 'keys': 100, 'arm_deg_max': 0.0, 'agent_max_max': 1, 'agent_mean_max': 3.0517578125e-05, 'keys_with_any_diff': 4, 'hosts': [['node11', 'Tesla T4'], ['node14', 'Tesla T4']]})，t0_cam_vs_g_mm_deg=PASS([5.551115123125783e-14, 2.4148365394514667e-06])，t0_vs_g_both_grippers_hidden (descriptive)=PASS({'agentview': 0.8027663167317709, 'robot0_eye_in_hand': 0.001630706787109375})
+      G_T/G_T^fc 手臂与第三视角一致     PASS  arm_thirdview_consistency=PASS({'rule': 'astra_gates item 2', 'keys': 100, 'arm_deg_max': 0.0, 'agent_max_max': 1, 'agent_mean_max': 3.0517578125e-05, 'keys_with_any_diff': 4, 'hosts': [['node11', 'Tesla T4'], ['node14', 'Tesla T4']]})
+      配置核对（只印，K7）     twin_cam {'phys': 100}
+  G_hid    (toy_g_hid): 键 100/100  状态 PASS
+      场景一致(§8.1)               PASS  对照 toy_s 100 键，一致键最大差 0.0000 mm；不一致 0 键（已从所有格剔除）
+      copy_grip_cmd=1(§8.1)    PASS  =1: 100, =0: 0, 缺/其他: 0
+      grp_map(§8.1)            PASS  应为 kp100；分布 {'kp100': 100}
+      gate json                PASS  cell status PASS；dumps=PASS(100)，scene_vs_toy_s_mm_max=PASS(0.0)，copy_grip_cmd_all_1=PASS(100)，grp_map_kp100=PASS(['kp100'])，first_frame_rot_deg_max (print only)=PASS(0.04125987643343842)，t0_mean_vs_base_gripper_alpha0=PASS({'agentview': 1.068115234375e-06, 'robot0_eye_in_hand': 6.103515625e-07})，hidden_geoms_eq_visible=PASS({'hidden': [24], 'visible': [24], 'list': ['gripper0_hand_visual', 'gripper0_hand_collision', 'gripper0_left_outer_knuckle_visual', 'gripper0_left_outer_knuckle_collision', 'gripper0_left_outer_finger_visual', 'gripper0_left_outer_finger_collision', 'gripper0_left_inner_finger_visual', 'gripper0_left_inner_finger_collision', 'gripper0_left_fingertip_visual', 'gripper0_left_fingertip_collision', 'gripper0_left_fingerpad_collision', 'gripper0_left_inner_knuckle_visual', 'gripper0_left_inner_knuckle_collision', 'gripper0_right_outer_knuckle_visual', 'gripper0_right_outer_knuckle_collision', 'gripper0_right_outer_finger_visual', 'gripper0_right_outer_finger_collision', 'gripper0_right_inner_finger_visual', 'gripper0_right_inner_finger_collision', 'gripper0_right_fingertip_visual', 'gripper0_right_fingertip_collision', 'gripper0_right_fingerpad_collision', 'gripper0_right_inner_knuckle_visual', 'gripper0_right_inner_knuckle_collision']})，collision_flags_equal=PASS(None)，cpu_replay_qpos_max_diff=PASS({'eps': 10, 'steps': 1542, 'img_diff_steps': 0, 'qpos_max': 0.0})
+      配置核对（只印，K7）     hide_gripper {'all': 100}
+  G_T      (toy_g_t): 键 100/100  状态 PASS
+      场景一致(§8.1)               PASS  对照 toy_s 100 键，一致键最大差 0.0000 mm；不一致 0 键（已从所有格剔除）
+      copy_grip_cmd=1(§8.1)    PASS  =1: 100, =0: 0, 缺/其他: 0
+      grp_map(§8.1)            PASS  应为 kp100；分布 {'kp100': 100}
+      gate json                PASS  cell status PASS；dumps=PASS(100)，scene_vs_toy_s_mm_max=PASS(0.0)，copy_grip_cmd_all_1=PASS(100)，grp_map_kp100=PASS(['kp100'])，first_frame_rot_deg_max (print only)=PASS(0.04125987643343842)，twin_cam_err_query_max_mm (descriptive)=PASS(6.420248031616211)，ik_residual_gt1mm_query (descriptive)=PASS([0, 1453])
+      配置核对（只印，K7）     twin_cam {'twin': 100}
+      G_T 替身量（描述，K5）  查询帧 pos>1mm 0.00%；第二批口径 pos>2mm 或 rot>1° 0.00%；陈旧帧 0；相机差均值 6.400 mm（预期约 6.4）
+  S_hid    (toy_s_hid): 键 100/100  状态 PASS
+      场景一致(§8.1)               PASS  对照 toy_s 100 键，一致键最大差 0.0000 mm；不一致 0 键（已从所有格剔除）
+      copy_grip_cmd=1(§8.1)    PASS  =1: 100, =0: 0, 缺/其他: 0
+      grp_map(§8.1)            NA    S 家族只打印：{'None': 100}
+      gate json                PASS  cell status PASS；dumps=PASS(100)，scene_vs_toy_s_mm_max=PASS(0.0)，copy_grip_cmd_all_1=PASS(100)，first_frame_rot_deg_max (print only)=PASS(0.02254393619775762)，t0_mean_vs_base_gripper_alpha0=PASS({'agentview': 5.086263020833333e-07, 'robot0_eye_in_hand': 1.52587890625e-07})，hidden_geoms_eq_visible=PASS({'hidden': [8], 'visible': [8], 'list': ['gripper0_hand_visual', 'gripper0_hand_collision', 'gripper0_finger1_visual', 'gripper0_finger1_collision', 'gripper0_finger1_pad_collision', 'gripper0_finger2_visual', 'gripper0_finger2_collision', 'gripper0_finger2_pad_collision']})，collision_flags_equal=PASS(None)，cpu_replay_qpos_max_diff=PASS({'eps': 10, 'steps': 1275, 'img_diff_steps': 0, 'qpos_max': 0.0})
+      配置核对（只印，K7）     hide_gripper {'all': 100}
+  G_cam    (toy_g_cam): 键 100/100  状态 PASS
+      场景一致(§8.1)               PASS  对照 toy_s 100 键，一致键最大差 0.0000 mm；不一致 0 键（已从所有格剔除）
+      copy_grip_cmd=1(§8.1)    PASS  =1: 100, =0: 0, 缺/其他: 0
+      grp_map(§8.1)            PASS  应为 kp100；分布 {'kp100': 100}
+      gate json                PASS  cell status PASS；dumps=PASS(100)，scene_vs_toy_s_mm_max=PASS(0.0)，copy_grip_cmd_all_1=PASS(100)，grp_map_kp100=PASS(['kp100'])，first_frame_rot_deg_max (print only)=PASS(0.04125987643343842)，t0_cam_pose_vs_G=PASS({'rule': 'astra_gates item 1', 'pos_err_mm_max': 1.1215154905561315e-13, 'rot_deg_max': 2.9575586669421963e-06, 'keys': 100})
+      配置核对（只印，K7）     wrist_cam_dz_mm {'-6.4': 100} <<< 设计为 6.4
+  片 ep40-44：完成；必需格缺集数 S 0，G 0，G_T^fc 0，G_hid 0，G_T 0，S_hid 0，G_cam 0
+  片 ep45-49：完成；必需格缺集数 S 0，G 0，G_T^fc 0，G_hid 0，G_T 0，S_hid 0，G_cam 0
+
+==== §4 估计量（pp；配对聚类 bootstrap，100 键联合重采样）：点估计、95% / 90% CI、键数、离散键 b(A成B败)/c(A败B成)、McNemar 精确 p
+  R_T    = SR(G_T) − SR(G)   +25.00  95% [ +15.00,  +35.00]  90% [ +17.00,  +33.00]  n=100  b=28 c=3 McNemar p=4.649e-06
+  R_fc   = SR(G_T^fc) − SR(G)   +27.00  95% [ +18.00,  +36.00]  90% [ +19.00,  +35.00]  n=100  b=28 c=1 McNemar p=1.118e-07
+  C_P    = SR(G_T) − SR(G_T^fc)    -2.00  95% [  -9.00,   +5.00]  90% [  -8.00,   +4.00]  n=100  b=5 c=7 McNemar p=0.7744
+  C_R    = SR(G_cam) − SR(G)    -6.00  95% [ -11.00,   -2.00]  90% [ -10.00,   -2.00]  n=100  b=0 c=6 McNemar p=0.03125
+  R_hid  = SR(G_hid) − SR(G)   -52.00  95% [ -62.00,  -42.00]  90% [ -60.00,  -43.00]  n=100  b=1 c=53 McNemar p=6.106e-15
+  H_S    = SR(S_hid) − SR(S)   -51.00  95% [ -61.00,  -41.00]  90% [ -59.00,  -43.00]  n=100  b=0 c=51 McNemar p=8.882e-16
+  D      = SR(S) − SR(G)   +36.00  95% [ +27.00,  +46.00]  90% [ +28.00,  +44.00]  n=100  b=36 c=0 McNemar p=2.91e-11
+
+==== §5.0 R_T（描述；裁定 (f)：不再作后续判定的前置；本批 G_T 是新配置，不称严格复现旧 36 点）
+  R_T +25.00 95% [+15.00, +35.00]（原 §5.0 线：点 >= 15.0 且 CI 不含 0 -> 过；只印）
+
+==== §5.1 Q0：固定相机重绘效应（R_fc）
+  R_fc +27.00 95% [+18.00, +36.00]；GO: 点 >= 15.0 且下界 > 5.0；转向相机: 上界 < 10.0 且 R_T >= 15.0 且 C_P 下界 > 5.0（C_P 未过则不确定） -> GO
+  C_P -2.00 95% [-9.00, +5.00]
+  固定相机重绘效应检出（G_T^fc 还改变了手臂像素，不是纯夹爪外观；裁定 (a)）。
+  描述：C_P -2.00（原预期 |C_P| <= 5.0，只印数；不显著不等于 ±5 等价）
+  描述：C_R -6.00 95% [-11.00, -2.00]，与 C_P 同号，C_R/C_P = 3.00（2x2：相机效应是否依赖外观，只印）
+
+==== §5.2 Q1：路线筛选（擦除 vs 重绘；只在 Q0 为 GO 时判；不能推出夹爪必要或擦除足够）
+  ρ = R_hid/R_fc = -52.00/+27.00 = -1.926  95% [-3.278, -1.184]  90% [-3.000, -1.294]（R_fc* <= 0 的重采样 0.00%，照算，K10）
+  H_S -51.00 95% [-61.00, -41.00]
+  线：干扰 = ρ >= 0.7 且 H_S 下界 > -5.0；线索 = ρ <= 0.3 或 H_S 上界 < -15.0 -> 路线筛选：线索为主
+  注：这是路线筛选，不能推出夹爪必要或擦除足够（裁定 (f)）；G_hid 改变遮挡，不是无伪影（裁定 (a)）。
+  限制（§5.2）：G_hid 第三人称画面里手臂末端悬空无夹爪、G 的物理臂比 S 后退 48 mm，与 G_T^fc 不同。
+
+  描述：D = SR(S) − SR(G) +36.00（toy init 上的 kp100 掉分）
+
+==== §5.3 Q2 横移探针（同一批 Robotiq G 帧上两种外观配对；按集聚合，bootstrap 按集重采样）
+  缺（未提供 --probe-shift）
+
+==== §5.4 Q3 部件探针（描述性，r_i = d(ci,c1)/d(c0,c1)，集内中位数 -> 集间中位数）
+  缺（未提供 --probe-parts）
+
+==== 描述：每格 10 任务表、conc（相对 S）、失败类型（stages.py）、两片 GPU 型号组成
+  S        SR 100.0% (100/100) | t0:10/10 t1:10/10 t2:10/10 t3:10/10 t4:10/10 t5:10/10 t6:10/10 t7:10/10 t8:10/10 t9:10/10 | conc -
+           失败类型 {}
+           GPU ep40-44: NVIDIA A100 80GB PCIe x50；ep45-49: NVIDIA A100 80GB PCIe x50
+           在线接触：臂-环境接触集 0/100，停滞集 2，pairs 前三 []；缺接触字段 0 集
+  G        SR  64.0% (64/100) | t0:0/10 t1:9/10 t2:8/10 t3:10/10 t4:6/10 t5:10/10 t6:2/10 t7:1/10 t8:8/10 t9:10/10 | conc 0.28（最差任务 0，+10/+36）
+           失败类型 {'no_reach': 14, 'drop': 10, 'no_place': 2, 'no_grasp': 10}
+           GPU ep40-44: NVIDIA A100 80GB PCIe x50；ep45-49: NVIDIA A100 80GB PCIe x50
+           在线接触：臂-环境接触集 0/100，停滞集 4，pairs 前三 []；缺接触字段 0 集
+  G_T^fc   SR  91.0% (91/100) | t0:9/10 t1:10/10 t2:8/10 t3:10/10 t4:10/10 t5:10/10 t6:9/10 t7:5/10 t8:10/10 t9:10/10 | conc 0.56（最差任务 7，+5/+9）
+           失败类型 {'no_reach': 1, 'no_grasp': 2, 'no_place': 5, 'drop': 1}
+           GPU ep40-44: NVIDIA A100 80GB PCIe x50；ep45-49: NVIDIA A100 80GB PCIe x50
+           在线接触：臂-环境接触集 0/100，停滞集 2，pairs 前三 []；缺接触字段 0 集
+  G_hid    SR  12.0% (12/100) | t0:0/10 t1:9/10 t2:0/10 t3:0/10 t4:0/10 t5:2/10 t6:0/10 t7:0/10 t8:0/10 t9:1/10 | conc 0.11（最差任务 0，+10/+88）
+           失败类型 {'no_reach': 22, 'no_grasp': 32, 'no_place': 3, 'drop': 30, 'no_transport': 1}
+           GPU ep40-44: NVIDIA A100 80GB PCIe x50；ep45-49: NVIDIA A100 80GB PCIe x50
+           在线接触：臂-环境接触集 3/100，停滞集 32，pairs 前三 [('robot0_link5|akita_black_bowl_1_main', 1), ('robot0_link5|table', 1), ('robot0_link6|plate_1_main', 1)]；缺接触字段 0 集
+  G_T      SR  89.0% (89/100) | t0:8/10 t1:10/10 t2:8/10 t3:10/10 t4:9/10 t5:10/10 t6:10/10 t7:6/10 t8:9/10 t9:9/10 | conc 0.36（最差任务 7，+4/+11）
+           失败类型 {'no_reach': 2, 'drop': 3, 'no_grasp': 3, 'no_place': 3}
+           GPU ep40-44: NVIDIA A100 80GB PCIe x50；ep45-49: NVIDIA A100 80GB PCIe x50
+           在线接触：臂-环境接触集 0/100，停滞集 2，pairs 前三 []；缺接触字段 0 集
+  S_hid    SR  49.0% (49/100) | t0:1/10 t1:9/10 t2:6/10 t3:6/10 t4:2/10 t5:9/10 t6:1/10 t7:0/10 t8:10/10 t9:5/10 | conc 0.20（最差任务 7，+10/+51）
+           失败类型 {'no_reach': 15, 'no_grasp': 21, 'drop': 11, 'no_place': 4}
+           GPU ep40-44: NVIDIA A100 80GB PCIe x50；ep45-49: NVIDIA A100 80GB PCIe x50
+           在线接触：臂-环境接触集 0/100，停滞集 10，pairs 前三 []；缺接触字段 0 集
+  G_cam    SR  58.0% (58/100) | t0:0/10 t1:9/10 t2:6/10 t3:10/10 t4:6/10 t5:10/10 t6:0/10 t7:0/10 t8:7/10 t9:10/10 | conc 0.24（最差任务 0，+10/+42）
+           失败类型 {'no_reach': 18, 'no_place': 4, 'no_grasp': 15, 'drop': 4, 'no_transport': 1}
+           GPU ep40-44: NVIDIA A100 80GB PCIe x50；ep45-49: NVIDIA A100 80GB PCIe x50
+           在线接触：臂-环境接触集 0/100，停滞集 4，pairs 前三 []；缺接触字段 0 集
+
+==== 摘要与 §5.5 全量分支（路线筛选，不是机制确认）
+  §5.0（描述）{'raw': 25.0, 'state': 'ok'}；Q0 {'raw': 'GO', 'state': 'ok'}；Q1 {'raw': '线索为主', 'state': 'ok', 'rho': -1.9259259259259258, 'rho_ci95': [-3.2777777777777777, -1.1842105263157894]}
+  Q2 Panda 外观 None / Robotiq 外观 None / 读法 None / 解读表行 None
+  全量分支：路线筛选：分支 B（重绘路线优先），由 Q2 区分标尺与模板；不能推出夹爪必要

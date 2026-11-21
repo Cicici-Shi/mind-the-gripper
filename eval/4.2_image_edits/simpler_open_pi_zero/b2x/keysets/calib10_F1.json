@@ -1,0 +1,102 @@
+[
+ {
+  "key": "F1__pick_horizontal_coke_can_s900000__t0",
+  "block": "F1",
+  "task": "google_robot_pick_horizontal_coke_can",
+  "cfg_id": "pick_horizontal_coke_can_s900000",
+  "trial": 0,
+  "env_seed": 900000,
+  "reset": {},
+  "cluster": "pick_horizontal_coke_can_s900000"
+ },
+ {
+  "key": "F1__pick_vertical_coke_can_s900040__t0",
+  "block": "F1",
+  "task": "google_robot_pick_vertical_coke_can",
+  "cfg_id": "pick_vertical_coke_can_s900040",
+  "trial": 0,
+  "env_seed": 900040,
+  "reset": {},
+  "cluster": "pick_vertical_coke_can_s900040"
+ },
+ {
+  "key": "F1__pick_standing_coke_can_s900080__t0",
+  "block": "F1",
+  "task": "google_robot_pick_standing_coke_can",
+  "cfg_id": "pick_standing_coke_can_s900080",
+  "trial": 0,
+  "env_seed": 900080,
+  "reset": {},
+  "cluster": "pick_standing_coke_can_s900080"
+ },
+ {
+  "key": "F1__pick_horizontal_coke_can_s900001__t0",
+  "block": "F1",
+  "task": "google_robot_pick_horizontal_coke_can",
+  "cfg_id": "pick_horizontal_coke_can_s900001",
+  "trial": 0,
+  "env_seed": 900001,
+  "reset": {},
+  "cluster": "pick_horizontal_coke_can_s900001"
+ },
+ {
+  "key": "F1__pick_vertical_coke_can_s900041__t0",
+  "block": "F1",
+  "task": "google_robot_pick_vertical_coke_can",
+  "cfg_id": "pick_vertical_coke_can_s900041",
+  "trial": 0,
+  "env_seed": 900041,
+  "reset": {},
+  "cluster": "pick_vertical_coke_can_s900041"
+ },
+ {
+  "key": "F1__pick_standing_coke_can_s900081__t0",
+  "block": "F1",
+  "task": "google_robot_pick_standing_coke_can",
+  "cfg_id": "pick_standing_coke_can_s900081",
+  "trial": 0,
+  "env_seed": 900081,
+  "reset": {},
+  "cluster": "pick_standing_coke_can_s900081"
+ },
+ {
+  "key": "F1__pick_horizontal_coke_can_s900002__t0",
+  "block": "F1",
+  "task": "google_robot_pick_horizontal_coke_can",
+  "cfg_id": "pick_horizontal_coke_can_s900002",
+  "trial": 0,
+  "env_seed": 900002,
+  "reset": {},
+  "cluster": "pick_horizontal_coke_can_s900002"
+ },
+ {
+  "key": "F1__pick_vertical_coke_can_s900042__t0",
+  "block": "F1",
+  "task": "google_robot_pick_vertical_coke_can",
+  "cfg_id": "pick_vertical_coke_can_s900042",
+  "trial": 0,
+  "env_seed": 900042,
+  "reset": {},
+  "cluster": "pick_vertical_coke_can_s900042"
+ },
+ {
+  "key": "F1__pick_standing_coke_can_s900082__t0",
+  "block": "F1",
+  "task": "google_robot_pick_standing_coke_can",
+  "cfg_id": "pick_standing_coke_can_s900082",
+  "trial": 0,
+  "env_seed": 900082,
+  "reset": {},
+  "cluster": "pick_standing_coke_can_s900082"
+ },
+ {
+  "key": "F1__pick_horizontal_coke_can_s900003__t0",
+  "block": "F1",
+  "task": "google_robot_pick_horizontal_coke_can",
+  "cfg_id": "pick_horizontal_coke_can_s900003",
+  "trial": 0,
+  "env_seed": 900003,
+  "reset": {},
+  "cluster": "pick_horizontal_coke_can_s900003"
+ }
+]

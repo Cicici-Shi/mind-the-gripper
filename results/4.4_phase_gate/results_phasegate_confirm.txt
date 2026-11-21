@@ -1,0 +1,69 @@
+phasegate-confirm readout (protocol_phasegate_confirm.md v1.1)
+keys: tasks 0-9 x ep 5-24 = 200 per cell; eval logs: logs/eval
+
+== oft_spatial: integrity PASS (8 cells, 24 eval logs) ==
+  look: episode-error keys 0
+  erase: episode-error keys 0
+== ofti_spatial: integrity PASS (8 cells, 16 eval logs) ==
+  look: episode-error keys 0
+  erase: episode-error keys 0
+
+######## model oft ########
+A/A (look:none - erase:none, n=200):   +0.0 [  +0.0,  +0.0]  -> below the noise-floor line
+
+== block oft / look: n=200 keys (excluded 0 of 200) ==
+cell          SR          D vs none [95%]  gated steps  gated queries  t_close  no close  fail closed/never
+none        97.0                                     0              0       44        0%        6/0        
+approach    83.5    -13.5 [ -25.5,  -4.0]           46              6       45        0%       33/0        
+post        97.0     +0.0 [  -2.0,  +2.0]           61              7       44        0%        6/0        
+all         80.0    -17.0 [ -30.5,  -6.0]          117             15       45        0%       40/0        
+C = D_approach - D_post:  -13.5 [ -26.5,  -3.5]    A = D_all - (D_approach + D_post):   -3.5 [  -8.5,  +1.0]
+tasks with D_approach < D_post: 7 of 10 (ties 2)
+rules: approach window closed early no | approach never-closed > 10% no | post query frames median < 4 no
+H1 成立  H2 成立  H3 成立  H4 成立
+label: 掉分集中在闭合之前：只改闭合之前掉 13.5 点，只改闭合之后掉分小于 10 点。
+
+== block oft / erase: n=200 keys (excluded 0 of 200) ==
+cell          SR          D vs none [95%]  gated steps  gated queries  t_close  no close  fail closed/never
+none        97.0                                     0              0       44        0%        6/0        
+approach    63.5    -33.5 [ -53.0, -16.5]           52              7       50        0%       73/0        
+post        77.0    -20.0 [ -34.0,  -7.5]           77             10       44        0%       46/0        
+all         44.5    -52.5 [ -73.5, -30.5]          221             28       50        0%      111/0        
+C = D_approach - D_post:  -13.5 [ -37.5, +10.5]    A = D_all - (D_approach + D_post):   +1.0 [  -9.5, +10.0]
+tasks with D_approach < D_post: 6 of 10 (ties 0)
+rules: approach window closed early no | approach never-closed > 10% no | post query frames median < 4 no
+H1 成立  H2 成立  H3 不成立  H4 不成立
+label: 不能说闭合之前更伤：只改闭合之前  -33.5 [ -53.0, -16.5]，只改闭合之后  -20.0 [ -34.0,  -7.5]。
+
+######## model ofti ########
+A/A (look:none - erase:none, n=200):   +0.0 [  +0.0,  +0.0]  -> below the noise-floor line
+
+== block ofti / look: n=200 keys (excluded 0 of 200) ==
+cell          SR          D vs none [95%]  gated steps  gated queries  t_close  no close  fail closed/never
+none        99.0                                     0              0       44        0%        2/0        
+approach    82.5    -16.5 [ -34.0,  -3.5]           46              6       45        0%       35/0        
+post        98.5     -0.5 [  -2.0,  +1.0]           58              7       44        0%        3/0        
+all         83.0    -16.0 [ -32.0,  -3.5]          112             14       45        0%       34/0        
+C = D_approach - D_post:  -16.0 [ -34.5,  -2.0]    A = D_all - (D_approach + D_post):   +1.0 [  -1.5,  +3.0]
+tasks with D_approach < D_post: 7 of 10 (ties 1)
+rules: approach window closed early no | approach never-closed > 10% no | post query frames median < 4 no
+H1 成立  H2 成立  H3 成立  H4 成立
+label: 掉分集中在闭合之前：只改闭合之前掉 16.5 点，只改闭合之后掉分小于 10 点。
+
+== block ofti / erase: n=200 keys (excluded 0 of 200) ==
+cell          SR          D vs none [95%]  gated steps  gated queries  t_close  no close  fail closed/never
+none        99.0                                     0              0       44        0%        2/0        
+approach    62.0    -37.0 [ -57.0, -20.0]           48              6       48        0%       76/0        
+post        98.5     -0.5 [  -1.5,  +0.0]           60              7       44        0%        3/0        
+all         65.0    -34.0 [ -56.0, -15.0]          128             16       48        0%       70/0        
+C = D_approach - D_post:  -36.5 [ -56.5, -19.5]    A = D_all - (D_approach + D_post):   +3.5 [  -1.5,  +8.5]
+tasks with D_approach < D_post: 9 of 10 (ties 1)
+rules: approach window closed early no | approach never-closed > 10% no | post query frames median < 4 no
+H1 成立  H2 成立  H3 成立  H4 成立
+label: 掉分集中在闭合之前：只改闭合之前掉 37.0 点，只改闭合之后掉分小于 10 点。
+
+四块中 3 块达到『掉分集中在闭合之前』。
+  oft / look: 达到  掉分集中在闭合之前：只改闭合之前掉 13.5 点，只改闭合之后掉分小于 10 点。
+  oft / erase: 未达到  不能说闭合之前更伤：只改闭合之前  -33.5 [ -53.0, -16.5]，只改闭合之后  -20.0 [ -34.0,  -7.5]。
+  ofti / look: 达到  掉分集中在闭合之前：只改闭合之前掉 16.5 点，只改闭合之后掉分小于 10 点。
+  ofti / erase: 达到  掉分集中在闭合之前：只改闭合之前掉 37.0 点，只改闭合之后掉分小于 10 点。

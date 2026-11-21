@@ -1,0 +1,28 @@
+[
+ {
+  "key": "F2__ep00_u1__t9",
+  "block": "F2",
+  "task": "google_robot_move_near_v0",
+  "cfg_id": "ep00_u1",
+  "trial": 9,
+  "env_seed": 4000918,
+  "reset": {
+   "episode_id": 0,
+   "urdf_version": "recolor_tabletop_visual_matching_1"
+  },
+  "cluster": "ep00"
+ },
+ {
+  "key": "F2__ep01_u2__t9",
+  "block": "F2",
+  "task": "google_robot_move_near_v0",
+  "cfg_id": "ep01_u2",
+  "trial": 9,
+  "env_seed": 4001902,
+  "reset": {
+   "episode_id": 1,
+   "urdf_version": "recolor_tabletop_visual_matching_2"
+  },
+  "cluster": "ep01"
+ }
+]

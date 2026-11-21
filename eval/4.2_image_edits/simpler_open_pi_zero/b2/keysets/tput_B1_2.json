@@ -1,0 +1,1 @@
+[{"key": "B1__ep04__t9", "block": "B1", "task": "widowx_put_eggplant_in_basket", "cfg_id": "ep04", "trial": 9, "env_seed": 1253325828, "reset": {"episode_id": 4}, "cluster": "ep04"}, {"key": "B1__ep05__t9", "block": "B1", "task": "widowx_put_eggplant_in_basket", "cfg_id": "ep05", "trial": 9, "env_seed": 3626588622, "reset": {"episode_id": 5}, "cluster": "ep05"}]

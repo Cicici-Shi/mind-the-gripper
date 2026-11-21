@@ -1,0 +1,1154 @@
+[
+ {
+  "key": "B1__ep00__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep00",
+  "trial": 5,
+  "env_seed": 545542017,
+  "reset": {
+   "episode_id": 0
+  },
+  "cluster": "ep00"
+ },
+ {
+  "key": "B1__ep01__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep01",
+  "trial": 5,
+  "env_seed": 2698942290,
+  "reset": {
+   "episode_id": 1
+  },
+  "cluster": "ep01"
+ },
+ {
+  "key": "B1__ep02__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep02",
+  "trial": 5,
+  "env_seed": 2964574015,
+  "reset": {
+   "episode_id": 2
+  },
+  "cluster": "ep02"
+ },
+ {
+  "key": "B1__ep03__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep03",
+  "trial": 5,
+  "env_seed": 3973284503,
+  "reset": {
+   "episode_id": 3
+  },
+  "cluster": "ep03"
+ },
+ {
+  "key": "B1__ep04__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep04",
+  "trial": 5,
+  "env_seed": 1253325828,
+  "reset": {
+   "episode_id": 4
+  },
+  "cluster": "ep04"
+ },
+ {
+  "key": "B1__ep05__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep05",
+  "trial": 5,
+  "env_seed": 3626588622,
+  "reset": {
+   "episode_id": 5
+  },
+  "cluster": "ep05"
+ },
+ {
+  "key": "B1__ep06__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep06",
+  "trial": 5,
+  "env_seed": 554453132,
+  "reset": {
+   "episode_id": 6
+  },
+  "cluster": "ep06"
+ },
+ {
+  "key": "B1__ep07__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep07",
+  "trial": 5,
+  "env_seed": 1278658824,
+  "reset": {
+   "episode_id": 7
+  },
+  "cluster": "ep07"
+ },
+ {
+  "key": "B1__ep08__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep08",
+  "trial": 5,
+  "env_seed": 3211415066,
+  "reset": {
+   "episode_id": 8
+  },
+  "cluster": "ep08"
+ },
+ {
+  "key": "B1__ep09__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep09",
+  "trial": 5,
+  "env_seed": 3339078988,
+  "reset": {
+   "episode_id": 9
+  },
+  "cluster": "ep09"
+ },
+ {
+  "key": "B1__ep10__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep10",
+  "trial": 5,
+  "env_seed": 3440153409,
+  "reset": {
+   "episode_id": 10
+  },
+  "cluster": "ep10"
+ },
+ {
+  "key": "B1__ep11__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep11",
+  "trial": 5,
+  "env_seed": 1849240583,
+  "reset": {
+   "episode_id": 11
+  },
+  "cluster": "ep11"
+ },
+ {
+  "key": "B1__ep12__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep12",
+  "trial": 5,
+  "env_seed": 2170995505,
+  "reset": {
+   "episode_id": 12
+  },
+  "cluster": "ep12"
+ },
+ {
+  "key": "B1__ep13__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep13",
+  "trial": 5,
+  "env_seed": 2281742430,
+  "reset": {
+   "episode_id": 13
+  },
+  "cluster": "ep13"
+ },
+ {
+  "key": "B1__ep14__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep14",
+  "trial": 5,
+  "env_seed": 2194295174,
+  "reset": {
+   "episode_id": 14
+  },
+  "cluster": "ep14"
+ },
+ {
+  "key": "B1__ep15__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep15",
+  "trial": 5,
+  "env_seed": 509008594,
+  "reset": {
+   "episode_id": 15
+  },
+  "cluster": "ep15"
+ },
+ {
+  "key": "B1__ep16__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep16",
+  "trial": 5,
+  "env_seed": 2087275586,
+  "reset": {
+   "episode_id": 16
+  },
+  "cluster": "ep16"
+ },
+ {
+  "key": "B1__ep17__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep17",
+  "trial": 5,
+  "env_seed": 127039047,
+  "reset": {
+   "episode_id": 17
+  },
+  "cluster": "ep17"
+ },
+ {
+  "key": "B1__ep18__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep18",
+  "trial": 5,
+  "env_seed": 2188419449,
+  "reset": {
+   "episode_id": 18
+  },
+  "cluster": "ep18"
+ },
+ {
+  "key": "B1__ep19__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep19",
+  "trial": 5,
+  "env_seed": 2906937070,
+  "reset": {
+   "episode_id": 19
+  },
+  "cluster": "ep19"
+ },
+ {
+  "key": "B1__ep20__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep20",
+  "trial": 5,
+  "env_seed": 1886158611,
+  "reset": {
+   "episode_id": 20
+  },
+  "cluster": "ep20"
+ },
+ {
+  "key": "B1__ep21__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep21",
+  "trial": 5,
+  "env_seed": 614869070,
+  "reset": {
+   "episode_id": 21
+  },
+  "cluster": "ep21"
+ },
+ {
+  "key": "B1__ep22__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep22",
+  "trial": 5,
+  "env_seed": 3072414986,
+  "reset": {
+   "episode_id": 22
+  },
+  "cluster": "ep22"
+ },
+ {
+  "key": "B1__ep23__t5",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep23",
+  "trial": 5,
+  "env_seed": 388570415,
+  "reset": {
+   "episode_id": 23
+  },
+  "cluster": "ep23"
+ },
+ {
+  "key": "B1__ep00__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep00",
+  "trial": 6,
+  "env_seed": 545542017,
+  "reset": {
+   "episode_id": 0
+  },
+  "cluster": "ep00"
+ },
+ {
+  "key": "B1__ep01__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep01",
+  "trial": 6,
+  "env_seed": 2698942290,
+  "reset": {
+   "episode_id": 1
+  },
+  "cluster": "ep01"
+ },
+ {
+  "key": "B1__ep02__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep02",
+  "trial": 6,
+  "env_seed": 2964574015,
+  "reset": {
+   "episode_id": 2
+  },
+  "cluster": "ep02"
+ },
+ {
+  "key": "B1__ep03__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep03",
+  "trial": 6,
+  "env_seed": 3973284503,
+  "reset": {
+   "episode_id": 3
+  },
+  "cluster": "ep03"
+ },
+ {
+  "key": "B1__ep04__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep04",
+  "trial": 6,
+  "env_seed": 1253325828,
+  "reset": {
+   "episode_id": 4
+  },
+  "cluster": "ep04"
+ },
+ {
+  "key": "B1__ep05__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep05",
+  "trial": 6,
+  "env_seed": 3626588622,
+  "reset": {
+   "episode_id": 5
+  },
+  "cluster": "ep05"
+ },
+ {
+  "key": "B1__ep06__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep06",
+  "trial": 6,
+  "env_seed": 554453132,
+  "reset": {
+   "episode_id": 6
+  },
+  "cluster": "ep06"
+ },
+ {
+  "key": "B1__ep07__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep07",
+  "trial": 6,
+  "env_seed": 1278658824,
+  "reset": {
+   "episode_id": 7
+  },
+  "cluster": "ep07"
+ },
+ {
+  "key": "B1__ep08__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep08",
+  "trial": 6,
+  "env_seed": 3211415066,
+  "reset": {
+   "episode_id": 8
+  },
+  "cluster": "ep08"
+ },
+ {
+  "key": "B1__ep09__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep09",
+  "trial": 6,
+  "env_seed": 3339078988,
+  "reset": {
+   "episode_id": 9
+  },
+  "cluster": "ep09"
+ },
+ {
+  "key": "B1__ep10__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep10",
+  "trial": 6,
+  "env_seed": 3440153409,
+  "reset": {
+   "episode_id": 10
+  },
+  "cluster": "ep10"
+ },
+ {
+  "key": "B1__ep11__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep11",
+  "trial": 6,
+  "env_seed": 1849240583,
+  "reset": {
+   "episode_id": 11
+  },
+  "cluster": "ep11"
+ },
+ {
+  "key": "B1__ep12__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep12",
+  "trial": 6,
+  "env_seed": 2170995505,
+  "reset": {
+   "episode_id": 12
+  },
+  "cluster": "ep12"
+ },
+ {
+  "key": "B1__ep13__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep13",
+  "trial": 6,
+  "env_seed": 2281742430,
+  "reset": {
+   "episode_id": 13
+  },
+  "cluster": "ep13"
+ },
+ {
+  "key": "B1__ep14__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep14",
+  "trial": 6,
+  "env_seed": 2194295174,
+  "reset": {
+   "episode_id": 14
+  },
+  "cluster": "ep14"
+ },
+ {
+  "key": "B1__ep15__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep15",
+  "trial": 6,
+  "env_seed": 509008594,
+  "reset": {
+   "episode_id": 15
+  },
+  "cluster": "ep15"
+ },
+ {
+  "key": "B1__ep16__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep16",
+  "trial": 6,
+  "env_seed": 2087275586,
+  "reset": {
+   "episode_id": 16
+  },
+  "cluster": "ep16"
+ },
+ {
+  "key": "B1__ep17__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep17",
+  "trial": 6,
+  "env_seed": 127039047,
+  "reset": {
+   "episode_id": 17
+  },
+  "cluster": "ep17"
+ },
+ {
+  "key": "B1__ep18__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep18",
+  "trial": 6,
+  "env_seed": 2188419449,
+  "reset": {
+   "episode_id": 18
+  },
+  "cluster": "ep18"
+ },
+ {
+  "key": "B1__ep19__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep19",
+  "trial": 6,
+  "env_seed": 2906937070,
+  "reset": {
+   "episode_id": 19
+  },
+  "cluster": "ep19"
+ },
+ {
+  "key": "B1__ep20__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep20",
+  "trial": 6,
+  "env_seed": 1886158611,
+  "reset": {
+   "episode_id": 20
+  },
+  "cluster": "ep20"
+ },
+ {
+  "key": "B1__ep21__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep21",
+  "trial": 6,
+  "env_seed": 614869070,
+  "reset": {
+   "episode_id": 21
+  },
+  "cluster": "ep21"
+ },
+ {
+  "key": "B1__ep22__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep22",
+  "trial": 6,
+  "env_seed": 3072414986,
+  "reset": {
+   "episode_id": 22
+  },
+  "cluster": "ep22"
+ },
+ {
+  "key": "B1__ep23__t6",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep23",
+  "trial": 6,
+  "env_seed": 388570415,
+  "reset": {
+   "episode_id": 23
+  },
+  "cluster": "ep23"
+ },
+ {
+  "key": "B1__ep00__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep00",
+  "trial": 7,
+  "env_seed": 545542017,
+  "reset": {
+   "episode_id": 0
+  },
+  "cluster": "ep00"
+ },
+ {
+  "key": "B1__ep01__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep01",
+  "trial": 7,
+  "env_seed": 2698942290,
+  "reset": {
+   "episode_id": 1
+  },
+  "cluster": "ep01"
+ },
+ {
+  "key": "B1__ep02__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep02",
+  "trial": 7,
+  "env_seed": 2964574015,
+  "reset": {
+   "episode_id": 2
+  },
+  "cluster": "ep02"
+ },
+ {
+  "key": "B1__ep03__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep03",
+  "trial": 7,
+  "env_seed": 3973284503,
+  "reset": {
+   "episode_id": 3
+  },
+  "cluster": "ep03"
+ },
+ {
+  "key": "B1__ep04__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep04",
+  "trial": 7,
+  "env_seed": 1253325828,
+  "reset": {
+   "episode_id": 4
+  },
+  "cluster": "ep04"
+ },
+ {
+  "key": "B1__ep05__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep05",
+  "trial": 7,
+  "env_seed": 3626588622,
+  "reset": {
+   "episode_id": 5
+  },
+  "cluster": "ep05"
+ },
+ {
+  "key": "B1__ep06__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep06",
+  "trial": 7,
+  "env_seed": 554453132,
+  "reset": {
+   "episode_id": 6
+  },
+  "cluster": "ep06"
+ },
+ {
+  "key": "B1__ep07__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep07",
+  "trial": 7,
+  "env_seed": 1278658824,
+  "reset": {
+   "episode_id": 7
+  },
+  "cluster": "ep07"
+ },
+ {
+  "key": "B1__ep08__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep08",
+  "trial": 7,
+  "env_seed": 3211415066,
+  "reset": {
+   "episode_id": 8
+  },
+  "cluster": "ep08"
+ },
+ {
+  "key": "B1__ep09__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep09",
+  "trial": 7,
+  "env_seed": 3339078988,
+  "reset": {
+   "episode_id": 9
+  },
+  "cluster": "ep09"
+ },
+ {
+  "key": "B1__ep10__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep10",
+  "trial": 7,
+  "env_seed": 3440153409,
+  "reset": {
+   "episode_id": 10
+  },
+  "cluster": "ep10"
+ },
+ {
+  "key": "B1__ep11__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep11",
+  "trial": 7,
+  "env_seed": 1849240583,
+  "reset": {
+   "episode_id": 11
+  },
+  "cluster": "ep11"
+ },
+ {
+  "key": "B1__ep12__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep12",
+  "trial": 7,
+  "env_seed": 2170995505,
+  "reset": {
+   "episode_id": 12
+  },
+  "cluster": "ep12"
+ },
+ {
+  "key": "B1__ep13__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep13",
+  "trial": 7,
+  "env_seed": 2281742430,
+  "reset": {
+   "episode_id": 13
+  },
+  "cluster": "ep13"
+ },
+ {
+  "key": "B1__ep14__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep14",
+  "trial": 7,
+  "env_seed": 2194295174,
+  "reset": {
+   "episode_id": 14
+  },
+  "cluster": "ep14"
+ },
+ {
+  "key": "B1__ep15__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep15",
+  "trial": 7,
+  "env_seed": 509008594,
+  "reset": {
+   "episode_id": 15
+  },
+  "cluster": "ep15"
+ },
+ {
+  "key": "B1__ep16__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep16",
+  "trial": 7,
+  "env_seed": 2087275586,
+  "reset": {
+   "episode_id": 16
+  },
+  "cluster": "ep16"
+ },
+ {
+  "key": "B1__ep17__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep17",
+  "trial": 7,
+  "env_seed": 127039047,
+  "reset": {
+   "episode_id": 17
+  },
+  "cluster": "ep17"
+ },
+ {
+  "key": "B1__ep18__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep18",
+  "trial": 7,
+  "env_seed": 2188419449,
+  "reset": {
+   "episode_id": 18
+  },
+  "cluster": "ep18"
+ },
+ {
+  "key": "B1__ep19__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep19",
+  "trial": 7,
+  "env_seed": 2906937070,
+  "reset": {
+   "episode_id": 19
+  },
+  "cluster": "ep19"
+ },
+ {
+  "key": "B1__ep20__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep20",
+  "trial": 7,
+  "env_seed": 1886158611,
+  "reset": {
+   "episode_id": 20
+  },
+  "cluster": "ep20"
+ },
+ {
+  "key": "B1__ep21__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep21",
+  "trial": 7,
+  "env_seed": 614869070,
+  "reset": {
+   "episode_id": 21
+  },
+  "cluster": "ep21"
+ },
+ {
+  "key": "B1__ep22__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep22",
+  "trial": 7,
+  "env_seed": 3072414986,
+  "reset": {
+   "episode_id": 22
+  },
+  "cluster": "ep22"
+ },
+ {
+  "key": "B1__ep23__t7",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep23",
+  "trial": 7,
+  "env_seed": 388570415,
+  "reset": {
+   "episode_id": 23
+  },
+  "cluster": "ep23"
+ },
+ {
+  "key": "B1__ep00__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep00",
+  "trial": 8,
+  "env_seed": 545542017,
+  "reset": {
+   "episode_id": 0
+  },
+  "cluster": "ep00"
+ },
+ {
+  "key": "B1__ep01__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep01",
+  "trial": 8,
+  "env_seed": 2698942290,
+  "reset": {
+   "episode_id": 1
+  },
+  "cluster": "ep01"
+ },
+ {
+  "key": "B1__ep02__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep02",
+  "trial": 8,
+  "env_seed": 2964574015,
+  "reset": {
+   "episode_id": 2
+  },
+  "cluster": "ep02"
+ },
+ {
+  "key": "B1__ep03__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep03",
+  "trial": 8,
+  "env_seed": 3973284503,
+  "reset": {
+   "episode_id": 3
+  },
+  "cluster": "ep03"
+ },
+ {
+  "key": "B1__ep04__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep04",
+  "trial": 8,
+  "env_seed": 1253325828,
+  "reset": {
+   "episode_id": 4
+  },
+  "cluster": "ep04"
+ },
+ {
+  "key": "B1__ep05__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep05",
+  "trial": 8,
+  "env_seed": 3626588622,
+  "reset": {
+   "episode_id": 5
+  },
+  "cluster": "ep05"
+ },
+ {
+  "key": "B1__ep06__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep06",
+  "trial": 8,
+  "env_seed": 554453132,
+  "reset": {
+   "episode_id": 6
+  },
+  "cluster": "ep06"
+ },
+ {
+  "key": "B1__ep07__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep07",
+  "trial": 8,
+  "env_seed": 1278658824,
+  "reset": {
+   "episode_id": 7
+  },
+  "cluster": "ep07"
+ },
+ {
+  "key": "B1__ep08__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep08",
+  "trial": 8,
+  "env_seed": 3211415066,
+  "reset": {
+   "episode_id": 8
+  },
+  "cluster": "ep08"
+ },
+ {
+  "key": "B1__ep09__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep09",
+  "trial": 8,
+  "env_seed": 3339078988,
+  "reset": {
+   "episode_id": 9
+  },
+  "cluster": "ep09"
+ },
+ {
+  "key": "B1__ep10__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep10",
+  "trial": 8,
+  "env_seed": 3440153409,
+  "reset": {
+   "episode_id": 10
+  },
+  "cluster": "ep10"
+ },
+ {
+  "key": "B1__ep11__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep11",
+  "trial": 8,
+  "env_seed": 1849240583,
+  "reset": {
+   "episode_id": 11
+  },
+  "cluster": "ep11"
+ },
+ {
+  "key": "B1__ep12__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep12",
+  "trial": 8,
+  "env_seed": 2170995505,
+  "reset": {
+   "episode_id": 12
+  },
+  "cluster": "ep12"
+ },
+ {
+  "key": "B1__ep13__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep13",
+  "trial": 8,
+  "env_seed": 2281742430,
+  "reset": {
+   "episode_id": 13
+  },
+  "cluster": "ep13"
+ },
+ {
+  "key": "B1__ep14__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep14",
+  "trial": 8,
+  "env_seed": 2194295174,
+  "reset": {
+   "episode_id": 14
+  },
+  "cluster": "ep14"
+ },
+ {
+  "key": "B1__ep15__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep15",
+  "trial": 8,
+  "env_seed": 509008594,
+  "reset": {
+   "episode_id": 15
+  },
+  "cluster": "ep15"
+ },
+ {
+  "key": "B1__ep16__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep16",
+  "trial": 8,
+  "env_seed": 2087275586,
+  "reset": {
+   "episode_id": 16
+  },
+  "cluster": "ep16"
+ },
+ {
+  "key": "B1__ep17__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep17",
+  "trial": 8,
+  "env_seed": 127039047,
+  "reset": {
+   "episode_id": 17
+  },
+  "cluster": "ep17"
+ },
+ {
+  "key": "B1__ep18__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep18",
+  "trial": 8,
+  "env_seed": 2188419449,
+  "reset": {
+   "episode_id": 18
+  },
+  "cluster": "ep18"
+ },
+ {
+  "key": "B1__ep19__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep19",
+  "trial": 8,
+  "env_seed": 2906937070,
+  "reset": {
+   "episode_id": 19
+  },
+  "cluster": "ep19"
+ },
+ {
+  "key": "B1__ep20__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep20",
+  "trial": 8,
+  "env_seed": 1886158611,
+  "reset": {
+   "episode_id": 20
+  },
+  "cluster": "ep20"
+ },
+ {
+  "key": "B1__ep21__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep21",
+  "trial": 8,
+  "env_seed": 614869070,
+  "reset": {
+   "episode_id": 21
+  },
+  "cluster": "ep21"
+ },
+ {
+  "key": "B1__ep22__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep22",
+  "trial": 8,
+  "env_seed": 3072414986,
+  "reset": {
+   "episode_id": 22
+  },
+  "cluster": "ep22"
+ },
+ {
+  "key": "B1__ep23__t8",
+  "block": "B1",
+  "task": "widowx_put_eggplant_in_basket",
+  "cfg_id": "ep23",
+  "trial": 8,
+  "env_seed": 388570415,
+  "reset": {
+   "episode_id": 23
+  },
+  "cluster": "ep23"
+ }
+]
